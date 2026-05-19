@@ -5,7 +5,26 @@
       "Bash(mkdir -p .claude/skills)",
       "Bash(cp -r /tmp/playwright-skill-temp/skills/playwright-skill .claude/skills/)",
       "Bash(npm run *)",
-      "Bash(npx --yes create-next-app@latest . --js --app --tailwind --eslint --src-dir --import-alias \"@/*\" --turbopack --use-npm --yes)"
+      "Bash(npx --yes create-next-app@latest . --js --app --tailwind --eslint --src-dir --import-alias \"@/*\" --turbopack --use-npm --yes)",
+      "Bash(npm install *)",
+      "WebFetch(domain:www.jennykamprath.com)",
+      "Bash(node -e \"require\\('./lib/helpers'\\).detectDevServers\\(\\).then\\(servers => console.log\\(JSON.stringify\\(servers\\)\\)\\)\")",
+      "Bash(curl *)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-capitalwatch.js)",
+      "Bash(grep -oE 'next/[a-z]+/[a-z]+|class=\"[^\"]{0,150}\"')",
+      "Bash(netstat -ano)",
+      "Bash(PORT=3001 npx next dev)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-sections.js)",
+      "Bash(powershell.exe *)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-debug.js)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-debug2.js)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-buttons.js)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-footer.js)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-all-routes.js)",
+      "Bash(node run.js ' *)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-audit.js)",
+      "WebFetch(domain:freedompulse.vercel.app)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-rsvp.js)"
     ]
   }
 }
