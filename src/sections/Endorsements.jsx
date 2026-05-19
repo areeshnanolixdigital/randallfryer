@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef } from "react";
+import Image from "next/image";
 import { m, useScroll, useTransform } from "motion/react";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
@@ -118,12 +119,13 @@ export default function Endorsements() {
                 <figcaption className="mt-12 flex items-center justify-between gap-4">
                   <div className="flex min-w-0 items-center gap-4">
                     <span className="relative block h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border border-current/20">
-                      <img
+                      <Image
                         src={v.avatar}
                         alt={v.name}
-                        loading="lazy"
-                        className="h-full w-full object-cover"
-                        style={{ filter: "grayscale(70%) contrast(1.02)" }}
+                        width={96}
+                        height={96}
+                        sizes="48px"
+                        className="h-full w-full object-cover [filter:grayscale(70%)_contrast(1.02)]"
                       />
                     </span>
                     <div className="min-w-0">

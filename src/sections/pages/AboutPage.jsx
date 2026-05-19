@@ -165,11 +165,7 @@ export default function AboutPage() {
       <Journey />
 
       {/* Closing CTA */}
-      <SectionFrame
-        label="05 — Get involved"
-        number="Together / V"
-        withBottomLine={false}
-      >
+      <SectionFrame label="05 — Get involved" number="Together / V">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal
@@ -242,14 +238,7 @@ function BioBlock({ block, reverse, index }) {
                 className="object-cover opacity-90"
                 style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.9)" }}
               />
-              <div
-                aria-hidden
-                className="absolute inset-0 mix-blend-multiply"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(10,19,38,0.15) 0%, rgba(10,19,38,0.6) 100%)",
-                }}
-              />
+              <div aria-hidden className="duotone-medium absolute inset-0 mix-blend-multiply" />
             </m.div>
           </m.div>
 

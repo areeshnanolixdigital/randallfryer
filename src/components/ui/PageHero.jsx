@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import { m, useScroll, useTransform } from "motion/react";
 import SplitReveal from "@/animations/SplitReveal";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 
 /**
  * PageHero — consistent inner-page top.
@@ -122,19 +122,8 @@ export default function PageHero({
                     filter: "grayscale(100%) contrast(1.05) brightness(0.85)",
                   }}
                 />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 mix-blend-multiply"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(10,19,38,0.2) 0%, rgba(10,19,38,0.8) 100%)",
-                  }}
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 mix-blend-color"
-                  style={{ backgroundColor: "rgba(10,19,38,0.5)" }}
-                />
+                <div aria-hidden className="duotone-strong absolute inset-0 mix-blend-multiply" />
+                <div aria-hidden className="duotone-tint absolute inset-0 mix-blend-color" />
               </m.div>
             </m.div>
           )}

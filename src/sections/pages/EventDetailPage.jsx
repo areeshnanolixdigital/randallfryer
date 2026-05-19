@@ -44,19 +44,8 @@ export default function EventDetailPage({ event }) {
             className="object-cover"
             style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.85)" }}
           />
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(10,19,38,0.25) 0%, rgba(10,19,38,0.85) 100%)",
-            }}
-          />
-          <div
-            aria-hidden
-            className="absolute inset-0 mix-blend-color"
-            style={{ backgroundColor: "rgba(10,19,38,0.55)" }}
-          />
+          <div aria-hidden className="duotone-strong absolute inset-0" />
+          <div aria-hidden className="duotone-tint-strong absolute inset-0 mix-blend-color" />
         </m.div>
 
         <div className="container-padded relative pb-24 pt-16 text-bone sm:pb-32 sm:pt-24 lg:pt-32">
@@ -225,14 +214,7 @@ export default function EventDetailPage({ event }) {
                 className="object-cover opacity-90"
                 style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.9)" }}
               />
-              <div
-                aria-hidden
-                className="absolute inset-0 mix-blend-multiply"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(10,19,38,0.15) 0%, rgba(10,19,38,0.5) 100%)",
-                }}
-              />
+              <div aria-hidden className="duotone-soft absolute inset-0 mix-blend-multiply" />
               {/* pin marker */}
               <div className="absolute left-1/2 top-1/2 flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
                 <span className="absolute h-16 w-16 animate-ping rounded-full bg-signal/30" />
@@ -323,11 +305,7 @@ export default function EventDetailPage({ event }) {
 
       {/* RELATED */}
       {related.length > 0 && (
-        <SectionFrame
-          label="05 — Related events"
-          number="More / V"
-          withBottomLine={false}
-        >
+        <SectionFrame label="05 — Related events" number="More / V">
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((ev, i) => (
               <RelatedCard key={ev.slug} ev={ev} index={i} />

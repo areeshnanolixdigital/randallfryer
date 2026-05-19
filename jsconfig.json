@@ -7,7 +7,7 @@
       "@/sections/*": ["./src/sections/*"],
       "@/animations/*": ["./src/animations/*"],
       "@/hooks/*": ["./src/hooks/*"],
-      "@/utils/*": ["./src/utils/*"],
+      "@/lib/*": ["./src/lib/*"],
       "@/assets/*": ["./src/assets/*"],
       "@/styles/*": ["./src/styles/*"],
       "@/app/*": ["./src/app/*"]

@@ -190,11 +190,7 @@ export default function PlatformPage() {
       })}
 
       {/* CTA */}
-      <SectionFrame
-        label="06 — Read the receipts"
-        number="Briefs / VI"
-        withBottomLine={false}
-      >
+      <SectionFrame label="06 — Read the receipts" number="Briefs / VI">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal

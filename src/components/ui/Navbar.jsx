@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, m, useScroll, useTransform, useSpring } from "motion/react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 
 const NAV_LINKS = [
   { label: "About", href: "/about" },

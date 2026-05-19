@@ -133,20 +133,9 @@ function PortraitCard() {
           className="absolute inset-0 h-full w-full object-cover opacity-90"
           style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.85)" }}
         />
-        {/* Crimson tint overlay */}
-        <div
-          aria-hidden
-          className="absolute inset-0 mix-blend-multiply"
-          style={{
-            background:
-              "linear-gradient(180deg, rgba(10,19,38,0.25) 0%, rgba(10,19,38,0.85) 100%)",
-          }}
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 mix-blend-color"
-          style={{ backgroundColor: "rgba(10,19,38,0.5)" }}
-        />
+        {/* Duotone overlay */}
+        <div aria-hidden className="duotone-strong absolute inset-0 mix-blend-multiply" />
+        <div aria-hidden className="duotone-tint absolute inset-0 mix-blend-color" />
 
         {/* Bottom caption */}
         <div className="absolute inset-x-6 bottom-6 flex items-end justify-between text-bone">

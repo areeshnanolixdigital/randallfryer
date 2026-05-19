@@ -60,14 +60,7 @@ export default function Countdown() {
               style={{ filter: "grayscale(100%)" }}
             />
           </m.div>
-          <div
-            aria-hidden
-            className="absolute inset-0"
-            style={{
-              background:
-                "radial-gradient(ellipse at 70% 40%, rgba(10,19,38,0.4) 0%, rgba(10,19,38,0.95) 75%)",
-            }}
-          />
+          <div aria-hidden className="duotone-radial absolute inset-0" />
         </>
       }
     >

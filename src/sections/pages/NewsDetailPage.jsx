@@ -142,11 +142,7 @@ export default function NewsDetailPage({ post }) {
 
       {/* RELATED */}
       {related.length > 0 && (
-        <SectionFrame
-          label="03 — Keep reading"
-          number="Related / III"
-          withBottomLine={false}
-        >
+        <SectionFrame label="03 — Keep reading" number="Related / III">
           <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((p, i) => (
               <m.li

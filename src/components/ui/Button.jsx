@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import { m } from "motion/react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 
 const variants = {
   primary: "bg-ink text-bone hover:bg-signal",

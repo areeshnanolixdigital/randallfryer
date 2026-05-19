@@ -139,11 +139,7 @@ export default function ContactPage() {
       </SectionFrame>
 
       {/* DIRECT CONTACT */}
-      <SectionFrame
-        label="04 — Or reach out directly"
-        number="Direct / IV"
-        withBottomLine={false}
-      >
+      <SectionFrame label="04 — Or reach out directly" number="Direct / IV">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {[
             {

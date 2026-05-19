@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { m, useInView } from "motion/react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 
 /**
  * SectionFrame — shared shell for every section.

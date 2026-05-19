@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 
 const baseField =
   "block w-full rounded-soft border border-ink/20 bg-bone/80 px-4 py-3.5 font-sans text-[15px] text-ink placeholder:text-ink-mute transition-colors duration-300 focus:border-ink focus:bg-bone focus:outline-none focus:ring-2 focus:ring-ink/20";

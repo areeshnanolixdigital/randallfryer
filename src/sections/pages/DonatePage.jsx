@@ -139,11 +139,7 @@ export default function DonatePage() {
       </SectionFrame>
 
       {/* OTHER WAYS */}
-      <SectionFrame
-        label="04 — Other ways to give"
-        number="Alternatives / IV"
-        withBottomLine={false}
-      >
+      <SectionFrame label="04 — Other ways to give" number="Alternatives / IV">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {[
             {

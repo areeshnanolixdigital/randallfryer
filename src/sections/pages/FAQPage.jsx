@@ -120,7 +120,6 @@ export default function FAQPage() {
       <SectionFrame
         label={`0${GROUPS.length + 2} — Still curious?`}
         number="Contact / Final"
-        withBottomLine={false}
       >
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">

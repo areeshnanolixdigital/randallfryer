@@ -175,11 +175,7 @@ export default function VolunteerPage() {
       </SectionFrame>
 
       {/* CONTACT BLOCK */}
-      <SectionFrame
-        label="05 — Talk to a coordinator"
-        number="Contact / V"
-        withBottomLine={false}
-      >
+      <SectionFrame label="05 — Talk to a coordinator" number="Contact / V">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal

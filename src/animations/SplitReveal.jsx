@@ -2,7 +2,7 @@
 
 import { useRef } from "react";
 import { gsap, useGSAP, SplitText, ScrollTrigger } from "@/animations/gsap";
-import { cn } from "@/utils/cn";
+import { cn } from "@/lib/cn";
 
 /**
  * SplitReveal — splits children text into lines/words/chars and animates them in.

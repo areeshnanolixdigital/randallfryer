@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { m } from "motion/react";
 import SectionFrame from "@/animations/SectionFrame";
@@ -104,12 +105,13 @@ export default function EndorsementsPage() {
               </blockquote>
               <figcaption className="mt-12 flex items-center gap-4">
                 <span className="relative block h-12 w-12 flex-shrink-0 overflow-hidden rounded-full border border-current/20">
-                  <img
+                  <Image
                     src={v.avatar}
                     alt={v.name}
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                    style={{ filter: "grayscale(70%) contrast(1.02)" }}
+                    width={96}
+                    height={96}
+                    sizes="48px"
+                    className="h-full w-full object-cover [filter:grayscale(70%)_contrast(1.02)]"
                   />
                 </span>
                 <div className="min-w-0">
@@ -164,12 +166,13 @@ export default function EndorsementsPage() {
                   className="group flex flex-col gap-3"
                 >
                   <span className="relative block aspect-square w-full overflow-hidden rounded-full border border-ink/15 bg-bone-soft transition-transform duration-500 group-hover:-translate-y-0.5">
-                    <img
+                    <Image
                       src={`https://i.pravatar.cc/240?img=${c.img}`}
                       alt={c.name}
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                      style={{ filter: "grayscale(80%) contrast(1.05)" }}
+                      width={240}
+                      height={240}
+                      sizes="(min-width: 1024px) 14vw, 33vw"
+                      className="h-full w-full object-cover [filter:grayscale(80%)_contrast(1.05)]"
                     />
                   </span>
                   <div className="leading-tight">
@@ -223,11 +226,7 @@ export default function EndorsementsPage() {
       </SectionFrame>
 
       {/* ADD YOUR VOICE CTA */}
-      <SectionFrame
-        label="05 — Add your voice"
-        number="Endorse / V"
-        withBottomLine={false}
-      >
+      <SectionFrame label="05 — Add your voice" number="Endorse / V">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal

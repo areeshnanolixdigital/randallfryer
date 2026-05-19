@@ -114,6 +114,42 @@
     background-color: color-mix(in srgb, var(--color-ink) 16%, transparent);
   }
 
+  /* Duotone overlays — used on top of grayscale photos to tint them ink. */
+  .duotone-strong {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-ink) 25%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink) 85%, transparent) 100%
+    );
+  }
+  .duotone-medium {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-ink) 15%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink) 60%, transparent) 100%
+    );
+  }
+  .duotone-soft {
+    background: linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-ink) 10%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink) 50%, transparent) 100%
+    );
+  }
+  .duotone-tint {
+    background-color: color-mix(in srgb, var(--color-ink) 50%, transparent);
+  }
+  .duotone-tint-strong {
+    background-color: color-mix(in srgb, var(--color-ink) 55%, transparent);
+  }
+  .duotone-radial {
+    background: radial-gradient(
+      ellipse at 70% 40%,
+      color-mix(in srgb, var(--color-ink) 40%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink) 95%, transparent) 75%
+    );
+  }
+
   /* Animated underline used on links */
   .link-underline {
     position: relative;

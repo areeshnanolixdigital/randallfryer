@@ -47,11 +47,7 @@ export default function EventsPage() {
       )}
 
       {/* CTA */}
-      <SectionFrame
-        label="04 — Stay in the loop"
-        number="Notifications / IV"
-        withBottomLine={false}
-      >
+      <SectionFrame label="04 — Stay in the loop" number="Notifications / IV">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal
@@ -106,14 +102,7 @@ function EventRow({ ev, index }) {
             className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]"
             style={{ filter: "grayscale(80%) contrast(1.05) brightness(0.92)" }}
           />
-          <div
-            aria-hidden
-            className="absolute inset-0 mix-blend-multiply"
-            style={{
-              background:
-                "linear-gradient(180deg, rgba(10,19,38,0.1) 0%, rgba(10,19,38,0.5) 100%)",
-            }}
-          />
+          <div aria-hidden className="duotone-soft absolute inset-0 mix-blend-multiply" />
           <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-pill border border-bone/30 bg-bone/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.28em] text-bone/95 backdrop-blur">
             <span className="block h-1.5 w-1.5 rounded-full bg-signal" />
             {ev.category}

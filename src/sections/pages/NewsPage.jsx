@@ -37,14 +37,7 @@ export default function NewsPage() {
                 className="object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                 style={{ filter: "grayscale(80%) contrast(1.05) brightness(0.92)" }}
               />
-              <div
-                aria-hidden
-                className="absolute inset-0 mix-blend-multiply"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(10,19,38,0.1) 0%, rgba(10,19,38,0.45) 100%)",
-                }}
-              />
+              <div aria-hidden className="duotone-soft absolute inset-0 mix-blend-multiply" />
               <span className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-pill border border-bone/30 bg-bone/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.28em] text-bone/95 backdrop-blur">
                 <span className="block h-1.5 w-1.5 rounded-full bg-signal" />
                 {featured.category}
@@ -83,11 +76,7 @@ export default function NewsPage() {
       </SectionFrame>
 
       {/* RECENT GRID */}
-      <SectionFrame
-        label="03 — More from the brief"
-        number={`${rest.length} posts`}
-        withBottomLine={false}
-      >
+      <SectionFrame label="03 — More from the brief" number={`${rest.length} posts`}>
         <ul className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {rest.map((p, i) => (
             <m.li
