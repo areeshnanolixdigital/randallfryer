@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Button from "@/components/ui/Button";
 
 export const metadata = {
@@ -25,10 +24,10 @@ export default function NotFound() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center gap-3">
-          <Button as={Link} href="/" variant="primary" withArrow>
+          <Button href="/" variant="primary" withArrow>
             Back to home
           </Button>
-          <Button as={Link} href="/contact" variant="outline" withArrow>
+          <Button href="/contact" variant="outline" withArrow>
             Ask the team
           </Button>
         </div>

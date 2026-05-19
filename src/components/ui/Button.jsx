@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { m } from "motion/react";
 import { cn } from "@/lib/cn";
 
@@ -13,25 +14,22 @@ const variants = {
 };
 
 /**
- * Button — magnetic, inertia-driven, with a vertical word-wipe on hover.
+ * Button — magnetic pill with a vertical word-wipe on hover.
  *
- * Layout:
- *   • Primary label sits as a normal flex child inside the pill — it inherits
- *     the pill's `items-center` so it's perfectly centered vertically.
- *   • On hover, that label slides up by its own height (-translate-y-full)
- *     while a duplicate label, anchored absolutely just below the pill
- *     (translate-y-full), slides up into view.
- *   • The pill's `overflow-hidden` clips both during the transition.
- *
- * No absolute-positioning math, no leading hacks, no clipping of the SVG icon.
+ * Routing:
+ *   • Provide `href="/path"` for an internal route — renders Next/Link.
+ *   • Provide `href="https://…"` / `mailto:` / `tel:` — renders a plain anchor.
+ *   • Omit `href` — renders a native <button>.
+ *   • `as="a"` forces a plain anchor (use for `download`, etc).
  */
 export default function Button({
   variant = "primary",
   className,
   children,
   withArrow = false,
-  as: Tag = "button",
+  as,
   href,
+  type,
   ...props
 }) {
   const ref = useRef(null);
@@ -47,7 +45,16 @@ export default function Button({
 
   const handleLeave = () => setPos({ x: 0, y: 0 });
 
-  const Component = href ? "a" : Tag;
+  // Decide what element to render
+  const isExternal =
+    typeof href === "string" && /^(mailto:|tel:|https?:|data:)/.test(href);
+  let Component;
+  if (as === "a") Component = "a";
+  else if (href && !isExternal) Component = Link;
+  else if (href) Component = "a";
+  else Component = "button";
+
+  const isButton = Component === "button";
 
   const Label = () => (
     <span className="flex items-center gap-2">
@@ -67,6 +74,7 @@ export default function Button({
     >
       <Component
         href={href}
+        type={isButton ? type || "button" : undefined}
         className={cn(
           "group relative inline-flex items-center justify-center overflow-hidden rounded-pill px-7 py-3.5 text-[12px] font-medium uppercase tracking-[0.2em] transition-colors duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]",
           variants[variant],
@@ -74,12 +82,9 @@ export default function Button({
         )}
         {...props}
       >
-        {/* primary label — natural flex child, perfectly centered */}
         <span className="block transition-transform duration-[550ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-[200%]">
           <Label />
         </span>
-
-        {/* hover duplicate — slides up from below */}
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 flex translate-y-full items-center justify-center transition-transform duration-[550ms] ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0"
