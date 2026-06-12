@@ -25,7 +25,8 @@
       "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-audit.js)",
       "WebFetch(domain:freedompulse.vercel.app)",
       "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-rsvp.js)",
-      "Bash(npx next *)"
+      "Bash(npx next *)",
+      "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-campaign.js)"
     ]
   }
 }
