@@ -207,14 +207,11 @@ export default function PlatformPage() {
               className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75"
             >
               The full math on the inspector general, the shot-clock,
-              and the public-safety budget — all in the news room.
+              and the public-safety budget — laid out issue by issue.
             </m.p>
           </div>
           <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
-            <Button as={Link} href="/news" variant="primary" withArrow>
-              Read the briefs
-            </Button>
-            <Button as={Link} href="/contact" variant="outline" withArrow>
+            <Button as={Link} href="/contact" variant="primary" withArrow>
               Ask a question
             </Button>
           </div>

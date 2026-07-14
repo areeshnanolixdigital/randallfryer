@@ -8,10 +8,9 @@ import { cn } from "@/lib/cn";
 
 const NAV_LINKS = [
   { label: "About", href: "/about" },
-  { label: "Endorsements", href: "/endorsements" },
   { label: "Events", href: "/events" },
-  { label: "News", href: "/news" },
-  { label: "Press Kit", href: "/social-media-posts" },
+  { label: "Volunteer", href: "/volunteer" },
+  { label: "Ask Randall", href: "/ask" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -108,17 +107,6 @@ export default function Navbar() {
             </nav>
 
             <div className="flex items-center gap-2 sm:gap-3">
-              <Link
-                href="/volunteer"
-                className={cn(
-                  "link-underline hidden px-2 font-mono text-[11px] uppercase tracking-[0.24em] transition-colors duration-300 xl:inline-flex",
-                  lightMode
-                    ? "text-bone/85 hover:text-bone"
-                    : "text-ink/80 hover:text-ink"
-                )}
-              >
-                Volunteer
-              </Link>
               <Link
                 href="/donate"
                 className="group relative hidden items-center gap-2 overflow-hidden rounded-pill bg-signal px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.24em] text-bone transition-colors hover:bg-ink sm:inline-flex"
@@ -228,13 +216,6 @@ function MobileMenu({ close }) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
           className="mt-10 flex gap-3"
         >
-          <Link
-            href="/volunteer"
-            onClick={close}
-            className="inline-flex flex-1 items-center justify-center rounded-pill border border-ink/30 px-5 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-ink"
-          >
-            Volunteer
-          </Link>
           <Link
             href="/donate"
             onClick={close}

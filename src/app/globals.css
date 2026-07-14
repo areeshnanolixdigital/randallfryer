@@ -1,29 +1,36 @@
 @import "tailwindcss";
 
 @theme {
-  /* Premium political palette — refined parchment, midnight, restrained crimson */
-  --color-bone: #f3ede0;
-  --color-bone-soft: #ebe2cd;
-  --color-bone-deep: #d8cdb1;
-  --color-ink: #0a1326;
-  --color-ink-soft: #18223b;
-  --color-ink-mute: #4b5364;
-  --color-signal: #9b2d2c;
-  --color-signal-deep: #7a2422;
-  --color-ochre: #b58a4a;
-  --color-ochre-soft: #d4ac6e;
-  --color-sage: #4f6358;
-  --color-mist: #7a766a;
+  /* Randall Fryer for State Representative — brand palette (Op1776 CI-0216) */
+  /* Background: neutral off-white */
+  --color-bone: #f6f5f4;
+  --color-bone-soft: #eceae8;
+  --color-bone-deep: #dad7d3;
+  /* Primary: midnight navy */
+  --color-ink: #0d1528;
+  --color-ink-soft: #1b2740;
+  --color-ink-mute: #4a5262;
+  /* Secondary: campaign crimson */
+  --color-signal: #781830;
+  --color-signal-deep: #5e1326;
+  /* Accent: gold */
+  --color-ochre: #d4a418;
+  --color-ochre-soft: #e4c255;
+  /* Highlight: steel blue */
+  --color-sage: #304860;
+  --color-mist: #7c7a75;
+  /* Body text: warm charcoal */
+  --color-text: #303030;
 
   /* Map standard tokens */
-  --color-background: #f3ede0;
-  --color-foreground: #0a1326;
-  --color-muted: #4b5364;
-  --color-accent: #9b2d2c;
+  --color-background: #f6f5f4;
+  --color-foreground: #0d1528;
+  --color-muted: #4a5262;
+  --color-accent: #781830;
 
-  /* Type system */
-  --font-display: var(--font-fraunces), "Times New Roman", serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  /* Type system — Heading: Inter · Body: Roboto */
+  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   --radius-pill: 999px;
@@ -43,7 +50,7 @@
 
   body {
     background-color: var(--color-bone);
-    color: var(--color-ink);
+    color: var(--color-text);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
