@@ -12,9 +12,6 @@ const NAV_GROUPS = [
     links: [
       { label: "Home", href: "/" },
       { label: "About Adrian", href: "/about" },
-      { label: "Endorsements", href: "/endorsements" },
-      { label: "News", href: "/news" },
-      { label: "Press Kit", href: "/social-media-posts" },
     ],
   },
   {
@@ -23,7 +20,7 @@ const NAV_GROUPS = [
       { label: "Volunteer", href: "/volunteer" },
       { label: "Donate", href: "/donate" },
       { label: "Events", href: "/events" },
-      { label: "Ask Adrian", href: "/contact" },
+      { label: "Ask Randall", href: "/ask" },
       { label: "FAQ", href: "/faq" },
     ],
   },
@@ -202,7 +199,7 @@ export default function Footer() {
               y="140"
               textAnchor="middle"
               fontSize="180"
-              fontFamily="var(--font-fraunces)"
+              fontFamily="var(--font-display)"
               fontWeight="500"
               fill="none"
               stroke="currentColor"

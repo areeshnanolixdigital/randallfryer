@@ -194,11 +194,11 @@ export default function SocialMediaPostDetailPage({ post }) {
               },
               {
                 t: "Typography",
-                d: "Fraunces display + Inter sans + JetBrains Mono captions.",
+                d: "Inter headings + Roboto body + JetBrains Mono captions.",
               },
               {
                 t: "Palette",
-                d: "Bone parchment, midnight ink, restrained crimson, warm ochre.",
+                d: "Off-white ground, midnight navy, campaign crimson, warm gold.",
               },
             ].map((item) => (
               <li

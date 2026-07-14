@@ -276,8 +276,8 @@ function PatternRings() {
     >
       <defs>
         <radialGradient id="rg" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#0d1a2e" stopOpacity="0.7" />
-          <stop offset="100%" stopColor="#0d1a2e" stopOpacity="0" />
+          <stop offset="0%" stopColor="#0d1528" stopOpacity="0.7" />
+          <stop offset="100%" stopColor="#0d1528" stopOpacity="0" />
         </radialGradient>
       </defs>
       {[...Array(14)].map((_, i) => (

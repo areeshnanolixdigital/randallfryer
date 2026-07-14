@@ -1,20 +1,22 @@
-import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, Roboto, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import MotionProvider from "@/animations/MotionProvider";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/sections/Footer";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  display: "swap",
-  axes: ["opsz", "SOFT"],
-});
-
+// Heading typeface — Randall Fryer brand (Op1776 CI-0216)
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   display: "swap",
+});
+
+// Body typeface — Randall Fryer brand (Op1776 CI-0216)
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["300", "400", "500", "700"],
 });
 
 const jetbrains = JetBrains_Mono({
@@ -37,7 +39,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${inter.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${inter.variable} ${roboto.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="relative min-h-full flex flex-col">
         <MotionProvider>
