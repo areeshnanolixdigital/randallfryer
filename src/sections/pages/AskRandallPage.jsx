@@ -14,26 +14,8 @@ import {
   FormCheckbox,
   FormFieldset,
 } from "@/components/ui/Form";
+import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import { ISSUE_CATEGORIES } from "@/constants/issues";
-
-const TOPICS = [
-  {
-    title: "Schools & students",
-    body: "Classroom funding, literacy, and how tax dollars reach the district.",
-  },
-  {
-    title: "Public safety",
-    body: "Patrol staffing, repeat-offender policy, and safe neighborhoods.",
-  },
-  {
-    title: "Cost of living",
-    body: "Taxes, housing, and the everyday squeeze on District 28 families.",
-  },
-  {
-    title: "Accountability",
-    body: "Where the money goes and how Salem answers for the results.",
-  },
-];
 
 export default function AskRandallPage() {
   return (
@@ -41,48 +23,19 @@ export default function AskRandallPage() {
       <PageHero
         eyebrow="File №06 — Ask Randall"
         number="Ask / VI"
-        title="Ask Randall directly."
-        intro="Randall reads every submission personally. Send a question, flag a problem in the district, or tell him what Salem is getting wrong — you&rsquo;ll hear back within five business days."
+        title="Join the conversation and Ask."
+        intro="The strongest campaigns are built face to face. Join Randall Fryer at an upcoming community gathering, neighborhood meet-and-greet, volunteer event, or campaign forum. Hear directly from Randall, ask questions, and share what matters to you and your family."
       />
 
-      {/* TOPIC TILES */}
-      <SectionFrame label="02 — What&rsquo;s on your mind" number="Topics / II">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {TOPICS.map((t, i) => (
-            <m.div
-              key={t.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1],
-                delay: i * 0.08,
-              }}
-              whileHover={{ y: -4 }}
-              className="group flex flex-col gap-3 rounded-card border border-ink/15 bg-bone-soft/60 p-6 transition-colors duration-500 hover:border-ink"
-            >
-              <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-                0{i + 1}
-              </span>
-              <h3 className="display-serif text-xl font-medium leading-tight">
-                {t.title}
-              </h3>
-              <p className="text-[14px] leading-relaxed text-ink/75">{t.body}</p>
-            </m.div>
-          ))}
-        </div>
-      </SectionFrame>
-
       {/* FORM */}
-      <SectionFrame label="03 — Send it" number="Form / III">
+      <SectionFrame label="02 — Leave Randall a note" number="Form / II">
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-4">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(1.875rem,4vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+              className="display-serif block text-balance text-[clamp(1.7rem,3.5vw,2.85rem)] font-medium leading-[1.05] tracking-[-0.02em]"
             >
-              Write Randall a note.
+              Leave Randall a note.
             </SplitReveal>
             <m.p
               initial={{ opacity: 0, y: 24 }}
@@ -91,36 +44,51 @@ export default function AskRandallPage() {
               transition={{ duration: 0.9, delay: 0.2 }}
               className="mt-6 max-w-sm text-[1.05rem] leading-relaxed text-ink/80"
             >
-              The shorter, the better. One specific question gets a better answer
-              than a five-paragraph essay.
+              A short, specific question helps Randall and the campaign
+              provide a clearer and more useful response. Please focus on
+              one concern at a time and include only the background
+              information needed to understand your question.
             </m.p>
-
-            <m.ul
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.9, delay: 0.4 }}
-              className="mt-8 flex flex-col gap-3"
-            >
-              {[
-                "Personal reply within 5 business days",
-                "Every note reaches the campaign directly",
-                "Followed up by Randall or the policy lead",
-                "Never shared, never sold",
-              ].map((line) => (
-                <li
-                  key={line}
-                  className="flex items-start gap-3 text-[14px] leading-relaxed text-ink/75"
-                >
-                  <span className="mt-2 block h-1 w-1 flex-shrink-0 rounded-full bg-signal" />
-                  {line}
-                </li>
-              ))}
-            </m.ul>
           </div>
 
           <div className="col-span-12 lg:col-span-8">
             <AskForm />
+          </div>
+        </div>
+      </SectionFrame>
+
+      {/* JOIN TEAM FRYER */}
+      <SectionFrame label="03 — Get involved" number="Together / III">
+        <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
+          <div className="col-span-12 lg:col-span-7">
+            <SplitReveal
+              as="h2"
+              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+            >
+              Join Team Fryer.
+            </SplitReveal>
+            <m.p
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.9, delay: 0.2 }}
+              className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75"
+            >
+              Randall&rsquo;s campaign is built by people who believe Oregon
+              deserves disciplined leadership, responsible government, and
+              measurable results. Knock on doors, host a neighborhood
+              conversation, support an event, or contribute what you can.
+              Every hour and every contribution helps Randall reach more
+              voters across District 28.
+            </m.p>
+          </div>
+          <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
+            <Button as={Link} href="/volunteer" variant="primary" withArrow>
+              Volunteer
+            </Button>
+            <Button as={Link} href="/donate" variant="signal" withArrow>
+              Donate
+            </Button>
           </div>
         </div>
       </SectionFrame>
@@ -131,6 +99,7 @@ export default function AskRandallPage() {
 function AskForm() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState("");
+  const pc = usePhoneConsent();
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -141,10 +110,13 @@ function AskForm() {
     const payload = {
       name: (data.get("name") || "").toString().trim(),
       email: (data.get("email") || "").toString().trim(),
+      phone: pc.phone,
       category: (data.get("category") || "").toString(),
       location: (data.get("location") || "").toString().trim(),
       subject: (data.get("subject") || "").toString().trim(),
       description: (data.get("description") || "").toString().trim(),
+      sms_updates: pc.smsConsent,
+      sms_promo: pc.promoConsent,
     };
 
     // Client-side validation before submission
@@ -154,6 +126,11 @@ function AskForm() {
       setErrorMsg(
         "Please add your name, a valid email, a subject, and your message."
       );
+      return;
+    }
+    if (pc.consentError) {
+      setStatus("error");
+      setErrorMsg(pc.consentError);
       return;
     }
 
@@ -169,7 +146,7 @@ function AskForm() {
     } catch (err) {
       setStatus("error");
       setErrorMsg(
-        "Something went wrong sending your message. Please try again, or email hello@randallfryer.vote."
+        "Something went wrong sending your message. Please try again in a moment."
       );
     }
   }
@@ -184,7 +161,7 @@ function AskForm() {
           Thanks — Randall will see this.
         </h3>
         <p className="mt-4 max-w-md leading-relaxed text-bone/80">
-          You&rsquo;ll get a reply within five business days. Thanks for taking
+          Your message has reached the campaign directly. Thanks for taking
           the time to reach out.
         </p>
       </div>
@@ -206,12 +183,15 @@ function AskForm() {
         />
       </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <FormSelect
-          id="a-category"
-          name="category"
-          label="Category"
-          required
-          options={ISSUE_CATEGORIES}
+        <FormField
+          id="a-phone"
+          name="phone"
+          label="Phone"
+          type="tel"
+          optional
+          value={pc.phone}
+          onChange={pc.onPhoneChange}
+          placeholder="+1 (503) 555-0123"
         />
         <FormField
           id="a-location"
@@ -220,6 +200,13 @@ function AskForm() {
           optional
         />
       </div>
+      <FormSelect
+        id="a-category"
+        name="category"
+        label="Category"
+        required
+        options={ISSUE_CATEGORIES}
+      />
       <FormField id="a-subject" name="subject" label="Subject" required />
       <FormTextarea
         id="a-description"
@@ -228,6 +215,9 @@ function AskForm() {
         required
         rows={6}
       />
+
+      <SmsConsentFieldset {...pc} idPrefix="a-sms" />
+
       <FormFieldset legend="Before you send">
         <FormCheckbox
           id="a-terms"

@@ -71,7 +71,7 @@ export default function SocialMediaPostDetailPage({ post }) {
               <span className="eyebrow">{post.concept}</span>
               <SplitReveal
                 as="h1"
-                className="display-serif mt-4 block text-balance text-[clamp(2rem,5.5vw,4.5rem)] font-medium leading-[1.02] tracking-[-0.025em] text-ink"
+                className="display-serif mt-4 block text-balance text-[clamp(1.85rem,4.4vw,3.65rem)] font-medium leading-[1.02] tracking-[-0.025em] text-ink"
               >
                 {post.title}
               </SplitReveal>

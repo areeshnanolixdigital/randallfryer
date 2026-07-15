@@ -100,7 +100,7 @@ export default function FAQPage() {
             <div className="col-span-12 lg:col-span-4">
               <SplitReveal
                 as="h2"
-                className="display-serif block text-balance text-[clamp(1.875rem,4vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+                className="display-serif block text-balance text-[clamp(1.7rem,3.5vw,2.85rem)] font-medium leading-[1.05] tracking-[-0.02em]"
               >
                 {g.title}.
               </SplitReveal>
@@ -125,7 +125,7 @@ export default function FAQPage() {
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
             >
               Ask the question we missed.
             </SplitReveal>

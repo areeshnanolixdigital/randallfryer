@@ -3,7 +3,7 @@ import VolunteerPage from "@/sections/pages/VolunteerPage";
 export const metadata = {
   title: "Volunteer",
   description:
-    "Join the CapitalWatch field team. Knock doors, host a coffee, or send what you can — every hour and every dollar lands in District 14.",
+    "Join Team Fryer. Knock on a few doors, make a few calls, or host a conversation — every hour helps build a stronger campaign for Oregon House District 28.",
 };
 
 export default function Page() {

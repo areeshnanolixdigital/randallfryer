@@ -1,7 +1,16 @@
-import { getIssueWebhookUrl, forwardToGhl } from "@/lib/ghl";
+import {
+  getIssueWebhookUrl,
+  getComplianceWebhookUrl,
+  forwardToGhl,
+} from "@/lib/ghl";
+import { normalizePhoneForSubmit } from "@/lib/phone";
 
 // POST /api/ask — "Ask Randall" submissions (GHL Issue_Report workflow).
-// Payload contract per ghl-forms-webhooks.md §3 (Issue Report Form).
+// Fans out to the primary workflow webhook + shared compliance webhook
+// (forms-compliance-pattern.md §1). Payload per ghl-forms-webhooks.md §3, plus
+// the optional phone + SMS-consent fields required by the compliance pattern.
+const WEBHOOK_URLS = [getIssueWebhookUrl(), getComplianceWebhookUrl()];
+
 export async function POST(request) {
   let body;
   try {
@@ -17,8 +26,8 @@ export async function POST(request) {
   const subject = (body.subject || "").trim();
   const description = (body.description || "").trim();
 
-  // Server-side validation mirrors the rule guide: name, email, subject,
-  // description are required.
+  // Server-side validation: name, email, subject, description required.
+  // Phone stays optional.
   if (!name || !email || !subject || !description) {
     return Response.json({ error: "Missing required fields" }, { status: 400 });
   }
@@ -33,22 +42,29 @@ export async function POST(request) {
     firstName,
     lastName,
     email,
+    phone: normalizePhoneForSubmit(body.phone),
     issue_category: category,
     issue_location: location,
     issue_subject: subject,
     issue_description: description,
     issue_image: "", // no upload yet — empty string placeholder
+    sms_updates: body.sms_updates ? "Yes" : "No",
+    sms_promo: body.sms_promo ? "Yes" : "No",
     source: "src_issue",
     submitted_at: new Date().toISOString(),
   };
 
   try {
-    const res = await forwardToGhl(getIssueWebhookUrl(), payload);
-    if (!res.ok) {
-      return Response.json(
-        { error: "Upstream webhook error" },
-        { status: 502 }
-      );
+    const results = await Promise.all(
+      WEBHOOK_URLS.map((url) =>
+        forwardToGhl(url, payload).catch((err) => {
+          console.error("[Ask API] webhook error:", err);
+          return { ok: false };
+        })
+      )
+    );
+    if (!results.some((r) => r.ok)) {
+      return Response.json({ error: "Webhook delivery failed" }, { status: 502 });
     }
     return Response.json({ success: true }, { status: 200 });
   } catch (err) {

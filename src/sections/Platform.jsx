@@ -8,42 +8,24 @@ import SplitReveal from "@/animations/SplitReveal";
 
 const PILLARS = [
   {
-    id: "spending",
+    id: "education",
     no: "01",
-    title: "Stop Overspending",
-    short: "Audit waste. Live within means.",
-    body: "We will line-item audit every agency, freeze non-essential hiring, and refuse any new tax or fee until the budget is balanced without accounting tricks. No more midnight earmarks for connected vendors.",
-    bullets: [
-      "Independent inspector general with subpoena power",
-      "Public-facing spend dashboard, updated weekly",
-      "Hard cap on year-over-year general fund growth",
-    ],
+    title: "Restore Educational Excellence",
+    body: "Oregon's students need classrooms centered on learning. Randall will work to restore meaningful academic and graduation standards; refocus instruction on reading, writing, mathematics, history, and civics; and direct more education resources toward teachers and classrooms. He supports strong local school boards, meaningful parental involvement, orderly classrooms, and giving professional teachers the authority and support they need to teach effectively.",
     accent: "signal",
   },
   {
-    id: "redtape",
+    id: "families",
     no: "02",
-    title: "Cut the Red Tape",
-    short: "Faster permits. Real housing. Real jobs.",
-    body: "Small businesses and young families are drowning in approvals. We will gut duplicative permitting, restore by-right zoning for starter homes, and put a 60-day shot-clock on every state license decision.",
-    bullets: [
-      "60-day shot-clock on permits and licenses",
-      "Sunset reviews on every regulation older than 7 years",
-      "By-right zoning for missing-middle housing",
-    ],
+    title: "Lower the Burden on Working Families",
+    body: "Oregonians are willing to support essential public services, but they deserve value, transparency, and restraint in return. Randall will oppose unnecessary taxes and fees, scrutinize spending before asking families to pay more, and demand clear evidence that public programs are producing measurable benefits. His goal is straightforward: lower the pressure on household budgets while protecting the services communities depend on.",
     accent: "ochre",
   },
   {
-    id: "safety",
+    id: "business",
     no: "03",
-    title: "Public Safety, Restored",
-    short: "Back the badge. Protect every neighborhood.",
-    body: "Safety is the foundation of every freedom. We will properly fund and train local law enforcement, oppose siting of unsupervised transitional housing in residential neighborhoods, and prosecute repeat offenders.",
-    bullets: [
-      "Fully funded patrol & detective units district-wide",
-      "Mandatory community input on transitional siting",
-      "Real consequences for repeat retail-theft offenders",
-    ],
+    title: "Rebuild Oregon's Business Climate",
+    body: "Oregon should be a place where businesses can start, invest, hire, and grow. Randall will pursue lower and more competitive tax rates, simpler tax compliance, faster and more predictable permitting, and fewer unnecessary regulatory barriers. A healthy business climate supports workers, strengthens property values, expands the tax base, and helps communities fund schools, public safety, and essential services without continually raising costs on families.",
     accent: "ink",
   },
 ];
@@ -92,16 +74,16 @@ export default function Platform() {
     <div ref={wrap}>
       <SectionFrame
         id="platform"
-        label="02 — The Platform"
-        number="Manifesto / II"
+        label="02 — Three Commitments"
+        number="Priorities / II"
       >
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-5">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
             >
-              Three commitments. Written down. Signed.
+              Three commitments. Clear goals. Measurable results.
             </SplitReveal>
             <m.p
               initial={{ opacity: 0, y: 24 }}
@@ -110,9 +92,9 @@ export default function Platform() {
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
               className="mt-8 max-w-md text-lg leading-relaxed text-ink/75"
             >
-              Voters deserve more than vibes. Each commitment below is a
-              concrete legislative agenda we will pursue from day one — and
-              report on, in public, every ninety days.
+              Randall&rsquo;s agenda begins with three immediate priorities
+              designed to strengthen opportunity, lower pressure on working
+              families, and demand better results from state government.
             </m.p>
           </div>
 
@@ -192,9 +174,6 @@ function PillarCard({ p, index }) {
             </svg>
           </m.span>
         </div>
-        <p className="mt-2 max-w-md font-mono text-[11px] uppercase tracking-[0.22em] text-ink-mute">
-          {p.short}
-        </p>
       </button>
 
       <AnimatePresence initial={false}>
@@ -211,26 +190,6 @@ function PillarCard({ p, index }) {
               <p className="max-w-2xl text-[1.05rem] leading-relaxed text-ink/80">
                 {p.body}
               </p>
-              <ul className="mt-6 grid gap-3">
-                {p.bullets.map((b, i) => (
-                  <m.li
-                    key={b}
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.5,
-                      delay: 0.15 + i * 0.08,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                    className="flex items-start gap-3 text-[0.95rem] text-ink/85"
-                  >
-                    <span
-                      className={`mt-2 block h-1.5 w-1.5 rounded-full ${accentBg}`}
-                    />
-                    {b}
-                  </m.li>
-                ))}
-              </ul>
             </div>
           </m.div>
         )}

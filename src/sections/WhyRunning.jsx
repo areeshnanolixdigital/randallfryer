@@ -21,8 +21,8 @@ export default function WhyRunning() {
     <div ref={ref} className="relative">
       <SectionFrame
         id="meet"
-        label="01 — Why I'm Running"
-        number="Manifesto / I"
+        label="01 — Meet Randall"
+        number="The Candidate / I"
       >
         <div className="grid grid-cols-12 gap-y-14 lg:gap-x-12">
           {/* Portrait card */}
@@ -37,9 +37,9 @@ export default function WhyRunning() {
           <div className="col-span-12 md:col-span-7 lg:col-span-7 lg:pl-6">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,5.5vw,4.75rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+              className="display-serif block text-balance text-[clamp(1.85rem,4.4vw,3.7rem)] font-medium leading-[1.02] tracking-[-0.025em]"
             >
-              The Capitol forgot whose money it spends. I am running to remind it.
+              A physician&rsquo;s discipline. A problem-solver&rsquo;s mindset. A commitment to service.
             </SplitReveal>
 
             <m.div
@@ -52,11 +52,13 @@ export default function WhyRunning() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               >
-                For eight years I watched leaders in District 14 treat
-                taxpayers as a limitless wallet — funding pet projects,
-                inflating agencies, and then claiming they need more.
-                Families pay the bill in property taxes, grocery
-                receipts, and dwindling services.
+                Randall Fryer has spent his professional life working in
+                environments where outcomes matter. As a physician, he
+                learned to listen carefully, identify the real problem, and
+                make difficult decisions based on evidence. His work in
+                family medicine and rural emergency departments reinforced a
+                simple principle: people deserve systems that perform when
+                they need them.
               </m.p>
               <m.p
                 initial={{ opacity: 0, y: 30 }}
@@ -68,10 +70,25 @@ export default function WhyRunning() {
                   delay: 0.12,
                 }}
               >
-                CapitalWatch is the work of restoring a simple idea:
-                public money belongs to the public. We will audit waste,
-                publish every line item, and rebuild a Capitol that
-                answers when we knock.
+                Randall believes Oregon&rsquo;s government should meet the
+                same standard. Schools should prepare students to read,
+                write, reason, and participate in civic life. Taxes should
+                fund services that produce visible value. Regulations should
+                protect the public without preventing employers from
+                investing, expanding, and creating jobs.
+              </m.p>
+              <m.p
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{
+                  duration: 0.9,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.24,
+                }}
+              >
+                Randall is running to bring discipline, accountability, and
+                practical problem-solving back to Salem.
               </m.p>
             </m.div>
 
@@ -83,11 +100,8 @@ export default function WhyRunning() {
               className="mt-10 flex flex-wrap items-center gap-5"
             >
               <Button as={Link} href="/about" variant="primary" withArrow>
-                Read Adrian&rsquo;s Story
+                Read Randall&rsquo;s Story
               </Button>
-              <span className="font-mono text-[11px] uppercase tracking-[0.24em] text-ink-mute">
-                A 4-minute read
-              </span>
             </m.div>
 
             {/* Signature */}
@@ -98,11 +112,10 @@ export default function WhyRunning() {
               transition={{ duration: 1.2, delay: 0.5 }}
               className="mt-14 flex items-center gap-5"
             >
-              <SignatureSVG />
               <div className="leading-tight">
-                <div className="display-serif text-lg italic">Adrian Vale</div>
+                <div className="display-serif text-lg italic">Randall Fryer</div>
                 <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-                  Candidate · State Senate · District 14
+                  Candidate · Oregon House · District 28
                 </div>
               </div>
             </m.div>
@@ -126,7 +139,7 @@ function PortraitCard() {
         {/* Portrait photo (duotoned via blend modes) */}
         <Image
           src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=900&h=1125&fit=crop&q=80"
-          alt="Adrian Vale portrait"
+          alt="Randall Fryer portrait"
           width={900}
           height={1125}
           priority
@@ -141,17 +154,17 @@ function PortraitCard() {
         <div className="absolute inset-x-6 bottom-6 flex items-end justify-between text-bone">
           <div>
             <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-bone/65">
-              State Senate · District 14
+              Oregon House · District 28
             </div>
             <div className="display-serif mt-1 text-3xl font-medium">
-              Adrian Vale
+              Randall Fryer
             </div>
           </div>
           <div className="text-right">
             <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-bone/65">
-              Primary
+              General
             </div>
-            <div className="display-serif text-2xl font-medium">5/19/26</div>
+            <div className="display-serif text-2xl font-medium">11/3/26</div>
           </div>
         </div>
 
@@ -163,36 +176,10 @@ function PortraitCard() {
 
         {/* Vertical caption */}
         <div className="absolute left-4 top-1/2 -translate-y-1/2 -rotate-90 font-mono text-[10px] uppercase tracking-[0.32em] text-bone/45">
-          CAPITALWATCH · 2026
+          RANDALL FRYER · 2026
         </div>
-      </m.div>
-
-      {/* Bottom caption strip */}
-      <m.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.8, delay: 0.4 }}
-        className="mt-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute"
-      >
-        <span>Photographed in Harborlight, OR</span>
-        <span>Frame 02 · 4×5</span>
       </m.div>
     </div>
   );
 }
 
-function SignatureSVG() {
-  return (
-    <svg viewBox="0 0 170 60" className="h-12 w-auto text-ink">
-      <path
-        d="M5 38 C18 8, 30 8, 38 38 M22 30 H40 M48 42 C56 18, 70 18, 70 38 C70 50, 60 50, 60 40 C60 28, 78 26, 88 38 M88 16 C92 12, 100 14, 96 26 M98 36 C108 30, 120 30, 124 42 M132 18 C124 32, 140 38, 138 50 M148 36 C158 30, 165 36, 162 44"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}

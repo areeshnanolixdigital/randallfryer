@@ -1,9 +1,9 @@
 import ContactPage from "@/sections/pages/ContactPage";
 
 export const metadata = {
-  title: "Ask Adrian",
+  title: "Contact",
   description:
-    "Got a question, an issue, or an idea? Adrian reads every submission personally.",
+    "Questions, invitations, ideas, and local concerns are welcome. Send Team Fryer a message and we will direct it to the right person.",
 };
 
 export default function Page() {

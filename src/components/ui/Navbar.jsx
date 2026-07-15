@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, m, useScroll, useTransform, useSpring } from "motion/react";
@@ -60,26 +61,22 @@ export default function Navbar() {
       >
         <div className="container-padded">
           <div className="flex h-[72px] items-center justify-between">
-            <Link href="/" className="group flex items-center gap-3">
-              <Logomark light={lightMode} />
-              <div
+            <Link
+              href="/"
+              aria-label="Randall Fryer — for State Representative"
+              className="group flex items-center"
+            >
+              <Image
+                src="/randall-fryer-logo.png"
+                alt="Randall Fryer for State Representative"
+                width={3546}
+                height={647}
+                priority
                 className={cn(
-                  "flex flex-col leading-tight transition-colors duration-300",
-                  lightMode ? "text-bone" : "text-ink"
+                  "h-7 w-auto transition-[filter] duration-300 sm:h-8",
+                  lightMode ? "brightness-0 invert" : ""
                 )}
-              >
-                <span className="display-serif whitespace-nowrap text-lg font-medium tracking-tight">
-                  Capital<span className="italic">Watch</span>
-                </span>
-                <span
-                  className={cn(
-                    "hidden font-mono text-[9px] uppercase tracking-[0.32em] transition-colors duration-300 sm:inline",
-                    lightMode ? "text-bone/65" : "text-ink-mute"
-                  )}
-                >
-                  Adrian Vale · State Senate
-                </span>
-              </div>
+              />
             </Link>
 
             <nav className="hidden items-center gap-5 lg:flex xl:gap-8">
@@ -227,7 +224,7 @@ function MobileMenu({ close }) {
 
         <div className="mt-auto pb-10 pt-12">
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-            Paid for by Friends of Adrian Vale
+            Paid for by [Registered Campaign Committee Name]
           </p>
         </div>
       </m.div>
@@ -235,35 +232,3 @@ function MobileMenu({ close }) {
   );
 }
 
-function Logomark({ light = false }) {
-  return (
-    <span
-      aria-hidden
-      className={cn(
-        "relative grid h-9 w-9 place-items-center overflow-hidden rounded-full transition-colors duration-300",
-        light ? "bg-bone text-ink" : "bg-ink text-bone"
-      )}
-    >
-      <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none">
-        <path
-          d="M2 12C5 6 8.5 4 12 4s7 2 10 8c-3 6-6.5 8-10 8s-7-2-10-8Z"
-          stroke="currentColor"
-          strokeWidth="1.5"
-        />
-        <circle cx="12" cy="12" r="3" fill="currentColor" />
-        <path
-          d="M12 1.5V4M12 20V22.5"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-        />
-      </svg>
-      <span
-        className={cn(
-          "absolute -bottom-0.5 right-0 block h-1.5 w-1.5 rounded-full bg-signal ring-2 transition-colors duration-300",
-          light ? "ring-bone" : "ring-ink"
-        )}
-      />
-    </span>
-  );
-}

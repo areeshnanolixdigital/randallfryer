@@ -75,7 +75,7 @@ export default function PageHero({
           <div className={cn("col-span-12", image ? "lg:col-span-7" : "lg:col-span-9")}>
             <SplitReveal
               as="h1"
-              className="display-serif block text-balance text-[clamp(2.5rem,7vw,6.25rem)] font-medium leading-[1] tracking-[-0.025em] text-ink"
+              className="display-serif block text-balance text-[clamp(2.2rem,5.2vw,4.6rem)] font-medium leading-[1] tracking-[-0.025em] text-ink"
             >
               {title}
             </SplitReveal>

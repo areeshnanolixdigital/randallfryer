@@ -14,45 +14,72 @@ import {
   FormCheckbox,
   FormFieldset,
 } from "@/components/ui/Form";
+import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 
 const VALUE_CARDS = [
   {
     no: "01",
     title: "Make a real difference",
-    body: "District 14 primaries decide on under a thousand votes. The hour you put in is decisive — not symbolic.",
+    body: "Local campaigns are built one conversation at a time. The doors you knock, calls you make, and events you support help Randall connect directly with the people of District 28. Your contribution is practical — not symbolic.",
   },
   {
     no: "02",
     title: "No experience needed",
-    body: "We pair every first-timer with a veteran. The training is 20 minutes and the script fits on an index card.",
+    body: "New volunteers are always welcome. The campaign will provide clear instructions, useful materials, and the support you need to take your first shift with confidence.",
   },
   {
     no: "03",
-    title: "Flexible commitment",
-    body: "One Saturday a month or four shifts a week. Whatever you have, we will use well.",
+    title: "A commitment that fits your schedule",
+    body: "Give an hour, join a weekend shift, or volunteer regularly through Election Day. Whether you can help once or every week, Team Fryer will put your time and abilities to good use.",
   },
 ];
 
-const COUNTIES = [
-  "Washington",
-  "Multnomah",
-  "Clackamas",
-  "Marion",
-  "Polk",
-  "Yamhill",
-  "Tillamook",
-  "Columbia",
-  "Lincoln",
-  "Other (out of district)",
+// Field options per ghl-forms-webhooks.md §2 (Volunteer Signup Form).
+const HELP_OPTIONS = [
+  { id: "help-fundraiser", label: "Host a Fundraiser" },
+  { id: "help-phones", label: "Phone Banking" },
+  { id: "help-coordination", label: "Volunteer Coordination" },
+  { id: "help-digital", label: "Digital/Social Media" },
+  { id: "help-doors", label: "Door Knocking" },
+  { id: "help-meetgreet", label: "Host a Meet & Greet" },
+  { id: "help-events", label: "Event Planning" },
+  { id: "help-media", label: "Media" },
 ];
 
-const HELP_OPTIONS = [
-  { id: "help-doors", label: "Door knocking" },
-  { id: "help-phones", label: "Phone banking" },
-  { id: "help-fund", label: "Fundraising / call time" },
-  { id: "help-digital", label: "Digital / social media" },
-  { id: "help-events", label: "Events & logistics" },
-  { id: "help-host", label: "Host a coffee or house party" },
+const REGIONS = [
+  "Portland Metro",
+  "Willamette Valley",
+  "Oregon Coast",
+  "Central Oregon",
+  "Eastern Oregon",
+  "Southern Oregon",
+];
+
+const EXPERIENCE_OPTIONS = [
+  "None",
+  "Some Volunteering",
+  "Regular Volunteer",
+  "Campaign Staff",
+  "Campaign Management",
+  "Elected/Appointed Office",
+];
+
+const AVAILABILITY_OPTIONS = [
+  "1-2 hours/week",
+  "3-5 hours/week",
+  "5-10 hours/week",
+  "10-20 hours/week",
+  "Full-time",
+  "Remote Help Only",
+];
+
+const OREGON_COUNTIES = [
+  "Baker", "Benton", "Clackamas", "Clatsop", "Columbia", "Coos", "Crook",
+  "Curry", "Deschutes", "Douglas", "Gilliam", "Grant", "Harney", "Hood River",
+  "Jackson", "Jefferson", "Josephine", "Klamath", "Lake", "Lane", "Lincoln",
+  "Linn", "Malheur", "Marion", "Morrow", "Multnomah", "Polk", "Sherman",
+  "Tillamook", "Umatilla", "Union", "Wallowa", "Wasco", "Washington",
+  "Wheeler", "Yamhill",
 ];
 
 export default function VolunteerPage() {
@@ -62,7 +89,7 @@ export default function VolunteerPage() {
         eyebrow="File №05 — Volunteer"
         number="Join the team / V"
         title="The campaign is built by neighbors."
-        intro="Knock a few doors. Make a few calls. Pick up the phone on a Sunday morning to help a stranger find their polling place. CapitalWatch is what shows up when you do."
+        intro="Knock on a few doors. Make a few calls. Host a conversation with friends or help at a community event. Every hour you contribute helps Randall Fryer listen to more residents, reach more voters, and build a stronger campaign for Oregon House District 28. You do not need political experience to make a difference. You only need a willingness to help bring disciplined, accountable, and results-focused leadership to Salem."
       />
 
       {/* VALUE CARDS */}
@@ -102,9 +129,9 @@ export default function VolunteerPage() {
           <div className="col-span-12 lg:col-span-4">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(1.875rem,4vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+              className="display-serif block text-balance text-[clamp(1.7rem,3.5vw,2.85rem)] font-medium leading-[1.05] tracking-[-0.02em]"
             >
-              Join the team.
+              Join Team Fryer.
             </SplitReveal>
             <m.p
               initial={{ opacity: 0, y: 24 }}
@@ -113,9 +140,10 @@ export default function VolunteerPage() {
               transition={{ duration: 0.9, delay: 0.2 }}
               className="mt-6 max-w-sm text-[1.05rem] leading-relaxed text-ink/80"
             >
-              Fill out as much as you can. The coordinator for your
-              county will reach out within 48 hours with the next
-              available shift.
+              Tell us a little about yourself and how you would like to
+              help. A member of the campaign team will contact you with
+              available volunteer opportunities and the information you
+              need to get started.
             </m.p>
           </div>
 
@@ -131,23 +159,23 @@ export default function VolunteerPage() {
           {[
             {
               n: "01",
-              t: "Quick reply",
-              d: "A coordinator emails or texts within 48 hours.",
+              t: "We get in touch",
+              d: "A member of Team Fryer will contact you using the email address or phone number provided in your form.",
             },
             {
               n: "02",
-              t: "20-min onboarding",
-              d: "Short video call or in-person at the Harborlight HQ.",
+              t: "A simple introduction",
+              d: "We will explain the available opportunities, answer your questions, and provide the instructions and materials needed for your chosen role.",
             },
             {
               n: "03",
-              t: "First shift",
-              d: "Paired with a veteran for door knocking or phones.",
+              t: "Choose your first activity",
+              d: "Join a neighborhood canvass, make calls, support an event, help online, or contribute through another role that matches your interests.",
             },
             {
               n: "04",
-              t: "Ongoing",
-              d: "Sign up for shifts that fit your week.",
+              t: "Stay involved your way",
+              d: "Volunteer once, join occasional campaign events, or become a regular member of Team Fryer. You choose the level of involvement that works for you.",
             },
           ].map((s, i) => (
             <m.li
@@ -180,9 +208,9 @@ export default function VolunteerPage() {
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(1.875rem,4vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+              className="display-serif block text-balance text-[clamp(1.7rem,3.5vw,2.85rem)] font-medium leading-[1.05] tracking-[-0.02em]"
             >
-              Prefer to talk to a human first?
+              Prefer to talk to a person first?
             </SplitReveal>
             <m.p
               initial={{ opacity: 0, y: 24 }}
@@ -191,22 +219,32 @@ export default function VolunteerPage() {
               transition={{ duration: 0.9, delay: 0.2 }}
               className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/80"
             >
-              Our volunteer coordinator answers personally. Call, text,
-              or email — whichever is easiest.
+              Questions are welcome. Contact the campaign&rsquo;s volunteer
+              coordinator to learn more about available roles,
+              accessibility, scheduling, or what to expect during your
+              first volunteer activity.
             </m.p>
           </div>
-          <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
-            <Button as="a" href="tel:+15035550142" variant="outline" withArrow>
-              (503) 555-0142
-            </Button>
-            <Button
-              as="a"
-              href="mailto:volunteer@capitalwatch.vote"
-              variant="primary"
-              withArrow
-            >
-              Email Mira
-            </Button>
+          <div className="col-span-12 lg:col-span-5">
+            <dl className="flex flex-col gap-4">
+              {[
+                { k: "Volunteer coordinator", v: "To be announced" },
+                { k: "Call or text", v: "To be announced" },
+                { k: "Email", v: "To be announced" },
+              ].map((c) => (
+                <div
+                  key={c.k}
+                  className="flex flex-col gap-1 border-t border-ink/15 pt-4"
+                >
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
+                    {c.k}
+                  </dt>
+                  <dd className="display-serif text-lg font-medium leading-tight text-ink/70">
+                    {c.v}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </SectionFrame>
@@ -215,20 +253,97 @@ export default function VolunteerPage() {
 }
 
 function VolunteerForm() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [errorMsg, setErrorMsg] = useState("");
+  const pc = usePhoneConsent();
 
-  if (sent) {
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setErrorMsg("");
+
+    const data = new FormData(e.currentTarget);
+    const helpOptions = HELP_OPTIONS.filter(
+      (o) => data.get(o.id) === "on"
+    ).map((o) => o.label);
+
+    const payload = {
+      firstName: (data.get("firstName") || "").toString().trim(),
+      lastName: (data.get("lastName") || "").toString().trim(),
+      email: (data.get("email") || "").toString().trim(),
+      phone: pc.phone,
+      zipCode: (data.get("zipCode") || "").toString().trim(),
+      county: (data.get("county") || "").toString(),
+      region: (data.get("region") || "").toString(),
+      registeredVoter: (data.get("registeredVoter") || "").toString(),
+      campaignExperience: (data.get("campaignExperience") || "").toString(),
+      helpOptions,
+      availability: (data.get("availability") || "").toString(),
+      issues: (data.get("issues") || "").toString().trim(),
+      anythingElse: (data.get("anythingElse") || "").toString().trim(),
+      sms_updates: pc.smsConsent,
+      sms_promo: pc.promoConsent,
+    };
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email);
+    if (!payload.firstName || !payload.lastName || !emailOk) {
+      setStatus("error");
+      setErrorMsg("Please add your first and last name and a valid email.");
+      return;
+    }
+    if (
+      !payload.region ||
+      !payload.registeredVoter ||
+      !payload.campaignExperience ||
+      !payload.availability ||
+      !payload.issues
+    ) {
+      setStatus("error");
+      setErrorMsg(
+        "Please complete your region, voter registration, experience, availability, and the issues that matter to you."
+      );
+      return;
+    }
+    if (helpOptions.length === 0) {
+      setStatus("error");
+      setErrorMsg("Please choose at least one way you would like to help.");
+      return;
+    }
+    if (pc.consentError) {
+      setStatus("error");
+      setErrorMsg(pc.consentError);
+      return;
+    }
+
+    setStatus("submitting");
+    try {
+      const res = await fetch("/api/volunteer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setStatus("success");
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(
+        "Something went wrong sending your signup. Please try again in a moment."
+      );
+    }
+  }
+
+  if (status === "success") {
     return (
       <div className="rounded-card border border-ink bg-ink p-10 text-bone sm:p-12">
         <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-ochre-soft">
           Welcome to the team
         </span>
         <h3 className="display-serif mt-3 text-3xl font-medium sm:text-4xl">
-          Got it — we&rsquo;ll be in touch.
+          Got it — welcome to Team Fryer.
         </h3>
         <p className="mt-4 max-w-md leading-relaxed text-bone/80">
-          A coordinator from your county will reach out within 48 hours.
-          Until then, the doors keep getting knocked.
+          A member of the campaign team will contact you with available
+          volunteer opportunities and the information you need to get
+          started.
         </p>
         <div className="mt-6">
           <Button as={Link} href="/" variant="signal" withArrow>
@@ -239,57 +354,64 @@ function VolunteerForm() {
     );
   }
 
+  const submitting = status === "submitting";
+
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSent(true);
-      }}
-      className="flex flex-col gap-7"
-    >
+    <form onSubmit={handleSubmit} className="flex flex-col gap-7" noValidate>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <FormField id="v-first" name="firstName" label="First name" required />
         <FormField id="v-last" name="lastName" label="Last name" required />
       </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <FormField id="v-email" name="email" label="Email" type="email" required />
-        <FormField id="v-phone" name="phone" label="Phone" type="tel" optional />
+        <FormField
+          id="v-phone"
+          name="phone"
+          label="Phone"
+          type="tel"
+          optional
+          value={pc.phone}
+          onChange={pc.onPhoneChange}
+          placeholder="+1 (503) 555-0123"
+        />
       </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <FormField id="v-zip" name="zip" label="Zip code" required />
+        <FormField id="v-zip" name="zipCode" label="ZIP code" optional />
         <FormSelect
           id="v-county"
           name="county"
           label="County"
-          required
-          options={COUNTIES}
+          optional
+          options={OREGON_COUNTIES}
         />
       </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <FormSelect
-          id="v-voter"
-          name="registered"
-          label="Registered to vote in OR?"
+          id="v-region"
+          name="region"
+          label="Region"
           required
-          options={["Yes", "No", "Not sure"]}
+          options={REGIONS}
         />
         <FormSelect
-          id="v-exp"
-          name="experience"
-          label="Prior campaign experience?"
-          optional
-          options={[
-            "First time volunteering",
-            "Volunteered once or twice",
-            "Several campaigns",
-            "Staff / professional",
-          ]}
+          id="v-voter"
+          name="registeredVoter"
+          label="Registered to vote in Oregon?"
+          required
+          options={["Yes", "No"]}
         />
       </div>
+      <FormSelect
+        id="v-exp"
+        name="campaignExperience"
+        label="Prior campaign experience?"
+        required
+        options={EXPERIENCE_OPTIONS}
+      />
 
       <FormFieldset
-        legend="How would you like to help?"
-        hint="Pick as many as apply — we&rsquo;ll match you with the best fit."
+        legend="How would you like to help? *"
+        hint="Choose as many as apply. We will help match you with opportunities that fit your interests and availability."
       >
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           {HELP_OPTIONS.map((o) => (
@@ -303,53 +425,54 @@ function VolunteerForm() {
         name="availability"
         label="Availability"
         required
-        options={[
-          "1 hour a week",
-          "A few hours a week",
-          "Most weekends",
-          "Most evenings",
-          "Multiple shifts a week",
-          "Whenever you need me",
-        ]}
+        options={AVAILABILITY_OPTIONS}
       />
 
       <FormTextarea
         id="v-issues"
         name="issues"
-        label="What issues matter most to you?"
+        label="Which issue(s) matter most to you?"
         required
-        rows={4}
-        placeholder="One sentence is fine."
+        rows={3}
+        placeholder="A sentence or two is enough. Examples may include education, responsible taxes, public safety, economic opportunity, or government accountability."
       />
 
       <FormTextarea
         id="v-notes"
-        name="notes"
-        label="Anything else?"
+        name="anythingElse"
+        label="Anything else to share?"
         optional
         rows={3}
-        placeholder="Skills, languages spoken, scheduling notes…"
+        placeholder="Relevant skills, languages you speak, accessibility requirements, transportation limitations, or scheduling considerations."
       />
 
-      <FormFieldset legend="Stay in touch">
-        <FormCheckbox
-          id="v-sms-updates"
-          name="smsUpdates"
-          label="It&rsquo;s OK to text me campaign updates."
-        />
-        <FormCheckbox
-          id="v-sms-fund"
-          name="smsFund"
-          label="It&rsquo;s OK to text me about fundraising deadlines."
-        />
-      </FormFieldset>
+      <SmsConsentFieldset {...pc} idPrefix="v-sms" />
 
-      <div className="flex flex-wrap items-center gap-4">
-        <Button as="button" type="submit" variant="signal" withArrow>
-          Join the team
+      {status === "error" && errorMsg && (
+        <p
+          role="alert"
+          className="rounded-soft border border-signal/30 bg-signal/5 px-4 py-3 text-sm leading-relaxed text-signal-deep"
+        >
+          {errorMsg}
+        </p>
+      )}
+
+      <div className="flex flex-col gap-4">
+        <Button
+          as="button"
+          type="submit"
+          variant="signal"
+          withArrow
+          disabled={submitting}
+          aria-busy={submitting}
+          className={submitting ? "pointer-events-none opacity-70" : ""}
+        >
+          {submitting ? "Sending…" : "Join the team"}
         </Button>
-        <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute">
-          We never sell your info.
+        <span className="text-[13px] leading-relaxed text-ink/60">
+          We respect your privacy. Your information will be used for
+          campaign communications and volunteer coordination in accordance
+          with the campaign&rsquo;s Privacy Policy.
         </span>
       </div>
     </form>

@@ -18,7 +18,7 @@ export default function Error({ error, reset }) {
 
         <div className="hairline mt-6 h-px w-full" />
 
-        <h1 className="display-serif mt-12 max-w-3xl text-balance text-[clamp(2.5rem,6.5vw,5.5rem)] font-medium leading-[1.02] tracking-[-0.025em]">
+        <h1 className="display-serif mt-12 max-w-3xl text-balance text-[clamp(2.2rem,5vw,4.4rem)] font-medium leading-[1.02] tracking-[-0.025em]">
           We hit a snag.
         </h1>
         <p className="mt-6 max-w-xl text-balance text-lg leading-relaxed text-ink/80">
