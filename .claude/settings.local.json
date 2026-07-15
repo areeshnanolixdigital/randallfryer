@@ -32,7 +32,21 @@
       "Bash(node run.js C:/Users/General/AppData/Local/Temp/playwright-test-social-page.js)",
       "Bash(node run.js /tmp/playwright-test-navbar-qa.js)",
       "PowerShell(Get-NetTCPConnection *)",
-      "PowerShell(Get-CimInstance *)"
+      "PowerShell(Get-CimInstance *)",
+      "Bash(node -e \"console.log\\(require\\('fs'\\).existsSync\\('node_modules'\\)\\)\")",
+      "Bash(node parse.js xl/worksheets/sheet1.xml)",
+      "Bash(rm -rf src/app/endorsements)",
+      "Bash(rm -f src/sections/pages/EndorsementsPage.jsx)",
+      "Bash(node run.js \"C:\\\\Users\\\\Dev\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Dev-Documents-GitHub-randallfryer\\\\da989253-331a-4a0c-88b1-8036d653ea19\\\\scratchpad\\\\nav.js\")",
+      "Bash(rm -rf src/app/news)",
+      "Bash(rm -f src/sections/pages/NewsPage.jsx src/sections/pages/NewsDetailPage.jsx src/data/news.js)",
+      "Bash(node run.js \"C:\\\\Users\\\\Dev\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-Dev-Documents-GitHub-randallfryer\\\\da989253-331a-4a0c-88b1-8036d653ea19\\\\scratchpad\\\\ask.js\")",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(gh auth *)",
+      "PowerShell(git *)"
     ]
   }
 }
