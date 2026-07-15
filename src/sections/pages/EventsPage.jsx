@@ -19,8 +19,8 @@ export default function EventsPage() {
       <PageHero
         eyebrow="File №04 — Events"
         number="Calendar / IV"
-        title="Every event is open to the public."
-        intro="No invitations, no gatekeepers, no staged photo ops. Town halls, canvasses, and rallies you can show up to in jeans."
+        title="Bring your questions to the events."
+        intro="No gatekeepers. No carefully staged conversations. Team Fryer's town halls, neighborhood gatherings, canvasses, and community events are opportunities to meet Randall, ask direct questions, and talk honestly about what District 28 needs from Salem. Come as you are. Bring your questions. Bring a neighbor."
       />
 
       {/* UPCOMING */}
@@ -46,15 +46,15 @@ export default function EventsPage() {
         </SectionFrame>
       )}
 
-      {/* CTA */}
+      {/* NEVER MISS A CONVERSATION */}
       <SectionFrame label="04 — Stay in the loop" number="Notifications / IV">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
             >
-              Never miss a town hall.
+              Never miss a conversation.
             </SplitReveal>
             <m.p
               initial={{ opacity: 0, y: 24 }}
@@ -63,8 +63,10 @@ export default function EventsPage() {
               transition={{ duration: 0.9, delay: 0.2 }}
               className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75"
             >
-              Get the briefing the morning new events open. We send one
-              email a week — never more.
+              Get notified when Randall announces a town hall, community
+              gathering, volunteer canvass, candidate forum, or campaign
+              appearance. Campaign emails may also include event reminders,
+              schedule updates, and important election information.
             </m.p>
           </div>
           <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
@@ -73,6 +75,41 @@ export default function EventsPage() {
             </Button>
             <Button as={Link} href="/contact" variant="outline" withArrow>
               Contact the team
+            </Button>
+          </div>
+        </div>
+      </SectionFrame>
+
+      {/* JOIN TEAM FRYER */}
+      <SectionFrame label="05 — Take the next step" number="Together / V">
+        <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
+          <div className="col-span-12 lg:col-span-7">
+            <SplitReveal
+              as="h2"
+              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+            >
+              Join Team Fryer.
+            </SplitReveal>
+            <m.p
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.9, delay: 0.2 }}
+              className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75"
+            >
+              The campaign grows every time a neighbor attends an event,
+              asks a question, volunteers for a shift, or helps introduce
+              Randall to the community. Come to a town hall. Host a
+              conversation. Help bring disciplined and accountable
+              leadership to Salem.
+            </m.p>
+          </div>
+          <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
+            <Button as={Link} href="/volunteer" variant="primary" withArrow>
+              Volunteer
+            </Button>
+            <Button as={Link} href="/donate" variant="signal" withArrow>
+              Donate
             </Button>
           </div>
         </div>

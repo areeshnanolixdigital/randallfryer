@@ -8,12 +8,8 @@ import { gsap, useGSAP } from "@/animations/gsap";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import Button from "@/components/ui/Button";
-import {
-  FormField,
-  FormSelect,
-  FormCheckbox,
-  FormFieldset,
-} from "@/components/ui/Form";
+import { FormField } from "@/components/ui/Form";
+import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import { getRelated } from "@/data/events";
 
 export default function EventDetailPage({ event }) {
@@ -77,7 +73,7 @@ export default function EventDetailPage({ event }) {
             <div className="col-span-12 lg:col-span-8">
               <SplitReveal
                 as="h1"
-                className="display-serif block text-balance text-[clamp(2.25rem,6.5vw,5.5rem)] font-medium leading-[1] tracking-[-0.025em] text-bone"
+                className="display-serif block text-balance text-[clamp(2rem,4.8vw,4.3rem)] font-medium leading-[1] tracking-[-0.025em] text-bone"
               >
                 {event.title}
               </SplitReveal>
@@ -162,7 +158,7 @@ export default function EventDetailPage({ event }) {
           <div className="col-span-12 lg:col-span-5">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,4.5vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+              className="display-serif block text-balance text-[clamp(1.8rem,3.9vw,3rem)] font-medium leading-[1.05] tracking-[-0.02em]"
             >
               {event.locationName}
             </SplitReveal>
@@ -239,7 +235,7 @@ export default function EventDetailPage({ event }) {
             <div className="col-span-12 lg:col-span-5">
               <SplitReveal
                 as="h2"
-                className="display-serif block text-balance text-[clamp(2rem,5vw,4.25rem)] font-medium leading-[1] tracking-[-0.025em]"
+                className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1] tracking-[-0.025em]"
               >
                 Save your seat. Bring a neighbor.
               </SplitReveal>
@@ -328,27 +324,61 @@ function RecapRow({ label, children }) {
   );
 }
 
-const SEAT_OPTIONS = [
-  { value: "1", label: "Just me" },
-  { value: "2", label: "Two seats" },
-  { value: "3", label: "Three seats" },
-  { value: "4", label: "Four seats" },
-  { value: "5+", label: "Five or more" },
-];
-
-const ACCESS_OPTIONS = [
-  { value: "none", label: "No accommodations needed" },
-  { value: "wheelchair", label: "Wheelchair access" },
-  { value: "asl", label: "ASL interpretation" },
-  { value: "quiet", label: "Quiet room" },
-  { value: "childcare", label: "Childcare" },
-  { value: "other", label: "Other (describe below)" },
-];
-
 function RSVPForm({ event }) {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const [errorMsg, setErrorMsg] = useState("");
+  const pc = usePhoneConsent();
 
-  if (sent) {
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setErrorMsg("");
+
+    const data = new FormData(e.currentTarget);
+    const payload = {
+      firstName: (data.get("firstName") || "").toString().trim(),
+      lastName: (data.get("lastName") || "").toString().trim(),
+      email: (data.get("email") || "").toString().trim(),
+      phone: pc.phone,
+      sms_updates: pc.smsConsent,
+      sms_promo: pc.promoConsent,
+      // Event context is attached from event data — never user input.
+      eventName: event.title,
+      eventDate: event.dateLabel,
+      eventTime: event.timeLabel,
+      eventCategory: event.category,
+      eventStartISO: event.date,
+    };
+
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(payload.email);
+    if (!payload.firstName || !emailOk) {
+      setStatus("error");
+      setErrorMsg("Please add your first name and a valid email.");
+      return;
+    }
+    if (pc.consentError) {
+      setStatus("error");
+      setErrorMsg(pc.consentError);
+      return;
+    }
+
+    setStatus("submitting");
+    try {
+      const res = await fetch("/api/events/rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setStatus("success");
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(
+        "Something went wrong sending your RSVP. Please try again in a moment."
+      );
+    }
+  }
+
+  if (status === "success") {
     return (
       <m.div
         initial={{ opacity: 0, y: 20 }}
@@ -364,7 +394,7 @@ function RSVPForm({ event }) {
         </h3>
         <p className="mt-4 max-w-md leading-relaxed text-bone/80">
           A confirmation is on the way to your inbox. If anything
-          changes before the event, we&rsquo;ll text and email.
+          changes before the event, we&rsquo;ll be in touch.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
           <Button as={Link} href="/events" variant="signal" withArrow>
@@ -387,12 +417,12 @@ function RSVPForm({ event }) {
     );
   }
 
+  const submitting = status === "submitting";
+
   return (
     <m.form
-      onSubmit={(e) => {
-        e.preventDefault();
-        setSent(true);
-      }}
+      onSubmit={handleSubmit}
+      noValidate
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
@@ -404,44 +434,48 @@ function RSVPForm({ event }) {
         <FormField id="rsvp-last" name="lastName" label="Last name" required />
       </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <FormField id="rsvp-email" name="email" label="Email" type="email" required />
-        <FormField id="rsvp-phone" name="phone" label="Phone" type="tel" optional />
-      </div>
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <FormSelect
-          id="rsvp-seats"
-          name="seats"
-          label="Number of seats"
+        <FormField
+          id="rsvp-email"
+          name="email"
+          label="Email"
+          type="email"
           required
-          options={SEAT_OPTIONS}
-          defaultValue="1"
+          placeholder="you@email.com"
         />
-        <FormSelect
-          id="rsvp-access"
-          name="accessibility"
-          label="Accessibility needs"
+        <FormField
+          id="rsvp-phone"
+          name="phone"
+          label="Contact number"
+          type="tel"
           optional
-          options={ACCESS_OPTIONS}
-          defaultValue="none"
+          value={pc.phone}
+          onChange={pc.onPhoneChange}
+          placeholder="+1 (503) 555-1234"
         />
       </div>
 
-      <FormFieldset legend="Reminders & notice">
-        <FormCheckbox
-          id="rsvp-text"
-          name="textReminder"
-          label="Text me a reminder 24 hours before the event."
-        />
-        <FormCheckbox
-          id="rsvp-updates"
-          name="updates"
-          label="Send me occasional campaign updates."
-        />
-      </FormFieldset>
+      <SmsConsentFieldset {...pc} idPrefix="rsvp-sms" />
+
+      {status === "error" && errorMsg && (
+        <p
+          role="alert"
+          className="rounded-soft border border-signal/30 bg-signal/5 px-4 py-3 text-sm leading-relaxed text-signal-deep"
+        >
+          {errorMsg}
+        </p>
+      )}
 
       <div className="flex flex-wrap items-center gap-4 pt-2">
-        <Button as="button" type="submit" variant="signal" withArrow>
-          Confirm RSVP
+        <Button
+          as="button"
+          type="submit"
+          variant="signal"
+          withArrow
+          disabled={submitting}
+          aria-busy={submitting}
+          className={submitting ? "pointer-events-none opacity-70" : ""}
+        >
+          {submitting ? "Sending…" : "Confirm RSVP"}
         </Button>
         <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
           Free event — walk-ups always welcome.
@@ -449,8 +483,7 @@ function RSVPForm({ event }) {
       </div>
 
       <p className="text-[12px] leading-relaxed text-ink-mute">
-        Standard message and data rates may apply. Reply STOP to opt out
-        of texts. See our{" "}
+        We use this only to confirm your RSVP. See our{" "}
         <Link href="/privacy" className="link-underline hover:text-ink">
           privacy notice
         </Link>{" "}

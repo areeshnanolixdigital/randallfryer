@@ -1,9 +1,9 @@
 import AboutPage from "@/sections/pages/AboutPage";
 
 export const metadata = {
-  title: "About Adrian",
+  title: "Meet Randall",
   description:
-    "Meet Adrian Vale — a working Oregonian running for State Senate District 14 to restore fiscal honesty, cut red tape, and put neighbors back at the center of the Capitol.",
+    "Meet Randall Fryer — a retired physician, former software professional, and former enlisted member of the Army Medical Corps running for Oregon House District 28 with a disciplined, evidence-led, and accountable approach to Salem.",
 };
 
 export default function Page() {

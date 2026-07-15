@@ -43,7 +43,7 @@ export default function LegalPage({ eyebrow, number, title, updated, intro, sect
             <div className="col-span-12 lg:col-span-8">
               <SplitReveal
                 as="h1"
-                className="display-serif block text-balance text-[clamp(2.25rem,5.5vw,5rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+                className="display-serif block text-balance text-[clamp(1.95rem,4.6vw,4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
               >
                 {title}
               </SplitReveal>

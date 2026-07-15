@@ -95,7 +95,7 @@ export default function PlatformPage() {
               <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
                 0{i + 1}
               </span>
-              <span className="display-serif mt-3 text-[clamp(2.25rem,5vw,3.75rem)] font-medium leading-none">
+              <span className="display-serif mt-3 text-[clamp(1.95rem,4.2vw,3.2rem)] font-medium leading-none">
                 <Counter
                   value={s.num}
                   prefix={s.prefix || ""}
@@ -139,7 +139,7 @@ export default function PlatformPage() {
                 </m.span>
                 <SplitReveal
                   as="h2"
-                  className="display-serif mt-6 block text-balance text-[clamp(2rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+                  className="display-serif mt-6 block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
                 >
                   {p.title}.
                 </SplitReveal>
@@ -195,7 +195,7 @@ export default function PlatformPage() {
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
             >
               Each pillar has a brief behind it.
             </SplitReveal>

@@ -47,7 +47,7 @@ export default function DonatePage() {
           <div className="col-span-12 lg:col-span-5">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(1.875rem,4.25vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+              className="display-serif block text-balance text-[clamp(1.7rem,3.6vw,3rem)] font-medium leading-[1.05] tracking-[-0.02em]"
             >
               Pick an amount that fits.
             </SplitReveal>
@@ -94,7 +94,7 @@ export default function DonatePage() {
           <div className="col-span-12 lg:col-span-5">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,4.5vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+              className="display-serif block text-balance text-[clamp(1.8rem,3.9vw,3.2rem)] font-medium leading-[1.05] tracking-[-0.02em]"
             >
               Every line item, public.
             </SplitReveal>

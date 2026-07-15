@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { m, useScroll, useTransform } from "motion/react";
 import SplitReveal from "@/animations/SplitReveal";
@@ -11,7 +12,9 @@ const NAV_GROUPS = [
     title: "Campaign",
     links: [
       { label: "Home", href: "/" },
-      { label: "About Adrian", href: "/about" },
+      { label: "Meet Randall", href: "/about" },
+      { label: "Priorities", href: "/platform" },
+      { label: "News", href: "/social-media-posts" },
     ],
   },
   {
@@ -21,16 +24,14 @@ const NAV_GROUPS = [
       { label: "Donate", href: "/donate" },
       { label: "Events", href: "/events" },
       { label: "Ask Randall", href: "/ask" },
-      { label: "FAQ", href: "/faq" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
-    title: "Office",
+    title: "Contact",
     links: [
-      { label: "412 Harbor Ave, Suite 4", href: "/contact", external: false },
-      { label: "Harborlight, OR 97206", href: "/contact", external: false },
-      { label: "hello@capitalwatch.vote", href: "mailto:hello@capitalwatch.vote", external: true },
-      { label: "+1 (503) 555-0142", href: "tel:+15035550142", external: true },
+      { label: "Oregon House District 28", href: "/contact", external: false },
+      { label: "Send a message", href: "/contact", external: false },
     ],
   },
 ];
@@ -61,12 +62,12 @@ export default function Footer() {
         {/* CTA HERO BAND */}
         <m.div style={{ y }} className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
-            <span className="eyebrow">Take the next step</span>
+            <span className="eyebrow">Be part of the change</span>
             <SplitReveal
               as="h2"
-              className="display-serif mt-4 block text-balance text-[clamp(2.25rem,6vw,4.75rem)] font-medium leading-[1] tracking-[-0.025em] text-ink"
+              className="display-serif mt-4 block text-balance text-[clamp(1.95rem,4.6vw,3.9rem)] font-medium leading-[1] tracking-[-0.025em] text-ink"
             >
-              Join the movement.
+              Be part of the change.
             </SplitReveal>
           </div>
           <m.div
@@ -77,9 +78,10 @@ export default function Footer() {
             className="col-span-12 lg:col-span-5"
           >
             <p className="max-w-md text-balance text-base leading-relaxed text-ink/75 sm:text-lg">
-              CapitalWatch is built by neighbors, not lobbyists. Knock
-              doors, host a coffee, or send what you can — every dollar
-              and every hour belongs on the ground.
+              Randall Fryer is running to restore educational excellence,
+              reduce the burden on working families, strengthen Oregon&rsquo;s
+              business climate, support safer communities, and bring greater
+              accountability to Salem.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3">
               <Button as={Link} href="/volunteer" variant="primary" withArrow>
@@ -95,9 +97,10 @@ export default function Footer() {
         {/* NEWSLETTER ROW */}
         <div className="mt-16 grid grid-cols-12 items-end gap-y-8 border-t border-ink/15 pt-12 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-5">
-            <span className="eyebrow">Inside the campaign</span>
+            <span className="eyebrow">Join our campaign</span>
             <p className="mt-3 max-w-md text-balance text-xl leading-tight text-ink/85 sm:text-2xl">
-              The weekly briefing — strategy, schedule, every line item.
+              Stay updated on the latest news, events, and ways to make a
+              difference.
             </p>
           </div>
           <div className="col-span-12 lg:col-span-7">
@@ -108,24 +111,22 @@ export default function Footer() {
         {/* NAV COLUMNS */}
         <div className="mt-16 grid grid-cols-12 gap-y-12 border-t border-ink/15 pt-12 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-3">
-            <Link href="/" className="group inline-flex items-center gap-3">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-ink text-bone transition-transform duration-500 group-hover:rotate-12">
-                <span className="font-mono text-[10px] uppercase tracking-[0.18em]">
-                  CW
-                </span>
-              </span>
-              <div className="leading-tight">
-                <div className="display-serif text-base">
-                  Capital<em>Watch</em>
-                </div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-                  Adrian Vale, 2026
-                </div>
-              </div>
+            <Link
+              href="/"
+              aria-label="Randall Fryer — for State Representative"
+              className="group inline-flex items-center"
+            >
+              <Image
+                src="/randall-fryer-logo.png"
+                alt="Randall Fryer for State Representative"
+                width={3546}
+                height={647}
+                className="h-9 w-auto"
+              />
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-ink/70">
-              A grassroots campaign for State Senate, District 14 —
-              powered entirely by volunteers and small-dollar donations.
+              Disciplined leadership. Responsible government. Measurable
+              results.
             </p>
           </div>
 
@@ -160,23 +161,22 @@ export default function Footer() {
             </ul>
           </div>
           <p className="col-span-12 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute lg:col-span-6 lg:text-right">
-            © 2026 CapitalWatch · All rights reserved
+            © 2026 Randall Fryer for Oregon House District 28
           </p>
         </div>
 
         {/* LEGAL */}
         <div className="mt-6 grid grid-cols-12 items-center gap-y-2 lg:gap-x-8">
           <p className="col-span-12 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute lg:col-span-6">
-            Paid for by Friends of Adrian Vale · FEC ID C00CWV2026
+            Paid for by [Registered Campaign Committee Name]
           </p>
           <div className="col-span-12 flex flex-wrap items-center gap-x-5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute lg:col-span-6 lg:justify-end">
             <Link href="/privacy" className="link-underline hover:text-ink">
-              Privacy
+              Privacy Policy
             </Link>
             <Link href="/terms" className="link-underline hover:text-ink">
-              Terms
+              Terms of Use
             </Link>
-            <span>Not authorized by any candidate or committee</span>
           </div>
         </div>
 
@@ -207,7 +207,7 @@ export default function Footer() {
               className="text-ink/35"
               style={{ letterSpacing: "-0.04em" }}
             >
-              CAPITALWATCH
+              RANDALL FRYER
             </text>
           </svg>
         </m.div>
@@ -331,7 +331,7 @@ function SignupForm() {
           required
           value={val}
           onChange={(e) => setVal(e.target.value)}
-          placeholder="you@district14.org"
+          placeholder="you@email.com"
           className="w-full rounded-pill border border-ink/25 bg-bone px-6 py-4 font-sans text-base text-ink placeholder:text-ink-mute focus:border-ink focus:outline-none"
         />
       </div>

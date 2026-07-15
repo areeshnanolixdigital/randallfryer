@@ -12,25 +12,25 @@ import Button from "@/components/ui/Button";
 
 const BIO_BLOCKS = [
   {
-    eyebrow: "Beginnings",
-    heading: "A neighbor, not a career politician.",
-    body: "Adrian grew up two blocks from the marina in Harborlight, paid her way through community college, and spent the next twelve years building Marín-Vale Logistics — a 22-person small business that still ships out of Pier 7. She has never held elected office. She knocked her first door because her own zoning case was sitting on a desk in Salem for nineteen months.",
+    eyebrow: "A problem-solver",
+    heading: "A problem-solver before entering politics.",
+    body: "Before building his career in medicine, Randall worked in software development and served in the Army Medical Corps. Those experiences taught him to understand complicated systems, identify where they break down, and focus on solutions that work in the real world. Randall later pursued medicine, earning his Doctor of Osteopathic Medicine degree in 1997. He completed an internship in Michigan before entering a Family Practice residency in Colorado Springs. By 2000, he had completed his residency and begun a medical career that would span family medicine, immediate care, and emergency medicine. That journey was not built around politics. It was built around preparation, service, and responsibility.",
     image:
       "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&h=600&fit=crop&q=80",
     imageAlt: "A community meeting around a long table",
   },
   {
-    eyebrow: "In the trenches",
-    heading: "Twelve years running a real business.",
-    body: "Running payroll in a 30% margin industry teaches you something the lobby never learns: every line item matters. Adrian built Marín-Vale from one truck to twenty-two employees while paying full benefits and union wages. That ledger discipline — and the patience to listen to drivers, dispatchers, and customers — is the same operating model she will bring to District 14.",
+    eyebrow: "The record",
+    heading: "Twenty-four years of making decisions that matter.",
+    body: "Randall practiced medicine from 2000 through 2024. Trained in Family Medicine, he also served patients in multiple rural and remote emergency departments, where there was rarely time for political posturing or incomplete answers. Emergency medicine demands careful listening, clear priorities, decisive action, and responsibility for the outcome. It also teaches an important lesson: every decision affects a real person. Randall will bring that same mindset to the Oregon House. He will examine the evidence, ask difficult questions, weigh the consequences, and remain focused on solutions that improve people's lives.",
     image:
       "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&h=600&fit=crop&q=80",
     imageAlt: "Volunteers organising at a campaign field office",
   },
   {
-    eyebrow: "On the doors",
-    heading: "Eleven thousand conversations and counting.",
-    body: "Since announcing in March, Adrian and the team have knocked more than 12,000 doors. The line that keeps coming up is the same on every porch: 'We pay more every year and get less every year.' CapitalWatch is the answer that came out of those conversations — a campaign written from the curb up, not handed down from a consultant's slide deck.",
+    eyebrow: "The campaign",
+    heading: "A campaign built by listening.",
+    body: "The best public policy does not begin in a conference room in Salem. It begins by listening to the people who live with the consequences. Across District 28, families are concerned about the quality of Oregon's schools, the rising burden of taxes, public safety, economic opportunity, and whether state government is delivering results for the money it spends. Randall is taking those concerns seriously. This campaign is built around direct conversations, careful listening, and a commitment to represent the priorities of District 28—not the demands of political insiders. Every conversation helps shape a clearer agenda for responsible leadership and measurable results.",
     image:
       "https://images.unsplash.com/photo-1494172961521-33799ddd43a5?w=900&h=600&fit=crop&q=80",
     imageAlt: "Neighbors talking on a front porch",
@@ -40,51 +40,51 @@ const BIO_BLOCKS = [
 const VALUES = [
   {
     no: "01",
-    title: "Fiscal honesty",
-    body: "Every line item, in public, every ninety days. No more midnight earmarks or last-minute riders for politically connected vendors.",
+    title: "Reclaim Educational Excellence",
+    body: "Randall believes Oregon schools must return their focus to the fundamentals: reading, writing, mathematics, history, and civics. He will work to restore meaningful academic and graduation standards, strengthen parental and local school-board involvement, and direct more education resources toward teachers and classrooms. Professional teachers deserve the authority and support needed to maintain orderly classrooms and help students succeed. Oregon should measure education policy by whether students are learning—not simply by how much the state spends.",
   },
   {
     no: "02",
-    title: "Common-sense leadership",
-    body: "Read the bill. Talk to the people it affects. Then vote — and explain the vote in plain English the same week.",
+    title: "Reduce the Burden on Working Families",
+    body: "Randall believes Oregonians deserve greater value and accountability for the taxes and fees they pay. He will scrutinize spending before asking families to contribute more, oppose unnecessary new costs, and demand transparent reporting on whether public programs are producing results. Government should respect the people who earn every public dollar.",
   },
   {
     no: "03",
-    title: "Community first",
-    body: "District 14 sets the agenda, not the lobbyist class in Salem. Office hours stay open, town halls stay un-staged.",
+    title: "Rebuild Oregon's Business Climate",
+    body: "Randall wants Oregon to be a place where employers can invest, expand, hire, and compete. He will pursue more competitive tax rates, simpler tax compliance, more predictable permitting, and fewer unnecessary regulatory barriers. A stronger business climate means more jobs, a broader tax base, healthier communities, and less pressure to continually increase costs for working families.",
   },
 ];
 
 const JOURNEY = [
   {
-    year: "1994",
-    title: "Born in Harborlight",
-    body: "Daughter of a coastal fisherman and a public school teacher.",
+    year: "1993",
+    title: "Medical education begins",
+    body: "Randall begins his Doctor of Osteopathic Medicine program at the College of Osteopathic Medicine of the Pacific.",
   },
   {
-    year: "2012",
-    title: "First full-time job",
-    body: "Dispatcher at a regional freight line — first paycheck in Pier 7.",
+    year: "1997",
+    title: "Doctor of Osteopathic Medicine",
+    body: "Randall completes medical school and begins a medical internship in Muskegon, Michigan.",
   },
   {
-    year: "2017",
-    title: "Marín-Vale Logistics founded",
-    body: "Started with one truck and a $14k SBA loan. Grew to 22 employees.",
+    year: "1998",
+    title: "Family Practice residency",
+    body: "Randall begins his Family Practice residency through the Colorado Springs Osteopathic Foundation.",
   },
   {
-    year: "2022",
-    title: "Community advocate",
-    body: "Led the petition that reopened Harborlight Senior Center after budget cuts.",
+    year: "2000",
+    title: "A career serving patients",
+    body: "After completing residency, Randall begins more than two decades of clinical work in family medicine, immediate care, and emergency medicine.",
   },
   {
-    year: "2024",
-    title: "Local civic board",
-    body: "Elected to the District 14 Small Business Council. Authored the cost-of-living audit.",
+    year: "2008",
+    title: "Rural emergency medicine",
+    body: "Randall begins a long series of rural and remote emergency-room assignments, serving communities in Oregon and across the broader region.",
   },
   {
     year: "2026",
-    title: "Candidate for State Senate",
-    body: "Filed February 14. Primary May 19, 2026.",
+    title: "Republican nominee for District 28",
+    body: "Randall becomes the Republican nominee for State Representative in Oregon House District 28. The general election will be held on November 3, 2026.",
   },
 ];
 
@@ -94,10 +94,10 @@ export default function AboutPage() {
       <PageHero
         eyebrow="File №02 — About"
         number="Meet the candidate"
-        title="Leadership built from the ground up."
-        intro="Adrian Vale is a small-business owner, mother, and lifelong Harborlight resident running for State Senate to restore the Capitol to the people who actually pay for it."
+        title="Leadership built through service."
+        intro="Randall Fryer is a retired physician, former software professional, and former enlisted member of the Army Medical Corps running for Oregon House District 28. After decades spent working through complex problems and making consequential decisions, Randall is ready to bring a disciplined, evidence-led, and accountable approach to Salem."
         image="https://images.unsplash.com/photo-1573497019418-b400bb3ab074?w=900&h=1125&fit=crop&q=80"
-        imageAlt="Adrian Vale, candidate for State Senate"
+        imageAlt="Randall Fryer, candidate for Oregon House District 28"
       />
 
       {/* Long-form bio blocks */}
@@ -107,57 +107,56 @@ export default function AboutPage() {
 
       {/* Core values */}
       <SectionFrame
-        label="03 — Core Values"
-        number="Principles / III"
+        label="05 — The Agenda"
+        number="Priorities / III"
       >
-        <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12">
-          <div className="col-span-12 lg:col-span-5">
+        <div className="grid grid-cols-12 items-end gap-y-6 lg:gap-x-12">
+          <div className="col-span-12 lg:col-span-7">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
             >
-              Three principles. Non-negotiable.
+              A practical agenda for a stronger Oregon.
             </SplitReveal>
-            <m.p
-              initial={{ opacity: 0, y: 24 }}
+          </div>
+          <m.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.9, delay: 0.2 }}
+            className="col-span-12 max-w-xl text-lg leading-relaxed text-ink/75 lg:col-span-5 lg:pl-6"
+          >
+            Randall&rsquo;s campaign is centered on three areas where state
+            leadership can produce meaningful change.
+          </m.p>
+        </div>
+
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:mt-16">
+          {VALUES.map((v, i) => (
+            <m.div
+              key={v.no}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              className="mt-8 max-w-md text-lg leading-relaxed text-ink/75"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+                delay: i * 0.1,
+              }}
+              whileHover={{ y: -4 }}
+              className="group relative flex flex-col gap-4 rounded-card border border-ink/15 bg-bone-soft/60 p-7 transition-colors duration-500 hover:border-ink"
             >
-              Every position, every vote, and every line item in
-              Adrian&rsquo;s schedule traces back to these three.
-            </m.p>
-          </div>
-          <div className="col-span-12 lg:col-span-7">
-            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {VALUES.map((v, i) => (
-                <m.div
-                  key={v.no}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    duration: 0.8,
-                    ease: [0.16, 1, 0.3, 1],
-                    delay: i * 0.1,
-                  }}
-                  whileHover={{ y: -4 }}
-                  className="group relative flex flex-col gap-4 rounded-card border border-ink/15 bg-bone-soft/60 p-7 transition-colors duration-500 hover:border-ink"
-                >
-                  <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-                    {v.no}
-                  </span>
-                  <h3 className="display-serif text-2xl font-medium leading-tight">
-                    {v.title}
-                  </h3>
-                  <p className="text-[15px] leading-relaxed text-ink/75">
-                    {v.body}
-                  </p>
-                </m.div>
-              ))}
-            </div>
-          </div>
+              <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
+                {v.no}
+              </span>
+              <h3 className="display-serif text-2xl font-medium leading-tight">
+                {v.title}
+              </h3>
+              <p className="text-[15px] leading-relaxed text-ink/75">
+                {v.body}
+              </p>
+            </m.div>
+          ))}
         </div>
       </SectionFrame>
 
@@ -170,9 +169,9 @@ export default function AboutPage() {
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
             >
-              Join Adrian on the trail.
+              Join Randall on the trail.
             </SplitReveal>
             <m.p
               initial={{ opacity: 0, y: 24 }}
@@ -181,9 +180,13 @@ export default function AboutPage() {
               transition={{ duration: 0.9, delay: 0.2 }}
               className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75"
             >
-              Whether it&rsquo;s an hour of phone banking, a shift on the
-              doors, or a small-dollar pledge — every contribution lands
-              on the curb in District 14.
+              A successful campaign is built one conversation, one
+              volunteer, and one neighbor at a time. Whether you can knock
+              on doors, make phone calls, display a yard sign, host a
+              neighborhood gathering, or make a contribution, your
+              involvement will help bring Randall&rsquo;s message of
+              disciplined and accountable leadership to voters across
+              District 28.
             </m.p>
           </div>
           <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
@@ -245,7 +248,7 @@ function BioBlock({ block, reverse, index }) {
           <div className="col-span-12 lg:col-span-7 lg:pl-6">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(1.875rem,4.25vw,3.5rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+              className="display-serif block text-balance text-[clamp(1.7rem,3.6vw,3rem)] font-medium leading-[1.05] tracking-[-0.02em]"
             >
               {block.heading}
             </SplitReveal>
@@ -307,9 +310,9 @@ function Journey() {
           <div className="col-span-12 lg:col-span-5">
             <SplitReveal
               as="h2"
-              className="display-serif block text-balance text-[clamp(2rem,5vw,4.25rem)] font-medium leading-[1.02] tracking-[-0.025em]"
+              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
             >
-              From neighbor to candidate.
+              From problem-solver to candidate.
             </SplitReveal>
             <m.p
               initial={{ opacity: 0, y: 24 }}
@@ -318,8 +321,19 @@ function Journey() {
               transition={{ duration: 0.9, delay: 0.2 }}
               className="mt-8 max-w-md text-lg leading-relaxed text-ink/75"
             >
-              Six checkpoints between a quiet pier in Harborlight and a
-              filing date in Salem.
+              Six defining chapters in Randall&rsquo;s path to Oregon House
+              District 28.
+            </m.p>
+            <m.p
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.9, delay: 0.3 }}
+              className="mt-6 max-w-md text-[15px] leading-relaxed text-ink/70"
+            >
+              Randall&rsquo;s early experience included software development
+              and service in the Army Medical Corps, forming the foundation
+              of his systems-based and service-oriented approach.
             </m.p>
           </div>
 

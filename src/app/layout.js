@@ -26,13 +26,13 @@ const jetbrains = JetBrains_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://capitalwatch.example"),
+  metadataBase: new URL("https://randallfryer.example"),
   title: {
-    default: "CapitalWatch — Adrian Vale for State Senate",
-    template: "%s · CapitalWatch",
+    default: "Randall Fryer for Oregon House District 28",
+    template: "%s · Randall Fryer",
   },
   description:
-    "CapitalWatch is the campaign of Adrian Vale for State Senate — a movement to restore fiscal honesty, cut red tape, and put citizens back at the center of the Capitol.",
+    "Randall Fryer is running for the Oregon House to restore educational excellence, reduce the burden on working families, strengthen Oregon's business climate, support safer communities, and bring greater accountability to Salem.",
 };
 
 export default function RootLayout({ children }) {

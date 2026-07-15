@@ -7,7 +7,7 @@ import { gsap, useGSAP, SplitText, ScrollTrigger } from "@/animations/gsap";
 import Button from "@/components/ui/Button";
 import Counter from "@/components/ui/Counter";
 
-const HEADLINE_LINES = ["Restore the", "Capitol.", "Renew the Trust."];
+const HEADLINE_LINES = ["A Stronger Oregon.", "A Better Tomorrow."];
 
 export default function Hero() {
   const container = useRef(null);
@@ -18,7 +18,6 @@ export default function Hero() {
     offset: ["start start", "end start"],
   });
   const yPattern = useTransform(scrollYProgress, [0, 1], [0, -120]);
-  const yPlate = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const opacityFade = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
   useGSAP(
@@ -106,15 +105,6 @@ export default function Hero() {
           },
           0.3
         );
-
-      // Subtle continuous float for the dome plate
-      gsap.to(".hero-plate", {
-        y: 14,
-        duration: 4,
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-      });
     },
     { scope: container }
   );
@@ -146,17 +136,17 @@ export default function Hero() {
         {/* Top meta row */}
         <div className="hero-eyebrow mb-12 flex flex-wrap items-baseline justify-between gap-y-3 text-ink/70 sm:mb-16">
           <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
-            Capitol District 14 · Primary May 19, 2026
+            Republican Nominee for Oregon House District 28
           </span>
           <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
-            File №01 / Manifesto
+            General Election: November 3, 2026
           </span>
         </div>
 
         <div className="grid grid-cols-12 gap-y-12 lg:gap-x-10">
           {/* LEFT: Headline */}
           <div className="col-span-12 lg:col-span-8">
-            <h1 className="display-serif text-[clamp(2.75rem,9vw,8.5rem)] font-medium leading-[0.95] tracking-[-0.03em] text-ink">
+            <h1 className="display-serif text-[clamp(2.4rem,6.2vw,5.4rem)] font-medium leading-[0.95] tracking-[-0.03em] text-ink">
               {HEADLINE_LINES.map((line) => (
                 <span key={line} className="hero-line block overflow-hidden">
                   <span className="inline-block">{line}</span>
@@ -167,19 +157,19 @@ export default function Hero() {
             <div className="mt-10 flex flex-wrap items-center gap-4 sm:mt-12">
               <div className="hero-cta">
                 <Button as={Link} href="/volunteer" variant="signal" withArrow>
-                  Pledge your Vote
+                  Join Team Fryer
                 </Button>
               </div>
               <div className="hero-cta">
-                <Button as={Link} href="/platform" variant="outline" withArrow>
-                  Read the Plan
+                <Button as={Link} href="/donate" variant="outline" withArrow>
+                  Donate
                 </Button>
               </div>
               <Link
                 href="/about"
                 className="hero-cta link-underline ml-1 cursor-pointer font-mono text-[11px] uppercase tracking-[0.24em] text-ink/70 hover:text-ink"
               >
-                Meet Adrian →
+                Meet Randall →
               </Link>
             </div>
           </div>
@@ -187,20 +177,23 @@ export default function Hero() {
           {/* RIGHT: Sub-copy + key stats */}
           <div className="col-span-12 flex flex-col gap-12 lg:col-span-4 lg:pl-6 lg:pt-4">
             <p className="hero-sub max-w-md text-balance text-lg leading-relaxed text-ink/80 sm:text-xl">
-              CapitalWatch is the campaign to stop runaway spending,
-              dismantle bureaucratic gridlock, and put working families
-              back at the center of the state Capitol.
+              Randall Fryer is running for the Oregon House to bring a
+              disciplined, results-focused approach to Salem. He is running
+              to restore educational excellence, reduce the tax and
+              regulatory burden on working families and employers,
+              strengthen public safety, and make the state government answer
+              for the results it delivers.
             </p>
 
             <div className="grid grid-cols-2 gap-x-6 gap-y-8 border-t border-ink/15 pt-8">
               {[
-                { value: 12, suffix: "k+", label: "Households visited" },
-                { value: 47, suffix: "", label: "Town halls held" },
-                { value: 0, prefix: "$", label: "Corporate PAC dollars" },
-                { value: 100, suffix: "%", label: "Volunteer driven" },
+                { value: 20, suffix: "+ Years", label: "Serving patients and communities" },
+                { value: 3, suffix: " Core Reforms", label: "Education, taxes, and Oregon's business climate" },
+                { value: 28, prefix: "District ", label: "One community to represent" },
+                { value: 3, prefix: "November ", label: "General Election Day" },
               ].map((stat) => (
                 <div key={stat.label} className="hero-meta">
-                  <div className="display-serif text-3xl font-medium tracking-tight sm:text-4xl">
+                  <div className="display-serif text-xl font-medium tracking-tight sm:text-2xl">
                     <Counter
                       value={stat.value}
                       prefix={stat.prefix || ""}
@@ -216,49 +209,6 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Floating capitol plate */}
-        <m.div
-          style={{ y: yPlate }}
-          className="hero-plate pointer-events-none absolute right-6 top-6 hidden h-[88px] w-[88px] rotate-3 items-center justify-center rounded-full border border-ink/20 bg-bone-soft/60 text-ink lg:flex"
-        >
-          <svg viewBox="0 0 64 64" className="h-12 w-12">
-            <text
-              x="32"
-              y="9"
-              textAnchor="middle"
-              fontSize="6"
-              letterSpacing="2.4"
-              fill="currentColor"
-              fontFamily="var(--font-jetbrains-mono)"
-            >
-              EST · 2026
-            </text>
-            <circle
-              cx="32"
-              cy="34"
-              r="14"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1"
-            />
-            <path
-              d="M32 22v24M18 34h28"
-              stroke="currentColor"
-              strokeWidth="1"
-            />
-            <text
-              x="32"
-              y="62"
-              textAnchor="middle"
-              fontSize="6"
-              letterSpacing="2"
-              fill="currentColor"
-              fontFamily="var(--font-jetbrains-mono)"
-            >
-              CAPITALWATCH
-            </text>
-          </svg>
-        </m.div>
       </div>
 
       {/* Edge-to-edge marquee */}
@@ -296,12 +246,12 @@ function PatternRings() {
 
 function Marquee() {
   const words = [
-    "Fiscal Honesty",
-    "Open Government",
-    "Safer Communities",
+    "Educational Excellence",
     "Lower Costs",
-    "Real Accountability",
-    "Smaller Bureaucracy",
+    "A Stronger Business Climate",
+    "Safe Communities",
+    "Local Control",
+    "Accountable Government",
   ];
   // Duplicate for seamless loop
   const items = [...words, ...words, ...words];

@@ -122,22 +122,39 @@ export function FormTextarea({
   );
 }
 
-export function FormCheckbox({ id, name, label, defaultChecked = false }) {
+export function FormCheckbox({
+  id,
+  name,
+  label,
+  defaultChecked = false,
+  checked,
+  onChange,
+  disabled = false,
+  required = false,
+  value,
+}) {
+  const controlled = checked !== undefined;
   return (
     <label
       htmlFor={id}
-      className="group flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-ink/80"
+      className={cn(
+        "group flex items-start gap-3 text-sm leading-relaxed",
+        disabled ? "cursor-not-allowed text-ink/40" : "cursor-pointer text-ink/80"
+      )}
     >
       <input
         id={id}
         name={name}
         type="checkbox"
-        defaultChecked={defaultChecked}
+        value={value}
+        disabled={disabled}
+        required={required}
+        {...(controlled ? { checked, onChange } : { defaultChecked })}
         className="peer sr-only"
       />
       <span
         aria-hidden
-        className="mt-0.5 grid h-5 w-5 flex-shrink-0 place-items-center rounded-[5px] border border-ink/30 bg-bone transition-all duration-300 peer-checked:border-ink peer-checked:bg-ink peer-focus-visible:ring-2 peer-focus-visible:ring-ink/20"
+        className="mt-0.5 grid h-5 w-5 flex-shrink-0 place-items-center rounded-[5px] border border-ink/30 bg-bone transition-all duration-300 peer-checked:border-ink peer-checked:bg-ink peer-focus-visible:ring-2 peer-focus-visible:ring-ink/20 peer-disabled:opacity-40"
       >
         <svg
           width="10"
