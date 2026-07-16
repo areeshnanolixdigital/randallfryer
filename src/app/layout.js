@@ -1,27 +1,39 @@
-import { Inter, Roboto, JetBrains_Mono } from "next/font/google";
+import { Plus_Jakarta_Sans, Figtree } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import MotionProvider from "@/animations/MotionProvider";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/sections/Footer";
 
 // Heading typeface — Randall Fryer brand (Op1776 CI-0216)
-const inter = Inter({
-  variable: "--font-inter",
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
   subsets: ["latin"],
   display: "swap",
 });
 
 // Body typeface — Randall Fryer brand (Op1776 CI-0216)
-const roboto = Roboto({
-  variable: "--font-roboto",
+const figtree = Figtree({
+  variable: "--font-figtree",
   subsets: ["latin"],
   display: "swap",
-  weight: ["300", "400", "500", "700"],
 });
 
-const jetbrains = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
+// Micro-label / eyebrow typeface — Switzer (Fontshare, self-hosted variable font)
+const switzer = localFont({
+  src: [
+    {
+      path: "../assets/fonts/Switzer-Variable.woff2",
+      weight: "100 900",
+      style: "normal",
+    },
+    {
+      path: "../assets/fonts/Switzer-VariableItalic.woff2",
+      weight: "100 900",
+      style: "italic",
+    },
+  ],
+  variable: "--font-switzer",
   display: "swap",
 });
 
@@ -39,7 +51,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${roboto.variable} ${jetbrains.variable} h-full antialiased`}
+      className={`${plusJakarta.variable} ${figtree.variable} ${switzer.variable} h-full antialiased`}
     >
       <body className="relative min-h-full flex flex-col">
         <MotionProvider>

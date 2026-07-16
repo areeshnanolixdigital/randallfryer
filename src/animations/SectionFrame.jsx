@@ -15,6 +15,7 @@ import { cn } from "@/lib/cn";
  *
  * `tone="light"` (default) renders on bone with ink lines.
  * `tone="dark"` renders on ink with bone lines.
+ * `tone="signal"` renders on campaign crimson with bone lines.
  */
 export default function SectionFrame({
   id,
@@ -30,10 +31,17 @@ export default function SectionFrame({
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, amount: 0.15 });
 
-  const isDark = tone === "dark";
-  const surface = isDark ? "bg-ink text-bone" : "";
+  const isDark = tone === "dark" || tone === "signal";
+  const surface =
+    tone === "dark"
+      ? "bg-ink text-bone"
+      : tone === "signal"
+      ? "bg-signal text-bone"
+      : "";
   const lineClass = isDark ? "bg-bone/20" : "hairline";
   const labelClass = isDark ? "text-bone/55" : "text-ink-mute";
+  // Brand accent dot next to the section label
+  const dotClass = tone === "light" ? "bg-signal" : "bg-ochre";
 
   return (
     <section
@@ -69,6 +77,10 @@ export default function SectionFrame({
                   "inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em]"
                 )}
               >
+                <span
+                  aria-hidden
+                  className={cn("h-1.5 w-1.5 rounded-full", dotClass)}
+                />
                 {label}
               </span>
               {number && (

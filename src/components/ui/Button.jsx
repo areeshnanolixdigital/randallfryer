@@ -11,6 +11,8 @@ const variants = {
   outline:
     "bg-transparent text-ink border border-ink/30 hover:border-ink hover:bg-ink hover:text-bone",
   ghost: "bg-transparent text-ink hover:bg-ink/5",
+  // For dark (ink/signal) surfaces
+  bone: "bg-bone text-ink hover:bg-ochre-soft hover:text-ink",
 };
 
 /**

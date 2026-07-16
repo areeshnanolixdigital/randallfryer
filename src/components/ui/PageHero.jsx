@@ -49,7 +49,8 @@ export default function PageHero({
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
           className="flex flex-wrap items-baseline justify-between gap-y-3 text-ink/65"
         >
-          <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
+          <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em]">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-signal" />
             {eyebrow}
           </span>
           {number && (

@@ -58,7 +58,9 @@ export default function SplitReveal({
             ? split.words
             : split.lines;
 
-        gsap.set(targets, { yPercent: 100, opacity: 1 });
+        // 130 (not 100) so the text also clears the descender allowance the
+        // .split-line-mask rule adds below each clip box.
+        gsap.set(targets, { yPercent: 130, opacity: 1 });
 
         tween = gsap.to(targets, {
           yPercent: 0,

@@ -6,6 +6,7 @@ import { m, useScroll, useTransform } from "motion/react";
 import { gsap, useGSAP, SplitText, ScrollTrigger } from "@/animations/gsap";
 import Button from "@/components/ui/Button";
 import Counter from "@/components/ui/Counter";
+import Image from "next/image";
 
 const HEADLINE_LINES = ["A Stronger Oregon.", "A Better Tomorrow."];
 
@@ -13,10 +14,14 @@ export default function Hero() {
   const container = useRef(null);
   const heroRef = useRef(null);
 
+
+
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
   });
+
+  const yImage = useTransform(scrollYProgress, [0, 1], [0, 60]);
   const yPattern = useTransform(scrollYProgress, [0, 1], [0, -120]);
   const opacityFade = useTransform(scrollYProgress, [0, 1], [1, 0.2]);
 
@@ -39,9 +44,14 @@ export default function Hero() {
           const split = SplitText.create(el, {
             type: "words, chars",
             mask: "words",
+            // Masks inherit this class as "hero-word-mask" — styled in
+            // globals.css to keep descenders inside the clip box.
+            wordsClass: "hero-word",
           });
           gsap.from(split.chars, {
-            yPercent: 110,
+            // 130 (not 110) so chars also clear the descender allowance
+            // the mask rule adds below each clip box.
+            yPercent: 130,
             duration: 1.1,
             ease: "expo.out",
             stagger: 0.018,
@@ -135,7 +145,8 @@ export default function Hero() {
 
         {/* Top meta row */}
         <div className="hero-eyebrow mb-12 flex flex-wrap items-baseline justify-between gap-y-3 text-ink/70 sm:mb-16">
-          <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
+          <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em]">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-signal" />
             Republican Nominee for Oregon House District 28
           </span>
           <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
@@ -147,9 +158,19 @@ export default function Hero() {
           {/* LEFT: Headline */}
           <div className="col-span-12 lg:col-span-8">
             <h1 className="display-serif text-[clamp(2.4rem,6.2vw,5.4rem)] font-medium leading-[0.95] tracking-[-0.03em] text-ink">
-              {HEADLINE_LINES.map((line) => (
-                <span key={line} className="hero-line block overflow-hidden">
-                  <span className="inline-block">{line}</span>
+              {/* No overflow-hidden on the lines — SplitText's word masks handle
+                  the reveal clipping; a hard clip on the line box cuts descenders. */}
+              {HEADLINE_LINES.map((line, i) => (
+                <span key={line} className="hero-line block">
+                  <span
+                    className={`inline-block ${
+                      i === HEADLINE_LINES.length - 1
+                        ? "italic text-signal"
+                        : ""
+                    }`}
+                  >
+                    {line}
+                  </span>
                 </span>
               ))}
             </h1>
@@ -176,6 +197,32 @@ export default function Hero() {
 
           {/* RIGHT: Sub-copy + key stats */}
           <div className="col-span-12 flex flex-col gap-12 lg:col-span-4 lg:pl-6 lg:pt-4">
+            <m.div
+              style={{ y: yImage }}
+              className="col-span-12 lg:col-span-5"
+            >
+              <m.div
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 1.2,
+                  ease: [0.16, 1, 0.3, 1],
+                  delay: 0.5,
+                }}
+                className="relative aspect-[4/5] w-full overflow-hidden rounded-card border border-ink/15 bg-ink"
+              >
+                <Image
+                  src={"/randall-fryer-ballot.jpg"}
+                  alt={"randall-fryer-ballot"}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover object-[50%_22%]"
+                  style={{ filter: "contrast(1.02) saturate(1.02)" }}
+                />
+              </m.div>
+            </m.div>
+
             <p className="hero-sub max-w-md text-balance text-lg leading-relaxed text-ink/80 sm:text-xl">
               Randall Fryer is running for the Oregon House to bring a
               disciplined, results-focused approach to Salem. He is running
@@ -193,6 +240,7 @@ export default function Hero() {
                 { value: 3, prefix: "November ", label: "General Election Day" },
               ].map((stat) => (
                 <div key={stat.label} className="hero-meta">
+                  <span aria-hidden className="mb-3 block h-[2px] w-6 bg-ochre" />
                   <div className="display-serif text-xl font-medium tracking-tight sm:text-2xl">
                     <Counter
                       value={stat.value}
@@ -268,7 +316,7 @@ function Marquee() {
             className="display-serif text-3xl font-medium italic tracking-tight text-ink sm:text-4xl"
           >
             {w}
-            <span className="ml-12 inline-block h-2 w-2 -translate-y-1.5 rounded-full bg-signal align-middle" />
+            <span className="ml-12 inline-block h-2 w-2 -translate-y-1.5 rounded-full bg-ochre align-middle" />
           </span>
         ))}
       </m.div>
