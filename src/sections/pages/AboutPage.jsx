@@ -9,6 +9,7 @@ import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
+import BrandIcon from "@/components/ui/BrandIcon";
 
 const BIO_BLOCKS = [
   {
@@ -40,16 +41,19 @@ const BIO_BLOCKS = [
 const VALUES = [
   {
     no: "01",
+    icon: "award",
     title: "Reclaim Educational Excellence",
     body: "Randall believes Oregon schools must return their focus to the fundamentals: reading, writing, mathematics, history, and civics. He will work to restore meaningful academic and graduation standards, strengthen parental and local school-board involvement, and direct more education resources toward teachers and classrooms. Professional teachers deserve the authority and support needed to maintain orderly classrooms and help students succeed. Oregon should measure education policy by whether students are learning—not simply by how much the state spends.",
   },
   {
     no: "02",
+    icon: "scales",
     title: "Reduce the Burden on Working Families",
     body: "Randall believes Oregonians deserve greater value and accountability for the taxes and fees they pay. He will scrutinize spending before asking families to contribute more, oppose unnecessary new costs, and demand transparent reporting on whether public programs are producing results. Government should respect the people who earn every public dollar.",
   },
   {
     no: "03",
+    icon: "institution",
     title: "Rebuild Oregon's Business Climate",
     body: "Randall wants Oregon to be a place where employers can invest, expand, hire, and compete. He will pursue more competitive tax rates, simpler tax compliance, more predictable permitting, and fewer unnecessary regulatory barriers. A stronger business climate means more jobs, a broader tax base, healthier communities, and less pressure to continually increase costs for working families.",
   },
@@ -146,9 +150,11 @@ export default function AboutPage() {
               whileHover={{ y: -4 }}
               className="group relative flex flex-col gap-4 rounded-card border border-ink/15 bg-bone-soft/60 p-7 transition-colors duration-500 hover:border-ink"
             >
-              <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-                {v.no}
-              </span>
+              <div className="flex items-center justify-between">
+                <span className="grid h-11 w-11 place-items-center rounded-full border border-ink/15 text-signal transition-colors duration-500 group-hover:border-signal/50 group-hover:text-signal-deep">
+                  <BrandIcon name={v.icon} className="h-5 w-5" />
+                </span>
+              </div>
               <h3 className="display-serif text-2xl font-medium leading-tight">
                 {v.title}
               </h3>
@@ -380,3 +386,4 @@ function Journey() {
     </div>
   );
 }
+

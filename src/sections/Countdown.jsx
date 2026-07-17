@@ -23,7 +23,7 @@ export default function Countdown() {
         id="events"
         label="04 — On the ballot"
         number="Election / IV"
-        tone="dark"
+        tone="signal"
         backdrop={
           <>
             <m.div style={{ y: yBackdrop }} className="absolute inset-0">
@@ -37,14 +37,14 @@ export default function Countdown() {
                 sizes="100vw"
               />
             </m.div>
-            {/* Darken for legibility — heaviest on the left where the copy sits */}
+            {/* Crimson duotone for legibility — heaviest on the left where the copy sits */}
             <div
               aria-hidden
-              className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/35"
+              className="absolute inset-0 bg-gradient-to-r from-signal-deep via-signal-deep/85 to-signal/40"
             />
             <div
               aria-hidden
-              className="absolute inset-0 bg-gradient-to-t from-ink/75 via-transparent to-ink/35"
+              className="absolute inset-0 bg-gradient-to-t from-signal-deep/80 via-transparent to-signal-deep/40"
             />
           </>
         }
@@ -73,7 +73,7 @@ export default function Countdown() {
           </m.p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button as={Link} href="/contact" variant="signal" withArrow>
+            <Button as={Link} href="/contact" variant="bone" withArrow>
               Get election updates
             </Button>
           </div>

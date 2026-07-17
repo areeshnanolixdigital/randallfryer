@@ -176,11 +176,6 @@ function PortraitCard() {
           <span className="block h-1.5 w-1.5 rounded-full bg-ochre" />
           On the Ballot
         </div>
-
-        {/* Vertical caption */}
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 -rotate-90 font-mono text-[10px] uppercase tracking-[0.32em] text-bone/45">
-          RANDALL FRYER · 2026
-        </div>
       </m.div>
     </div>
   );

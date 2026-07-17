@@ -17,7 +17,7 @@ export default function EventsPage() {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
-        eyebrow="File №04 — Events"
+        eyebrow="File No: 04 — Events"
         number="Calendar / IV"
         title="Bring your questions to the events."
         intro="No gatekeepers. No carefully staged conversations. Team Fryer's town halls, neighborhood gatherings, canvasses, and community events are opportunities to meet Randall, ask direct questions, and talk honestly about what District 28 needs from Salem. Come as you are. Bring your questions. Bring a neighbor."

@@ -28,10 +28,11 @@
   --color-muted: #4a5262;
   --color-accent: #781830;
 
-  /* Type system — Heading: Inter · Body: Roboto */
-  --font-display: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-sans: var(--font-roboto), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  /* Type system — Heading: Plus Jakarta Sans · Body: Figtree · Labels: Switzer */
+  --font-display: var(--font-plus-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  /* `font-mono` is the label/eyebrow style across the site — mapped to Switzer */
+  --font-mono: var(--font-switzer), ui-sans-serif, system-ui, sans-serif;
 
   --radius-pill: 999px;
   --radius-card: 1.25rem;
@@ -181,6 +182,19 @@
   /* Build-in line used at the top of every section */
   .build-line {
     transform-origin: left center;
+  }
+
+  /* GSAP SplitText reveal masks (`split-line-mask` / `hero-word-mask`).
+     The clip box matches the text's layout box, which is tighter than its
+     ink extents: descenders (g/y/q) poke below the line-height, and italic
+     glyphs lean past their advance width on either side. Extend the clip
+     window in every direction and cancel the padding with negative margins
+     so layout is unchanged. Rising text starts at yPercent 130 so it stays
+     hidden below the enlarged window. */
+  .split-line-mask,
+  .hero-word-mask {
+    padding: 0.1em 0.15em 0.22em;
+    margin: -0.1em -0.15em -0.22em;
   }
 
   /* Magnetic button shell */
