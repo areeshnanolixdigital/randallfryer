@@ -16,25 +16,22 @@ const BIO_BLOCKS = [
     eyebrow: "A problem-solver",
     heading: "A problem-solver before entering politics.",
     body: "Before building his career in medicine, Randall worked in software development and served in the Army Medical Corps. Those experiences taught him to understand complicated systems, identify where they break down, and focus on solutions that work in the real world. Randall later pursued medicine, earning his Doctor of Osteopathic Medicine degree in 1997. He completed an internship in Michigan before entering a Family Practice residency in Colorado Springs. By 2000, he had completed his residency and begun a medical career that would span family medicine, immediate care, and emergency medicine. That journey was not built around politics. It was built around preparation, service, and responsibility.",
-    image:
-      "https://images.unsplash.com/photo-1521791136064-7986c2920216?w=900&h=600&fit=crop&q=80",
-    imageAlt: "A community meeting around a long table",
+    image: "/randall-fryer-problem-solver.png",
+    imageAlt: "Randall Fryer shaking hands with a constituent",
   },
   {
     eyebrow: "The record",
     heading: "Twenty-four years of making decisions that matter.",
     body: "Randall practiced medicine from 2000 through 2024. Trained in Family Medicine, he also served patients in multiple rural and remote emergency departments, where there was rarely time for political posturing or incomplete answers. Emergency medicine demands careful listening, clear priorities, decisive action, and responsibility for the outcome. It also teaches an important lesson: every decision affects a real person. Randall will bring that same mindset to the Oregon House. He will examine the evidence, ask difficult questions, weigh the consequences, and remain focused on solutions that improve people's lives.",
-    image:
-      "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=900&h=600&fit=crop&q=80",
-    imageAlt: "Volunteers organising at a campaign field office",
+    image: "/randall-fryer-decisions.png",
+    imageAlt: "Randall Fryer listening at a roundtable discussion",
   },
   {
     eyebrow: "The campaign",
     heading: "A campaign built by listening.",
     body: "The best public policy does not begin in a conference room in Salem. It begins by listening to the people who live with the consequences. Across District 28, families are concerned about the quality of Oregon's schools, the rising burden of taxes, public safety, economic opportunity, and whether state government is delivering results for the money it spends. Randall is taking those concerns seriously. This campaign is built around direct conversations, careful listening, and a commitment to represent the priorities of District 28—not the demands of political insiders. Every conversation helps shape a clearer agenda for responsible leadership and measurable results.",
-    image:
-      "https://images.unsplash.com/photo-1494172961521-33799ddd43a5?w=900&h=600&fit=crop&q=80",
-    imageAlt: "Neighbors talking on a front porch",
+    image: "/randall-fryer-listening.png",
+    imageAlt: "Randall Fryer discussing District 28 plans with residents",
   },
 ];
 
@@ -244,10 +241,9 @@ function BioBlock({ block, reverse, index }) {
                 alt={block.imageAlt}
                 fill
                 sizes="(min-width: 1024px) 40vw, 100vw"
-                className="object-cover opacity-90"
-                style={{ filter: "grayscale(100%) contrast(1.05) brightness(0.9)" }}
+                className="object-cover"
+                style={{ filter: "contrast(1.02) saturate(1.02)" }}
               />
-              <div aria-hidden className="duotone-medium absolute inset-0 mix-blend-multiply" />
             </m.div>
           </m.div>
 
