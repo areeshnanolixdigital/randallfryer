@@ -6,8 +6,8 @@ import {
 import { normalizePhoneForSubmit } from "@/lib/phone";
 
 // POST /api/volunteer — Volunteer signup (GHL Volunteer_Form workflow).
-// Primary workflow uses THREE parallel webhooks; the shared compliance webhook
-// is appended (forms-compliance-pattern.md §1). Payload per ghl-forms-webhooks.md §2.
+// Fans out to the primary workflow webhook + the shared compliance webhook
+// (forms-compliance-pattern.md §1). Payload per ghl-forms-webhooks.md §2.
 const WEBHOOK_URLS = [...getVolunteerWebhookUrls(), getComplianceWebhookUrl()];
 
 export async function POST(request) {

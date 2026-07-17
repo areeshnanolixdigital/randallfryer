@@ -17,64 +17,58 @@ const WEBHOOK_BASE = `https://services.leadconnectorhq.com/hooks/${GHL_LOCATION_
 const hook = (uuid) => `${WEBHOOK_BASE}/${uuid}`;
 
 /**
- * Contact form workflow webhook.
- * Override with GHL_HOOK_CONTACT (full URL) or GHL_CONTACT_UUID (workflow UUID).
+ * Contact form workflow webhook — Randall Fryer's own GHL location.
+ * Override with GHL_HOOK_CONTACT (full URL).
  */
 export function getContactWebhookUrl() {
   if (process.env.GHL_HOOK_CONTACT) return process.env.GHL_HOOK_CONTACT;
-  return hook(process.env.GHL_CONTACT_UUID || "cf2eced9-14ad-4109-ba4f-fd244858af10");
+  return "https://services.leadconnectorhq.com/hooks/YUHTArRDeS9UlcCEkopg/webhook-trigger/3LDpchKhcb4yxJ53eBNE";
 }
 
 /**
- * Volunteer signup workflow webhooks — THREE parallel triggers.
- * Override the whole set with GHL_HOOK_VOLUNTEER (comma-separated full URLs) or
- * individual UUIDs with GHL_VOLUNTEER_UUID_1/2/3.
+ * Volunteer signup workflow webhook(s) — Randall Fryer's own GHL location.
+ * Returns an array (the route appends the compliance webhook to it).
+ * Override with GHL_HOOK_VOLUNTEER (comma-separated full URLs) or
+ * GHL_HOOK_VOLUNTEER_1 for the single primary URL.
  */
 export function getVolunteerWebhookUrls() {
   if (process.env.GHL_HOOK_VOLUNTEER) {
     return process.env.GHL_HOOK_VOLUNTEER.split(",").map((u) => u.trim()).filter(Boolean);
   }
   return [
-    process.env.GHL_VOLUNTEER_UUID_1 || "23834100-4e00-4579-82e7-f9ec69ed8542",
-    process.env.GHL_VOLUNTEER_UUID_2 || "df947411-0c7e-4a6c-8c2e-7f20291c333f",
-    process.env.GHL_VOLUNTEER_UUID_3 || "19e7758c-f5c5-44fa-a770-5c18cefa0645",
-  ].map(hook);
+    process.env.GHL_HOOK_VOLUNTEER_1 ||
+      "https://services.leadconnectorhq.com/hooks/YUHTArRDeS9UlcCEkopg/webhook-trigger/1Uhhq1q20u5jdWVVE1cz",
+  ];
 }
 
 /**
- * Issue Report ("Ask Randall") workflow webhook.
- * Override with GHL_HOOK_ISSUE (full URL) or GHL_ISSUE_UUID (workflow UUID only).
+ * Issue Report ("Ask Randall") workflow webhook — Randall Fryer's own GHL location.
+ * Override with GHL_HOOK_ISSUE (full URL).
  */
 export function getIssueWebhookUrl() {
   if (process.env.GHL_HOOK_ISSUE) return process.env.GHL_HOOK_ISSUE;
-  return hook(process.env.GHL_ISSUE_UUID || "3c2d23be-00aa-49d5-9d14-6597d2e93123");
+  return "https://services.leadconnectorhq.com/hooks/YUHTArRDeS9UlcCEkopg/webhook-trigger/783yLGoM8WwIe0fXqWxe";
 }
 
 /**
- * Event RSVP workflow webhook.
- * Override with GHL_HOOK_RSVP (full URL) or GHL_RSVP_UUID (workflow UUID only).
+ * Event RSVP workflow webhook — Randall Fryer's own GHL location.
+ * Override with GHL_HOOK_RSVP (full URL).
  */
 export function getRsvpWebhookUrl() {
   if (process.env.GHL_HOOK_RSVP) return process.env.GHL_HOOK_RSVP;
-  return hook(process.env.GHL_RSVP_UUID || "b8b53720-18c4-4cde-9db9-c549de6264ee");
+  return "https://services.leadconnectorhq.com/hooks/YUHTArRDeS9UlcCEkopg/webhook-trigger/eIU3zn8pDSRGn0BVNmzE";
 }
 
 /**
- * Compliance / consent webhook — a single URL shared across ALL four forms
+ * A2P compliance / consent webhook — a single URL shared across ALL four forms
  * (Contact, Volunteer, RSVP, Ask). Appended to each route's WEBHOOK_URLS array
  * so every submission also drives the consent/subscription workflow.
- * See forms-compliance-pattern.md §1.
- *
- * ⚠️ LAUNCH BLOCKER: no real UUID was provided — the placeholder below is NOT a
- * live workflow. Set GHL_HOOK_COMPLIANCE (full URL) or GHL_COMPLIANCE_UUID
- * before launch, or compliance fan-out silently no-ops.
+ * Randall Fryer's own GHL location. See forms-compliance-pattern.md §1.
+ * Override with GHL_HOOK_COMPLIANCE (full URL).
  */
 export function getComplianceWebhookUrl() {
   if (process.env.GHL_HOOK_COMPLIANCE) return process.env.GHL_HOOK_COMPLIANCE;
-  return hook(
-    process.env.GHL_COMPLIANCE_UUID ||
-      "00000000-0000-0000-0000-000000000000" // placeholder — replace before launch
-  );
+  return "https://services.leadconnectorhq.com/hooks/YUHTArRDeS9UlcCEkopg/webhook-trigger/JBKPbCUsyHCQmzKFHTcG";
 }
 
 /** POST a JSON payload to a GHL webhook trigger URL. Returns the fetch Response. */
@@ -157,6 +151,146 @@ export async function createRsvpAppointment({ email, eventName, startTime, endTi
     });
     if (!apptRes.ok) return contactId; // contact found even if appt failed
     return contactId;
+  } catch {
+    return null;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Campaign events — GHL Custom Object records (custom_objects.events).
+// Per ghl-events-integration.md. Events are NOT in the native Calendars API;
+// they are records on a custom object, fetched via the object search endpoint.
+
+const EVENTS_SCHEMA_KEY = "custom_objects.events";
+const GHL_EVENTS_VERSION = "2021-07-28";
+
+function eventsHeaders() {
+  return {
+    Authorization: `Bearer ${process.env.GHL_API_KEY}`,
+    Version: GHL_EVENTS_VERSION,
+    Accept: "application/json",
+  };
+}
+
+// Slug → label maps. GHL stores time + category as slugs; the UI wants labels.
+// TIME_LABELS: 6:00 AM → 9:00 PM in 30-min steps. Slug = {h}{mm}_{am|pm}
+// (12-hour hour NOT zero-padded, minutes zero-padded), e.g. "800_am", "100_pm".
+const TIME_LABELS = (() => {
+  const out = {};
+  for (let mins = 6 * 60; mins <= 21 * 60; mins += 30) {
+    const h24 = Math.floor(mins / 60);
+    const min = mins % 60;
+    const ap = h24 < 12 ? "am" : "pm";
+    const h12 = h24 % 12 === 0 ? 12 : h24 % 12;
+    const mm = String(min).padStart(2, "0");
+    out[`${h12}${mm}_${ap}`] = `${h12}:${mm} ${ap.toUpperCase()}`;
+  }
+  return out;
+})();
+
+const CATEGORY_LABELS = {
+  rally: "Rally",
+  town_hall: "Town Hall",
+  fundraiser: "Fundraiser",
+  debate: "Debate",
+  press_conference: "Press Conference",
+  community_meetup: "Community Meetup",
+  volunteer_drive: "Volunteer Drive",
+  doortodoor_campaign: "Door-to-Door Campaign",
+  victory_celebration: "Victory Celebration",
+  protest__march: "Protest / March", // double underscore — GHL slugifies '/' this way
+  other: "Other",
+};
+
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+/** "YYYY-MM-DD" → { month:'Apr', day:'12', year:'2026', raw } or null. */
+function parseDate(dateStr) {
+  if (!dateStr) return null;
+  // T00:00:00 avoids UTC/local drift that would shift the day.
+  const d = new Date(`${dateStr}T00:00:00`);
+  if (Number.isNaN(d.getTime())) return null;
+  return {
+    month: MONTHS[d.getMonth()],
+    day: String(d.getDate()).padStart(2, "0"),
+    year: String(d.getFullYear()),
+    raw: dateStr,
+  };
+}
+
+const EMPTY_DATE = { month: "", day: "", year: "", raw: "" };
+
+/** Raw GHL custom-object record → stable UI event shape. Never returns undefined. */
+export function normalizeEvent(record) {
+  const p = record?.properties ?? {};
+  // Actual schema keys are event_start_date/event_start_time/event_end_time;
+  // the rule's canonical names (event_date/select_time/end_time) are fallbacks.
+  const startSlug = p.event_start_time ?? p.select_time ?? "";
+  const endSlug = p.event_end_time ?? p.end_time ?? "";
+  const category = p.event_category ?? "";
+  const img = Array.isArray(p.event_image) ? p.event_image[0]?.url : undefined;
+
+  return {
+    id: record?.id,
+    title: p.event_name ?? "",
+    description: p.event_description ?? "",
+    date: parseDate(p.event_start_date ?? p.event_date) ?? EMPTY_DATE,
+    endDate: parseDate(p.event_end_date),
+    time: TIME_LABELS[startSlug] ?? startSlug ?? "",
+    endTime: TIME_LABELS[endSlug] ?? endSlug ?? "",
+    location: p.event_location ?? "",
+    address: p.event_location ?? "", // alias — some consumers read `address`
+    image: img || "/placeholder-event.svg",
+    type: CATEGORY_LABELS[category] ?? category ?? "",
+    source: "ghl",
+  };
+}
+
+/** List all campaign events, normalized and sorted by start date ascending. */
+export async function fetchGHLEvents() {
+  if (!ghlRestConfigured()) return [];
+  try {
+    const res = await fetch(
+      `${GHL_REST_BASE}/objects/${EVENTS_SCHEMA_KEY}/records/search`,
+      {
+        method: "POST",
+        headers: { ...eventsHeaders(), "Content-Type": "application/json" },
+        body: JSON.stringify({
+          locationId: process.env.GHL_LOCATION_ID,
+          page: 1,
+          pageLimit: 50,
+          query: "",
+          searchAfter: [],
+        }),
+        next: { revalidate: 60 },
+      }
+    );
+    if (!res.ok) return [];
+    const data = await res.json();
+    const records = data.records ?? [];
+    return records.map(normalizeEvent).sort((a, b) => {
+      const da = a.date.raw ? new Date(a.date.raw) : new Date(0);
+      const db = b.date.raw ? new Date(b.date.raw) : new Date(0);
+      return da - db;
+    });
+  } catch {
+    return [];
+  }
+}
+
+/** Fetch a single campaign event by record id, normalized. null if not found. */
+export async function fetchGHLEvent(eventId) {
+  if (!ghlRestConfigured() || !eventId) return null;
+  try {
+    const res = await fetch(
+      `${GHL_REST_BASE}/objects/${EVENTS_SCHEMA_KEY}/records/${eventId}`,
+      { headers: eventsHeaders(), next: { revalidate: 60 } }
+    );
+    if (!res.ok) return null;
+    const data = await res.json();
+    const record = data.record ?? data;
+    if (!record?.id && !record?.properties) return null;
+    return normalizeEvent(record);
   } catch {
     return null;
   }
