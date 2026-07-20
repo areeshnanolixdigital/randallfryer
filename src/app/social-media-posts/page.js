@@ -1,9 +1,9 @@
 import SocialMediaPostsPage from "@/sections/pages/SocialMediaPostsPage";
 
 export const metadata = {
-  title: "Social Posts",
+  title: "Social Media Posts",
   description:
-    "Preview the Randall Fryer campaign's social media creatives — feed and story formats covering the platform, the candidate, and election day.",
+    "The CapitalWatch social campaign — editorial creatives across Instagram feed, stories, and multi-slide carousels, each rendered live from its source HTML.",
 };
 
 export default function Page() {
