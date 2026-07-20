@@ -6,7 +6,7 @@ import { m } from "motion/react";
 import LivePreview from "@/components/ui/LivePreview";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
-import { FORMATS, getRelatedSocialPosts } from "@/data/socialPosts";
+import { FORMATS, getRelatedSocialPosts, posterFor } from "@/data/socialPosts";
 import { cn } from "@/lib/cn";
 
 export default function SocialMediaPostDetailPage({ post }) {
@@ -239,6 +239,7 @@ export default function SocialMediaPostDetailPage({ post }) {
                   <div className="relative overflow-hidden rounded-card border border-ink/15 bg-ink shadow-[0_30px_50px_-30px_rgba(10,19,38,0.4)]">
                     <LivePreview
                       file={p.file}
+                      poster={posterFor(p.file)}
                       width={f.width}
                       height={f.height}
                       title={p.title}

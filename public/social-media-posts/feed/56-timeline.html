@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Feed 56 — Timeline Column</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bone:#f3ede0; --bone-soft:#ebe2cd; --bone-deep:#d8cdb1;
+    --ink:#0a1326; --ink-soft:#18223b; --ink-mute:#4b5364;
+    --signal:#9b2d2c; --signal-deep:#7a2422;
+    --ochre:#b58a4a; --ochre-soft:#d4ac6e;
+    --display:'Fraunces','Times New Roman',serif;
+    --sans:'Inter',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;color:var(--ink);font-family:var(--sans);box-shadow:0 60px 120px -40px rgba(0,0,0,.5)}
+.stage{background:linear-gradient(180deg,#f4ebd8,#e6dcc2)}
+  .grain{content:"";position:absolute;inset:0;z-index:60;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05 0 0 0 0 .1 0 0 0 0 .18 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:multiply;opacity:.5}
+  .frame{position:absolute;inset:56px;border:1px solid rgba(10,19,38,.16);z-index:8}
+  .meta{position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-mute);z-index:20}
+  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9b2d2c;margin-right:10px;vertical-align:1px}
+  .h{position:absolute;left:96px;right:96px;top:180px;font-family:var(--display);font-weight:500;font-size:72px;line-height:.98;letter-spacing:-.03em;z-index:16}
+  .h .it{font-style:italic;font-weight:400;color:#7a2422}
+  .line{position:absolute;left:150px;top:330px;bottom:180px;width:2px;background:linear-gradient(180deg,#9b2d2c,var(--ochre));z-index:12}
+  .list{position:absolute;left:96px;right:96px;top:330px;bottom:180px;display:flex;flex-direction:column;justify-content:space-between;z-index:16;padding-left:96px}
+  .ti{position:relative;display:grid;grid-template-columns:120px 1fr;gap:8px 28px;align-items:baseline}
+  .dot2{position:absolute;left:-60px;top:14px;width:18px;height:18px;border-radius:50%;background:#9b2d2c;box-shadow:0 0 0 6px rgba(243,237,224,1),0 0 0 8px rgba(155,45,44,.4)}
+  .yr{font-family:var(--display);font-style:italic;font-size:44px;color:#7a2422;grid-row:span 2}
+  .tt{font-family:var(--display);font-weight:500;font-size:34px;letter-spacing:-.02em;color:var(--ink)}
+  .td{font-family:var(--sans);font-size:15px;line-height:1.55;color:var(--ink-mute);grid-column:2}
+  .foot{position:absolute;left:96px;right:96px;bottom:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-mute);z-index:20}
+  .foot .fdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9b2d2c;margin-right:10px;vertical-align:1px}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="grain"></div>
+<div class="frame"></div><div class="meta"><span><span class="dot"></span>Districtus XIV · Primary MMXXVI</span><span>File №56</span></div>
+    <h1 class="h">Ordo <span class="it">temporis.</span></h1>
+    <div class="line"></div>
+    <div class="list"><div class="ti"><span class="dot2"></span><span class="yr">1860</span><span class="tt">Ratio publica</span><span class="td">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></div><div class="ti"><span class="dot2"></span><span class="yr">1861</span><span class="tt">Forum liberum</span><span class="td">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</span></div><div class="ti"><span class="dot2"></span><span class="yr">1862</span><span class="tt">Fides operis</span><span class="td">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</span></div><div class="ti"><span class="dot2"></span><span class="yr">1863</span><span class="tt">Lorem ipsum</span><span class="td">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</span></div></div>
+    <div class="foot"><span><span class="fdot"></span>Districtus XIV</span><span>XXII / XXVI</span></div>
+  </div>
+</body>
+</html>
