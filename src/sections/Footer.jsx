@@ -14,7 +14,7 @@ const NAV_GROUPS = [
       { label: "Home", href: "/" },
       { label: "Meet Randall", href: "/about" },
       { label: "Priorities", href: "/platform" },
-      { label: "News", href: "/social-media-posts" },
+      { label: "Social posts", href: "/social-media-posts" },
     ],
   },
   {
