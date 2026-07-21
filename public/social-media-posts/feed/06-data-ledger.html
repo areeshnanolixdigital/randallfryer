@@ -2,148 +2,150 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Feed 06 — Data Ledger</title>
+<title>Feed 06 — A Physician's Discipline</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bone:#f3ede0; --bone-soft:#ebe2cd;
+    --bone:#f3ede0; --bone-soft:#ebe2cd; --paper:#f6f1e4;
     --ink:#0a1326; --ink-soft:#18223b; --ink-mute:#4b5364;
     --signal:#9b2d2c; --signal-deep:#7a2422;
-    --ochre:#b58a4a; --ochre-soft:#d4ac6e; --sage:#4f6358;
-    --display:'Fraunces',serif; --sans:'Inter',sans-serif; --mono:'JetBrains Mono',monospace;
+    --ochre:#b58a4a; --ochre-soft:#d4ac6e;
+    --display:'Fraunces','Times New Roman',serif;
+    --sans:'Inter',system-ui,sans-serif;
+    --mono:'JetBrains Mono',ui-monospace,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
-  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;
-    background:#0a1326;color:#f3ede0;font-family:var(--sans);
-    box-shadow:0 60px 120px -40px rgba(0,0,0,.55);
-  }
-  /* Background grid + glow */
-  .stage::before{
-    content:"";position:absolute;inset:0;z-index:2;
-    background:
-      linear-gradient(transparent 95%, rgba(243,237,224,.04) 95%),
-      linear-gradient(90deg, transparent 95%, rgba(243,237,224,.04) 95%);
-    background-size:60px 60px;
-    mask-image:radial-gradient(60% 60% at 30% 40%, #000 30%, transparent 90%);
-  }
-  .stage::after{
-    content:"";position:absolute;inset:0;z-index:55;pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .85 0 0 0 .14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    mix-blend-mode:overlay;opacity:.7;
+  .stage{
+    width:1080px;height:1080px;position:relative;overflow:hidden;
+    background:radial-gradient(120% 100% at 20% 0%, #f8f3e6 0%, #f1ebdb 55%, #e6ddc8 100%);
+    color:var(--ink);font-family:var(--sans);
+    box-shadow:0 60px 120px -40px rgba(0,0,0,.45);
   }
 
-  .frame{position:absolute;inset:56px;border:1px solid rgba(243,237,224,.14);z-index:8;pointer-events:none}
+  /* Fine medical-chart grid */
+  .grid{
+    position:absolute;inset:0;z-index:2;pointer-events:none;
+    background-image:
+      linear-gradient(rgba(122,36,34,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(122,36,34,.06) 1px, transparent 1px),
+      linear-gradient(rgba(122,36,34,.11) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(122,36,34,.11) 1px, transparent 1px);
+    background-size:28px 28px,28px 28px,140px 140px,140px 140px;
+  }
+
+  /* ECG / heartbeat line */
+  .ecg{position:absolute;left:0;right:0;top:706px;z-index:3;pointer-events:none;opacity:.9}
+  .ecg svg{width:100%;height:120px;display:block}
+
+  /* Portrait column, right */
+  .photo{
+    position:absolute;right:0;top:0;width:452px;height:100%;z-index:4;
+    background:url("/randall-fryer-about.jpg") no-repeat;
+    background-size:cover;background-position:52% 22%;
+    filter:saturate(.72) contrast(1.03);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.5) 12%, #000 30%);
+    mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.5) 12%, #000 30%);
+  }
+  .photo::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(90deg, rgba(246,241,228,.5) 0%, transparent 34%),
+      linear-gradient(0deg, rgba(10,19,38,.28) 0%, transparent 42%),
+      linear-gradient(200deg, rgba(212,172,110,.16), transparent 40%);
+    mix-blend-mode:multiply;
+  }
+  .divider{position:absolute;right:452px;top:56px;bottom:56px;width:1px;background:rgba(10,19,38,.16);z-index:5}
+
+  /* Paper grain */
+  .stage::after{
+    content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05 0 0 0 0 .1 0 0 0 0 .18 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode:multiply;opacity:.4;
+  }
+
+  .frame{position:absolute;inset:56px;border:1px solid rgba(10,19,38,.16);z-index:30;pointer-events:none}
 
   .meta{
     position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;
-    font-family:var(--mono);font-size:13px;letter-spacing:.32em;text-transform:uppercase;color:rgba(243,237,224,.6);z-index:20;
+    font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-mute);z-index:34;
   }
+  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--signal);
+    box-shadow:0 0 0 4px rgba(155,45,44,.13);vertical-align:1px;margin-right:10px}
+  .meta b{color:var(--signal-deep);font-weight:600}
 
-  /* 3D coin floating */
-  .coin{
-    position:absolute;left:-160px;bottom:-160px;width:640px;height:640px;border-radius:50%;
-    background:
-      radial-gradient(60% 60% at 40% 30%, #f4d6a0 0%, var(--ochre) 50%, #5a4221 100%);
-    box-shadow:
-      inset 0 30px 60px rgba(255,232,180,.55),
-      inset 0 -40px 80px rgba(0,0,0,.5),
-      0 40px 80px rgba(212,172,110,.25);
-    z-index:6;transform:rotate(-12deg);
+  .block{position:absolute;left:96px;top:206px;width:520px;z-index:34}
+  .eyebrow{
+    font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--signal-deep);
+    display:inline-flex;align-items:center;gap:14px;margin-bottom:28px;
   }
-  .coin::before{
-    content:"";position:absolute;inset:30px;border-radius:50%;border:2px dashed rgba(10,19,38,.4);
-  }
-  .coin .num{
-    position:absolute;inset:0;display:grid;place-items:center;
-    font-family:var(--display);font-weight:600;font-style:italic;font-size:280px;color:var(--ink);
-    text-shadow:0 4px 0 rgba(255,232,180,.45), 0 -2px 0 rgba(0,0,0,.3);
-    letter-spacing:-.04em;
-  }
+  .eyebrow::before{content:"";display:block;width:44px;height:1px;background:var(--signal-deep)}
 
-  /* Title block top */
-  .title{
-    position:absolute;left:96px;right:480px;top:200px;z-index:20;
-  }
-  .eye{
-    font-family:var(--mono);font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:rgba(243,237,224,.55);
-    display:flex;align-items:center;gap:14px;margin-bottom:24px;
-  }
-  .eye::before{content:"";width:46px;height:1px;background:rgba(243,237,224,.5)}
   h1{
-    font-family:var(--display);font-weight:500;font-size:88px;line-height:.96;letter-spacing:-.03em;color:#f3ede0;
+    font-family:var(--display);font-weight:600;
+    font-size:88px;line-height:.95;letter-spacing:-.035em;color:var(--ink);
   }
-  h1 .it{font-style:italic;color:var(--ochre-soft);font-weight:400}
+  h1 .it{font-style:italic;font-weight:500;color:var(--signal-deep)}
 
-  /* Ledger rows on right */
-  .ledger{
-    position:absolute;right:96px;top:200px;width:320px;z-index:20;
-    border-top:1px solid rgba(243,237,224,.18);
-  }
-  .ledger .row{
-    display:flex;justify-content:space-between;align-items:baseline;
-    padding:22px 0;border-bottom:1px solid rgba(243,237,224,.12);
-  }
-  .ledger .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.55)}
-  .ledger .val{font-family:var(--display);font-weight:500;font-size:42px;color:#f3ede0;letter-spacing:-.02em}
-  .ledger .val .it{font-style:italic;color:var(--signal);font-weight:400}
-  .ledger .val .small{font-family:var(--mono);font-size:14px;letter-spacing:.1em;color:var(--ochre-soft);font-style:normal;font-weight:400}
+  /* Discipline chips with pulse markers */
+  .chips{margin-top:38px;display:flex;flex-direction:column;gap:16px;max-width:440px}
+  .chip{display:flex;align-items:center;gap:16px;
+    font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+  .chip .pulse{flex:0 0 auto;width:12px;height:12px;border-radius:50%;background:var(--signal);
+    box-shadow:0 0 0 5px rgba(155,45,44,.12)}
+  .chip i{font-family:var(--display);font-style:italic;text-transform:none;letter-spacing:0;font-size:19px;color:var(--ink-mute);font-weight:400}
 
-  /* bar chart */
-  .bars{
-    position:absolute;left:96px;right:96px;bottom:200px;z-index:20;display:flex;align-items:end;gap:18px;height:240px;
+  .lede{
+    position:absolute;left:96px;bottom:150px;width:560px;z-index:34;
+    font-size:18px;line-height:1.62;color:rgba(10,19,38,.78);
   }
-  .bar{
-    flex:1;background:linear-gradient(180deg, rgba(212,172,110,.35), rgba(155,45,44,.25));
-    border-top:2px solid var(--ochre);position:relative;
-    box-shadow:0 -10px 30px rgba(212,172,110,.25);
-  }
-  .bar.b1{height:35%}.bar.b2{height:54%}.bar.b3{height:42%}.bar.b4{height:78%;background:linear-gradient(180deg,var(--signal),var(--signal-deep));border-top-color:var(--bone-soft);box-shadow:0 -10px 40px rgba(155,45,44,.5)}.bar.b5{height:62%}.bar.b6{height:48%}.bar.b7{height:30%}.bar.b8{height:88%}
-  .bar::after{content:"";position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(180deg, transparent, rgba(0,0,0,.3))}
+  .lede b{color:var(--ink);font-weight:600}
 
   .foot{
-    position:absolute;left:96px;right:96px;bottom:96px;display:flex;justify-content:space-between;z-index:24;
-    font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.6);
+    position:absolute;left:96px;bottom:92px;z-index:34;
+    font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-mute);
   }
-  .foot .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--signal);margin-right:10px;vertical-align:1px;box-shadow:0 0 10px var(--signal)}
+  .foot .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--signal);margin-right:10px;vertical-align:1px}
 </style>
 </head>
 <body>
   <div class="stage">
+    <div class="grid" aria-hidden></div>
+
+    <div class="ecg" aria-hidden>
+      <svg viewBox="0 0 1080 120" preserveAspectRatio="none" fill="none">
+        <path d="M0 60 H150 l14 0 l10 -34 l14 64 l12 -30 H360 l30 0 l8 -46 l16 84 l10 -38 H720 l20 0 l10 -30 l14 58 l12 -28 H1080"
+          stroke="#9b2d2c" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round" opacity=".5"/>
+      </svg>
+    </div>
+
+    <div class="photo" aria-hidden></div>
+    <div class="divider" aria-hidden></div>
     <div class="frame"></div>
 
     <div class="meta">
-      <span>Tabula · Lorem Ipsum · MMXXVI</span>
-      <span>VI / X · Datum II</span>
+      <span><span class="dot"></span>Public Service · Oregon HD28</span>
+      <span>File №<b>06</b> · Leadership</span>
     </div>
 
-    <div class="title">
-      <div class="eye">Auditus Publicus — File №06</div>
-      <h1>Lorem<br><span class="it">numerus</span><br>ipsum.</h1>
+    <div class="block">
+      <div class="eyebrow">A Record Of Responsibility</div>
+      <h1>A physician's<br>discipline<br>for <span class="it">Salem.</span></h1>
+      <div class="chips">
+        <div class="chip"><span class="pulse"></span>Listen&nbsp;<i>carefully</i></div>
+        <div class="chip"><span class="pulse"></span>Examine&nbsp;<i>the evidence</i></div>
+        <div class="chip"><span class="pulse"></span>Take&nbsp;<i>responsibility</i></div>
+      </div>
     </div>
 
-    <div class="ledger">
-      <div class="row"><span class="lbl">Lorem</span><span class="val">$0<span class="small">·00</span></span></div>
-      <div class="row"><span class="lbl">Ipsum</span><span class="val">47<span class="it">★</span></span></div>
-      <div class="row"><span class="lbl">Dolor sit</span><span class="val">12<span class="small">k+</span></span></div>
-      <div class="row"><span class="lbl">Amet</span><span class="val it">100%</span></div>
-    </div>
+    <p class="lede">
+      <b>Medicine taught Randall to listen carefully, examine the evidence, and take responsibility for the outcome.</b>
+      He is running to bring that same discipline to state government.
+    </p>
 
-    <div class="bars">
-      <div class="bar b1"></div><div class="bar b2"></div><div class="bar b3"></div>
-      <div class="bar b4"></div><div class="bar b5"></div><div class="bar b6"></div>
-      <div class="bar b7"></div><div class="bar b8"></div>
-    </div>
-
-    <div class="coin" aria-hidden>
-      <span class="num">$</span>
-    </div>
-
-    <div class="foot">
-      <span><span class="dot"></span>Apertus · Honestus · Publicus</span>
-      <span>Districtus XIV</span>
-    </div>
+    <div class="foot"><span class="dot"></span>Randall Fryer · Oregon House · HD 28</div>
   </div>
 </body>
 </html>

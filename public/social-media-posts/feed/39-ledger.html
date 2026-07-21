@@ -2,50 +2,72 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Feed 39 — Data Ledger</title>
+<title>Feed 39 — The People Pay The Bills</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bone:#f3ede0; --bone-soft:#ebe2cd; --bone-deep:#d8cdb1;
-    --ink:#0a1326; --ink-soft:#18223b; --ink-mute:#4b5364;
-    --signal:#9b2d2c; --signal-deep:#7a2422;
-    --ochre:#b58a4a; --ochre-soft:#d4ac6e;
-    --display:'Fraunces','Times New Roman',serif;
-    --sans:'Inter',system-ui,sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --bone:#f3ede0; --ink:#0a1326; --signal:#9b2d2c; --signal-deep:#7a2422; --gold:#e3bd6c; --sage:#4f6358;
+    --display:'Fraunces','Times New Roman',serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
-  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;color:var(--ink);font-family:var(--sans);box-shadow:0 60px 120px -40px rgba(0,0,0,.5)}
-.stage{background:radial-gradient(120% 90% at 70% 0%,#16203a 0%,#0a1326 60%,#060b18 100%);color:var(--bone)}
-  .grain{content:"";position:absolute;inset:0;z-index:60;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .85 0 0 0 .14 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.6}
-  .frame{position:absolute;inset:64px;border:1px solid rgba(243,237,224,.14);z-index:8}
-  .meta{position:absolute;left:104px;right:104px;top:104px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.6);z-index:20}
-  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b58a4a;box-shadow:0 0 0 5px rgba(181,138,74,.4);margin-right:10px;vertical-align:1px}
-  .coin{position:absolute;right:120px;top:200px;width:150px;height:150px;border-radius:50%;background:radial-gradient(50% 50% at 36% 30%,#f7e1bd,var(--ochre-soft) 40%,var(--ochre) 70%,#5a4221);box-shadow:0 20px 40px rgba(0,0,0,.5);z-index:16}
-  .coin::after{content:"$";position:absolute;inset:0;display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:70px;color:#3a2a12}
-  .h{position:absolute;left:104px;top:220px;font-family:var(--display);font-weight:500;font-size:80px;line-height:.98;letter-spacing:-.03em;color:var(--bone);z-index:16}
-  .h .it{font-style:italic;font-weight:400;color:var(--ochre-soft)}
-  .ledger{position:absolute;left:104px;right:104px;bottom:200px;z-index:16;display:flex;flex-direction:column;gap:22px}
-  .row{display:grid;grid-template-columns:230px 1fr 90px;align-items:center;gap:24px;border-top:1px solid rgba(243,237,224,.16);padding-top:20px}
-  .rl{font-family:var(--mono);font-size:14px;letter-spacing:.14em;text-transform:uppercase;color:rgba(243,237,224,.7)}
-  .bar{position:relative;height:12px;background:rgba(243,237,224,.1);border-radius:6px;overflow:hidden}
-  .bar span{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#6f5024,#b58a4a);border-radius:6px}
-  .rv{font-family:var(--display);font-size:34px;font-weight:500;text-align:right;color:var(--bone)}
-  .foot{position:absolute;left:104px;right:104px;bottom:104px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.55);z-index:20}
-  .foot .fdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#b58a4a;margin-right:10px;vertical-align:1px}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;font-family:var(--sans);color:var(--ink);box-shadow:0 60px 120px -40px rgba(0,0,0,.45);
+    background:radial-gradient(120% 100% at 25% 0%, #f6ecd4 0%, #ece0c4 55%, #dccca7 100%)}
+  .stage::before{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05 0 0 0 0 .1 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:multiply;opacity:.4}
+  .frame{position:absolute;inset:56px;border:1px solid rgba(10,19,38,.16);z-index:30;pointer-events:none}
+  .meta{position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#4b5364;z-index:34}
+  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--signal);vertical-align:1px;margin-right:10px}
+  .head{position:absolute;left:96px;top:220px;width:520px;z-index:34}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--signal-deep);display:inline-flex;align-items:center;gap:14px;margin-bottom:26px}
+  .eyebrow::before{content:"";display:block;width:44px;height:1px;background:var(--signal-deep)}
+  h1{font-family:var(--display);font-weight:600;font-size:80px;line-height:.96;letter-spacing:-.03em;color:var(--ink);margin-bottom:26px}
+  h1 .it{font-style:italic;font-weight:500;color:var(--signal-deep)}
+  .body{max-width:440px;font-size:18px;line-height:1.6;color:rgba(10,19,38,.78)}
+  .body b{color:var(--ink);font-weight:600}
+  /* Budget paper still-life */
+  .papers{position:absolute;right:80px;bottom:150px;width:440px;height:560px;z-index:12}
+  .sheet{position:absolute;background:#fbf6ea;border:1px solid rgba(10,19,38,.14);border-radius:6px;box-shadow:0 24px 40px rgba(10,19,38,.2);padding:26px 28px}
+  .s-back{right:0;top:20px;width:360px;height:460px;transform:rotate(5deg);background:#f2ead6}
+  .s-front{left:0;bottom:0;width:380px;height:470px;transform:rotate(-3deg)}
+  .s-front .t{font-family:var(--display);font-weight:600;font-size:24px;color:var(--ink);margin-bottom:6px}
+  .s-front .sub{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:#8a7a56;margin-bottom:20px}
+  .li{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(10,19,38,.1);font-family:var(--mono);font-size:13px;color:rgba(10,19,38,.7)}
+  .li .amt{color:var(--ink);font-weight:500}
+  .total{display:flex;justify-content:space-between;align-items:baseline;margin-top:16px;padding-top:12px;border-top:2px solid var(--signal-deep);font-family:var(--display);font-weight:600;font-size:24px;color:var(--signal-deep)}
+  .pen{position:absolute;right:-10px;bottom:60px;width:230px;height:14px;border-radius:4px;transform:rotate(-24deg);background:linear-gradient(90deg,#18223b 0 70%, #b58a4a 70% 86%, #f3ede0 86%);box-shadow:0 12px 18px rgba(10,19,38,.25);z-index:2}
+  .stamp{position:absolute;right:60px;top:0;width:110px;height:110px;border-radius:50%;border:3px solid rgba(122,36,34,.55);display:grid;place-items:center;transform:rotate(-14deg);
+    font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:rgba(122,36,34,.7);text-align:center;z-index:3}
+  .foot{position:absolute;left:96px;bottom:96px;z-index:34;font-family:var(--mono);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--signal-deep)}
+  .foot b{color:var(--ink)}
 </style>
 </head>
 <body>
   <div class="stage">
-    <div class="grain"></div>
-<div class="frame"></div><div class="meta"><span><span class="dot"></span>Districtus XIV · Primary MMXXVI</span><span>File №39</span></div>
-    <div class="coin"></div>
-    <h1 class="h">Lorem<br><span class="it">ledger</span> data.</h1>
-    <div class="ledger"><div class="row"><span class="rl">Lorem ipsum</span><span class="bar"><span style="width:31%"></span></span><span class="rv">31%</span></div><div class="row"><span class="rl">Dolor amet</span><span class="bar"><span style="width:44%"></span></span><span class="rv">44%</span></div><div class="row"><span class="rl">Consectetur</span><span class="bar"><span style="width:57%"></span></span><span class="rv">57%</span></div><div class="row"><span class="rl">Adipiscing</span><span class="bar"><span style="width:70%"></span></span><span class="rv">70%</span></div><div class="row"><span class="rl">Tempor labore</span><span class="bar"><span style="width:83%"></span></span><span class="rv">83%</span></div></div>
-    <div class="foot"><span><span class="fdot"></span>Vox Populi</span><span>V / XXVI</span></div>
+    <div class="frame"></div>
+    <div class="meta"><span><span class="dot"></span>Taxpayer · Transparency</span><span>File №39</span></div>
+    <div class="head">
+      <div class="eyebrow">Government Accountability</div>
+      <h1>The people pay the bills. They deserve <span class="it">answers.</span></h1>
+      <div class="body"><b>Every dollar comes from someone who worked hard to earn it.</b> Randall believes taxpayers deserve transparency, honesty, and measurable results.</div>
+    </div>
+    <div class="papers" aria-hidden>
+      <div class="sheet s-back"></div>
+      <div class="sheet s-front">
+        <div class="t">Public Budget</div>
+        <div class="sub">District 28 · Fiscal Summary</div>
+        <div class="li"><span>Schools</span><span class="amt">— — —</span></div>
+        <div class="li"><span>Public Safety</span><span class="amt">— — —</span></div>
+        <div class="li"><span>Roads</span><span class="amt">— — —</span></div>
+        <div class="li"><span>Services</span><span class="amt">— — —</span></div>
+        <div class="total"><span>Answerable</span><span>100%</span></div>
+      </div>
+      <div class="stamp">AUDIT<br>READY</div>
+      <div class="pen"></div>
+    </div>
+    <div class="foot">Demand <b>accountability</b></div>
   </div>
 </body>
 </html>
