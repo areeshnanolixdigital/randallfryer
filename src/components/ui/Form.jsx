@@ -1,9 +1,30 @@
 "use client";
 
+import Link from "next/link";
 import { cn } from "@/lib/cn";
 
+/**
+ * Standard legal line shown below every form's submit button.
+ * Links route to the Terms (/terms) and Privacy (/privacy) pages.
+ */
+export function FormDisclaimer({ className }) {
+  return (
+    <p className={cn("text-[12px] leading-relaxed text-ink-mute", className)}>
+      By submitting you agree to the{" "}
+      <Link href="/terms" className="link-underline hover:text-ink">
+        Terms of Service
+      </Link>{" "}
+      and{" "}
+      <Link href="/privacy" className="link-underline hover:text-ink">
+        Privacy Policy
+      </Link>
+      .
+    </p>
+  );
+}
+
 const baseField =
-  "block w-full rounded-soft border border-ink/20 bg-bone/80 px-4 py-3.5 font-sans text-[15px] text-ink placeholder:text-ink-mute transition-colors duration-300 focus:border-ink focus:bg-bone focus:outline-none focus:ring-2 focus:ring-ink/20";
+  "block w-full rounded-soft border border-ink/20 bg-bone/80 px-4 py-3.5 font-sans text-[15px] text-ink transition-colors duration-300 focus:border-ink focus:bg-bone focus:outline-none focus:ring-2 focus:ring-ink/20";
 
 export function FormLabel({ htmlFor, children, optional = false, required = false }) {
   return (
@@ -29,8 +50,10 @@ export function FormField({
   required = false,
   optional = false,
   placeholder,
+  error,
   ...props
 }) {
+  const errorId = error ? `${id}-error` : undefined;
   return (
     <div className="flex flex-col">
       {label && <FormLabel htmlFor={id} optional={optional} required={required}>{label}</FormLabel>}
@@ -40,10 +63,79 @@ export function FormField({
         type={type}
         required={required}
         placeholder={placeholder}
-        className={baseField}
+        aria-invalid={error ? true : undefined}
+        aria-describedby={errorId}
+        className={cn(
+          baseField,
+          error &&
+            "border-signal focus:border-signal focus:ring-signal/25"
+        )}
         {...props}
       />
+      {error && (
+        <p
+          id={errorId}
+          role="alert"
+          className="mt-2 font-mono text-[10px] uppercase tracking-[0.22em] text-signal-deep"
+        >
+          {error}
+        </p>
+      )}
     </div>
+  );
+}
+
+// US 5-digit ZIP code. Shared by every form that collects a ZIP.
+export const ZIP_PATTERN = /^\d{5}$/;
+
+/** Keep digits only, capped at 5 — used for live input restriction. */
+export function sanitizeZip(value) {
+  return (value || "").replace(/\D/g, "").slice(0, 5);
+}
+
+/**
+ * Returns an inline error string ("" when valid).
+ * Optional fields pass when empty; any non-empty value must be exactly 5 digits.
+ */
+export function validateZip(value, { required = false } = {}) {
+  const v = (value || "").trim();
+  if (!v) return required ? "Enter a 5-digit ZIP code." : "";
+  return ZIP_PATTERN.test(v) ? "" : "Enter a 5-digit ZIP code.";
+}
+
+/**
+ * ZIP field: restricts typing to 5 numeric digits and shows an inline error.
+ * Controlled — pass `value` (string) and `onChange` (receives the digits string).
+ */
+export function FormZip({
+  id,
+  name,
+  label = "ZIP code",
+  required = false,
+  optional = false,
+  value,
+  onChange,
+  error,
+  ...props
+}) {
+  return (
+    <FormField
+      id={id}
+      name={name}
+      label={label}
+      type="text"
+      inputMode="numeric"
+      autoComplete="postal-code"
+      maxLength={5}
+      pattern="\d{5}"
+      placeholder="12345"
+      required={required}
+      optional={optional}
+      value={value}
+      onChange={(e) => onChange(sanitizeZip(e.target.value))}
+      error={error}
+      {...props}
+    />
   );
 }
 

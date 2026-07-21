@@ -9,10 +9,13 @@ import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 import {
   FormField,
+  FormZip,
   FormSelect,
   FormTextarea,
   FormCheckbox,
   FormFieldset,
+  FormDisclaimer,
+  validateZip,
 } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import BrandIcon from "@/components/ui/BrandIcon";
@@ -86,6 +89,15 @@ const OREGON_COUNTIES = [
   "Wheeler", "Yamhill",
 ];
 
+// Populate with the real Volunteer Coordinator details to reveal the contact
+// block below. Leave any value empty (or "To be announced") to keep the entire
+// section hidden until the information is ready.
+const COORDINATOR_CONTACT = [
+  { k: "Volunteer coordinator", v: "" },
+  { k: "Call or text", v: "" },
+  { k: "Email", v: "" },
+].filter((c) => c.v && c.v.trim() && c.v.trim().toLowerCase() !== "to be announced");
+
 export default function VolunteerPage() {
   return (
     <main className="relative flex flex-1 flex-col">
@@ -121,7 +133,7 @@ export default function VolunteerPage() {
                   {v.no}
                 </span>
               </div>
-              <h3 className="display-serif text-2xl font-medium leading-tight">
+              <h3 className="display-serif flex min-h-[2.5em] items-start text-2xl font-medium leading-tight">
                 {v.title}
               </h3>
               <p className="text-[15px] leading-relaxed text-ink/75">
@@ -211,52 +223,50 @@ export default function VolunteerPage() {
         </ol>
       </SectionFrame>
 
-      {/* CONTACT BLOCK */}
-      <SectionFrame label="05 — Talk to a coordinator" number="Contact / V">
-        <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
-          <div className="col-span-12 lg:col-span-7">
-            <SplitReveal
-              as="h2"
-              className="display-serif block text-balance text-[clamp(1.7rem,3.5vw,2.85rem)] font-medium leading-[1.05] tracking-[-0.02em]"
-            >
-              Prefer to talk to a person first?
-            </SplitReveal>
-            <m.p
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/80"
-            >
-              Questions are welcome. Contact the campaign&rsquo;s volunteer
-              coordinator to learn more about available roles,
-              accessibility, scheduling, or what to expect during your
-              first volunteer activity.
-            </m.p>
+      {/* CONTACT BLOCK — hidden until the coordinator's details are populated */}
+      {COORDINATOR_CONTACT.length > 0 && (
+        <SectionFrame label="05 — Talk to a coordinator" number="Contact / V">
+          <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
+            <div className="col-span-12 lg:col-span-7">
+              <SplitReveal
+                as="h2"
+                className="display-serif block text-balance text-[clamp(1.7rem,3.5vw,2.85rem)] font-medium leading-[1.05] tracking-[-0.02em]"
+              >
+                Prefer to talk to a person first?
+              </SplitReveal>
+              <m.p
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.9, delay: 0.2 }}
+                className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/80"
+              >
+                Questions are welcome. Contact the campaign&rsquo;s volunteer
+                coordinator to learn more about available roles,
+                accessibility, scheduling, or what to expect during your
+                first volunteer activity.
+              </m.p>
+            </div>
+            <div className="col-span-12 lg:col-span-5">
+              <dl className="flex flex-col gap-4">
+                {COORDINATOR_CONTACT.map((c) => (
+                  <div
+                    key={c.k}
+                    className="flex flex-col gap-1 border-t border-ink/15 pt-4"
+                  >
+                    <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
+                      {c.k}
+                    </dt>
+                    <dd className="display-serif text-lg font-medium leading-tight text-ink/70">
+                      {c.v}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
           </div>
-          <div className="col-span-12 lg:col-span-5">
-            <dl className="flex flex-col gap-4">
-              {[
-                { k: "Volunteer coordinator", v: "To be announced" },
-                { k: "Call or text", v: "To be announced" },
-                { k: "Email", v: "To be announced" },
-              ].map((c) => (
-                <div
-                  key={c.k}
-                  className="flex flex-col gap-1 border-t border-ink/15 pt-4"
-                >
-                  <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-                    {c.k}
-                  </dt>
-                  <dd className="display-serif text-lg font-medium leading-tight text-ink/70">
-                    {c.v}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        </div>
-      </SectionFrame>
+        </SectionFrame>
+      )}
     </main>
   );
 }
@@ -264,11 +274,14 @@ export default function VolunteerPage() {
 function VolunteerForm() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState("");
+  const [zip, setZip] = useState("");
+  const [zipError, setZipError] = useState("");
   const pc = usePhoneConsent();
 
   async function handleSubmit(e) {
     e.preventDefault();
     setErrorMsg("");
+    setZipError("");
 
     const data = new FormData(e.currentTarget);
     const helpOptions = HELP_OPTIONS.filter(
@@ -280,7 +293,7 @@ function VolunteerForm() {
       lastName: (data.get("lastName") || "").toString().trim(),
       email: (data.get("email") || "").toString().trim(),
       phone: pc.phone,
-      zipCode: (data.get("zipCode") || "").toString().trim(),
+      zipCode: zip.trim(),
       county: (data.get("county") || "").toString(),
       region: (data.get("region") || "").toString(),
       registeredVoter: (data.get("registeredVoter") || "").toString(),
@@ -297,6 +310,13 @@ function VolunteerForm() {
     if (!payload.firstName || !payload.lastName || !emailOk) {
       setStatus("error");
       setErrorMsg("Please add your first and last name and a valid email.");
+      return;
+    }
+    const zipErr = validateZip(zip, { required: false });
+    if (zipErr) {
+      setZipError(zipErr);
+      setStatus("error");
+      setErrorMsg("Please enter a valid 5-digit ZIP code.");
       return;
     }
     if (
@@ -385,7 +405,18 @@ function VolunteerForm() {
         />
       </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <FormField id="v-zip" name="zipCode" label="ZIP code" optional />
+        <FormZip
+          id="v-zip"
+          name="zipCode"
+          label="ZIP code"
+          optional
+          value={zip}
+          onChange={(v) => {
+            setZip(v);
+            if (zipError) setZipError("");
+          }}
+          error={zipError}
+        />
         <FormSelect
           id="v-county"
           name="county"
@@ -478,12 +509,9 @@ function VolunteerForm() {
         >
           {submitting ? "Sending…" : "Join the team"}
         </Button>
-        <span className="text-[13px] leading-relaxed text-ink/60">
-          We respect your privacy. Your information will be used for
-          campaign communications and volunteer coordination in accordance
-          with the campaign&rsquo;s Privacy Policy.
-        </span>
       </div>
+
+      <FormDisclaimer />
     </form>
   );
 }

@@ -165,7 +165,7 @@ export default function SocialMediaPostsPage() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search creatives…"
-              className="w-full bg-transparent font-mono text-[12px] uppercase tracking-[0.18em] text-ink placeholder:text-ink-mute focus:outline-none"
+              className="w-full bg-transparent font-mono text-[12px] uppercase tracking-[0.18em] text-ink focus:outline-none"
             />
             {query && (
               <button

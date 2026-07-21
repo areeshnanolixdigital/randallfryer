@@ -112,31 +112,33 @@ export default function PlatformPage() {
 
       {/* DETAILED PILLARS */}
       {PILLARS.map((p, i) => {
-        const accentBg =
-          p.accent === "signal"
-            ? "bg-signal"
-            : p.accent === "ochre"
-            ? "bg-ochre"
-            : "bg-ink";
+        // Single, consistent accent for every pillar — the circle, the number,
+        // and the bullet markers all read as one system.
+        const accentBg = "bg-ink";
         return (
           <SectionFrame
             key={p.no}
-            label={`0${i + 3} — Pillar ${p.no}`}
+            label={`Pillar ${p.no}`}
             number={`Detail / ${["III", "IV", "V"][i]}`}
           >
             <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
               <div className="col-span-12 lg:col-span-5">
-                <m.span
-                  initial={{ scale: 0, opacity: 0 }}
-                  whileInView={{ scale: 1, opacity: 1 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 0.1 }}
-                  className={`inline-grid h-14 w-14 place-items-center rounded-full text-bone ${accentBg}`}
-                >
-                  <span className="font-mono text-[12px] uppercase tracking-[0.2em]">
-                    {p.no}
-                  </span>
-                </m.span>
+                {/* Block wrapper keeps the number circle on its own row, above
+                    the heading, on every pillar — SplitReveal renders the H2 as
+                    inline-block, so an inline circle would otherwise sit beside it. */}
+                <div>
+                  <m.span
+                    initial={{ scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, amount: 0.5 }}
+                    transition={{ duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 0.1 }}
+                    className={`inline-grid h-14 w-14 place-items-center rounded-full text-bone ${accentBg}`}
+                  >
+                    <span className="font-mono text-[12px] uppercase tracking-[0.2em]">
+                      {p.no}
+                    </span>
+                  </m.span>
+                </div>
                 <SplitReveal
                   as="h2"
                   className="display-serif mt-6 block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"

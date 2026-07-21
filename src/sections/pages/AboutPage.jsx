@@ -10,6 +10,7 @@ import SplitReveal from "@/animations/SplitReveal";
 import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 import BrandIcon from "@/components/ui/BrandIcon";
+import { DONATE_URL } from "@/constants/site";
 
 const BIO_BLOCKS = [
   {
@@ -109,7 +110,7 @@ export default function AboutPage() {
       {/* Core values */}
       <SectionFrame
         label="05 — The Agenda"
-        number="Priorities / III"
+        number="Priorities / V"
       >
         <div className="grid grid-cols-12 items-end gap-y-6 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
@@ -152,7 +153,7 @@ export default function AboutPage() {
                   <BrandIcon name={v.icon} className="h-5 w-5" />
                 </span>
               </div>
-              <h3 className="display-serif text-2xl font-medium leading-tight">
+              <h3 className="display-serif flex min-h-[2.5em] items-start text-2xl font-medium leading-tight">
                 {v.title}
               </h3>
               <p className="text-[15px] leading-relaxed text-ink/75">
@@ -167,7 +168,7 @@ export default function AboutPage() {
       <Journey />
 
       {/* Closing CTA */}
-      <SectionFrame label="05 — Get involved" number="Together / V">
+      <SectionFrame label="07 — Get involved" number="Together / VII">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal
@@ -196,7 +197,13 @@ export default function AboutPage() {
             <Button as={Link} href="/volunteer" variant="primary" withArrow>
               Volunteer
             </Button>
-            <Button as={Link} href="/donate" variant="signal" withArrow>
+            <Button
+              href={DONATE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="signal"
+              withArrow
+            >
               Donate
             </Button>
           </div>
@@ -307,7 +314,7 @@ function Journey() {
 
   return (
     <div ref={wrap}>
-      <SectionFrame label="04 — The Journey" number="Timeline / IV">
+      <SectionFrame label="06 — The Journey" number="Timeline / VI">
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-5">
             <SplitReveal

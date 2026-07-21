@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, m, useScroll, useTransform, useSpring } from "motion/react";
 import { cn } from "@/lib/cn";
+import { DONATE_URL } from "@/constants/site";
 
 const NAV_LINKS = [
   { label: "About", href: "/about" },
@@ -104,15 +105,17 @@ export default function Navbar() {
             </nav>
 
             <div className="flex items-center gap-2 sm:gap-3">
-              <Link
-                href="/donate"
+              <a
+                href={DONATE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group relative hidden items-center gap-2 overflow-hidden rounded-pill bg-signal px-5 py-2.5 font-mono text-[11px] uppercase tracking-[0.24em] text-bone transition-colors hover:bg-ink sm:inline-flex"
               >
                 <span className="relative z-10 flex items-center gap-2">
                   Donate
                   <span className="block h-1.5 w-1.5 rounded-full bg-bone/90" />
                 </span>
-              </Link>
+              </a>
 
               <button
                 type="button"
@@ -213,18 +216,20 @@ function MobileMenu({ close }) {
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.45 }}
           className="mt-10 flex gap-3"
         >
-          <Link
-            href="/donate"
+          <a
+            href={DONATE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={close}
             className="inline-flex flex-1 items-center justify-center rounded-pill bg-signal px-5 py-3 font-mono text-[11px] uppercase tracking-[0.22em] text-bone"
           >
             Donate
-          </Link>
+          </a>
         </m.div>
 
         <div className="mt-auto pb-10 pt-12">
           <p className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-            Paid for by [Registered Campaign Committee Name]
+            Paid for by Randall Fryer For Representative
           </p>
         </div>
       </m.div>

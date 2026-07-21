@@ -73,7 +73,7 @@ export default function Countdown() {
           </m.p>
 
           <div className="mt-10 flex flex-wrap items-center gap-4">
-            <Button as={Link} href="/contact" variant="bone" withArrow>
+            <Button as={Link} href="#newsletter" variant="bone" withArrow>
               Get election updates
             </Button>
           </div>

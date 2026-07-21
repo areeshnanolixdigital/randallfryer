@@ -2,7 +2,7 @@ import LegalPage from "@/sections/pages/LegalPage";
 
 export const metadata = {
   title: "Privacy",
-  description: "How CapitalWatch handles your information.",
+  description: "How Randall Fryer For Representative handles your information.",
 };
 
 const SECTIONS = [
@@ -10,7 +10,7 @@ const SECTIONS = [
     id: "what-we-collect",
     title: "What we collect",
     body: [
-      "When you submit a form on capitalwatch.vote — volunteering, donating, asking a question, or signing up for the briefing — we collect only what the form asks for. Common fields include your name, email, zip code, phone number, and the message you sent us.",
+      "When you submit a form on randallfororegon.com — volunteering, donating, asking a question, or signing up for the briefing — we collect only what the form asks for. Common fields include your name, email, zip code, phone number, and the message you sent us.",
       "Donation forms additionally collect employer and occupation as required by federal law.",
       "Like most websites, our hosting provider logs the IP address, browser, and pages requested for security and analytics. These logs are retained for 30 days, then deleted.",
     ],
@@ -43,7 +43,7 @@ const SECTIONS = [
     id: "your-rights",
     title: "Your rights",
     body: [
-      "You can request a copy of any information we hold about you, ask us to delete it, or correct anything that is wrong. Email privacy@capitalwatch.vote and we will respond within 30 days.",
+      "You can request a copy of any information we hold about you, ask us to delete it, or correct anything that is wrong. Email [PLACEHOLDER — privacy contact email] and we will respond within 30 days.",
       "If your donation is publicly disclosed under FEC rules, we cannot remove the public disclosure — but we can confirm exactly what was reported and when.",
     ],
   },
@@ -51,7 +51,7 @@ const SECTIONS = [
     id: "contact",
     title: "Contact",
     body: [
-      "Questions about this notice can be sent to privacy@capitalwatch.vote or to: Friends of Adrian Vale, 412 Harbor Ave, Suite 4, Harborlight, OR 97206.",
+      "Questions about this notice can be sent to [PLACEHOLDER — privacy contact email] or to: Randall Fryer For Representative, [PLACEHOLDER — mailing address].",
     ],
   },
 ];
@@ -63,7 +63,7 @@ export default function Page() {
       number="Legal / XI"
       title="Privacy notice."
       updated="April 12, 2026"
-      intro="CapitalWatch collects the minimum information needed to run a campaign, never sells what we collect, and follows federal disclosure rules for donations only where required by law."
+      intro="Randall Fryer For Representative collects the minimum information needed to run a campaign, never sells what we collect, and follows federal disclosure rules for donations only where required by law."
       sections={SECTIONS}
     />
   );
