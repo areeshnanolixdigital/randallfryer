@@ -8,7 +8,7 @@ import { gsap, useGSAP } from "@/animations/gsap";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import Button from "@/components/ui/Button";
-import { FormField } from "@/components/ui/Form";
+import { FormField, FormDisclaimer } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import { getRelated } from "@/data/events";
 
@@ -482,13 +482,7 @@ function RSVPForm({ event }) {
         </span>
       </div>
 
-      <p className="text-[12px] leading-relaxed text-ink-mute">
-        We use this only to confirm your RSVP. See our{" "}
-        <Link href="/privacy" className="link-underline hover:text-ink">
-          privacy notice
-        </Link>{" "}
-        for how we handle this information.
-      </p>
+      <FormDisclaimer />
     </m.form>
   );
 }

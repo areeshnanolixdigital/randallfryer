@@ -6,6 +6,7 @@ import Link from "next/link";
 import { m, useScroll, useTransform } from "motion/react";
 import SplitReveal from "@/animations/SplitReveal";
 import Button from "@/components/ui/Button";
+import { DONATE_URL } from "@/constants/site";
 
 const NAV_GROUPS = [
   {
@@ -21,27 +22,26 @@ const NAV_GROUPS = [
     title: "Get Involved",
     links: [
       { label: "Volunteer", href: "/volunteer" },
-      { label: "Donate", href: "/donate" },
+      { label: "Donate", href: DONATE_URL },
       { label: "Events", href: "/events" },
       { label: "Ask Randall", href: "/ask" },
-      { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Contact",
     links: [
-      { label: "Oregon House District 28", href: "/contact", external: false },
       { label: "Send a message", href: "/contact", external: false },
     ],
   },
 ];
 
+// Only Facebook is live for now — other handles stay hidden until they exist.
 const SOCIALS = [
-  { name: "Facebook", href: "#", Icon: FacebookIcon },
-  { name: "Instagram", href: "#", Icon: InstagramIcon },
-  { name: "X (Twitter)", href: "#", Icon: XIcon },
-  { name: "LinkedIn", href: "#", Icon: LinkedInIcon },
-  { name: "YouTube", href: "#", Icon: YouTubeIcon },
+  {
+    name: "Facebook",
+    href: "https://www.facebook.com/share/1EHvaKg7i5/",
+    Icon: FacebookIcon,
+  },
 ];
 
 export default function Footer() {
@@ -69,6 +69,18 @@ export default function Footer() {
             >
               Be part of the change.
             </SplitReveal>
+            <m.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mt-6 max-w-xl text-balance text-base leading-relaxed text-ink/75 sm:text-lg"
+            >
+              Randall Fryer is running to restore educational excellence,
+              reduce the burden on working families, strengthen Oregon&rsquo;s
+              business climate, support safer communities, and bring greater
+              accountability to Salem.
+            </m.p>
           </div>
           <m.div
             initial={{ opacity: 0, y: 20 }}
@@ -77,17 +89,17 @@ export default function Footer() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="col-span-12 lg:col-span-5"
           >
-            <p className="max-w-md text-balance text-base leading-relaxed text-ink/75 sm:text-lg">
-              Randall Fryer is running to restore educational excellence,
-              reduce the burden on working families, strengthen Oregon&rsquo;s
-              business climate, support safer communities, and bring greater
-              accountability to Salem.
-            </p>
-            <div className="mt-6 flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3 lg:justify-end">
               <Button as={Link} href="/volunteer" variant="primary" withArrow>
                 Volunteer
               </Button>
-              <Button as={Link} href="/donate" variant="signal" withArrow>
+              <Button
+                href={DONATE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="signal"
+                withArrow
+              >
                 Donate
               </Button>
             </div>
@@ -95,7 +107,10 @@ export default function Footer() {
         </m.div>
 
         {/* NEWSLETTER ROW */}
-        <div className="mt-16 grid grid-cols-12 items-end gap-y-8 border-t border-ink/15 pt-12 lg:gap-x-12">
+        <div
+          id="newsletter"
+          className="mt-16 grid scroll-mt-24 grid-cols-12 items-end gap-y-8 border-t border-ink/15 pt-12 lg:gap-x-12"
+        >
           <div className="col-span-12 lg:col-span-5">
             <span className="eyebrow">Join our campaign</span>
             <p className="mt-3 max-w-md text-balance text-xl leading-tight text-ink/85 sm:text-2xl">
@@ -168,7 +183,7 @@ export default function Footer() {
         {/* LEGAL */}
         <div className="mt-6 grid grid-cols-12 items-center gap-y-2 lg:gap-x-8">
           <p className="col-span-12 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute lg:col-span-6">
-            Paid for by [Registered Campaign Committee Name]
+            Paid for by Randall Fryer For Representative
           </p>
           <div className="col-span-12 flex flex-wrap items-center gap-x-5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute lg:col-span-6 lg:justify-end">
             <Link href="/privacy" className="link-underline hover:text-ink">
@@ -217,11 +232,13 @@ export default function Footer() {
 }
 
 function FooterLink({ href, children }) {
+  const isHttp = /^https?:/.test(href);
   const isExternal = /^(mailto:|tel:|https?:)/.test(href);
   const Comp = isExternal ? "a" : Link;
   return (
     <Comp
       href={href}
+      {...(isHttp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="group/link relative inline-block text-[15px] leading-snug text-ink/80 transition-colors duration-300 hover:text-ink"
     >
       <span className="relative inline-block overflow-hidden align-top">
@@ -243,6 +260,8 @@ function SocialIcon({ href, ariaLabel, children }) {
   return (
     <a
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       aria-label={ariaLabel}
       className="group/soc relative grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-ink/15 text-ink transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-ink"
     >
@@ -310,15 +329,30 @@ function YouTubeIcon() {
 
 function SignupForm() {
   const [val, setVal] = useState("");
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState("idle"); // idle | submitting | success | error
+  const sent = status === "success";
+  const submitting = status === "submitting";
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!val || submitting) return;
+    setStatus("submitting");
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: val.trim() }),
+      });
+      if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      setStatus("success");
+    } catch (err) {
+      setStatus("error");
+    }
+  }
 
   return (
     <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (!val) return;
-        setSent(true);
-      }}
+      onSubmit={handleSubmit}
       className="group relative flex w-full flex-col gap-3 sm:flex-row sm:items-stretch"
     >
       <label htmlFor="signup-email" className="sr-only">
@@ -330,23 +364,36 @@ function SignupForm() {
           type="email"
           required
           value={val}
-          onChange={(e) => setVal(e.target.value)}
+          onChange={(e) => {
+            setVal(e.target.value);
+            if (status === "error" || status === "success") setStatus("idle");
+          }}
           placeholder="you@email.com"
-          className="w-full rounded-pill border border-ink/25 bg-bone px-6 py-4 font-sans text-base text-ink placeholder:text-ink-mute focus:border-ink focus:outline-none"
+          className="w-full rounded-pill border border-ink/25 bg-bone px-6 py-4 font-sans text-base text-ink focus:border-ink focus:outline-none"
         />
+        {status === "error" && (
+          <p
+            role="alert"
+            className="mt-2 pl-6 font-mono text-[10px] uppercase tracking-[0.22em] text-signal-deep"
+          >
+            Something went wrong — please try again.
+          </p>
+        )}
       </div>
       <button
         type="submit"
-        className="group/btn relative inline-flex items-center justify-center overflow-hidden rounded-pill bg-ink px-7 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-bone transition-colors duration-500 hover:bg-signal"
+        disabled={submitting}
+        aria-busy={submitting}
+        className="group/btn relative inline-flex items-center justify-center overflow-hidden rounded-pill bg-ink px-7 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-bone transition-colors duration-500 hover:bg-signal disabled:opacity-70"
       >
         <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:-translate-y-[200%]">
-          {sent ? "Subscribed" : "Subscribe"}
+          {sent ? "Subscribed" : submitting ? "Sending…" : "Subscribe"}
         </span>
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 flex translate-y-full items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-y-0"
         >
-          {sent ? "Subscribed" : "Subscribe"}
+          {sent ? "Subscribed" : submitting ? "Sending…" : "Subscribe"}
         </span>
       </button>
     </form>

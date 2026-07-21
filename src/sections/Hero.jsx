@@ -7,6 +7,7 @@ import { gsap, useGSAP, SplitText, ScrollTrigger } from "@/animations/gsap";
 import Button from "@/components/ui/Button";
 import Counter from "@/components/ui/Counter";
 import Image from "next/image";
+import { DONATE_URL } from "@/constants/site";
 
 const HEADLINE_LINES = ["A Stronger Oregon.", "A Better Tomorrow."];
 
@@ -125,7 +126,7 @@ export default function Hero() {
       ref={heroRef}
       className="relative isolate overflow-hidden pt-[88px]"
     >
-      <div ref={container} className="container-padded relative pb-24 pt-12 sm:pb-32 sm:pt-20 lg:pt-28">
+      <div ref={container} className="container-padded relative pb-12 pt-12 sm:pb-16 sm:pt-20 lg:pt-28">
         {/* Decorative corner frame */}
         <div className="pointer-events-none absolute inset-0">
           <span className="hero-corner absolute left-0 right-0 top-0 h-px origin-left bg-ink/15" />
@@ -191,7 +192,13 @@ export default function Hero() {
                 </Button>
               </div>
               <div className="hero-cta">
-                <Button as={Link} href="/donate" variant="outline" withArrow>
+                <Button
+                  href={DONATE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="outline"
+                  withArrow
+                >
                   Donate
                 </Button>
               </div>
@@ -233,7 +240,7 @@ export default function Hero() {
         </div>
 
         {/* Campaign snapshot — full-width row */}
-        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-8 border-t border-ink/15 pt-8 sm:mt-16 sm:grid-cols-4">
+        <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-ink/15 pt-8 sm:mt-12 sm:grid-cols-4">
           {[
             { value: 20, suffix: "+ Years", label: "Serving patients and communities" },
             { value: 3, suffix: " Core Reforms", label: "Education, taxes, and Oregon's business climate" },
@@ -242,14 +249,14 @@ export default function Hero() {
           ].map((stat) => (
             <div key={stat.label} className="hero-meta">
               <span aria-hidden className="mb-3 block h-[2px] w-6 bg-ochre" />
-              <div className="display-serif text-xl font-medium tracking-tight sm:text-2xl">
+              <div className="display-serif text-2xl font-medium tracking-tight sm:text-3xl">
                 <Counter
                   value={stat.value}
                   prefix={stat.prefix || ""}
                   suffix={stat.suffix || ""}
                 />
               </div>
-              <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute">
+              <div className="mt-2 font-mono text-[11px] uppercase tracking-[0.2em] text-ink-mute sm:text-xs">
                 {stat.label}
               </div>
             </div>

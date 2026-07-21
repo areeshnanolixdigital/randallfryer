@@ -71,6 +71,16 @@ export function getComplianceWebhookUrl() {
   return "https://services.leadconnectorhq.com/hooks/YUHTArRDeS9UlcCEkopg/webhook-trigger/JBKPbCUsyHCQmzKFHTcG";
 }
 
+/**
+ * Newsletter / email-signup workflow webhook — Randall Fryer's own GHL location.
+ * Drives the newsletter subscribe form in the site footer.
+ * Override with GHL_HOOK_NEWSLETTER (full URL).
+ */
+export function getNewsletterWebhookUrl() {
+  if (process.env.GHL_HOOK_NEWSLETTER) return process.env.GHL_HOOK_NEWSLETTER;
+  return "https://services.leadconnectorhq.com/hooks/YUHTArRDeS9UlcCEkopg/webhook-trigger/2e3a4413-ffd6-4f94-bdb9-d2f650337574";
+}
+
 /** POST a JSON payload to a GHL webhook trigger URL. Returns the fetch Response. */
 export async function forwardToGhl(url, payload) {
   return fetch(url, {

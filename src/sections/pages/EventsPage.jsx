@@ -8,6 +8,7 @@ import SplitReveal from "@/animations/SplitReveal";
 import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 import { EVENTS } from "@/data/events";
+import { DONATE_URL } from "@/constants/site";
 
 export default function EventsPage() {
   const now = Date.now();
@@ -72,7 +73,7 @@ export default function EventsPage() {
             </m.p>
           </div>
           <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
-            <Button as={Link} href="/volunteer" variant="primary" withArrow>
+            <Button as={Link} href="#newsletter" variant="primary" withArrow>
               Get notified
             </Button>
             <Button as={Link} href="/contact" variant="outline" withArrow>
@@ -110,7 +111,13 @@ export default function EventsPage() {
             <Button as={Link} href="/volunteer" variant="primary" withArrow>
               Volunteer
             </Button>
-            <Button as={Link} href="/donate" variant="signal" withArrow>
+            <Button
+              href={DONATE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="signal"
+              withArrow
+            >
               Donate
             </Button>
           </div>

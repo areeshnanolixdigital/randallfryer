@@ -1,14 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { m } from "motion/react";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 import BrandIcon from "@/components/ui/BrandIcon";
-import { FormField, FormTextarea } from "@/components/ui/Form";
+import { FormField, FormTextarea, FormDisclaimer } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 
 const TOPICS = [
@@ -69,7 +68,7 @@ export default function ContactPage() {
                   0{i + 1}
                 </span>
               </div>
-              <h3 className="display-serif text-xl font-medium leading-tight">
+              <h3 className="display-serif flex items-start text-xl font-medium leading-tight lg:min-h-[2.5em]">
                 {t.title}
               </h3>
               <p className="text-[14px] leading-relaxed text-ink/75">
@@ -238,13 +237,9 @@ function ContactForm() {
         >
           {submitting ? "Sending…" : "Send to the team"}
         </Button>
-        <Link
-          href="/privacy"
-          className="link-underline font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute hover:text-ink"
-        >
-          Privacy notice
-        </Link>
       </div>
+
+      <FormDisclaimer />
     </form>
   );
 }

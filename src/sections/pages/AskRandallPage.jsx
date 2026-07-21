@@ -11,9 +11,9 @@ import {
   FormField,
   FormSelect,
   FormTextarea,
-  FormCheckbox,
-  FormFieldset,
+  FormDisclaimer,
 } from "@/components/ui/Form";
+import { DONATE_URL } from "@/constants/site";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import { ISSUE_CATEGORIES } from "@/constants/issues";
 
@@ -86,7 +86,13 @@ export default function AskRandallPage() {
             <Button as={Link} href="/volunteer" variant="primary" withArrow>
               Volunteer
             </Button>
-            <Button as={Link} href="/donate" variant="signal" withArrow>
+            <Button
+              href={DONATE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              variant="signal"
+              withArrow
+            >
               Donate
             </Button>
           </div>
@@ -218,14 +224,6 @@ function AskForm() {
 
       <SmsConsentFieldset {...pc} idPrefix="a-sms" />
 
-      <FormFieldset legend="Before you send">
-        <FormCheckbox
-          id="a-terms"
-          name="terms"
-          label="I&rsquo;ve read the privacy notice and accept how this submission will be handled."
-        />
-      </FormFieldset>
-
       {status === "error" && errorMsg && (
         <p
           role="alert"
@@ -247,13 +245,9 @@ function AskForm() {
         >
           {submitting ? "Sending…" : "Send to Randall"}
         </Button>
-        <Link
-          href="/privacy"
-          className="link-underline font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute hover:text-ink"
-        >
-          Privacy notice
-        </Link>
       </div>
+
+      <FormDisclaimer />
     </form>
   );
 }

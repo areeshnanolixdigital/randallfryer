@@ -85,6 +85,14 @@
     color: var(--color-bone);
   }
 
+  /* Placeholder text sits at ~35% so it reads as a hint, never as entered data.
+     Firefox lowers placeholder opacity by default — reset it so the color alone
+     controls transparency. */
+  ::placeholder {
+    color: color-mix(in srgb, var(--color-ink) 35%, transparent);
+    opacity: 1;
+  }
+
   /* Subtle paper grain across the page */
   body::before {
     content: "";
