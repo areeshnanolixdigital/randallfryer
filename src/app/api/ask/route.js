@@ -9,8 +9,8 @@ import { normalizePhoneForSubmit } from "@/lib/phone";
 // Fans out to the primary workflow webhook + shared compliance webhook
 // (forms-compliance-pattern.md §1). Payload per ghl-forms-webhooks.md §3, plus
 // the optional phone + SMS-consent fields required by the compliance pattern.
-const WEBHOOK_URLS = [getIssueWebhookUrl(), getComplianceWebhookUrl()];
 
+const WEBHOOK_URLS = [getIssueWebhookUrl(), getComplianceWebhookUrl()];
 export async function POST(request) {
   let body;
   try {
