@@ -23,6 +23,18 @@ const SECTIONS = [
     ],
   },
   {
+    id: "sms-messaging",
+    title: "Text messaging program",
+    body: [
+      "Program and messages: When you opt in through a form on this site, you may receive SMS text messages from Randall Fryer For Representative. Informational messages include campaign updates, event reminders, and volunteer coordination; promotional messages include fundraising requests, donation drives, and special promotions. Consent to receive text messages is not a condition of any purchase or donation.",
+      "Opt out: You can cancel the SMS service at any time. Simply text STOP to the number that messages you, and you will no longer receive SMS messages from us.",
+      "Help: If you experience any issues with the messaging program, reply with the keyword HELP for more assistance, or reach out directly to us at [PLACEHOLDER — support email or phone].",
+      "Carriers are not liable for delayed or undelivered messages.",
+      "As always, message and data rates may apply for messages sent to you from us and to us from you. Message frequency varies.",
+      "For privacy-related inquiries, please refer to our Privacy Policy at randallfororegon.com/privacy.",
+    ],
+  },
+  {
     id: "donations",
     title: "Donations",
     body: [

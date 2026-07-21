@@ -30,10 +30,11 @@ export function usePhoneConsent() {
 
   const onPhoneChange = (e) => setPhone(formatPhoneInput(e.target.value));
 
-  const consentError =
-    hasPhone && (!smsConsent || !promoConsent)
-      ? "Please confirm the text-message consent boxes below, or clear the phone number."
-      : null;
+  // SMS consent is opt-in and OPTIONAL — each box is an independent choice, so a
+  // user may submit a phone number without opting in, or opt into updates but
+  // not promotional messages (A2P SOP items 9-11 + TCPA separate-consent rule).
+  // Never force or pre-check consent; kept for the forms' existing API shape.
+  const consentError = null;
 
   return {
     phone,
@@ -57,7 +58,10 @@ export function SmsConsentFieldset({
   idPrefix = "sms",
 }) {
   return (
-    <FormFieldset legend="Text message consent">
+    <FormFieldset
+      legend="Text message consent (optional)"
+      hint="These are optional. Check them only if you would like to receive texts — each is a separate choice, and you can reply STOP to opt out at any time."
+    >
       {!hasPhone && (
         <p className="text-xs italic text-ink/50">
           Enter a phone number above to opt in to SMS messages.
@@ -69,7 +73,6 @@ export function SmsConsentFieldset({
         checked={smsConsent}
         onChange={(e) => setSmsConsent(e.target.checked)}
         disabled={!hasPhone}
-        required={hasPhone}
         label={SMS_UPDATES_CONSENT}
       />
       <FormCheckbox
@@ -78,7 +81,6 @@ export function SmsConsentFieldset({
         checked={promoConsent}
         onChange={(e) => setPromoConsent(e.target.checked)}
         disabled={!hasPhone}
-        required={hasPhone}
         label={SMS_PROMO_CONSENT}
       />
     </FormFieldset>

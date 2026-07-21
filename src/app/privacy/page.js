@@ -24,11 +24,21 @@ const SECTIONS = [
     ],
   },
   {
-    id: "sms-and-email",
-    title: "SMS, email, and your choices",
+    id: "sms-text-messaging",
+    title: "Text messaging (SMS)",
     body: [
-      "We send text messages only to people who opt in. Two separate opt-ins are offered — one for campaign updates, one for fundraising deadlines — and either can be cancelled by replying STOP.",
-      "Email newsletters use an unsubscribe link at the bottom of every send. We honor unsubscribe requests within 24 hours.",
+      "We collect phone numbers only through our website forms (contact, volunteer, event RSVP, and Ask Randall), and only when you choose to provide one. Phone numbers are used to reach you about the campaign and, if you separately opt in, to send SMS text messages.",
+      "Text messaging is opt-in and optional. Two separate consent options are offered: one for informational updates (campaign updates, event reminders, and volunteer coordination) and one for promotional messages (fundraising requests, donation drives, and special promotions). You may opt into either, both, or neither, and consent is never pre-checked or required to use the site.",
+      "Message frequency varies, and message and data rates may apply. You can cancel SMS at any time by replying STOP, and reply HELP for assistance. Opt-out requests are honored within 10 business days.",
+      "We retain your phone number and consent records only as long as needed to operate the campaign and to document consent as required by law. To request deletion of your phone number, consent records, or other personal information, email [PLACEHOLDER — privacy contact email].",
+      "We will not share or sell your text messaging opt-in data, consent, or related personal information with any third parties, unless required by law.",
+    ],
+  },
+  {
+    id: "email",
+    title: "Email",
+    body: [
+      "We send email only to people who provide an address. Email newsletters include an unsubscribe link at the bottom of every send, and we honor unsubscribe requests within 24 hours.",
     ],
   },
   {

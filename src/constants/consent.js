@@ -1,9 +1,17 @@
-// A2P-compliant SMS consent text, per ghl-forms-webhooks.md §2.
-// Every form that collects a phone number must render both consent checkboxes.
-// (Adapted from the shared Op1776 guide to name the Randall Fryer campaign.)
+// A2P-compliant SMS consent text, per the Op1776 A2P Website Compliance SOP
+// (Step 6) and ghl-forms-webhooks.md §2. Every form that collects a phone
+// number must render BOTH consent checkboxes, each using active opt-in phrasing
+// ("I agree to receive…") and naming the legal business name.
 
-const CAMPAIGN = "Randall Fryer for Oregon House District 28";
+// Legal business name — single source of truth in constants/site.js so the
+// Privacy Policy, Terms of Service, footer copyright, Contact page, and A2P
+// registration all stay in sync.
+import { LEGAL_BUSINESS_NAME } from "@/constants/site";
 
-export const SMS_UPDATES_CONSENT = `By checking this box, I consent to receive campaign updates from ${CAMPAIGN} via automated text messages at the phone number provided. Message frequency may vary. Message and data rates may apply. Text STOP to opt out or HELP for help. View our Privacy Policy and Terms of Service.`;
+export { LEGAL_BUSINESS_NAME };
 
-export const SMS_PROMO_CONSENT = `By checking this box, I consent to receive promotional messages, event invitations, and fundraising communications from ${CAMPAIGN} via automated text messages. Message frequency may vary. Message and data rates may apply. Text STOP to opt out or HELP for help.`;
+// Checkbox 1 — Informational / Updates
+export const SMS_UPDATES_CONSENT = `I agree to receive SMS updates from ${LEGAL_BUSINESS_NAME} regarding campaign updates, event reminders, and volunteer coordination. Message frequency varies. Message & data rates may apply. Reply STOP to unsubscribe or HELP for help.`;
+
+// Checkbox 2 — Promotional / Fundraising
+export const SMS_PROMO_CONSENT = `I agree to receive promotional SMS messages from ${LEGAL_BUSINESS_NAME}, including fundraising requests, donation drives, and special promotions. Message frequency varies. Message & data rates may apply. Reply STOP to unsubscribe or HELP for help.`;

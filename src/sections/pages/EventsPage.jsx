@@ -8,7 +8,6 @@ import SplitReveal from "@/animations/SplitReveal";
 import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 import { EVENTS } from "@/data/events";
-import { DONATE_URL } from "@/constants/site";
 
 export default function EventsPage() {
   const now = Date.now();
@@ -73,56 +72,13 @@ export default function EventsPage() {
             </m.p>
           </div>
           <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
-            <Button as={Link} href="#newsletter" variant="primary" withArrow>
-              Get notified
-            </Button>
-            <Button as={Link} href="/contact" variant="outline" withArrow>
+            <Button as={Link} href="/contact" variant="primary" withArrow>
               Contact the team
             </Button>
           </div>
         </div>
       </SectionFrame>
 
-      {/* JOIN TEAM FRYER */}
-      <SectionFrame label="05 — Take the next step" number="Together / V">
-        <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
-          <div className="col-span-12 lg:col-span-7">
-            <SplitReveal
-              as="h2"
-              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
-            >
-              Join Team Fryer.
-            </SplitReveal>
-            <m.p
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75"
-            >
-              The campaign grows every time a neighbor attends an event,
-              asks a question, volunteers for a shift, or helps introduce
-              Randall to the community. Come to a town hall. Host a
-              conversation. Help bring disciplined and accountable
-              leadership to Salem.
-            </m.p>
-          </div>
-          <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
-            <Button as={Link} href="/volunteer" variant="primary" withArrow>
-              Volunteer
-            </Button>
-            <Button
-              href={DONATE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="signal"
-              withArrow
-            >
-              Donate
-            </Button>
-          </div>
-        </div>
-      </SectionFrame>
     </main>
   );
 }
@@ -243,12 +199,9 @@ function EmptyState() {
       </h3>
       <p className="max-w-xl text-[15px] leading-relaxed text-ink/75">
         The team is scheduling the next round of town halls, canvasses,
-        and meet-and-greets. Sign up below and we&rsquo;ll send a note
-        the morning the next batch goes live.
+        and meet-and-greets. Check back soon — new events will be posted
+        here as they are confirmed.
       </p>
-      <Button as={Link} href="/volunteer" withArrow>
-        Get notified
-      </Button>
     </div>
   );
 }
