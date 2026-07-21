@@ -6,7 +6,14 @@ import Link from "next/link";
 import { m, useScroll, useTransform } from "motion/react";
 import SplitReveal from "@/animations/SplitReveal";
 import Button from "@/components/ui/Button";
-import { DONATE_URL } from "@/constants/site";
+import {
+  DONATE_URL,
+  LEGAL_BUSINESS_NAME,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+  CONTACT_EMAIL,
+  CONTACT_ADDRESS,
+} from "@/constants/site";
 
 const NAV_GROUPS = [
   {
@@ -176,21 +183,38 @@ export default function Footer() {
             </ul>
           </div>
           <p className="col-span-12 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute lg:col-span-6 lg:text-right">
-            © 2026 Randall Fryer for Oregon House District 28
+            © 2026 {LEGAL_BUSINESS_NAME}
           </p>
+        </div>
+
+        {/* CONTACT INFO — required on every page footer for A2P/TCR compliance */}
+        <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-ink/15 pt-6 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute">
+          <span>{CONTACT_ADDRESS}</span>
+          <span aria-hidden className="text-ink-mute/40">·</span>
+          {CONTACT_PHONE_HREF ? (
+            <a href={CONTACT_PHONE_HREF} className="link-underline hover:text-ink">
+              {CONTACT_PHONE}
+            </a>
+          ) : (
+            <span>{CONTACT_PHONE}</span>
+          )}
+          <span aria-hidden className="text-ink-mute/40">·</span>
+          <a href={`mailto:${CONTACT_EMAIL}`} className="link-underline hover:text-ink">
+            {CONTACT_EMAIL}
+          </a>
         </div>
 
         {/* LEGAL */}
         <div className="mt-6 grid grid-cols-12 items-center gap-y-2 lg:gap-x-8">
           <p className="col-span-12 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute lg:col-span-6">
-            Paid for by Randall Fryer For Representative
+            Paid for by {LEGAL_BUSINESS_NAME}
           </p>
           <div className="col-span-12 flex flex-wrap items-center gap-x-5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute lg:col-span-6 lg:justify-end">
             <Link href="/privacy" className="link-underline hover:text-ink">
               Privacy Policy
             </Link>
             <Link href="/terms" className="link-underline hover:text-ink">
-              Terms of Use
+              Terms of Service
             </Link>
           </div>
         </div>

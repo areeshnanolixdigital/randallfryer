@@ -2,15 +2,12 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { m, useScroll, useTransform } from "motion/react";
 import { gsap, useGSAP } from "@/animations/gsap";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import PageHero from "@/components/ui/PageHero";
-import Button from "@/components/ui/Button";
 import BrandIcon from "@/components/ui/BrandIcon";
-import { DONATE_URL } from "@/constants/site";
 
 const BIO_BLOCKS = [
   {
@@ -166,49 +163,6 @@ export default function AboutPage() {
 
       {/* Journey timeline */}
       <Journey />
-
-      {/* Closing CTA */}
-      <SectionFrame label="07 — Get involved" number="Together / VII">
-        <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
-          <div className="col-span-12 lg:col-span-7">
-            <SplitReveal
-              as="h2"
-              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
-            >
-              Join Randall on the trail.
-            </SplitReveal>
-            <m.p
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75"
-            >
-              A successful campaign is built one conversation, one
-              volunteer, and one neighbor at a time. Whether you can knock
-              on doors, make phone calls, display a yard sign, host a
-              neighborhood gathering, or make a contribution, your
-              involvement will help bring Randall&rsquo;s message of
-              disciplined and accountable leadership to voters across
-              District 28.
-            </m.p>
-          </div>
-          <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
-            <Button as={Link} href="/volunteer" variant="primary" withArrow>
-              Volunteer
-            </Button>
-            <Button
-              href={DONATE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="signal"
-              withArrow
-            >
-              Donate
-            </Button>
-          </div>
-        </div>
-      </SectionFrame>
     </main>
   );
 }

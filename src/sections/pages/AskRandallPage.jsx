@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { m } from "motion/react";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
@@ -13,7 +12,6 @@ import {
   FormTextarea,
   FormDisclaimer,
 } from "@/components/ui/Form";
-import { DONATE_URL } from "@/constants/site";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import { ISSUE_CATEGORIES } from "@/constants/issues";
 
@@ -57,47 +55,6 @@ export default function AskRandallPage() {
         </div>
       </SectionFrame>
 
-      {/* JOIN TEAM FRYER */}
-      <SectionFrame label="03 — Get involved" number="Together / III">
-        <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
-          <div className="col-span-12 lg:col-span-7">
-            <SplitReveal
-              as="h2"
-              className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
-            >
-              Join Team Fryer.
-            </SplitReveal>
-            <m.p
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.9, delay: 0.2 }}
-              className="mt-6 max-w-xl text-lg leading-relaxed text-ink/75"
-            >
-              Randall&rsquo;s campaign is built by people who believe Oregon
-              deserves disciplined leadership, responsible government, and
-              measurable results. Knock on doors, host a neighborhood
-              conversation, support an event, or contribute what you can.
-              Every hour and every contribution helps Randall reach more
-              voters across District 28.
-            </m.p>
-          </div>
-          <div className="col-span-12 flex flex-wrap items-center gap-3 lg:col-span-5 lg:justify-end">
-            <Button as={Link} href="/volunteer" variant="primary" withArrow>
-              Volunteer
-            </Button>
-            <Button
-              href={DONATE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              variant="signal"
-              withArrow
-            >
-              Donate
-            </Button>
-          </div>
-        </div>
-      </SectionFrame>
     </main>
   );
 }

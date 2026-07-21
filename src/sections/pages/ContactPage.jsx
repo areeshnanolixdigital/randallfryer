@@ -8,6 +8,13 @@ import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 import BrandIcon from "@/components/ui/BrandIcon";
 import { FormField, FormTextarea, FormDisclaimer } from "@/components/ui/Form";
+import {
+  LEGAL_BUSINESS_NAME,
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+  CONTACT_EMAIL,
+  CONTACT_ADDRESS,
+} from "@/constants/site";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 
 const TOPICS = [
@@ -101,6 +108,45 @@ export default function ContactPage() {
               one concern at a time and include only the background
               information needed to understand your question.
             </m.p>
+
+            {/* Detailed contact info — required for A2P/TCR business verification */}
+            <dl className="mt-8 flex flex-col gap-4 border-t border-ink/15 pt-6">
+              <div className="flex flex-col gap-1">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
+                  {LEGAL_BUSINESS_NAME}
+                </dt>
+                <dd className="text-[15px] leading-relaxed text-ink/80">
+                  {CONTACT_ADDRESS}
+                </dd>
+              </div>
+              <div className="flex flex-col gap-1">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
+                  Phone
+                </dt>
+                <dd className="text-[15px] leading-relaxed text-ink/80">
+                  {CONTACT_PHONE_HREF ? (
+                    <a href={CONTACT_PHONE_HREF} className="link-underline hover:text-ink">
+                      {CONTACT_PHONE}
+                    </a>
+                  ) : (
+                    CONTACT_PHONE
+                  )}
+                </dd>
+              </div>
+              <div className="flex flex-col gap-1">
+                <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
+                  Email
+                </dt>
+                <dd className="text-[15px] leading-relaxed text-ink/80">
+                  <a
+                    href={`mailto:${CONTACT_EMAIL}`}
+                    className="link-underline hover:text-ink"
+                  >
+                    {CONTACT_EMAIL}
+                  </a>
+                </dd>
+              </div>
+            </dl>
           </div>
 
           <div className="col-span-12 lg:col-span-8">
