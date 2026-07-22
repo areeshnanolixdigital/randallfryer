@@ -2,45 +2,66 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Feed 35 — Big Word — Lorem</title>
+<title>Feed 35 — Salem Works For You</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bone:#f3ede0; --bone-soft:#ebe2cd; --bone-deep:#d8cdb1;
-    --ink:#0a1326; --ink-soft:#18223b; --ink-mute:#4b5364;
-    --signal:#9b2d2c; --signal-deep:#7a2422;
-    --ochre:#b58a4a; --ochre-soft:#d4ac6e;
-    --display:'Fraunces','Times New Roman',serif;
-    --sans:'Inter',system-ui,sans-serif;
-    --mono:'JetBrains Mono',ui-monospace,monospace;
+    --bone:#f3ede0; --ink:#0a1326; --signal:#9b2d2c; --signal-deep:#7a2422; --gold:#e3bd6c;
+    --display:'Fraunces','Times New Roman',serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
-  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;color:var(--ink);font-family:var(--sans);box-shadow:0 60px 120px -40px rgba(0,0,0,.5)}
-.stage{background:radial-gradient(120% 90% at 50% 15%, #f4ebd8 0%, #e9dfc6 55%, #d8cdb1 100%)}
-  .grain{content:"";position:absolute;inset:0;z-index:60;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05 0 0 0 0 .1 0 0 0 0 .18 0 0 0 .08 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:multiply;opacity:.5}
-  .frame{position:absolute;inset:56px;border:1px solid rgba(10,19,38,.16);z-index:8}
-  .meta{position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-mute);z-index:20}
-  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9b2d2c;margin-right:10px;vertical-align:1px}
-  .eye{position:absolute;left:96px;top:210px;font-family:var(--mono);font-size:13px;letter-spacing:.34em;text-transform:uppercase;color:var(--ink-mute);display:flex;align-items:center;gap:14px;z-index:16}
-  .eye::before{content:"";width:46px;height:1px;background:var(--ink)}
-  .word{position:absolute;left:88px;right:88px;top:50%;transform:translateY(-50%);font-family:var(--display);font-weight:500;font-size:340px;line-height:.8;letter-spacing:-.06em;color:var(--ink);z-index:14;text-shadow:0 2px 0 rgba(243,237,224,.6)}
-  .word .it{font-style:italic;font-weight:400;color:#7a2422;display:block;font-size:.62em;margin-top:6px}
-  .kick{position:absolute;left:96px;right:96px;bottom:190px;font-family:var(--display);font-style:italic;font-size:30px;line-height:1.35;color:var(--ink-mute);max-width:640px;z-index:16}
-  .foot{position:absolute;left:96px;right:96px;bottom:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-mute);z-index:20}
-  .foot .fdot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#9b2d2c;margin-right:10px;vertical-align:1px}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;font-family:var(--sans);color:var(--bone);box-shadow:0 60px 120px -40px rgba(0,0,0,.6);
+    background:linear-gradient(180deg,#20335c 0%, #172645 44%, #0b1428 100%)}
+  .glow{position:absolute;left:50%;top:200px;transform:translateX(-50%);width:900px;height:520px;border-radius:50%;z-index:1;background:radial-gradient(closest-side,rgba(227,189,108,.2),transparent 70%)}
+  /* Capitol backdrop */
+  .capitol{position:absolute;left:50%;bottom:210px;transform:translateX(-50%);width:560px;height:560px;z-index:3;
+    background:var(--gold);-webkit-mask:url("/icons/capitol.svg") center/contain no-repeat;mask:url("/icons/capitol.svg") center/contain no-repeat;opacity:.9;
+    filter:drop-shadow(0 30px 50px rgba(0,0,0,.4))}
+  /* residents foreground silhouettes */
+  .crowd{position:absolute;left:0;right:0;bottom:130px;z-index:8}
+  .crowd svg{width:100%;display:block}
+  .stage::after{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .84 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.4}
+  .frame{position:absolute;inset:56px;border:1px solid rgba(243,237,224,.14);z-index:30;pointer-events:none}
+  .meta{position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.66);z-index:34}
+  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);vertical-align:1px;margin-right:10px}
+  .head{position:absolute;left:0;right:0;top:190px;text-align:center;z-index:34;text-shadow:0 2px 20px rgba(8,13,28,.5)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+  h1{font-family:var(--display);font-weight:600;font-size:96px;line-height:.94;letter-spacing:-.035em;color:var(--bone)}
+  h1 .it{font-style:italic;font-weight:500;color:var(--gold)}
+  .body{position:absolute;left:96px;right:96px;bottom:150px;text-align:center;max-width:680px;margin:0 auto;z-index:34;font-size:18px;line-height:1.6;color:rgba(243,237,224,.85);text-shadow:0 2px 14px rgba(8,13,28,.6)}
+  .body b{color:var(--bone);font-weight:600}
+  .foot{position:absolute;left:0;right:0;bottom:96px;text-align:center;z-index:34;font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
 </style>
 </head>
 <body>
   <div class="stage">
-    <div class="grain"></div>
-<div class="frame"></div><div class="meta"><span><span class="dot"></span>Districtus XIV · Primary MMXXVI</span><span>File №35</span></div>
-    <div class="eye">Mensura · Datum</div>
-    <div class="word">Lorem<span class="it">fides.</span></div>
-    <p class="kick">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-    <div class="foot"><span><span class="fdot"></span>Lorem · Ipsum · Dolor</span><span>I / XXVI</span></div>
+    <div class="glow" aria-hidden></div>
+    <div class="capitol" aria-hidden></div>
+    <div class="crowd" aria-hidden>
+      <svg viewBox="0 0 1080 220" preserveAspectRatio="none" fill="#0a1326">
+        <rect x="0" y="150" width="1080" height="70"/>
+        <g>
+          <circle cx="120" cy="130" r="26"/><path d="M92 160 h56 v60 h-56 Z"/>
+          <circle cx="230" cy="120" r="30"/><path d="M198 154 h64 v66 h-64 Z"/>
+          <circle cx="360" cy="132" r="24"/><path d="M334 160 h52 v60 h-52 Z"/>
+          <circle cx="720" cy="128" r="27"/><path d="M691 158 h58 v62 h-58 Z"/>
+          <circle cx="850" cy="120" r="31"/><path d="M817 154 h66 v66 h-66 Z"/>
+          <circle cx="965" cy="134" r="24"/><path d="M939 162 h52 v58 h-52 Z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="frame"></div>
+    <div class="meta"><span><span class="dot"></span>Salem Accountability · HD28</span><span>File №35</span></div>
+    <div class="head">
+      <div class="eyebrow">Community First</div>
+      <h1>Salem works <span class="it">for you.</span></h1>
+    </div>
+    <p class="body"><b>Government agencies and elected officials serve the public.</b> District 28 deserves accessible leadership, clear explanations, and honest answers.</p>
+    <div class="foot">Put people back in charge</div>
   </div>
 </body>
 </html>
