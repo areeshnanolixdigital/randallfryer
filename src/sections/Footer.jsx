@@ -52,6 +52,11 @@ const SOCIALS = [
     Icon: FacebookIcon,
   },
   {
+    name: "Instagram",
+    href: "https://www.instagram.com/randallfororegon",
+    Icon: InstagramIcon,
+  },
+  {
     name: "X (Twitter)",
     href: "https://x.com/FryerRandall",
     Icon: XIcon,

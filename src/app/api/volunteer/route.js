@@ -40,8 +40,14 @@ export async function POST(request) {
     lastName,
     email,
     phone: normalizePhoneForSubmit(body.phone),
+    // GHL maps street address from its standard `address1` key; `address` is
+    // kept for any existing workflow mapping. Same for postalCode / zipCode.
+    address1: str(body.address),
     address: str(body.address),
     city: str(body.city),
+    state: "OR",
+    country: "US",
+    postalCode: str(body.zipCode),
     zipCode: str(body.zipCode),
     county: str(body.county),
     region: str(body.region),
