@@ -292,6 +292,19 @@ function VolunteerForm() {
       setErrorMsg("Please add your first and last name and a valid email.");
       return;
     }
+    if (
+      !payload.phone ||
+      !payload.address ||
+      !payload.city ||
+      !payload.county
+    ) {
+      setStatus("error");
+      setErrorMsg(
+        "Please add your phone number, street address, city, and county."
+      );
+      return;
+    }
+    // ZIP stays optional — only its format is checked when one is entered.
     const zipErr = validateZip(zip, { required: false });
     if (zipErr) {
       setZipError(zipErr);
@@ -300,7 +313,6 @@ function VolunteerForm() {
       return;
     }
     if (
-      !payload.region ||
       !payload.registeredVoter ||
       !payload.campaignExperience ||
       !payload.availability ||
@@ -308,7 +320,7 @@ function VolunteerForm() {
     ) {
       setStatus("error");
       setErrorMsg(
-        "Please complete your region, voter registration, experience, availability, and the issues that matter to you."
+        "Please complete your voter registration, experience, availability, and the issues that matter to you."
       );
       return;
     }
@@ -378,7 +390,7 @@ function VolunteerForm() {
           name="phone"
           label="Phone"
           type="tel"
-          optional
+          required
           value={pc.phone}
           onChange={pc.onPhoneChange}
           placeholder="+1 (503) 555-0123"
@@ -388,7 +400,7 @@ function VolunteerForm() {
         id="v-address"
         name="address"
         label="Street address"
-        optional
+        required
         autoComplete="address-line1"
         placeholder="123 Main St"
       />
@@ -397,7 +409,7 @@ function VolunteerForm() {
           id="v-city"
           name="city"
           label="City"
-          optional
+          required
           autoComplete="address-level2"
           placeholder="Portland"
         />
@@ -419,14 +431,14 @@ function VolunteerForm() {
           id="v-county"
           name="county"
           label="County"
-          optional
+          required
           options={OREGON_COUNTIES}
         />
         <FormSelect
           id="v-region"
           name="region"
           label="Region"
-          required
+          optional
           options={REGIONS}
         />
       </div>
