@@ -300,6 +300,7 @@ function VolunteerForm() {
       return;
     }
     if (
+      !payload.region ||
       !payload.registeredVoter ||
       !payload.campaignExperience ||
       !payload.availability ||
@@ -307,7 +308,7 @@ function VolunteerForm() {
     ) {
       setStatus("error");
       setErrorMsg(
-        "Please complete your voter registration, experience, availability, and the issues that matter to you."
+        "Please complete your region, voter registration, experience, availability, and the issues that matter to you."
       );
       return;
     }
@@ -425,7 +426,7 @@ function VolunteerForm() {
           id="v-region"
           name="region"
           label="Region"
-          optional
+          required
           options={REGIONS}
         />
       </div>
