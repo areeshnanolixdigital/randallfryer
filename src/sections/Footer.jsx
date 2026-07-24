@@ -242,6 +242,14 @@ export default function Footer() {
           </div>
         </div>
 
+        {/* AI DISCLOSURE — sentence case, not the uppercase wide-tracked
+            treatment used elsewhere in the fine print: at this length it would
+            be a wall of letterspaced caps. */}
+        <p className="mt-5 max-w-3xl font-mono text-[10px] leading-relaxed tracking-[0.06em] text-ink-mute/85">
+          Some images, audio, video, or written content may be created or
+          enhanced using artificial intelligence (AI) tools.
+        </p>
+
         {/* Refined watermark — giant outline marquee, drifts continuously */}
         <div
           aria-hidden
