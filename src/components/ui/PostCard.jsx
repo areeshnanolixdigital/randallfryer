@@ -50,7 +50,7 @@ export default function PostCard({ post }) {
 
           {/* Number plate — or slide count for carousels */}
           <span className="absolute right-3 top-3 z-10 rounded-pill border border-bone/30 bg-bone/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.26em] text-bone/95 backdrop-blur">
-            {isCarousel ? `${post.count} slides` : `№${post.no}`}
+            {isCarousel ? `${post.count} slides` : `№${post.displayNo ?? post.no}`}
           </span>
 
           {/* Hover overlay with View action */}
