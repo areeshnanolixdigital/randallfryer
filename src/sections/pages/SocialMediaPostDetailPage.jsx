@@ -7,13 +7,24 @@ import LivePreview from "@/components/ui/LivePreview";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import Reveal from "@/animations/Reveal";
-import { FORMATS, getRelatedSocialPosts, posterFor } from "@/data/socialPosts";
+import {
+  FORMATS,
+  getRelatedSocialPosts,
+  isFeaturedPost,
+  posterFor,
+} from "@/data/socialPosts";
 import { cn } from "@/lib/cn";
 
 export default function SocialMediaPostDetailPage({ post }) {
   const fmt = FORMATS[post.format];
   const related = getRelatedSocialPosts(post.slug, 4);
   const [copied, setCopied] = useState(false);
+
+  // Point "back" at whichever gallery actually lists this creative, so an
+  // extended-library post doesn't send you to a page it isn't on.
+  const featured = isFeaturedPost(post.slug);
+  const backHref = featured ? "/social-media-posts" : "/social-posts-2";
+  const backLabel = featured ? "All social media posts" : "All social posts 2";
 
   const onCopy = async () => {
     try {
@@ -41,11 +52,11 @@ export default function SocialMediaPostDetailPage({ post }) {
             className="flex flex-wrap items-center justify-between gap-y-4 font-mono text-[11px] uppercase tracking-[0.28em] text-ink-mute"
           >
             <Link
-              href="/social-media-posts"
+              href={backHref}
               className="link-underline inline-flex items-center gap-3 text-ink/80 hover:text-ink"
             >
               <span aria-hidden>←</span>
-              All social media posts
+              {backLabel}
             </Link>
             <span className="flex flex-wrap items-center gap-4">
               <span>
