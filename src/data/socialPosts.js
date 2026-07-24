@@ -959,6 +959,40 @@ export function posterFor(file) {
 // Every gallery item — feed + story posts, then carousels — in display order.
 export const GALLERY_ITEMS = [...SOCIAL_POSTS, ...CAROUSELS];
 
+// ────────────────────────────────────────────────────────────────
+// Gallery split — approved shortlist vs. the rest
+// ────────────────────────────────────────────────────────────────
+// Only these creatives front /social-media-posts. Everything else stays
+// published and reachable (the /social-media-posts/[slug] detail routes are
+// untouched) but is listed on /social-posts-2 instead of the main gallery.
+export const FEATURED_SLUGS = [
+  "feed-01-manifesto-cover",
+  "feed-02-pillar-numbered",
+  "feed-04-italic-quote",
+  "feed-15-ledger",
+  "feed-26-statistic",
+  "feed-29-medallion",
+  "feed-32-timeline",
+  "feed-34-portrait",
+  "feed-43-signal",
+  "feed-49-quote",
+  "feed-52-split",
+];
+
+// Mapped over FEATURED_SLUGS (not filtered) so the shortlist renders in the
+// approved order rather than manifest order.
+export const FEATURED_ITEMS = FEATURED_SLUGS.map((slug) =>
+  GALLERY_ITEMS.find((p) => p.slug === slug)
+).filter(Boolean);
+
+export const ARCHIVE_ITEMS = GALLERY_ITEMS.filter(
+  (p) => !FEATURED_SLUGS.includes(p.slug)
+);
+
+export function isFeaturedPost(slug) {
+  return FEATURED_SLUGS.includes(slug);
+}
+
 export function getRelatedSocialPosts(slug, n = 4) {
   const idx = SOCIAL_POSTS.findIndex((p) => p.slug === slug);
   if (idx === -1) return [];
