@@ -979,18 +979,42 @@ export const FEATURED_SLUGS = [
   "feed-52-split",
 ];
 
+// Each gallery numbers its own cards by position, so the plates read straight
+// down the grid (№01, №02, №03 …). The manifest `no` is kept on the object but
+// isn't shown: after the split it reads as gaps (№01, №02, №04, №15 …).
+// Use displayNoFor(slug) anywhere the number is surfaced, so a card and its
+// detail page always agree.
+const numberInOrder = (items) =>
+  items.map((p, i) => ({ ...p, displayNo: String(i + 1).padStart(2, "0") }));
+
 // Mapped over FEATURED_SLUGS (not filtered) so the shortlist renders in the
 // approved order rather than manifest order.
-export const FEATURED_ITEMS = FEATURED_SLUGS.map((slug) =>
-  GALLERY_ITEMS.find((p) => p.slug === slug)
-).filter(Boolean);
+export const FEATURED_ITEMS = numberInOrder(
+  FEATURED_SLUGS.map((slug) => GALLERY_ITEMS.find((p) => p.slug === slug)).filter(
+    Boolean
+  )
+);
 
-export const ARCHIVE_ITEMS = GALLERY_ITEMS.filter(
-  (p) => !FEATURED_SLUGS.includes(p.slug)
+export const ARCHIVE_ITEMS = numberInOrder(
+  GALLERY_ITEMS.filter((p) => !FEATURED_SLUGS.includes(p.slug))
 );
 
 export function isFeaturedPost(slug) {
   return FEATURED_SLUGS.includes(slug);
+}
+
+const DISPLAY_NO_BY_SLUG = new Map(
+  [...FEATURED_ITEMS, ...ARCHIVE_ITEMS].map((p) => [p.slug, p.displayNo])
+);
+
+// Gallery-position number for a creative. Falls back to the manifest `no` so
+// anything not listed in either gallery still renders something sensible.
+export function displayNoFor(slug) {
+  return (
+    DISPLAY_NO_BY_SLUG.get(slug) ??
+    GALLERY_ITEMS.find((p) => p.slug === slug)?.no ??
+    null
+  );
 }
 
 export function getRelatedSocialPosts(slug, n = 4) {

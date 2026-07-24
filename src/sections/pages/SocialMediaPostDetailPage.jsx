@@ -9,6 +9,7 @@ import SplitReveal from "@/animations/SplitReveal";
 import Reveal from "@/animations/Reveal";
 import {
   FORMATS,
+  displayNoFor,
   getRelatedSocialPosts,
   isFeaturedPost,
   posterFor,
@@ -19,6 +20,9 @@ export default function SocialMediaPostDetailPage({ post }) {
   const fmt = FORMATS[post.format];
   const related = getRelatedSocialPosts(post.slug, 4);
   const [copied, setCopied] = useState(false);
+
+  // Gallery-position number, so this page agrees with the card you clicked.
+  const no = displayNoFor(post.slug);
 
   // Point "back" at whichever gallery actually lists this creative, so an
   // extended-library post doesn't send you to a page it isn't on.
@@ -60,7 +64,7 @@ export default function SocialMediaPostDetailPage({ post }) {
             </Link>
             <span className="flex flex-wrap items-center gap-4">
               <span>
-                {fmt.label} · №{post.no}
+                {fmt.label} · №{no}
               </span>
               <span className="hairline h-px w-6" />
               <span>{fmt.sub}</span>
@@ -177,14 +181,14 @@ export default function SocialMediaPostDetailPage({ post }) {
           >
             <Spec label="Format" value={fmt.label} />
             <Spec label="Aspect" value={fmt.sub} />
-            <Spec label="File" value={`№${post.no}`} />
+            <Spec label="File" value={`№${no}`} />
             <Spec label="Type" value="HTML / CSS" />
           </Reveal>
         </div>
       </section>
 
       {/* CONCEPT NOTE */}
-      <SectionFrame label="03 Concept" number={`File №${post.no}`}>
+      <SectionFrame label="03 Concept" number={`File №${no}`}>
         <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <h2 className="display-serif text-balance text-[clamp(1.6rem,3.5vw,2.6rem)] font-medium leading-[1.05] tracking-[-0.02em]">
@@ -249,7 +253,7 @@ export default function SocialMediaPostDetailPage({ post }) {
                   </div>
                   <div className="flex items-baseline justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute">
                     <span>
-                      {f.label} · №{p.no}
+                      {f.label} · №{displayNoFor(p.slug)}
                     </span>
                   </div>
                   <h3 className="display-serif text-base font-medium leading-tight tracking-tight transition-colors duration-300 group-hover:text-signal">
