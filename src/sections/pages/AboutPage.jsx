@@ -23,8 +23,9 @@ const BIO_BLOCKS = [
     eyebrow: "The record",
     heading: "Twenty-four years of making decisions that matter.",
     body: "Randall practiced medicine from 2000 through 2024. Trained in Family Medicine, he also served patients in multiple rural and remote emergency departments, where there was rarely time for political posturing or incomplete answers. Emergency medicine demands careful listening, clear priorities, decisive action, and responsibility for the outcome. It also teaches an important lesson: every decision affects a real person. Randall will bring that same mindset to the Oregon House. He will examine the evidence, ask difficult questions, weigh the consequences, and remain focused on solutions that improve people's lives.",
-    image: "/randall-fryer-decisions.png",
-    imageAlt: "Randall Fryer listening at a roundtable discussion",
+    image: "/randall-fryer-park-conversation.png",
+    imageAlt:
+      "Randall Fryer in conversation with two constituents outdoors",
   },
   {
     eyebrow: "The campaign",
@@ -40,20 +41,20 @@ const VALUES = [
   {
     no: "01",
     icon: "award",
-    title: "Reclaim Educational Excellence",
-    body: "Randall believes Oregon schools must return their focus to the fundamentals: reading, writing, mathematics, history, and civics. He will work to restore meaningful academic and graduation standards, strengthen parental and local school-board involvement, and direct more education resources toward teachers and classrooms. Professional teachers deserve the authority and support needed to maintain orderly classrooms and help students succeed. Oregon should measure education policy by whether students are learning not simply by how much the state spends.",
+    title: "Strengthen Educational Excellence",
+    body: "Randall believes Oregon schools should focus on the fundamentals: reading, writing, mathematics, history, and civics. He will work to strengthen academic and graduation standards, support meaningful parental and local school-board involvement, and direct more education resources toward teachers and classrooms. Professional teachers deserve the authority and support needed to maintain orderly classrooms and help students succeed. Education policy should be judged by whether students are learning, not simply by how much the state spends.",
   },
   {
     no: "02",
     icon: "scales",
-    title: "Reduce the Burden on Working Families",
-    body: "Randall believes Oregonians deserve greater value and accountability for the taxes and fees they pay. He will scrutinize spending before asking families to contribute more, oppose unnecessary new costs, and demand transparent reporting on whether public programs are producing results. Government should respect the people who earn every public dollar.",
+    title: "Lower Taxes for Families and Employers",
+    body: "Randall believes Oregonians deserve value, transparency, and restraint in return for the taxes and fees they pay. One of his priorities is to oppose unnecessary taxes and fees, carefully review state spending, and demand clear evidence that public programs are delivering meaningful value and performing as intended. His goal is to reduce the tax burden on families and employers while protecting the essential services communities depend on.",
   },
   {
     no: "03",
     icon: "institution",
-    title: "Rebuild Oregon's Business Climate",
-    body: "Randall wants Oregon to be a place where employers can invest, expand, hire, and compete. He will pursue more competitive tax rates, simpler tax compliance, more predictable permitting, and fewer unnecessary regulatory barriers. A stronger business climate means more jobs, a broader tax base, healthier communities, and less pressure to continually increase costs for working families.",
+    title: "Reduce Barriers to Business Growth",
+    body: "Randall wants Oregon to be a place where employers can invest, expand, hire, and compete. He will work to reduce unnecessary government micromanagement by pursuing more competitive tax rates, simpler tax compliance, faster and more predictable permitting, and fewer unnecessary regulatory barriers. A healthy business climate creates better jobs, supports workers and local employers, and strengthens the economic foundation communities rely on to fund schools, public safety, and essential services.",
   },
 ];
 
@@ -127,8 +128,9 @@ export default function AboutPage() {
             delay={0.2}
             className="col-span-12 max-w-xl text-lg leading-relaxed text-ink/75 lg:col-span-5 lg:pl-6"
           >
-            Randall&rsquo;s campaign is centered on three areas where state
-            leadership can produce meaningful change.
+            Randall&rsquo;s campaign is centered on three priorities where
+            focused leadership and accountable effort can make a meaningful
+            difference.
           </Reveal>
         </div>
 

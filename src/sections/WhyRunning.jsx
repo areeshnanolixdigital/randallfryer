@@ -59,10 +59,11 @@ export default function WhyRunning() {
               <Reveal as="p" y={30} duration={0.9} delay={0.12}>
                 Randall believes Oregon&rsquo;s government should meet the
                 same standard. Schools should prepare students to read,
-                write, reason, and participate in civic life. Taxes should
-                fund services that produce visible value. Regulations should
-                protect the public without preventing employers from
-                investing, expanding, and creating jobs.
+                write, reason, and participate in civic life. Taxpayer
+                dollars should support effective services and responsible
+                priorities. Regulations should protect the public without
+                unnecessarily micromanaging employers or preventing them from
+                investing, expanding, and creating better jobs.
               </Reveal>
               <Reveal as="p" y={30} duration={0.9} delay={0.24}>
                 Randall is running to bring discipline, accountability, and

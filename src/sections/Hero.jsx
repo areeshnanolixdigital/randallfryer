@@ -177,12 +177,12 @@ export default function Hero() {
             </h1>
 
             <p className="hero-sub mt-8 max-w-xl text-balance text-lg leading-relaxed text-ink/80 sm:text-xl">
-              Randall Fryer is running for the Oregon House to bring a
-              disciplined, results-focused approach to Salem. He is running
-              to restore educational excellence, reduce the tax and
-              regulatory burden on working families and employers,
-              strengthen public safety, and make the state government answer
-              for the results it delivers.
+              Randall Fryer is running for the Oregon House to bring
+              disciplined, practical leadership to Salem. His priorities are
+              strengthening educational excellence, working to lower taxes for
+              families and employers, reducing unnecessary government
+              micromanagement of businesses, supporting safer communities, and
+              holding the state government accountable for its performance.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center gap-4">
@@ -243,7 +243,7 @@ export default function Hero() {
         <div className="mt-10 grid grid-cols-2 gap-x-6 gap-y-6 border-t border-ink/15 pt-8 sm:mt-12 sm:grid-cols-4">
           {[
             { value: 20, suffix: "+ Years", label: "Serving patients and communities" },
-            { value: 3, suffix: " Core Reforms", label: "Education, taxes, and Oregon's business climate" },
+            { value: 3, suffix: " Core Priorities", label: "Education, lower taxes, and a stronger business climate." },
             { value: 28, prefix: "District ", label: "One community to represent" },
             { value: 3, prefix: "November ", label: "General Election Day" },
           ].map((stat) => (
@@ -301,10 +301,10 @@ function PatternRings() {
 function Marquee() {
   const words = [
     "Educational Excellence",
-    "Lower Costs",
+    "Lower Tax Burdens",
     "A Stronger Business Climate",
     "Safe Communities",
-    "Local Control",
+    "Local Decision-Making",
     "Accountable Government",
   ];
   // Duplicate for seamless loop
