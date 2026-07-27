@@ -18,7 +18,6 @@ import {
   CONTACT_PHONE,
   CONTACT_PHONE_HREF,
   CONTACT_EMAIL,
-  CONTACT_ADDRESS,
 } from "@/constants/site";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 
@@ -59,14 +58,17 @@ export default function ContactPage() {
           </FormPanel>
         }
       >
-        {/* Detailed contact info — required for A2P/TCR business verification */}
+        {/* Detailed contact info — required for A2P/TCR business verification.
+            The street address is deliberately NOT published here: it is a
+            residential address and publishing it is a family-safety risk. Phone
+            and email are the public contact channels. */}
         <dl className="mt-8 flex flex-col gap-4 border-t border-ink/15 pt-6">
           <div className="flex flex-col gap-1">
             <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-              {LEGAL_BUSINESS_NAME}
+              Committee
             </dt>
             <dd className="text-[15px] leading-relaxed text-ink/80">
-              {CONTACT_ADDRESS}
+              {LEGAL_BUSINESS_NAME}
             </dd>
           </div>
           <div className="flex flex-col gap-1">

@@ -17,16 +17,17 @@
     background:radial-gradient(120% 100% at 30% 10%, #3a2b2a 0%, #241a26 45%, #0f1020 100%)}
   .stage::after{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
     background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .84 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.4}
-  .collage{position:absolute;right:70px;top:150px;width:560px;height:790px;z-index:10}
+  /* Collage kept clear of the headline column (see .block width). */
+  .collage{position:absolute;right:56px;top:150px;width:520px;height:790px;z-index:10}
   .pic{position:absolute;border:7px solid #f7f1e3;border-radius:4px;box-shadow:0 26px 44px rgba(0,0,0,.5);background-size:cover;background-position:center;filter:sepia(.12) saturate(.98) contrast(1.02)}
   .p1{width:340px;height:250px;right:20px;top:0;transform:rotate(-4deg);background-image:url("/randall-fryer-problem-solver.png")}
   .p2{width:300px;height:220px;left:0;top:200px;transform:rotate(5deg);background-image:url("/randall-fryer-decisions.png")}
   .p3{width:320px;height:250px;right:10px;top:400px;transform:rotate(-3deg);background-image:url("/randall-fryer-listening.png")}
   .p4{width:250px;height:210px;left:36px;top:560px;transform:rotate(4deg);background-image:url("/randall-fryer-ballot.jpg")}
-  .block{position:absolute;left:96px;top:320px;width:430px;z-index:34;text-shadow:0 2px 18px rgba(6,11,24,.5)}
+  .block{position:absolute;left:96px;top:320px;width:370px;z-index:34;text-shadow:0 2px 18px rgba(6,11,24,.5)}
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px;margin-bottom:26px}
   .eyebrow::before{content:"";display:block;width:44px;height:1px;background:var(--gold)}
-  h1{font-family:var(--display);font-weight:600;font-size:74px;line-height:.98;letter-spacing:-.03em;color:var(--bone);margin-bottom:26px}
+  h1{font-family:var(--display);font-weight:600;font-size:64px;line-height:1;letter-spacing:-.03em;color:var(--bone);margin-bottom:26px}
   h1 .it{font-style:italic;font-weight:500;color:var(--gold)}
   .body{max-width:380px;font-size:17px;line-height:1.6;color:rgba(243,237,224,.85)}
   .body b{color:var(--bone);font-weight:600}

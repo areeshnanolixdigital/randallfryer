@@ -100,10 +100,10 @@ export default function Footer() {
               delay={0.2}
               className="mt-6 max-w-xl text-balance text-base leading-relaxed text-ink/75 sm:text-lg"
             >
-              Randall Fryer is running to restore educational excellence,
-              reduce the burden on working families, strengthen Oregon&rsquo;s
-              business climate, support safer communities, and bring greater
-              accountability to Salem.
+              Randall Fryer is running to strengthen educational excellence,
+              advocate for lower taxes on families and employers, reduce
+              unnecessary government micromanagement of businesses, support
+              safer communities, and bring greater accountability to Salem.
             </Reveal>
           </div>
           <Reveal
@@ -163,8 +163,8 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-ink/70">
-              Disciplined leadership. Responsible government. Measurable
-              results.
+              Disciplined leadership. Responsible government. Accountable
+              service.
             </p>
           </div>
 
@@ -203,10 +203,16 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* CONTACT INFO — required on every page footer for A2P/TCR compliance */}
+        {/* CONTACT INFO — required on every page footer for A2P/TCR compliance.
+            The address is omitted while CONTACT_ADDRESS is blank (the intake
+            address is residential; a PO box will replace it). */}
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-ink/15 pt-6 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute">
-          <span>{CONTACT_ADDRESS}</span>
-          <span aria-hidden className="text-ink-mute/40">·</span>
+          {CONTACT_ADDRESS && (
+            <>
+              <span>{CONTACT_ADDRESS}</span>
+              <span aria-hidden className="text-ink-mute/40">·</span>
+            </>
+          )}
           {CONTACT_PHONE_HREF ? (
             <a href={CONTACT_PHONE_HREF} className="link-underline hover:text-ink">
               {CONTACT_PHONE}

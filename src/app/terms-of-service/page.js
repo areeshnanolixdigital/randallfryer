@@ -185,7 +185,10 @@ const SECTIONS = [
     id: "contact",
     title: "Contact",
     body: [
-      `Questions about these terms can be sent to ${CONTACT_EMAIL} or to: ${LEGAL_BUSINESS_NAME}, ${CONTACT_ADDRESS}.`,
+      // Mailing address only when one is published — see CONTACT_ADDRESS.
+      CONTACT_ADDRESS
+        ? `Questions about these terms can be sent to ${CONTACT_EMAIL} or to: ${LEGAL_BUSINESS_NAME}, ${CONTACT_ADDRESS}.`
+        : `Questions about these terms can be sent to ${CONTACT_EMAIL}, addressed to ${LEGAL_BUSINESS_NAME}.`,
     ],
   },
 ];

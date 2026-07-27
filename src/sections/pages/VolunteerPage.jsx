@@ -22,7 +22,11 @@ import {
 } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import BrandIcon from "@/components/ui/BrandIcon";
-import { CONTACT_PHONE, CONTACT_EMAIL } from "@/constants/site";
+import {
+  CONTACT_PHONE,
+  CONTACT_PHONE_HREF,
+  CONTACT_EMAIL,
+} from "@/constants/site";
 
 const VALUE_CARDS = [
   {
@@ -95,10 +99,12 @@ const OREGON_COUNTIES = [
 
 // Campaign contact for volunteering. A named volunteer coordinator can be added
 // here once assigned; empty (or "To be announced") values stay hidden.
+// `href` makes the value tappable (tel:/mailto:); entries without one render
+// as plain text.
 const COORDINATOR_CONTACT = [
   { k: "Volunteer coordinator", v: "" },
-  { k: "Call or text", v: CONTACT_PHONE },
-  { k: "Email", v: CONTACT_EMAIL },
+  { k: "Call or text", v: CONTACT_PHONE, href: CONTACT_PHONE_HREF },
+  { k: "Email", v: CONTACT_EMAIL, href: `mailto:${CONTACT_EMAIL}` },
 ].filter((c) => c.v && c.v.trim() && c.v.trim().toLowerCase() !== "to be announced");
 
 export default function VolunteerPage() {
@@ -177,7 +183,7 @@ export default function VolunteerPage() {
                 as="h2"
                 className="display-serif block text-balance text-[clamp(1.7rem,3.5vw,2.85rem)] font-medium leading-[1.05] tracking-[-0.02em]"
               >
-                Prefer to talk to a person first?
+                Prefer to talk to someone first?
               </SplitReveal>
               <Reveal
                 as="p"
@@ -185,10 +191,8 @@ export default function VolunteerPage() {
                 delay={0.2}
                 className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/80"
               >
-                Questions are welcome. Contact the campaign&rsquo;s volunteer
-                coordinator to learn more about available roles,
-                accessibility, scheduling, or what to expect during your
-                first volunteer activity.
+                Have questions before signing up? We&rsquo;d be happy to talk
+                with you about volunteering.
               </Reveal>
             </div>
             <div className="col-span-12 lg:col-span-5">
@@ -202,7 +206,16 @@ export default function VolunteerPage() {
                       {c.k}
                     </dt>
                     <dd className="display-serif text-lg font-medium leading-tight text-ink/70">
-                      {c.v}
+                      {c.href ? (
+                        <a
+                          href={c.href}
+                          className="link-underline transition-colors duration-300 hover:text-ink"
+                        >
+                          {c.v}
+                        </a>
+                      ) : (
+                        c.v
+                      )}
                     </dd>
                   </div>
                 ))}
