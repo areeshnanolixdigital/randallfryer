@@ -53,7 +53,7 @@ const SOCIALS = [
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/randallfororegon",
+    href: "https://www.instagram.com/randallfryerfororegon",
     Icon: InstagramIcon,
   },
   {
