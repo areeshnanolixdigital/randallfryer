@@ -13,7 +13,18 @@ export const CONTACT_PHONE = "(971) 404-6743";
 export const CONTACT_PHONE_HREF = "tel:+19714046743";
 // Business email assigned by Op1776.
 export const CONTACT_EMAIL = "Randall@randallfororegon.com";
-export const CONTACT_ADDRESS = "7308 SW 35th Ave, Portland, OR 97219";
+
+// Public mailing address — intentionally EMPTY.
+//
+// The address supplied at intake is residential and must not be published: it
+// is a family-safety risk. A PO box is being arranged to replace it. Every
+// consumer of this constant (footer, Privacy Policy, Terms of Service) omits
+// the address gracefully while it is blank, so setting the PO box here is the
+// only change needed to publish it site-wide.
+//
+// NOTE: A2P 10DLC / TCR registration expects a public business address. Until
+// the PO box is in place the site does not display one.
+export const CONTACT_ADDRESS = "";
 
 // Donations are handled off-site by WinRed — there is no on-site donate page.
 export const DONATE_URL =
