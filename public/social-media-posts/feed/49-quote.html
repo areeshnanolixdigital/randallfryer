@@ -14,7 +14,10 @@
   *{margin:0;padding:0;box-sizing:border-box}
   body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
   .stage{width:1080px;height:1080px;position:relative;overflow:hidden;background:#0a1326;color:var(--bone);font-family:var(--sans);box-shadow:0 60px 120px -40px rgba(0,0,0,.6)}
-  .photo{position:absolute;inset:0;z-index:1;background:url("/randall-fryer-decisions.png") no-repeat;background-size:cover;background-position:66% 32%;filter:saturate(.92) contrast(1.04)}
+  /* Source is portrait, so `cover` leaves no horizontal overflow and
+     background-position-x would be inert. Slight zoom restores pan control and
+     keeps Randall clear of the speech bubble on the left. */
+  .photo{position:absolute;inset:0;z-index:1;background:url("/randall-fryer-decisions.png") no-repeat;background-size:120% auto;background-position:0% 26%;filter:saturate(.92) contrast(1.04)}
   .scrim{position:absolute;inset:0;z-index:2;background:
     linear-gradient(90deg, rgba(8,13,28,.94) 0%, rgba(8,13,28,.82) 28%, rgba(8,13,28,.4) 52%, transparent 74%),
     linear-gradient(0deg, rgba(8,13,28,.82) 0%, rgba(8,13,28,.1) 30%, transparent 48%),
@@ -25,7 +28,7 @@
   .meta{position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.66);z-index:34;text-shadow:0 1px 8px rgba(8,13,28,.7)}
   .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);vertical-align:1px;margin-right:10px}
   /* empty speech bubble */
-  .bubble{position:absolute;left:96px;top:290px;width:520px;z-index:34;background:var(--bone);color:var(--ink);border-radius:22px 22px 22px 6px;padding:40px 44px;box-shadow:0 34px 60px -18px rgba(0,0,0,.5)}
+  .bubble{position:absolute;left:96px;top:290px;width:480px;z-index:34;background:var(--bone);color:var(--ink);border-radius:22px 22px 22px 6px;padding:40px 44px;box-shadow:0 34px 60px -18px rgba(0,0,0,.5)}
   .bubble .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--signal-deep);margin-bottom:18px}
   .bubble h1{font-family:var(--display);font-weight:600;font-size:62px;line-height:.98;letter-spacing:-.03em;color:var(--ink)}
   .bubble h1 .it{font-style:italic;font-weight:500;color:var(--signal-deep)}
