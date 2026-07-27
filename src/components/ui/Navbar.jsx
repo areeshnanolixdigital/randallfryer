@@ -11,6 +11,7 @@ import { DONATE_URL } from "@/constants/site";
 
 const NAV_LINKS = [
   { label: "About", href: "/about" },
+  { label: "Priorities", href: "/platform" },
   { label: "Events", href: "/events" },
   { label: "Volunteer", href: "/volunteer" },
   { label: "Ask Randall", href: "/ask" },
