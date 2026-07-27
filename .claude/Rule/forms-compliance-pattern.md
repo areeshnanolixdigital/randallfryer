@@ -61,8 +61,8 @@ const results = await Promise.all(
     }).catch((err) => {
       console.error('[X API] webhook error:', err)
       return { ok: false }
-    }),
-  ),
+    })
+  )
 )
 
 if (!results.some((r) => r.ok)) {
@@ -127,7 +127,7 @@ normalizePhoneForSubmit('')                  → ''
 ```jsx
 import { formatPhoneInput } from '@/lib/phone'
 
-;<input
+<input
   type="tel"
   value={formData.phone}
   onChange={(e) => {
@@ -218,22 +218,20 @@ useEffect(() => {
 
 // ...
 
-{
-  !hasPhone && (
-    <p className="text-warm-400 text-xs italic">
-      Enter a phone number above to opt in to SMS messages.
-    </p>
-  )
-}
+{!hasPhone && (
+  <p className="text-xs italic text-warm-400">
+    Enter a phone number above to opt in to SMS messages.
+  </p>
+)}
 
-;<label className={hasPhone ? 'cursor-pointer' : 'cursor-not-allowed'}>
+<label className={hasPhone ? 'cursor-pointer' : 'cursor-not-allowed'}>
   <input
     type="checkbox"
     checked={formData.smsConsent}
     onChange={handleChange('smsConsent')}
     disabled={!hasPhone}
     required={hasPhone}
-    className="accent-patriot-red disabled:cursor-not-allowed disabled:opacity-40"
+    className="accent-patriot-red disabled:opacity-40 disabled:cursor-not-allowed"
   />
   <span className={hasPhone ? 'text-warm-400' : 'text-warm-400/50'}>
     {/* consent copy — specific to this site, do not hardcode assumptions */}
