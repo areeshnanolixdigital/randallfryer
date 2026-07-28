@@ -494,6 +494,7 @@ export const SOCIAL_POSTS = [
     slug: "story-01-manifesto-tower",
     no: "01",
     format: "story",
+    listed: false,
     title: "Manifesto Tower",
     concept: "Vertical manifesto with central seal",
     file: "/social-media-posts/story/01-manifesto-tower.html",
@@ -502,6 +503,7 @@ export const SOCIAL_POSTS = [
     slug: "story-02-dome-cinematic",
     no: "02",
     format: "story",
+    listed: false,
     title: "Dome Cinematic",
     concept: "Twilight Capitol dome, sun glow, volumetric haze",
     file: "/social-media-posts/story/02-dome-cinematic.html",
@@ -510,6 +512,7 @@ export const SOCIAL_POSTS = [
     slug: "story-03-stat-stack",
     no: "03",
     format: "story",
+    listed: false,
     title: "Stat Stack",
     concept: "Three extruded counters with side gradient",
     file: "/social-media-posts/story/03-stat-stack.html",
@@ -518,6 +521,7 @@ export const SOCIAL_POSTS = [
     slug: "story-04-portrait-fullbleed",
     no: "04",
     format: "story",
+    listed: false,
     title: "Portrait Full Bleed",
     concept: "Studio portrait with spotlight beam & sash badge",
     file: "/social-media-posts/story/04-portrait-fullbleed.html",
@@ -526,6 +530,7 @@ export const SOCIAL_POSTS = [
     slug: "story-05-pillar-vertical",
     no: "05",
     format: "story",
+    listed: false,
     title: "Pillar Vertical",
     concept: "Massive italic numeral with glass parchment card",
     file: "/social-media-posts/story/05-pillar-vertical.html",
@@ -534,6 +539,7 @@ export const SOCIAL_POSTS = [
     slug: "story-06-pledge-medallion",
     no: "06",
     format: "story",
+    listed: false,
     title: "Pledge Medallion",
     concept: "Crimson stage, sunburst rays, draped ribbons",
     file: "/social-media-posts/story/06-pledge-medallion.html",
@@ -542,6 +548,7 @@ export const SOCIAL_POSTS = [
     slug: "story-07-marquee-stack",
     no: "07",
     format: "story",
+    listed: false,
     title: "Marquee Stack",
     concept: "Five italic marquee bars at varied scales",
     file: "/social-media-posts/story/07-marquee-stack.html",
@@ -550,6 +557,7 @@ export const SOCIAL_POSTS = [
     slug: "story-08-ledger-document",
     no: "08",
     format: "story",
+    listed: false,
     title: "Ledger Document",
     concept: "Aged parchment with wax seal & ledger rows",
     file: "/social-media-posts/story/08-ledger-document.html",
@@ -558,6 +566,7 @@ export const SOCIAL_POSTS = [
     slug: "story-09-italic-quote",
     no: "09",
     format: "story",
+    listed: false,
     title: "Italic Quote",
     concept: "Volumetric blue stage, massive 3D quote mark",
     file: "/social-media-posts/story/09-italic-quote.html",
@@ -566,6 +575,7 @@ export const SOCIAL_POSTS = [
     slug: "story-10-date-countdown",
     no: "10",
     format: "story",
+    listed: false,
     title: "Date Countdown",
     concept: "Extruded date with countdown chips & seal",
     file: "/social-media-posts/story/10-date-countdown.html",
@@ -574,6 +584,7 @@ export const SOCIAL_POSTS = [
     slug: "story-11-manifesto-tower",
     no: "11",
     format: "story",
+    listed: false,
     title: "Manifesto Tower",
     concept: "Vertical manifesto headline over a central seal",
     file: "/social-media-posts/story/11-manifesto-tower.html",
@@ -582,6 +593,7 @@ export const SOCIAL_POSTS = [
     slug: "story-12-stat-stack",
     no: "12",
     format: "story",
+    listed: false,
     title: "Stat Stack",
     concept: "Three extruded counters on a spotlit ink stage",
     file: "/social-media-posts/story/12-stat-stack.html",
@@ -590,6 +602,7 @@ export const SOCIAL_POSTS = [
     slug: "story-13-dome-cinematic",
     no: "13",
     format: "story",
+    listed: false,
     title: "Dome Cinematic",
     concept: "Twilight Capitol dome with volumetric haze",
     file: "/social-media-posts/story/13-dome-cinematic.html",
@@ -598,6 +611,7 @@ export const SOCIAL_POSTS = [
     slug: "story-14-pillar-vertical",
     no: "14",
     format: "story",
+    listed: false,
     title: "Pillar IV",
     concept: "Massive italic numeral with a glass parchment card",
     file: "/social-media-posts/story/14-pillar-vertical.html",
@@ -606,6 +620,7 @@ export const SOCIAL_POSTS = [
     slug: "story-15-quote-vertical",
     no: "15",
     format: "story",
+    listed: false,
     title: "Italic Quote",
     concept: "Volumetric blue stage with a monumental quote mark",
     file: "/social-media-posts/story/15-quote-vertical.html",
@@ -614,6 +629,7 @@ export const SOCIAL_POSTS = [
     slug: "story-16-date-countdown",
     no: "16",
     format: "story",
+    listed: false,
     title: "Date Countdown",
     concept: "Extruded date with countdown chips and seal",
     file: "/social-media-posts/story/16-date-countdown.html",
@@ -622,6 +638,7 @@ export const SOCIAL_POSTS = [
     slug: "story-17-marquee-stack",
     no: "17",
     format: "story",
+    listed: false,
     title: "Marquee Stack",
     concept: "Five italic marquee bars at varied scales",
     file: "/social-media-posts/story/17-marquee-stack.html",
@@ -630,6 +647,7 @@ export const SOCIAL_POSTS = [
     slug: "story-18-ledger-document",
     no: "18",
     format: "story",
+    listed: false,
     title: "Ledger Document",
     concept: "Aged parchment ledger with wax seal and rows",
     file: "/social-media-posts/story/18-ledger-document.html",
@@ -638,6 +656,7 @@ export const SOCIAL_POSTS = [
     slug: "story-19-manifesto-tower",
     no: "19",
     format: "story",
+    listed: false,
     title: "Manifesto Tower · II",
     concept: "Vertical manifesto headline over a central seal",
     file: "/social-media-posts/story/19-manifesto-tower.html",
@@ -646,6 +665,7 @@ export const SOCIAL_POSTS = [
     slug: "story-20-stat-stack",
     no: "20",
     format: "story",
+    listed: false,
     title: "Stat Stack · II",
     concept: "Three extruded counters on a spotlit ink stage",
     file: "/social-media-posts/story/20-stat-stack.html",
@@ -654,6 +674,7 @@ export const SOCIAL_POSTS = [
     slug: "story-21-dome-cinematic",
     no: "21",
     format: "story",
+    listed: false,
     title: "Dome Cinematic · II",
     concept: "Twilight Capitol dome with volumetric haze",
     file: "/social-media-posts/story/21-dome-cinematic.html",
@@ -662,6 +683,7 @@ export const SOCIAL_POSTS = [
     slug: "story-22-pillar-vertical",
     no: "22",
     format: "story",
+    listed: false,
     title: "Pillar III",
     concept: "Massive italic numeral with a glass parchment card",
     file: "/social-media-posts/story/22-pillar-vertical.html",
@@ -670,6 +692,7 @@ export const SOCIAL_POSTS = [
     slug: "story-23-quote-vertical",
     no: "23",
     format: "story",
+    listed: false,
     title: "Italic Quote · II",
     concept: "Volumetric blue stage with a monumental quote mark",
     file: "/social-media-posts/story/23-quote-vertical.html",
@@ -678,6 +701,7 @@ export const SOCIAL_POSTS = [
     slug: "story-24-date-countdown",
     no: "24",
     format: "story",
+    listed: false,
     title: "Date Countdown · II",
     concept: "Extruded date with countdown chips and seal",
     file: "/social-media-posts/story/24-date-countdown.html",
@@ -686,6 +710,7 @@ export const SOCIAL_POSTS = [
     slug: "story-25-marquee-stack",
     no: "25",
     format: "story",
+    listed: false,
     title: "Marquee Stack · II",
     concept: "Five italic marquee bars at varied scales",
     file: "/social-media-posts/story/25-marquee-stack.html",
@@ -694,6 +719,7 @@ export const SOCIAL_POSTS = [
     slug: "story-26-ledger-document",
     no: "26",
     format: "story",
+    listed: false,
     title: "Ledger Document · II",
     concept: "Aged parchment ledger with wax seal and rows",
     file: "/social-media-posts/story/26-ledger-document.html",
@@ -702,6 +728,7 @@ export const SOCIAL_POSTS = [
     slug: "story-27-manifesto-tower",
     no: "27",
     format: "story",
+    listed: false,
     title: "Manifesto Tower · III",
     concept: "Vertical manifesto headline over a central seal",
     file: "/social-media-posts/story/27-manifesto-tower.html",
@@ -710,6 +737,7 @@ export const SOCIAL_POSTS = [
     slug: "story-28-stat-stack",
     no: "28",
     format: "story",
+    listed: false,
     title: "Stat Stack · III",
     concept: "Three extruded counters on a spotlit ink stage",
     file: "/social-media-posts/story/28-stat-stack.html",
@@ -718,6 +746,7 @@ export const SOCIAL_POSTS = [
     slug: "story-29-dome-cinematic",
     no: "29",
     format: "story",
+    listed: false,
     title: "Dome Cinematic · III",
     concept: "Twilight Capitol dome with volumetric haze",
     file: "/social-media-posts/story/29-dome-cinematic.html",
@@ -726,9 +755,254 @@ export const SOCIAL_POSTS = [
     slug: "story-30-pillar-vertical",
     no: "30",
     format: "story",
+    listed: false,
     title: "Pillar II",
     concept: "Massive italic numeral with a glass parchment card",
     file: "/social-media-posts/story/30-pillar-vertical.html",
+  },
+
+  // ────────────────────────────────────────────────────────────────
+  // Instagram story — 1080×1920 (2026 set, finished artwork)
+  // ────────────────────────────────────────────────────────────────
+  {
+    slug: "story-01-build-district-28-together",
+    no: "01",
+    format: "story",
+    title: "Let's Build A Stronger District 28",
+    concept: "Portrait medallion, capitol seal, District 28 call to unity",
+    file: "/social-media-posts/story/01-build-district-28-together.html",
+  },
+  {
+    slug: "story-02-what-matters-most",
+    no: "02",
+    format: "story",
+    title: "What Matters Most To You",
+    concept: "Mount Hood skyline with schools, cost of living, safety, jobs",
+    file: "/social-media-posts/story/02-what-matters-most.html",
+  },
+  {
+    slug: "story-03-share-your-ideas",
+    no: "03",
+    format: "story",
+    title: "Share Your Ideas",
+    concept: "Every conversation helps shape this campaign — ask questions",
+    file: "/social-media-posts/story/03-share-your-ideas.html",
+  },
+  {
+    slug: "story-04-small-businesses-moving",
+    no: "04",
+    format: "story",
+    title: "Small Businesses Keep Us Moving",
+    concept: "Main-street storefront, let Oregon businesses grow",
+    file: "/social-media-posts/story/04-small-businesses-moving.html",
+  },
+  {
+    slug: "story-05-strong-schools",
+    no: "05",
+    format: "story",
+    title: "Strong Schools, Stronger Communities",
+    concept: "Desk still life with books, worth investing in",
+    file: "/social-media-posts/story/05-strong-schools.html",
+  },
+  {
+    slug: "story-06-question-for-randall",
+    no: "06",
+    format: "story",
+    title: "Have A Question For Randall",
+    concept: "Crimson stage, gold medallion, ask away",
+    file: "/social-media-posts/story/06-question-for-randall.html",
+  },
+  {
+    slug: "story-07-a-quick-reminder",
+    no: "07",
+    format: "story",
+    title: "A Quick Reminder",
+    concept: "Countdown card — Election Day is coming, stay informed",
+    file: "/social-media-posts/story/07-a-quick-reminder.html",
+  },
+  {
+    slug: "story-08-every-vote-matters",
+    no: "08",
+    format: "story",
+    title: "Every Vote Matters",
+    concept: "Ballot drop box at the courthouse steps",
+    file: "/social-media-posts/story/08-every-vote-matters.html",
+  },
+  {
+    slug: "story-09-meeting-more-neighbors",
+    no: "09",
+    format: "story",
+    title: "Meeting More Neighbors",
+    concept: "Formal portrait, meeting neighbours across District 28",
+    file: "/social-media-posts/story/09-meeting-more-neighbors.html",
+  },
+  {
+    slug: "story-10-your-support-reaches-further",
+    no: "10",
+    format: "story",
+    title: "Your Support Reaches Further",
+    concept: "Neighbourhood home, thank-you to supporters",
+    file: "/social-media-posts/story/10-your-support-reaches-further.html",
+  },
+  {
+    slug: "story-11-were-listening",
+    no: "11",
+    format: "story",
+    title: "We're Listening",
+    concept: "Quiet interior, one issue you would like addressed",
+    file: "/social-media-posts/story/11-were-listening.html",
+  },
+  {
+    slug: "story-12-coffee-conversation-community",
+    no: "12",
+    format: "story",
+    title: "Coffee. Conversation. Community.",
+    concept: "Ink invite card — join us, where good ideas begin",
+    file: "/social-media-posts/story/12-coffee-conversation-community.html",
+  },
+  {
+    slug: "story-13-parents-deserve-a-voice",
+    no: "13",
+    format: "story",
+    title: "Parents Deserve A Voice",
+    concept: "Schoolyard sculpture, agree/absolutely poll prompt",
+    file: "/social-media-posts/story/13-parents-deserve-a-voice.html",
+  },
+  {
+    slug: "story-14-thank-you-volunteers",
+    no: "14",
+    format: "story",
+    title: "Thank You, Volunteers",
+    concept: "Portrait — we couldn't do this without you",
+    file: "/social-media-posts/story/14-thank-you-volunteers.html",
+  },
+  {
+    slug: "story-15-todays-goal",
+    no: "15",
+    format: "story",
+    title: "Today's Goal",
+    concept: "Community fair — meet people, listen, learn something new",
+    file: "/social-media-posts/story/15-todays-goal.html",
+  },
+  {
+    slug: "story-16-responsible-spending",
+    no: "16",
+    format: "story",
+    title: "Responsible Spending Matters",
+    concept: "Ledger, calculator, every tax dollar should work hard",
+    file: "/social-media-posts/story/16-responsible-spending.html",
+  },
+  {
+    slug: "story-17-where-should-we-visit",
+    no: "17",
+    format: "story",
+    title: "Where Should We Visit Next",
+    concept: "Forest highway, open response prompt",
+    file: "/social-media-posts/story/17-where-should-we-visit.html",
+  },
+  {
+    slug: "story-18-community-starts-with-conversation",
+    no: "18",
+    format: "story",
+    title: "Community Starts With Conversation",
+    concept: "Picnic-table conversation, let's keep talking",
+    file: "/social-media-posts/story/18-community-starts-with-conversation.html",
+  },
+  {
+    slug: "story-19-leadership-that-listens",
+    no: "19",
+    format: "story",
+    title: "Leadership That Listens",
+    concept: "Roundtable discussion — that is why we are here",
+    file: "/social-media-posts/story/19-leadership-that-listens.html",
+  },
+  {
+    slug: "story-20-campaign-updates-here",
+    no: "20",
+    format: "story",
+    title: "Campaign Updates Here",
+    concept: "Oregon outline on ink, stay connected",
+    file: "/social-media-posts/story/20-campaign-updates-here.html",
+  },
+  {
+    slug: "story-21-registered-to-vote",
+    no: "21",
+    format: "story",
+    title: "Have You Registered To Vote",
+    concept: "Ballot box and envelope, open response prompt",
+    file: "/social-media-posts/story/21-registered-to-vote.html",
+  },
+  {
+    slug: "story-22-supporting-local-businesses",
+    no: "22",
+    format: "story",
+    title: "Supporting Local Businesses",
+    concept: "Rain-lit shopfront row, local families",
+    file: "/social-media-posts/story/22-supporting-local-businesses.html",
+  },
+  {
+    slug: "story-23-education-opportunity-accountability",
+    no: "23",
+    format: "story",
+    title: "Education. Opportunity. Accountability.",
+    concept: "Three-panel civic montage of Randall Fryer's focus",
+    file: "/social-media-posts/story/23-education-opportunity-accountability.html",
+  },
+  {
+    slug: "story-24-grateful-for-every-volunteer",
+    no: "24",
+    format: "story",
+    title: "Grateful For Every Volunteer",
+    concept: "Volunteer table, interested in helping",
+    file: "/social-media-posts/story/24-grateful-for-every-volunteer.html",
+  },
+  {
+    slug: "story-25-one-conversation-at-a-time",
+    no: "25",
+    format: "story",
+    title: "One Conversation At A Time",
+    concept: "Sunrise trail portrait, a better Oregon",
+    file: "/social-media-posts/story/25-one-conversation-at-a-time.html",
+  },
+  {
+    slug: "story-26-listening-today",
+    no: "26",
+    format: "story",
+    title: "Listening Today, Planning Tomorrow",
+    concept: "Notebook and calendar, working every day",
+    file: "/social-media-posts/story/26-listening-today.html",
+  },
+  {
+    slug: "story-27-met-randall-yet",
+    no: "27",
+    format: "story",
+    title: "Have You Met Randall Yet",
+    concept: "Community gathering — we'd love to meet you",
+    file: "/social-media-posts/story/27-met-randall-yet.html",
+  },
+  {
+    slug: "story-28-community-event",
+    no: "28",
+    format: "story",
+    title: "Community Event",
+    concept: "Hall set for a community event, details coming soon",
+    file: "/social-media-posts/story/28-community-event.html",
+  },
+  {
+    slug: "story-29-town-hall-coming-soon",
+    no: "29",
+    format: "story",
+    title: "Town Hall Coming Soon",
+    concept: "Empty hall, bring your questions",
+    file: "/social-media-posts/story/29-town-hall-coming-soon.html",
+  },
+  {
+    slug: "story-30-move-district-28-forward",
+    no: "30",
+    format: "story",
+    title: "Let's Move District 28 Forward",
+    concept: "Sunset ridge, thanks for following along",
+    file: "/social-media-posts/story/30-move-district-28-forward.html",
   },
 ];
 
@@ -956,73 +1230,26 @@ export function posterFor(file) {
     .replace(/\.html$/, ".jpg");
 }
 
-// Every gallery item — feed + story posts, then carousels — in display order.
-export const GALLERY_ITEMS = [...SOCIAL_POSTS, ...CAROUSELS];
+// A creative is listed in the gallery unless it opts out with `listed: false`.
+// The superseded story artboards are opted out: they stay published and their
+// /social-media-posts/[slug] detail routes still generate
+// (generateStaticParams reads SOCIAL_POSTS, not this), but they are reachable
+// by direct link only.
+const isListed = (p) => p.listed !== false;
 
-// ────────────────────────────────────────────────────────────────
-// Gallery split — approved shortlist vs. the rest
-// ────────────────────────────────────────────────────────────────
-// Only these creatives front /social-media-posts. Everything else stays
-// published and reachable (the /social-media-posts/[slug] detail routes are
-// untouched) but is listed on /social-posts-2 instead of the main gallery.
-export const FEATURED_SLUGS = [
-  "feed-01-manifesto-cover",
-  "feed-02-pillar-numbered",
-  "feed-04-italic-quote",
-  "feed-15-ledger",
-  "feed-26-statistic",
-  "feed-29-medallion",
-  "feed-32-timeline",
-  "feed-34-portrait",
-  "feed-43-signal",
-  "feed-49-quote",
-  "feed-52-split",
-];
+// Every gallery item — feed posts, stories, then carousels — in display order.
+export const GALLERY_ITEMS = [...SOCIAL_POSTS, ...CAROUSELS].filter(isListed);
 
-// Each gallery numbers its own cards by position, so the plates read straight
-// down the grid (№01, №02, №03 …). The manifest `no` is kept on the object but
-// isn't shown: after the split it reads as gaps (№01, №02, №04, №15 …).
-// Use displayNoFor(slug) anywhere the number is surfaced, so a card and its
-// detail page always agree.
-const numberInOrder = (items) =>
-  items.map((p, i) => ({ ...p, displayNo: String(i + 1).padStart(2, "0") }));
-
-// Mapped over FEATURED_SLUGS (not filtered) so the shortlist renders in the
-// approved order rather than manifest order.
-export const FEATURED_ITEMS = numberInOrder(
-  FEATURED_SLUGS.map((slug) => GALLERY_ITEMS.find((p) => p.slug === slug)).filter(
-    Boolean
-  )
-);
-
-export const ARCHIVE_ITEMS = numberInOrder(
-  GALLERY_ITEMS.filter((p) => !FEATURED_SLUGS.includes(p.slug))
-);
-
-export function isFeaturedPost(slug) {
-  return FEATURED_SLUGS.includes(slug);
-}
-
-const DISPLAY_NO_BY_SLUG = new Map(
-  [...FEATURED_ITEMS, ...ARCHIVE_ITEMS].map((p) => [p.slug, p.displayNo])
-);
-
-// Gallery-position number for a creative. Falls back to the manifest `no` so
-// anything not listed in either gallery still renders something sensible.
-export function displayNoFor(slug) {
-  return (
-    DISPLAY_NO_BY_SLUG.get(slug) ??
-    GALLERY_ITEMS.find((p) => p.slug === slug)?.no ??
-    null
-  );
-}
-
+// Related creatives shown at the foot of a detail page. Restricted to listed
+// creatives so a superseded artboard never resurfaces there.
 export function getRelatedSocialPosts(slug, n = 4) {
-  const idx = SOCIAL_POSTS.findIndex((p) => p.slug === slug);
-  if (idx === -1) return [];
+  const pool = SOCIAL_POSTS.filter(isListed);
+  const idx = pool.findIndex((p) => p.slug === slug);
+  // Viewing a story detail page directly: fall back to the first n listed posts.
+  if (idx === -1) return pool.slice(0, n);
   const out = [];
-  for (let i = 1; i <= SOCIAL_POSTS.length && out.length < n; i++) {
-    out.push(SOCIAL_POSTS[(idx + i) % SOCIAL_POSTS.length]);
+  for (let i = 1; i <= pool.length && out.length < n; i++) {
+    out.push(pool[(idx + i) % pool.length]);
   }
   return out;
 }
