@@ -7,28 +7,13 @@ import LivePreview from "@/components/ui/LivePreview";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import Reveal from "@/animations/Reveal";
-import {
-  FORMATS,
-  displayNoFor,
-  getRelatedSocialPosts,
-  isFeaturedPost,
-  posterFor,
-} from "@/data/socialPosts";
+import { FORMATS, getRelatedSocialPosts, posterFor } from "@/data/socialPosts";
 import { cn } from "@/lib/cn";
 
 export default function SocialMediaPostDetailPage({ post }) {
   const fmt = FORMATS[post.format];
   const related = getRelatedSocialPosts(post.slug, 4);
   const [copied, setCopied] = useState(false);
-
-  // Gallery-position number, so this page agrees with the card you clicked.
-  const no = displayNoFor(post.slug);
-
-  // Point "back" at whichever gallery actually lists this creative, so an
-  // extended-library post doesn't send you to a page it isn't on.
-  const featured = isFeaturedPost(post.slug);
-  const backHref = featured ? "/social-media-posts" : "/social-posts-2";
-  const backLabel = featured ? "All social media posts" : "All social posts 2";
 
   const onCopy = async () => {
     try {
@@ -56,15 +41,15 @@ export default function SocialMediaPostDetailPage({ post }) {
             className="flex flex-wrap items-center justify-between gap-y-4 font-mono text-[11px] uppercase tracking-[0.28em] text-ink-mute"
           >
             <Link
-              href={backHref}
+              href="/social-media-posts"
               className="link-underline inline-flex items-center gap-3 text-ink/80 hover:text-ink"
             >
               <span aria-hidden>←</span>
-              {backLabel}
+              All social media posts
             </Link>
             <span className="flex flex-wrap items-center gap-4">
               <span>
-                {fmt.label} · №{no}
+                {fmt.label} · №{post.no}
               </span>
               <span className="hairline h-px w-6" />
               <span>{fmt.sub}</span>
@@ -181,14 +166,14 @@ export default function SocialMediaPostDetailPage({ post }) {
           >
             <Spec label="Format" value={fmt.label} />
             <Spec label="Aspect" value={fmt.sub} />
-            <Spec label="File" value={`№${no}`} />
+            <Spec label="File" value={`№${post.no}`} />
             <Spec label="Type" value="HTML / CSS" />
           </Reveal>
         </div>
       </section>
 
       {/* CONCEPT NOTE */}
-      <SectionFrame label="03 Concept" number={`File №${no}`}>
+      <SectionFrame label="03 Concept" number={`File №${post.no}`}>
         <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <h2 className="display-serif text-balance text-[clamp(1.6rem,3.5vw,2.6rem)] font-medium leading-[1.05] tracking-[-0.02em]">
@@ -253,7 +238,7 @@ export default function SocialMediaPostDetailPage({ post }) {
                   </div>
                   <div className="flex items-baseline justify-between gap-2 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute">
                     <span>
-                      {f.label} · №{displayNoFor(p.slug)}
+                      {f.label} · №{p.no}
                     </span>
                   </div>
                   <h3 className="display-serif text-base font-medium leading-tight tracking-tight transition-colors duration-300 group-hover:text-signal">

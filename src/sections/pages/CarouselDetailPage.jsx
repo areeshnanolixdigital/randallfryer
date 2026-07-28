@@ -61,13 +61,12 @@ export default function CarouselDetailPage({ carousel }) {
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="flex flex-wrap items-center justify-between gap-y-4 font-mono text-[11px] uppercase tracking-[0.28em] text-ink-mute"
           >
-            {/* Carousels live in the extended library, not the main gallery. */}
             <Link
-              href="/social-posts-2"
+              href="/social-media-posts"
               className="link-underline inline-flex items-center gap-3 text-ink/80 hover:text-ink"
             >
               <span aria-hidden>←</span>
-              All social posts 2
+              All social media posts
             </Link>
             <span className="flex flex-wrap items-center gap-4">
               <span>
