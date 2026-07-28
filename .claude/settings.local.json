@@ -152,7 +152,24 @@
       "Bash(TARGET_URL=http://localhost:3000 node run.js ' *)",
       "Bash(node run.js \"C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/regen-posters.js\")",
       "Bash(python -)",
-      "Bash(node run.js \"C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/detect-overlap.js\")"
+      "Bash(node run.js \"C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/detect-overlap.js\")",
+      "Bash(mkdir -p C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/prio)",
+      "Bash(cp \"C:/Users/Dev/Downloads/PRIORITIES - RANDALL.docx\" prio.zip)",
+      "Bash(rm -rf ex)",
+      "Bash(unzip -o -q prio.zip -d ex)",
+      "Bash(sed -e 's/<\\\\/w:p>/\\\\n/g' -e 's/<[^>]*>//g' ex/word/document.xml)",
+      "Bash(node run.js \"C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/verify-priorities.js\")",
+      "Bash(git rm *)",
+      "Bash(grep -n \"backHref\\\\|backLabel\\\\|displayNoFor\\\\|isFeaturedPost\\\\|№{no}\\\\|№\\\\${no}\" src/sections/pages/SocialMediaPostDetailPage.jsx)",
+      "Bash(mkdir -p C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/stories)",
+      "Bash(cp \"C:/Users/Dev/Downloads/Randall Story 3 - 30.zip\" s.zip)",
+      "Bash(unzip -o -q s.zip -d ex)",
+      "Bash(mkdir -p ordered)",
+      "Bash(node \"C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/install-stories.js\")",
+      "Bash(node \"C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/mark-unlisted.js\")",
+      "Bash(sed -n '/slug: \"story-01-manifesto-tower\"/,/^  },/p' src/data/socialPosts.js)",
+      "Bash(node run.js \"C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/gen-story-posters.js\")",
+      "Bash(node run.js \"C:/Users/Dev/AppData/Local/Temp/claude/C--Users-Dev-Documents-GitHub-randallfryer/ce5a2644-3719-4cae-99d2-dae9c242183d/scratchpad/regen-all-posters.js\")"
     ]
   }
 }
