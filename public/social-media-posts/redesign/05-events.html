@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Redesign 05 — Meet Randall In Person</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A2744; --red:#B62126; --yale:#314860;
+    --gold:#D3A52A; --paper:#F6F5F4; --graphite:#303030;
+    --ff:'Inter',system-ui,sans-serif;
+    --ff-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;background:var(--paper);
+    font-family:var(--ff);color:var(--navy)}
+
+  .rail{position:absolute;left:0;top:0;bottom:0;width:34px;background:var(--red);z-index:8}
+  .rail span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);
+    white-space:nowrap;font-family:var(--ff-mono);font-size:16px;font-weight:600;
+    letter-spacing:.42em;text-transform:uppercase;color:var(--paper)}
+
+  /* Photo as a hard-edged band across the lower half — no frame, no offset block */
+  .band{position:absolute;left:34px;right:0;bottom:0;height:474px;z-index:2;overflow:hidden}
+  .band img{width:100%;height:100%;object-fit:cover;object-position:50% 32%;display:block}
+  .band::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,rgba(10,39,68,.94) 0%,rgba(10,39,68,.78) 38%,rgba(10,39,68,.12) 74%)}
+  .band .edge{position:absolute;left:0;right:0;top:0;height:10px;background:var(--gold);z-index:3}
+
+  .kick{position:absolute;left:96px;top:92px;z-index:6;display:flex;align-items:center;gap:18px}
+  .kick i{width:44px;height:9px;background:var(--gold)}
+  .kick span{font-family:var(--ff-mono);font-size:18px;font-weight:600;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--red)}
+
+  .head{position:absolute;left:96px;top:150px;width:560px;z-index:6;
+    font-weight:900;font-size:76px;line-height:1.1;letter-spacing:-.035em}
+  .head .hl{background:var(--navy);color:var(--paper);padding:2px 14px 10px;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* Date block — a calendar chip built from flat blocks */
+  .date{position:absolute;right:96px;top:398px;width:196px;z-index:6;
+    box-shadow:0 0 0 5px var(--navy)}
+  .date .m{background:var(--red);color:var(--paper);text-align:center;padding:12px 0;
+    font-family:var(--ff-mono);font-size:20px;font-weight:600;letter-spacing:.28em;text-transform:uppercase}
+  .date .d{background:var(--paper);color:var(--navy);text-align:center;padding:14px 0 18px;
+    font-weight:900;font-size:96px;line-height:1;letter-spacing:-.05em}
+  .date .l{background:var(--navy);color:var(--gold);text-align:center;padding:10px 0;
+    font-family:var(--ff-mono);font-size:15px;font-weight:600;letter-spacing:.24em;text-transform:uppercase}
+
+  .over{position:absolute;left:96px;bottom:196px;z-index:7;width:620px;color:var(--paper)}
+  .over .t{font-weight:800;font-size:52px;line-height:1.04;letter-spacing:-.03em}
+  .over .s{margin-top:16px;font-weight:500;font-size:29px;line-height:1.4;color:rgba(246,245,244,.86)}
+
+  .urlbar{position:absolute;left:96px;bottom:104px;z-index:7;display:flex;align-items:stretch}
+  .urlbar .u{background:var(--gold);color:var(--navy);font-family:var(--ff-mono);font-size:22px;
+    font-weight:600;letter-spacing:.12em;padding:16px 26px;display:flex;align-items:center}
+  .urlbar .a{background:var(--paper);color:var(--navy);width:62px;display:grid;place-items:center;
+    font-size:28px;line-height:1}
+
+  .disc{position:absolute;right:96px;bottom:56px;z-index:7;text-align:right;
+    font-family:var(--ff-mono);font-size:14px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(246,245,244,.66)}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="rail" aria-hidden><span>Events · House District 28</span></div>
+
+    <div class="kick"><i></i><span>Events</span></div>
+    <h1 class="head">Bring your questions to <span class="hl">the events.</span></h1>
+
+    <div class="date" aria-hidden>
+      <div class="m">Nov</div>
+      <div class="d">3</div>
+      <div class="l">Election Day</div>
+    </div>
+
+    <div class="band">
+      <span class="edge"></span>
+      <img src="/randall-fryer-park-conversation.png" alt="Randall Fryer speaking with residents" />
+    </div>
+
+    <div class="over">
+      <div class="t">Come as you are.</div>
+      <div class="s">Bring your questions. Bring a neighbor.</div>
+    </div>
+
+    <div class="urlbar">
+      <span class="u">randallfororegon.com/events</span>
+      <span class="a" aria-hidden>&rarr;</span>
+    </div>
+
+    <div class="disc">Paid for by Randall Fryer For Representative</div>
+  </div>
+</body>
+</html>

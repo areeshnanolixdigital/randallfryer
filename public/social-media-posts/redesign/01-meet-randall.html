@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Redesign 01 — Meet Randall Fryer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* Randall Fryer brand palette — Brand Guidelines V2.1 §3.0 */
+  :root{
+    --navy:#0A2744; --red:#B62126; --yale:#314860;
+    --gold:#D3A52A; --paper:#F6F5F4; --graphite:#303030;
+    --ff:'Inter',system-ui,sans-serif;
+    --ff-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;background:var(--navy);
+    font-family:var(--ff);color:var(--paper)}
+
+  /* Chart hairlines — a records/measurement texture, not a pinstripe */
+  .stage::before{content:"";position:absolute;inset:0;z-index:0;
+    background:repeating-linear-gradient(transparent 0 59px,rgba(246,245,244,.06) 59px 60px)}
+
+  /* File rail: full-height gold bar with a vertical run-in label */
+  .rail{position:absolute;left:0;top:0;bottom:0;width:34px;background:var(--gold);z-index:6}
+  .rail span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);
+    white-space:nowrap;font-family:var(--ff-mono);font-size:16px;font-weight:600;
+    letter-spacing:.42em;text-transform:uppercase;color:var(--navy)}
+
+  /* Photo occupies the right third, hard-cropped, no frame or drop shadow */
+  .shot{position:absolute;right:0;top:0;bottom:0;width:404px;z-index:2}
+  .shot img{width:100%;height:100%;object-fit:cover;object-position:52% 20%;display:block}
+  .shot::after{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;background:var(--gold)}
+
+  /* Outlined serial marker */
+  .serial{position:absolute;right:432px;top:52px;z-index:5;font-weight:900;font-size:112px;
+    line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:3px rgba(211,165,42,.62)}
+
+  .head{position:absolute;left:96px;top:214px;width:548px;z-index:5;
+    font-weight:900;font-size:58px;line-height:1.12;letter-spacing:-.035em}
+  /* Knockout highlight: solid block behind the key word */
+  .head .hl{background:var(--red);color:var(--paper);padding:0 14px 8px;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  .goldrule{position:absolute;left:96px;top:624px;width:210px;height:7px;background:var(--gold);z-index:5}
+
+  .name{position:absolute;left:96px;top:664px;z-index:5}
+  .name .k{display:block;font-family:var(--ff-mono);font-size:17px;font-weight:600;
+    letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .name .n{font-weight:900;font-size:68px;letter-spacing:-.04em;line-height:1;color:var(--paper)}
+
+  /* Credentials as a ruled ledger, each row led by a solid bar */
+  .creds{position:absolute;left:96px;bottom:132px;width:520px;z-index:5}
+  .creds li{list-style:none;display:flex;align-items:center;gap:20px;padding:17px 0;
+    border-top:1px solid rgba(246,245,244,.22)}
+  .creds li:last-child{border-bottom:1px solid rgba(246,245,244,.22)}
+  .creds .bar{width:30px;height:9px;flex:none}
+  .creds .b1{background:var(--red)}
+  .creds .b2{background:var(--gold)}
+  .creds .b3{background:var(--paper)}
+  .creds .t{font-family:var(--ff-mono);font-size:21px;font-weight:600;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--paper)}
+
+  .disc{position:absolute;left:96px;bottom:56px;z-index:5;
+    font-family:var(--ff-mono);font-size:14px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(246,245,244,.5)}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="rail" aria-hidden><span>Randall Fryer · House District 28</span></div>
+
+    <div class="shot"><img src="/randall-fryer-portrait-formal.png" alt="Randall Fryer" /></div>
+
+    <div class="serial" aria-hidden>01</div>
+
+    <h1 class="head">Disciplined leadership. Responsible government. <span class="hl">Accountable service.</span></h1>
+
+    <div class="goldrule" aria-hidden></div>
+
+    <div class="name">
+      <span class="k">For State Representative</span>
+      <span class="n">Randall Fryer</span>
+    </div>
+
+    <ul class="creds">
+      <li><span class="bar b1"></span><span class="t">Physician</span></li>
+      <li><span class="bar b2"></span><span class="t">Army Medical Corps</span></li>
+      <li><span class="bar b3"></span><span class="t">Problem-Solver</span></li>
+    </ul>
+
+    <div class="disc">Paid for by Randall Fryer For Representative</div>
+  </div>
+</body>
+</html>
