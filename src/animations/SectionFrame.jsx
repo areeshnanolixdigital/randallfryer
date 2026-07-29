@@ -10,7 +10,7 @@ import { useReveal } from "./useReveal";
  *
  * Build order on enter:
  *   1. top hairline draws left → right
- *   2. eyebrow label + number fade up
+ *   2. eyebrow label fades up
  *   3. children fade in
  *   4. bottom hairline draws
  *
@@ -21,7 +21,6 @@ import { useReveal } from "./useReveal";
 export default function SectionFrame({
   id,
   label,
-  number,
   children,
   className,
   innerClassName,
@@ -68,7 +67,7 @@ export default function SectionFrame({
             className={cn("h-px w-full origin-left build-line", lineClass)}
           />
 
-          {(label || number) && (
+          {label && (
             <m.div
               initial={{ opacity: 0, y: 12 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -77,7 +76,7 @@ export default function SectionFrame({
                 ease: [0.16, 1, 0.3, 1],
                 delay: 0.55,
               }}
-              className={cn("mt-4 flex items-center justify-between", labelClass)}
+              className={cn("mt-4 flex items-center", labelClass)}
             >
               <span
                 className={cn(
@@ -90,11 +89,6 @@ export default function SectionFrame({
                 />
                 {label}
               </span>
-              {number && (
-                <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
-                  {number}
-                </span>
-              )}
             </m.div>
           )}
         </div>

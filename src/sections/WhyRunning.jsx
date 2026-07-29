@@ -23,7 +23,6 @@ export default function WhyRunning() {
       <SectionFrame
         id="meet"
         label="01 Meet Randall"
-        number="The Candidate / I"
       >
         <div className="grid grid-cols-12 gap-y-14 lg:gap-x-12">
           {/* Portrait card */}

@@ -173,7 +173,7 @@ export default function SocialMediaPostDetailPage({ post }) {
       </section>
 
       {/* CONCEPT NOTE */}
-      <SectionFrame label="03 Concept" number={`File №${post.no}`}>
+      <SectionFrame label="03 Concept">
         <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <h2 className="display-serif text-balance text-[clamp(1.6rem,3.5vw,2.6rem)] font-medium leading-[1.05] tracking-[-0.02em]">
@@ -217,7 +217,7 @@ export default function SocialMediaPostDetailPage({ post }) {
       </SectionFrame>
 
       {/* RELATED */}
-      <SectionFrame label="04 More creatives" number={`${related.length} next`}>
+      <SectionFrame label="04 More creatives">
         <ul className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
           {related.map((p, i) => {
             const f = FORMATS[p.format];

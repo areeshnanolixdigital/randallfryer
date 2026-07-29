@@ -46,7 +46,6 @@ export const LEAD_MAGNET = {
 
   benefits: {
     label: "02 — What's inside",
-    number: "Benefits / II",
     heading: "What You'll Learn Inside the Guide",
     items: [
       {
@@ -70,7 +69,6 @@ export const LEAD_MAGNET = {
 
   form: {
     label: "03 — Get the guide",
-    number: "Opt-in / III",
     heading: "Tell Us Where to Send Your Complimentary Guide",
     body: "Enter your information below and we'll email your complimentary copy of Looking Ahead: House District 28. Your guide will arrive in just a few minutes. We respect your privacy, never sell your information, and you may unsubscribe from emails or text messages at any time.",
     submitLabel: "Send Me the Free Guide",
@@ -89,7 +87,6 @@ export const LEAD_MAGNET = {
 
   finalCta: {
     label: "04 — Last call",
-    number: "CTA / IV",
     heading: "Make an Informed Decision Before You Vote",
     body: "The future of House District 28 depends on informed voters. Download your complimentary copy of Looking Ahead: House District 28 and learn about the issues, the challenges facing our community, and Randall Fryer's priorities for moving Oregon forward.",
     buttonLabel: "Get the Free Guide",
@@ -137,7 +134,6 @@ export const THANK_YOU = {
 
   social: {
     label: "02 — Stay connected",
-    number: "Connect / II",
     heading: "Stay Connected",
     // Rendered as sequential paragraphs above the social icons.
     body: [

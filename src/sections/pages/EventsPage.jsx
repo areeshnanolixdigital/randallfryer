@@ -17,8 +17,7 @@ export default function EventsPage() {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
-        eyebrow="File No: 04 Events"
-        number="Calendar / IV"
+        eyebrow="Events"
         title="Bring your questions to the events."
         intro="No gatekeepers. No carefully staged conversations. Team Fryer's town halls, neighborhood gatherings, canvasses, and community events are opportunities to meet Randall, ask direct questions, and talk honestly about what District 28 needs from Salem. Come as you are. Bring your questions. Bring a neighbor."
         image="/randall-fryer-ballot.jpg"
@@ -26,7 +25,7 @@ export default function EventsPage() {
       />
 
       {/* UPCOMING */}
-      <SectionFrame label="02 Upcoming events" number={`${upcoming.length} scheduled`}>
+      <SectionFrame label="02 Upcoming events">
         {upcoming.length === 0 ? (
           <EmptyState />
         ) : (
@@ -39,7 +38,7 @@ export default function EventsPage() {
       </SectionFrame>
 
       {past.length > 0 && (
-        <SectionFrame label="03 Past events" number="Archive / III">
+        <SectionFrame label="03 Past events">
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {past.map((ev, i) => (
               <PastCard key={ev.slug} ev={ev} index={i} />
@@ -49,7 +48,7 @@ export default function EventsPage() {
       )}
 
       {/* NEVER MISS A CONVERSATION */}
-      <SectionFrame label="04 Stay in the loop" number="Notifications / IV">
+      <SectionFrame label="04 Stay in the loop">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal

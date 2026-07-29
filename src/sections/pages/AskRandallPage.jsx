@@ -17,8 +17,7 @@ export default function AskRandallPage() {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
-        eyebrow="File №06 Ask Randall"
-        number="Ask / VI"
+        eyebrow="Ask Randall"
         title="Join the conversation and Ask."
         intro="The strongest campaigns are built face to face. Join Randall Fryer at an upcoming community gathering, neighborhood meet-and-greet, volunteer event, or campaign forum. Hear directly from Randall, ask questions, and share what matters to you and your family."
         aside={

@@ -50,7 +50,6 @@ export default function SocialMediaPostsPage() {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
-        number="Creatives / IX"
         title="Social media posts."
         intro="The full visual campaign — editorial creatives across Instagram feed posts, stories, and multi-slide carousels. Every artboard renders live, exactly as designed."
       >

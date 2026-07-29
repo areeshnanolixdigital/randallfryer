@@ -125,7 +125,7 @@ export default function EventDetailPage({ event }) {
       </section>
 
       {/* DETAILS / BODY */}
-      <SectionFrame label="02 About this event" number="Brief / II">
+      <SectionFrame label="02 About this event">
         <div className="grid grid-cols-12 gap-y-12 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <div className="flex flex-col gap-6 text-[1.05rem] leading-relaxed text-ink/85">
@@ -145,7 +145,7 @@ export default function EventDetailPage({ event }) {
       </SectionFrame>
 
       {/* LOCATION */}
-      <SectionFrame label="03 Where to go" number="Location / III">
+      <SectionFrame label="03 Where to go">
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-5">
             <SplitReveal
@@ -218,7 +218,7 @@ export default function EventDetailPage({ event }) {
 
       {/* RSVP — booking form */}
       <div id="rsvp" className="scroll-mt-24">
-        <SectionFrame label="04 Reserve your seat" number="RSVP / IV">
+        <SectionFrame label="04 Reserve your seat">
           <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
             <div className="col-span-12 lg:col-span-5">
               <SplitReveal
@@ -287,7 +287,7 @@ export default function EventDetailPage({ event }) {
 
       {/* RELATED */}
       {related.length > 0 && (
-        <SectionFrame label="05 Related events" number="More / V">
+        <SectionFrame label="05 Related events">
           <ul className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {related.map((ev, i) => (
               <RelatedCard key={ev.slug} ev={ev} index={i} />

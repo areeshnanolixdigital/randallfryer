@@ -95,8 +95,7 @@ export default function AboutPage() {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
-        eyebrow="File №02 About"
-        number="Meet the candidate"
+        eyebrow="About"
         title="Leadership built through service."
         intro="Randall Fryer is a retired physician, former software professional, and former enlisted member of the Army Medical Corps running for Oregon House District 28. After decades spent working through complex problems and making consequential decisions, Randall is ready to bring a disciplined, evidence-led, and accountable approach to Salem."
         image="/randall-fryer-about-hero.jpg"
@@ -111,7 +110,6 @@ export default function AboutPage() {
       {/* Core values */}
       <SectionFrame
         label="05 The Agenda"
-        number="Priorities / V"
       >
         <div className="grid grid-cols-12 items-end gap-y-6 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
@@ -223,7 +221,6 @@ function BioBlock({ block, reverse, index }) {
     <div ref={ref}>
       <SectionFrame
         label={`0${index + 2} ${block.eyebrow}`}
-        number={`Chapter / ${["II", "III", "IV"][index] || "I"}`}
       >
         <div
           className={`grid grid-cols-12 gap-y-10 lg:gap-x-12 ${
@@ -312,7 +309,7 @@ function Journey() {
 
   return (
     <div ref={wrap}>
-      <SectionFrame label="06 The Journey" number="Timeline / VI">
+      <SectionFrame label="06 The Journey">
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-5">
             <SplitReveal

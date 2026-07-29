@@ -84,8 +84,7 @@ export default function FAQPage() {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
-        eyebrow="File №09 Frequently asked"
-        number="Help / IX"
+        eyebrow="Frequently asked"
         title="The questions we hear most."
         intro="Pulled from coffees, doorsteps, and the inbox. Don't see your question? Send it over Adrian replies personally."
       />
@@ -94,7 +93,6 @@ export default function FAQPage() {
         <SectionFrame
           key={g.title}
           label={`0${gi + 2} ${g.title}`}
-          number={`Group / ${["II", "III", "IV", "V"][gi]}`}
         >
           <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12">
             <div className="col-span-12 lg:col-span-4">
@@ -119,7 +117,6 @@ export default function FAQPage() {
       {/* CTA */}
       <SectionFrame
         label={`0${GROUPS.length + 2} Still curious?`}
-        number="Contact / Final"
       >
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">

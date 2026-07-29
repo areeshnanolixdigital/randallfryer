@@ -83,7 +83,7 @@ export default function LegalPage({ eyebrow, number, title, updated, intro, sect
         </div>
       </section>
 
-      <SectionFrame label="02 In this document" number="Index / II" allowOverflow>
+      <SectionFrame label="02 In this document" allowOverflow>
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
           <aside className="col-span-12 lg:sticky lg:top-32 lg:col-span-4 lg:self-start">
             <span className="eyebrow">Sections</span>

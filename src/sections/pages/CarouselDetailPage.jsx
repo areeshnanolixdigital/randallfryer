@@ -254,7 +254,7 @@ export default function CarouselDetailPage({ carousel }) {
       </section>
 
       {/* CONCEPT NOTE */}
-      <SectionFrame label="03 Concept" number={`Set №${carousel.no}`}>
+      <SectionFrame label="03 Concept">
         <div className="grid grid-cols-12 gap-y-8 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <h2 className="display-serif text-balance text-[clamp(1.6rem,3.5vw,2.6rem)] font-medium leading-[1.05] tracking-[-0.02em]">
@@ -295,7 +295,7 @@ export default function CarouselDetailPage({ carousel }) {
 
       {/* MORE CAROUSELS */}
       {others.length > 0 && (
-        <SectionFrame label="04 More carousels" number={`${others.length} sets`}>
+        <SectionFrame label="04 More carousels">
           <ul className="grid grid-cols-2 gap-x-5 gap-y-10 sm:grid-cols-3 lg:grid-cols-4">
             {others.map((c, i) => (
               <Reveal as="li" key={c.slug} delay={i * 0.06}>

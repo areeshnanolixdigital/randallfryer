@@ -129,8 +129,7 @@ const SECTIONS = [
 export default function Page() {
   return (
     <LegalPage
-      eyebrow="File №11 · Privacy"
-      number="Legal / XI"
+      eyebrow="Privacy"
       title="Privacy notice."
       updated="July 23, 2026"
       intro="Randall Fryer For Representative collects the minimum information necessary to run the campaign, communicate with supporters, coordinate volunteers, organize events, and process contributions. We do not sell personal information, and we follow applicable Oregon campaign-finance disclosure rules only where required by law."

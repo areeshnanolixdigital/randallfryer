@@ -196,8 +196,7 @@ const SECTIONS = [
 export default function Page() {
   return (
     <LegalPage
-      eyebrow="File №12 · Terms"
-      number="Legal / XII"
+      eyebrow="Terms"
       title="Terms of use."
       updated="July 23, 2026"
       intro="These Terms of Service govern your access to and use of randallfororegon.com and all related campaign services operated by Randall Fryer for Representative. They explain your rights and responsibilities when using our website, submitting forms, making contributions, registering for events, volunteering, or subscribing to campaign communications, including SMS text messages."
