@@ -1,7 +1,7 @@
 // ---------------------------------------------------------------------------
 // FUNNEL CONTENT — SINGLE SOURCE OF TRUTH
 //
-// ⚠️ EVERYTHING in this file is [DUMMY] placeholder copy. Swapping in the real
+// This file is the ONLY place funnel copy should be edited. Changing the
 // lead-magnet content should require editing ONLY this file (plus renaming the
 // src/app/free-guide/ folder if the slug changes — then also update
 // FUNNEL_PATH_PREFIXES in src/components/ui/SiteChrome.jsx).

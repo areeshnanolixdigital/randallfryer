@@ -6,12 +6,21 @@ import LmOptinForm from "./LmOptinForm";
 import { LEAD_MAGNET } from "@/constants/funnel-content";
 
 // Funnel step 1 — lead-magnet squeeze page. ALL copy comes from
-// src/constants/funnel-content.js ([DUMMY] placeholders); swap content there,
-// not here. Server component — interactive pieces (form, animated sections)
-// are imported client components.
+// src/constants/funnel-content.js; swap content there, not here. Server
+// component — interactive pieces (form, animated sections) are imported
+// client components.
 export const metadata = {
   title: LEAD_MAGNET.meta.title,
   description: LEAD_MAGNET.meta.description,
+  openGraph: {
+    title: LEAD_MAGNET.meta.title,
+    description: LEAD_MAGNET.meta.description,
+    url: "/free-guide",
+  },
+  twitter: {
+    title: LEAD_MAGNET.meta.title,
+    description: LEAD_MAGNET.meta.description,
+  },
 };
 
 const { hero, benefits, finalCta, form } = LEAD_MAGNET;
@@ -72,7 +81,7 @@ export default function Page() {
                   className="flex aspect-[3/4] w-full max-w-sm flex-col items-center justify-center gap-3 rounded-card border border-dashed border-ink/30 bg-bone-soft/60 p-8 text-center lg:ml-auto"
                 >
                   <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
-                    [DUMMY]
+                    No image
                   </span>
                   <span className="display-serif text-xl font-medium text-ink/60">
                     Guide cover / mockup image

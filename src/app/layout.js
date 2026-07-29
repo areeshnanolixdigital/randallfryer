@@ -38,14 +38,29 @@ const switzer = localFont({
   display: "swap",
 });
 
+const SITE_TITLE = "Randall Fryer for Oregon House District 28";
+const SITE_DESCRIPTION =
+  "Randall Fryer is running for the Oregon House to restore educational excellence, reduce the burden on working families, strengthen Oregon's business climate, support safer communities, and bring greater accountability to Salem.";
+
 export const metadata = {
-  metadataBase: new URL("https://randallfryer.example"),
+  metadataBase: new URL("https://randallfryer.vercel.app"),
   title: {
-    default: "Randall Fryer for Oregon House District 28",
+    default: SITE_TITLE,
     template: "%s · Randall Fryer",
   },
-  description:
-    "Randall Fryer is running for the Oregon House to restore educational excellence, reduce the burden on working families, strengthen Oregon's business climate, support safer communities, and bring greater accountability to Salem.",
+  description: SITE_DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: SITE_TITLE,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: "/",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }) {
