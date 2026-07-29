@@ -9,7 +9,6 @@ import { cn } from "@/lib/cn";
 /**
  * PageHero — consistent inner-page top.
  *
- *   number    "File №02 / About"
  *   eyebrow   "Meet the candidate"
  *   title     The big serif headline (string)
  *   intro     Sub copy (string)
@@ -17,7 +16,6 @@ import { cn } from "@/lib/cn";
  *   imageAlt  Required if image is set
  */
 export default function PageHero({
-  number,
   eyebrow,
   title,
   intro,
@@ -51,17 +49,12 @@ export default function PageHero({
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-          className="flex flex-wrap items-baseline justify-between gap-y-3 text-ink/65"
+          className="flex flex-wrap items-baseline gap-y-3 text-ink/65"
         >
           {eyebrow && (
             <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em]">
               <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-signal" />
               {eyebrow}
-            </span>
-          )}
-          {number && (
-            <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
-              {number}
             </span>
           )}
         </m.div>

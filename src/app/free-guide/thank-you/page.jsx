@@ -23,13 +23,10 @@ export default function Page() {
       {/* CONFIRMATION */}
       <section className="relative isolate overflow-hidden">
         <div className="container-padded relative pb-16 pt-14 sm:pb-24 sm:pt-20">
-          <div className="flex flex-wrap items-center justify-between gap-y-3 text-ink/65">
+          <div className="flex flex-wrap items-center gap-y-3 text-ink/65">
             <span className="inline-flex items-center gap-2 rounded-pill bg-signal px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.28em] text-bone shadow-[0_10px_30px_-12px_rgba(190,30,45,0.6)]">
               <CheckIcon />
               {eyebrow}
-            </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
-              Delivery / I
             </span>
           </div>
 
@@ -99,7 +96,7 @@ export default function Page() {
       </section>
 
       {/* STAY CONNECTED */}
-      <SectionFrame label={social.label} number={social.number}>
+      <SectionFrame label={social.label}>
         <div className="flex flex-col items-start gap-6">
           <SplitReveal
             as="h2"

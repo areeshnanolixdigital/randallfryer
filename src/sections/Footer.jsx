@@ -59,7 +59,10 @@ export default function Footer() {
       id="contact"
       className="relative overflow-hidden bg-bone-soft text-ink"
     >
-      <div className="container-padded pb-10 pt-20 sm:pt-28">
+      {/* Top padding is deliberately lighter than the section rhythm: the last
+          section already contributes its own pb-20/pb-28, so a matching pt here
+          stacked to ~224px of dead space above the footer. */}
+      <div className="container-padded pb-10 pt-12 sm:pt-16">
         {/* CTA HERO BAND */}
         <m.div style={{ y }} className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">

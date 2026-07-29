@@ -37,7 +37,10 @@ const VALUE_CARDS = [
   },
   {
     no: "02",
-    icon: "volunteer-hands",
+    // Printed materials, matching this card's promise of clear instructions and
+    // useful materials. (Was "volunteer-hands" — gardening gloves, which said
+    // nothing about experience.)
+    icon: "newspaper",
     title: "No experience needed",
     body: "New volunteers are always welcome. The campaign will provide clear instructions, useful materials, and the support you need to take your first shift with confidence.",
   },
@@ -111,8 +114,7 @@ export default function VolunteerPage() {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
-        eyebrow="File №05 Volunteer"
-        number="Join the team / V"
+        eyebrow="Volunteer"
         title="The campaign is built by neighbors."
         intro="Knock on a few doors. Make a few calls. Host a conversation with friends or help at a community event. Every hour you contribute helps Randall Fryer listen to more residents, reach more voters, and build a stronger campaign for Oregon House District 28. You do not need political experience to make a difference. You only need a willingness to help bring disciplined, accountable, and results-focused leadership to Salem."
         aside={
@@ -123,7 +125,7 @@ export default function VolunteerPage() {
       />
 
       {/* VALUE CARDS */}
-      <SectionFrame label="02 Why it matters" number="Impact / II">
+      <SectionFrame label="02 Why it matters">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {VALUE_CARDS.map((v, i) => (
             <ValueCard key={v.no} v={v} index={i} />
@@ -132,7 +134,7 @@ export default function VolunteerPage() {
       </SectionFrame>
 
       {/* EXPECTATIONS */}
-      <SectionFrame label="03 What happens next" number="Process / III">
+      <SectionFrame label="03 What happens next">
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
@@ -160,7 +162,7 @@ export default function VolunteerPage() {
               as="li"
               key={s.n}
               delay={i * 0.08}
-              className="flex flex-col gap-3 border-t border-ink/15 pt-5"
+              className="flex flex-col gap-3 pt-5"
             >
               <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-signal">
                 {s.n}
@@ -176,7 +178,7 @@ export default function VolunteerPage() {
 
       {/* CONTACT BLOCK — hidden until the coordinator's details are populated */}
       {COORDINATOR_CONTACT.length > 0 && (
-        <SectionFrame label="04 Talk to a coordinator" number="Contact / IV">
+        <SectionFrame label="04 Talk to a coordinator">
           <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
             <div className="col-span-12 lg:col-span-7">
               <SplitReveal

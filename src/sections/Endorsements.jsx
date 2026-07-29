@@ -44,7 +44,6 @@ export default function Endorsements() {
       <SectionFrame
         id="approach"
         label="03 The Approach"
-        number="Evidence / III"
         tone="light"
       >
         <div className="flex flex-col gap-14">

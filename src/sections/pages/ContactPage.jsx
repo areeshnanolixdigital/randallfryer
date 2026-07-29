@@ -33,7 +33,9 @@ const TOPICS = [
     body: "Invite Randall to a neighborhood gathering, candidate forum, civic meeting, local business, community organization, or public event. Please include the proposed date, location, audience, and event format.",
   },
   {
-    icon: "volunteer-hands",
+    // People participating together. (Was "volunteer-hands" — gardening gloves,
+    // which read as yard work rather than joining the campaign.)
+    icon: "community",
     title: "Volunteer support",
     body: "Need help choosing a volunteer role, joining a canvass, requesting campaign materials, or organizing an activity in your area? Team Fryer will help you find a practical way to participate.",
   },
@@ -48,8 +50,7 @@ export default function ContactPage() {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
-        eyebrow="File №07 Contact"
-        number="Contact / VII"
+        eyebrow="Contact"
         title="Start a conversation with Team Fryer."
         intro="Questions, invitations, ideas, and local concerns are welcome. Send Team Fryer a message and we will direct it to the right person."
         aside={
@@ -102,7 +103,7 @@ export default function ContactPage() {
       </PageHero>
 
       {/* REASONS TO REACH OUT */}
-      <SectionFrame label="02 Reasons to reach out" number="Categories / II">
+      <SectionFrame label="02 Reasons to reach out">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {TOPICS.map((t, i) => (
             <TopicCard key={t.title} t={t} index={i} />

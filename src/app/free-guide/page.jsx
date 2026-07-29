@@ -31,13 +31,10 @@ export default function Page() {
       {/* HERO — headline, subheadline, cover mockup, single CTA to the form */}
       <section className="relative isolate overflow-hidden">
         <div className="container-padded relative pb-20 pt-14 sm:pb-28 sm:pt-20">
-          <div className="flex flex-wrap items-baseline justify-between gap-y-3 text-ink/65">
+          <div className="flex flex-wrap items-baseline gap-y-3 text-ink/65">
             <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.28em]">
               <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-signal" />
               {hero.eyebrow}
-            </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.28em]">
-              Guide / I
             </span>
           </div>
 
@@ -97,7 +94,7 @@ export default function Page() {
       </section>
 
       {/* BENEFITS */}
-      <SectionFrame label={benefits.label} number={benefits.number}>
+      <SectionFrame label={benefits.label}>
         <SplitReveal
           as="h2"
           className="display-serif block max-w-2xl text-balance text-[clamp(1.7rem,3.5vw,2.85rem)] font-medium leading-[1.05] tracking-[-0.02em]"
@@ -123,7 +120,7 @@ export default function Page() {
       </SectionFrame>
 
       {/* OPT-IN FORM */}
-      <SectionFrame id="optin" label={form.label} number={form.number}>
+      <SectionFrame id="optin" label={form.label}>
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-4">
             <SplitReveal
@@ -146,7 +143,6 @@ export default function Page() {
       <SectionFrame
         tone="dark"
         label={finalCta.label}
-        number={finalCta.number}
         withBottomLine={false}
       >
         <div className="flex flex-col items-start gap-6 pb-16 sm:pb-20">

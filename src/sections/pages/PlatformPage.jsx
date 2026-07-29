@@ -115,8 +115,7 @@ export default function PlatformPage() {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
-        eyebrow="File №10 Priorities"
-        number="Priorities / X"
+        eyebrow="Priorities"
         title="Priorities for District 28."
         intro="Oregon deserves thoughtful leadership focused on practical solutions. Randall Fryer's priorities reflect the concerns he's heard from educators, employers, and community members across District 28. His commitment is to strengthen education, lower taxes, reduce unnecessary barriers to business growth, and bring greater accountability to state government."
       />
@@ -127,7 +126,7 @@ export default function PlatformPage() {
       ))}
 
       {/* GUIDING PRINCIPLES */}
-      <SectionFrame label="05 Guiding principles" number="Principles / V">
+      <SectionFrame label="05 Guiding principles">
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-5">
             <SplitReveal
@@ -174,7 +173,7 @@ export default function PlatformPage() {
       </SectionFrame>
 
       {/* CTA */}
-      <SectionFrame label="06 Get involved" number="Next / VI">
+      <SectionFrame label="06 Get involved">
         <div className="grid grid-cols-12 items-end gap-y-10 lg:gap-x-12">
           <div className="col-span-12 lg:col-span-7">
             <SplitReveal
@@ -218,7 +217,6 @@ function PrioritySection({ p, index }) {
   return (
     <SectionFrame
       label={`Priority ${p.no}`}
-      number={`Detail / ${["II", "III", "IV"][index]}`}
     >
       <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
         <div className="col-span-12 lg:col-span-5">

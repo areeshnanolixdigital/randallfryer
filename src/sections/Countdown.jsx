@@ -23,7 +23,6 @@ export default function Countdown() {
       <SectionFrame
         id="events"
         label="04 On the ballot"
-        number="Election / IV"
         tone="signal"
         backdrop={
           <>
