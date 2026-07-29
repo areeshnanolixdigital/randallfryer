@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Redesign 04 — Volunteer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A2744; --red:#B62126; --yale:#314860;
+    --gold:#D3A52A; --paper:#F6F5F4; --graphite:#303030;
+    --ff:'Inter',system-ui,sans-serif;
+    --ff-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;background:var(--paper);
+    font-family:var(--ff);color:var(--navy)}
+
+  .rail{position:absolute;left:0;top:0;bottom:0;width:34px;background:var(--navy);z-index:6}
+  .rail span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);
+    white-space:nowrap;font-family:var(--ff-mono);font-size:16px;font-weight:600;
+    letter-spacing:.42em;text-transform:uppercase;color:var(--gold)}
+
+  .kick{position:absolute;left:96px;top:92px;z-index:5;display:flex;align-items:center;gap:18px}
+  .kick i{width:44px;height:9px;background:var(--red)}
+  .kick span{font-family:var(--ff-mono);font-size:18px;font-weight:600;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--red)}
+
+  .head{position:absolute;left:96px;top:150px;width:780px;z-index:5;
+    font-weight:900;font-size:82px;line-height:1.08;letter-spacing:-.04em}
+  .head .hl{background:var(--gold);color:var(--navy);padding:2px 14px 10px;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* Four ways to help as full-width ledger rows — numerals carry the rhythm */
+  .ways{position:absolute;left:0;right:0;top:448px;z-index:5}
+  .ways li{list-style:none;display:flex;align-items:center;gap:34px;padding:19px 96px;
+    border-top:2px solid rgba(10,39,68,.16)}
+  .ways li:last-child{border-bottom:2px solid rgba(10,39,68,.16)}
+  .ways li.on{background:var(--navy)}
+  .ways .n{font-weight:900;font-size:52px;line-height:1;letter-spacing:-.04em;width:96px;flex:none;
+    color:transparent;-webkit-text-stroke:3px var(--red)}
+  .ways li.on .n{-webkit-text-stroke:3px var(--gold)}
+  .ways .t{font-weight:800;font-size:42px;letter-spacing:-.03em;color:var(--navy)}
+  .ways li.on .t{color:var(--paper)}
+  .ways .d{margin-left:auto;font-family:var(--ff-mono);font-size:18px;font-weight:600;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--graphite)}
+  .ways li.on .d{color:rgba(246,245,244,.7)}
+
+  .foot{position:absolute;left:96px;right:96px;bottom:96px;z-index:5;display:flex;
+    align-items:center;justify-content:space-between;border-top:5px solid var(--red);padding-top:24px}
+  .foot .t{font-weight:800;font-size:33px;letter-spacing:-.02em;color:var(--navy)}
+  .foot .u{font-family:var(--ff-mono);font-size:22px;font-weight:600;letter-spacing:.16em;color:var(--red)}
+
+  .disc{position:absolute;left:96px;bottom:56px;z-index:5;
+    font-family:var(--ff-mono);font-size:14px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(48,48,48,.55)}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="rail" aria-hidden><span>Get Involved · District 28</span></div>
+
+    <div class="kick"><i></i><span>Volunteer</span></div>
+
+    <h1 class="head">The campaign is built by <span class="hl">neighbors.</span></h1>
+
+    <ul class="ways">
+      <li><span class="n">01</span><span class="t">Knock on a few doors</span></li>
+      <li class="on"><span class="n">02</span><span class="t">Make a few calls</span></li>
+      <li><span class="n">03</span><span class="t">Host a conversation with friends</span></li>
+      <li class="on"><span class="n">04</span><span class="t">Help at a community event</span></li>
+    </ul>
+
+    <div class="foot">
+      <span class="t">Join Team Fryer</span>
+      <span class="u">randallfororegon.com/volunteer</span>
+    </div>
+
+    <div class="disc">Paid for by Randall Fryer For Representative</div>
+  </div>
+</body>
+</html>

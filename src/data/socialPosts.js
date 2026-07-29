@@ -6,10 +6,59 @@ export const SOCIAL_POSTS = [
   // ────────────────────────────────────────────────────────────────
   // Instagram feed — 1080×1080
   // ────────────────────────────────────────────────────────────────
+  // ----------------------------------------------------------------
+  // Instagram feed - 1080x1080 - 2026 poster direction
+  // Bold flat-poster system in the brand palette (Guidelines V2.1 3.0).
+  // ----------------------------------------------------------------
+  {
+    slug: "redesign-01-meet-randall",
+    no: "01",
+    format: "feed",
+    title: "Meet Randall Fryer",
+    concept: "Poster layout - portrait plate, two-tone headline, credential chips",
+    file: "/social-media-posts/redesign/01-meet-randall.html",
+  },
+  {
+    slug: "redesign-02-education",
+    no: "02",
+    format: "feed",
+    title: "Education Focus",
+    concept: "Ruled-paper metaphor with pencil and A+ grade stamp",
+    file: "/social-media-posts/redesign/02-education.html",
+  },
+  {
+    slug: "redesign-03-accountability",
+    no: "03",
+    format: "feed",
+    title: "Accountable Government",
+    concept: "Full-bleed statement type, star watermark, navy CTA band",
+    file: "/social-media-posts/redesign/03-accountability.html",
+  },
+  {
+    slug: "redesign-04-volunteer",
+    no: "04",
+    format: "feed",
+    title: "There's Room To Help",
+    concept: "Red header slab over a four-way Walk / Call / Host / Share grid",
+    file: "/social-media-posts/redesign/04-volunteer.html",
+  },
+  {
+    slug: "redesign-05-events",
+    no: "05",
+    format: "feed",
+    title: "Meet Randall In Person",
+    concept: "Diagonal navy-to-red sweep, portrait plate, events URL plate",
+    file: "/social-media-posts/redesign/05-events.html",
+  },
+
+  // ----------------------------------------------------------------
+  // Instagram feed - 1080x1080 - original editorial set
+  // ----------------------------------------------------------------
   {
     slug: "feed-01-manifesto-cover",
     no: "01",
     format: "feed",
+    listed: false,
     title: "A Stronger Oregon",
     concept: "Editorial manifesto cover Randall Fryer for Oregon HD28",
     file: "/social-media-posts/feed/01-manifesto-cover.html",
@@ -18,6 +67,7 @@ export const SOCIAL_POSTS = [
     slug: "feed-02-pillar-numbered",
     no: "02",
     format: "feed",
+    listed: false,
     title: "Meet Randall Fryer",
     concept: "Midnight intro card, glowing crimson disc the candidate",
     file: "/social-media-posts/feed/02-pillar-numbered.html",
@@ -26,6 +76,7 @@ export const SOCIAL_POSTS = [
     slug: "feed-03-portrait-cinematic",
     no: "03",
     format: "feed",
+    listed: false,
     title: "Republican Nominee",
     concept: "Cinematic formal portrait, restrained gold nominee label",
     file: "/social-media-posts/feed/03-portrait-cinematic.html",
@@ -34,6 +85,7 @@ export const SOCIAL_POSTS = [
     slug: "feed-04-italic-quote",
     no: "04",
     format: "feed",
+    listed: false,
     title: "On The Ballot",
     concept: "GOTV calendar card Nov 3 circled, ballot envelope",
     file: "/social-media-posts/feed/04-italic-quote.html",
@@ -42,6 +94,7 @@ export const SOCIAL_POSTS = [
     slug: "feed-05-statistic-counter",
     no: "05",
     format: "feed",
+    listed: false,
     title: "Oregon Asks For More",
     concept: "Documentary listening photo, left-aligned accountability block",
     file: "/social-media-posts/feed/05-statistic-counter.html",

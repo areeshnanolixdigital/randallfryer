@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Redesign 02 — Education Focus</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A2744; --red:#B62126; --yale:#314860;
+    --gold:#D3A52A; --paper:#F6F5F4; --graphite:#303030;
+    --ff:'Inter',system-ui,sans-serif;
+    --ff-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;background:var(--paper);
+    font-family:var(--ff);color:var(--navy);
+    background-image:repeating-linear-gradient(transparent 0 59px,rgba(10,39,68,.07) 59px 60px)}
+
+  .rail{position:absolute;left:0;top:0;bottom:0;width:34px;background:var(--red);z-index:6}
+  .rail span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);
+    white-space:nowrap;font-family:var(--ff-mono);font-size:16px;font-weight:600;
+    letter-spacing:.42em;text-transform:uppercase;color:var(--paper)}
+
+  .serial{position:absolute;right:84px;top:56px;z-index:5;font-weight:900;font-size:112px;
+    line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:3px rgba(10,39,68,.22)}
+
+  .kick{position:absolute;left:96px;top:96px;z-index:5;display:flex;align-items:center;gap:18px}
+  .kick i{width:44px;height:9px;background:var(--gold)}
+  .kick span{font-family:var(--ff-mono);font-size:18px;font-weight:600;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--red)}
+
+  /* line-height must clear the inline highlight's padding or blocks collide */
+  .head{position:absolute;left:96px;top:180px;width:720px;z-index:5;
+    font-weight:900;font-size:90px;line-height:1.1;letter-spacing:-.04em}
+  .head .hl{background:var(--navy);color:var(--paper);padding:2px 14px 10px;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* Three focus areas as equal cards - deliberately equal in size so no
+     ranking or measurement is implied (there is no underlying data).
+     Numeral anchors top-left, label bottom-left, so one- and two-line
+     labels still line up across all three. */
+  .tiles{position:absolute;left:96px;bottom:196px;z-index:5;display:flex;gap:20px}
+  .tile{width:210px;height:210px;padding:24px;display:flex;flex-direction:column;
+    justify-content:space-between;align-items:flex-start}
+  .tile .top{display:flex;flex-direction:column;gap:13px;align-items:flex-start}
+  .tile .n{font-family:var(--ff-mono);font-size:17px;font-weight:600;letter-spacing:.26em;line-height:1}
+  .tile .r{width:36px;height:5px;display:block}
+  .tile .l{font-family:var(--ff-mono);font-size:15px;font-weight:600;letter-spacing:.06em;
+    text-transform:uppercase;line-height:1.4;text-align:left}
+  .t1{background:var(--navy);color:var(--paper)}
+  .t1 .r{background:var(--gold)}
+  .t2{background:var(--red);color:var(--paper)}
+  .t2 .r{background:var(--gold)}
+  .t3{background:var(--gold);color:var(--navy)}
+  .t3 .r{background:var(--navy)}
+
+  .sub{position:absolute;left:96px;right:96px;top:512px;z-index:5;
+    font-weight:600;font-size:29px;line-height:1.36;letter-spacing:-.01em;color:var(--graphite)}
+  .sub b{color:var(--navy);font-weight:800}
+
+  .footrule{position:absolute;left:96px;right:96px;bottom:112px;height:4px;background:var(--gold);z-index:5}
+  .disc{position:absolute;left:96px;bottom:60px;z-index:5;
+    font-family:var(--ff-mono);font-size:14px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(48,48,48,.55)}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="rail" aria-hidden><span>Education · House District 28</span></div>
+    <div class="serial" aria-hidden>02</div>
+
+    <div class="kick"><i></i><span>Strengthen Educational Excellence</span></div>
+
+    <h1 class="head">Education is the foundation of <span class="hl">opportunity.</span></h1>
+
+    <div class="tiles" aria-hidden>
+      <div class="tile t1"><span class="top"><span class="n">01</span><span class="r"></span></span><span class="l">Strong Academic Standards</span></div>
+      <div class="tile t2"><span class="top"><span class="n">02</span><span class="r"></span></span><span class="l">Focus on Core Subjects</span></div>
+      <div class="tile t3"><span class="top"><span class="n">03</span><span class="r"></span></span><span class="l">Support Teachers</span></div>
+    </div>
+
+    <p class="sub">Education policy should be evaluated by <b>student achievement and long-term outcomes</b>, not simply by the amount of money spent.</p>
+
+    <div class="footrule" aria-hidden></div>
+    <div class="disc">Paid for by Randall Fryer For Representative</div>
+  </div>
+</body>
+</html>

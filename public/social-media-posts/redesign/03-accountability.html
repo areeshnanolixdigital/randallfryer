@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Redesign 03 — Accountable Government</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0A2744; --red:#B62126; --yale:#314860;
+    --gold:#D3A52A; --paper:#F6F5F4; --graphite:#303030;
+    --ff:'Inter',system-ui,sans-serif;
+    --ff-mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;background:var(--navy);
+    font-family:var(--ff);color:var(--paper)}
+  .stage::before{content:"";position:absolute;inset:0;z-index:0;
+    background:repeating-linear-gradient(transparent 0 59px,rgba(246,245,244,.06) 59px 60px)}
+
+  .rail{position:absolute;left:0;top:0;bottom:0;width:34px;background:var(--gold);z-index:6}
+  .rail span{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) rotate(-90deg);
+    white-space:nowrap;font-family:var(--ff-mono);font-size:16px;font-weight:600;
+    letter-spacing:.42em;text-transform:uppercase;color:var(--navy)}
+
+  .serial{position:absolute;right:84px;top:56px;z-index:5;font-weight:900;font-size:112px;
+    line-height:1;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:3px rgba(211,165,42,.6)}
+
+  .kick{position:absolute;left:96px;top:96px;z-index:5;display:flex;align-items:center;gap:18px}
+  .kick i{width:44px;height:9px;background:var(--red)}
+  .kick span{font-family:var(--ff-mono);font-size:18px;font-weight:600;letter-spacing:.36em;
+    text-transform:uppercase;color:var(--gold)}
+
+  .head{position:absolute;left:96px;top:186px;width:770px;z-index:5;
+    font-weight:900;font-size:68px;line-height:1.12;letter-spacing:-.035em}
+  .head .hl{background:var(--red);color:var(--paper);padding:2px 14px 10px;
+    box-decoration-break:clone;-webkit-box-decoration-break:clone}
+
+  /* Audit ledger: three checkable rows on gold rules */
+  .rows{position:absolute;left:96px;right:96px;top:556px;z-index:5}
+  .rows li{list-style:none;display:flex;align-items:center;gap:24px;padding:18px 0;
+    border-bottom:2px solid rgba(211,165,42,.42)}
+  .rows .n{font-family:var(--ff-mono);font-size:19px;font-weight:600;color:var(--gold);width:38px;flex:none}
+  .rows .t{font-weight:700;font-size:34px;letter-spacing:-.02em;color:var(--paper)}
+
+  /* CTA as a solid gold slab, not a pill button */
+  .cta{position:absolute;left:96px;bottom:150px;z-index:5;display:flex;align-items:stretch}
+  .cta .label{background:var(--gold);color:var(--navy);font-weight:800;font-size:34px;
+    letter-spacing:-.01em;padding:20px 30px;display:flex;align-items:center}
+  .cta .arrow{background:var(--red);color:var(--paper);width:74px;display:grid;place-items:center;
+    font-size:34px;line-height:1}
+
+  .disc{position:absolute;right:96px;bottom:60px;z-index:5;text-align:right;
+    font-family:var(--ff-mono);font-size:14px;letter-spacing:.2em;text-transform:uppercase;
+    color:rgba(246,245,244,.5)}
+</style>
+</head>
+<body>
+  <div class="stage">
+    <div class="rail" aria-hidden><span>Accountability · House District 28</span></div>
+    <div class="serial" aria-hidden>03</div>
+
+    <div class="kick"><i></i><span>Leadership Principles</span></div>
+
+    <h1 class="head">Every decision should reflect the values that guide <span class="hl">responsible public service.</span></h1>
+
+    <ul class="rows">
+      <li><span class="n">01</span><span class="t">Public Safety</span></li>
+      <li><span class="n">02</span><span class="t">Local Decision-Making</span></li>
+      <li><span class="n">03</span><span class="t">Accountable Government</span></li>
+    </ul>
+
+    <div class="cta">
+      <span class="label">randallfororegon.com</span>
+      <span class="arrow" aria-hidden>&rarr;</span>
+    </div>
+
+    <div class="disc">Paid for by Randall Fryer For Representative</div>
+  </div>
+</body>
+</html>
