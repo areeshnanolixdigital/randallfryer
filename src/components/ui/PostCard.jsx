@@ -39,16 +39,7 @@ export default function PostCard({ post }) {
             title={`${post.title} preview`}
           />
 
-          {/* Format chip */}
-          <span className="absolute left-3 top-3 z-10 inline-flex items-center gap-2 rounded-pill border border-bone/30 bg-bone/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.26em] text-bone/95 backdrop-blur">
-            <span className="block h-1.5 w-1.5 rounded-full bg-signal" />
-            {fmt.label}
-          </span>
-
-          {/* Number plate — or slide count for carousels */}
-          <span className="absolute right-3 top-3 z-10 rounded-pill border border-bone/30 bg-bone/10 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.26em] text-bone/95 backdrop-blur">
-            {isCarousel ? `${post.count} slides` : `№${post.no}`}
-          </span>
+          {/* No format chip or number plate: the artwork is shown uncovered. */}
 
           {/* Hover overlay with View action */}
           <div className="pointer-events-none absolute inset-0 z-10 flex items-end justify-between gap-3 bg-gradient-to-t from-ink/70 via-ink/0 to-ink/0 p-4 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
