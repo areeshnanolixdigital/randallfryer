@@ -5,7 +5,9 @@ import Image from "next/image";
 import Link from "next/link";
 import { m, useScroll, useTransform } from "motion/react";
 import SplitReveal from "@/animations/SplitReveal";
+import Reveal from "@/animations/Reveal";
 import Button from "@/components/ui/Button";
+import { openCookieSettings } from "@/lib/cookieConsent";
 import {
   DONATE_URL,
   LEGAL_BUSINESS_NAME,
@@ -22,7 +24,7 @@ const NAV_GROUPS = [
       { label: "Home", href: "/" },
       { label: "Meet Randall", href: "/about" },
       { label: "Priorities", href: "/platform" },
-      { label: "Social posts", href: "/social-media-posts" },
+      // { label: "Social posts", href: "/social-media-posts" },
     ],
   },
   {
@@ -48,6 +50,11 @@ const SOCIALS = [
     name: "Facebook",
     href: "https://www.facebook.com/share/1EHvaKg7i5/",
     Icon: FacebookIcon,
+  },
+  {
+    name: "Instagram",
+    href: "https://www.instagram.com/randallfryerfororegon",
+    Icon: InstagramIcon,
   },
   {
     name: "X (Twitter)",
@@ -86,24 +93,23 @@ export default function Footer() {
             >
               Be part of the change.
             </SplitReveal>
-            <m.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
+            <Reveal
+              as="p"
+              y={20}
+              duration={0.8}
+              delay={0.2}
               className="mt-6 max-w-xl text-balance text-base leading-relaxed text-ink/75 sm:text-lg"
             >
-              Randall Fryer is running to restore educational excellence,
-              reduce the burden on working families, strengthen Oregon&rsquo;s
-              business climate, support safer communities, and bring greater
-              accountability to Salem.
-            </m.p>
+              Randall Fryer is running to strengthen educational excellence,
+              advocate for lower taxes on families and employers, reduce
+              unnecessary government micromanagement of businesses, support
+              safer communities, and bring greater accountability to Salem.
+            </Reveal>
           </div>
-          <m.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <Reveal
+            y={20}
+            duration={0.8}
+            delay={0.2}
             className="col-span-12 lg:col-span-5"
           >
             <div className="flex flex-wrap items-center gap-3 lg:justify-end">
@@ -120,7 +126,7 @@ export default function Footer() {
                 Donate
               </Button>
             </div>
-          </m.div>
+          </Reveal>
         </m.div>
 
         {/* NEWSLETTER ROW */}
@@ -157,8 +163,8 @@ export default function Footer() {
               />
             </Link>
             <p className="mt-6 max-w-xs text-sm leading-relaxed text-ink/70">
-              Disciplined leadership. Responsible government. Measurable
-              results.
+              Disciplined leadership. Responsible government. Accountable
+              service.
             </p>
           </div>
 
@@ -197,10 +203,16 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* CONTACT INFO — required on every page footer for A2P/TCR compliance */}
+        {/* CONTACT INFO — required on every page footer for A2P/TCR compliance.
+            The address is omitted while CONTACT_ADDRESS is blank (the intake
+            address is residential; a PO box will replace it). */}
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-ink/15 pt-6 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute">
-          <span>{CONTACT_ADDRESS}</span>
-          <span aria-hidden className="text-ink-mute/40">·</span>
+          {CONTACT_ADDRESS && (
+            <>
+              <span>{CONTACT_ADDRESS}</span>
+              <span aria-hidden className="text-ink-mute/40">·</span>
+            </>
+          )}
           {CONTACT_PHONE_HREF ? (
             <a href={CONTACT_PHONE_HREF} className="link-underline hover:text-ink">
               {CONTACT_PHONE}
@@ -220,46 +232,53 @@ export default function Footer() {
             Paid for by {LEGAL_BUSINESS_NAME}
           </p>
           <div className="col-span-12 flex flex-wrap items-center gap-x-5 gap-y-1 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute lg:col-span-6 lg:justify-end">
-            <Link href="/privacy" className="link-underline hover:text-ink">
+            <Link href="/privacy-policy" className="link-underline hover:text-ink">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="link-underline hover:text-ink">
+            <Link href="/terms-of-service" className="link-underline hover:text-ink">
               Terms of Service
             </Link>
+            <button
+              type="button"
+              onClick={openCookieSettings}
+              className="link-underline uppercase tracking-[0.28em] hover:text-ink"
+            >
+              Cookie Settings
+            </button>
           </div>
         </div>
 
-        {/* Refined watermark */}
-        <m.div
+        {/* AI DISCLOSURE — sentence case, not the uppercase wide-tracked
+            treatment used elsewhere in the fine print: at this length it would
+            be a wall of letterspaced caps. */}
+        <p className="mt-5 max-w-3xl font-mono text-[10px] leading-relaxed tracking-[0.06em] text-ink-mute/85">
+          Some images, audio, video, or written content may be created or
+          enhanced using artificial intelligence (AI) tools.
+        </p>
+
+        {/* Refined watermark — giant outline marquee, drifts continuously */}
+        <div
           aria-hidden
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ duration: 1.2 }}
           className="pointer-events-none mt-12 select-none overflow-hidden"
         >
-          <svg
-            viewBox="0 0 1400 180"
-            className="h-auto w-full"
-            preserveAspectRatio="xMidYMid meet"
+          <m.div
+            className="flex w-max whitespace-nowrap"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 28, ease: "linear", repeat: Infinity }}
           >
-            <text
-              x="50%"
-              y="140"
-              textAnchor="middle"
-              fontSize="180"
-              fontFamily="var(--font-display)"
-              fontWeight="500"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="0.5"
-              className="text-ink/35"
-              style={{ letterSpacing: "-0.04em" }}
-            >
-              RANDALL FRYER
-            </text>
-          </svg>
-        </m.div>
+            {/* Two identical copies → seamless infinite loop at -50% */}
+            {[0, 1].map((copy) => (
+              <span
+                key={copy}
+                className="display-serif pr-[6vw] text-[11vw] font-medium leading-none tracking-[-0.04em] text-transparent"
+                style={{ WebkitTextStroke: "1.5px rgba(13, 21, 40, 0.55)" }}
+              >
+                RANDALL FRYER<span className="px-[3vw] text-signal/60">·</span>
+                FOR OREGON<span className="px-[3vw] text-signal/60">·</span>
+              </span>
+            ))}
+          </m.div>
+        </div>
       </div>
     </footer>
   );
@@ -420,12 +439,12 @@ function SignupForm() {
         aria-busy={submitting}
         className="group/btn relative inline-flex items-center justify-center overflow-hidden rounded-pill bg-ink px-7 py-4 font-mono text-[12px] uppercase tracking-[0.22em] text-bone transition-colors duration-500 hover:bg-signal disabled:opacity-70"
       >
-        <span className="block transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:-translate-y-[200%]">
+        <span className="block transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:-translate-y-[200%]">
           {sent ? "Subscribed" : submitting ? "Sending…" : "Subscribe"}
         </span>
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 flex translate-y-full items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-y-0"
+          className="pointer-events-none absolute inset-0 flex translate-y-full items-center justify-center transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover/btn:translate-y-0"
         >
           {sent ? "Subscribed" : submitting ? "Sending…" : "Subscribe"}
         </span>

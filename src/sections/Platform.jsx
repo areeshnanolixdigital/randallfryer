@@ -5,27 +5,28 @@ import { m, AnimatePresence } from "motion/react";
 import { gsap, useGSAP, ScrollTrigger } from "@/animations/gsap";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
+import Reveal from "@/animations/Reveal";
 
 const PILLARS = [
   {
     id: "education",
     no: "01",
-    title: "Restore Educational Excellence",
-    body: "Oregon's students need classrooms centered on learning. Randall will work to restore meaningful academic and graduation standards; refocus instruction on reading, writing, mathematics, history, and civics; and direct more education resources toward teachers and classrooms. He supports strong local school boards, meaningful parental involvement, orderly classrooms, and giving professional teachers the authority and support they need to teach effectively.",
+    title: "Strengthen Educational Excellence",
+    body: "Oregon's students need classrooms centered on learning. Randall will work to strengthen academic and graduation standards; refocus instruction on reading, writing, mathematics, history, and civics; and direct more education resources toward teachers and classrooms. He supports strong local school boards, meaningful parental involvement, orderly classrooms, and giving professional teachers the authority and support they need to teach effectively.",
     accent: "signal",
   },
   {
     id: "families",
     no: "02",
-    title: "Lower the Burden on Working Families",
-    body: "Oregonians are willing to support essential public services, but they deserve value, transparency, and restraint in return. Randall will oppose unnecessary taxes and fees, scrutinize spending before asking families to pay more, and demand clear evidence that public programs are producing measurable benefits. His goal is straightforward: lower the pressure on household budgets while protecting the services communities depend on.",
+    title: "Lower Taxes for Families and Employers",
+    body: "Oregonians support essential public services, but they deserve value, transparency, and restraint in return. Randall will oppose unnecessary taxes and fees, carefully review state spending, and demand clear evidence that public programs are delivering meaningful value and performing as intended. His goal is straightforward: reduce the tax burden on families and employers while protecting the essential services communities depend on.",
     accent: "ochre",
   },
   {
     id: "business",
     no: "03",
-    title: "Rebuild Oregon's Business Climate",
-    body: "Oregon should be a place where businesses can start, invest, hire, and grow. Randall will pursue lower and more competitive tax rates, simpler tax compliance, faster and more predictable permitting, and fewer unnecessary regulatory barriers. A healthy business climate supports workers, strengthens property values, expands the tax base, and helps communities fund schools, public safety, and essential services without continually raising costs on families.",
+    title: "Reduce Barriers to Business Growth",
+    body: "Oregon should be a place where businesses can start, invest, hire, and grow. Randall will work to reduce unnecessary government micromanagement by pursuing more competitive tax rates, simpler tax compliance, faster and more predictable permitting, and fewer unnecessary regulatory barriers. A healthy business climate creates better jobs, supports workers and local employers, and strengthens the economic foundation communities rely on to fund schools, public safety, and essential services.",
     accent: "ink",
   },
 ];
@@ -74,7 +75,7 @@ export default function Platform() {
     <div ref={wrap}>
       <SectionFrame
         id="platform"
-        label="02 — Three Commitments"
+        label="02 Three Priorities"
         number="Priorities / II"
       >
         <div className="grid grid-cols-12 gap-y-10 lg:gap-x-12">
@@ -83,19 +84,18 @@ export default function Platform() {
               as="h2"
               className="display-serif block text-balance text-[clamp(1.75rem,3.9vw,3.4rem)] font-medium leading-[1.02] tracking-[-0.025em]"
             >
-              Three commitments. Clear goals. Measurable results.
+              Three priorities. Clear direction. Accountable effort.
             </SplitReveal>
-            <m.p
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            <Reveal
+              duration={0.9}
+              delay={0.2}
               className="mt-8 max-w-md text-lg leading-relaxed text-ink/75"
             >
-              Randall&rsquo;s agenda begins with three immediate priorities
-              designed to strengthen opportunity, lower pressure on working
-              families, and demand better results from state government.
-            </m.p>
+              Randall&rsquo;s agenda begins with three priorities:
+              strengthening education, lowering the tax burden on families and
+              businesses, and reducing unnecessary government micromanagement
+              so Oregon employers can invest, grow, and create better jobs.
+            </Reveal>
           </div>
 
           {/* Timeline column */}
@@ -129,15 +129,11 @@ function PillarCard({ p, index }) {
       : "bg-ink";
 
   return (
-    <m.article
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.25 }}
-      transition={{
-        duration: 0.9,
-        ease: [0.16, 1, 0.3, 1],
-        delay: index * 0.08,
-      }}
+    <Reveal
+      as="article"
+      y={40}
+      duration={0.9}
+      delay={index * 0.08}
       className="relative pl-12 sm:pl-16"
     >
       {/* Timeline node */}
@@ -197,6 +193,6 @@ function PillarCard({ p, index }) {
 
       {/* Hairline below */}
       <span className="mt-8 block h-px w-full bg-ink/10" />
-    </m.article>
+    </Reveal>
   );
 }

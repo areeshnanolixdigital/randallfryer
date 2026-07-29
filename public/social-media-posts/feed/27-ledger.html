@@ -22,17 +22,19 @@
   .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);vertical-align:1px;margin-right:10px}
 
   /* Photo collage */
-  .collage{position:absolute;right:70px;top:150px;width:560px;height:780px;z-index:12}
+  /* Collage is kept clear of the headline column: its left-most card (.p2,
+     rotated -6deg) must not cross the text block's right edge. */
+  .collage{position:absolute;right:56px;top:150px;width:520px;height:780px;z-index:12}
   .pic{position:absolute;border:8px solid #f7f1e3;border-radius:4px;box-shadow:0 30px 50px rgba(0,0,0,.5);background-size:cover;background-position:center;filter:saturate(.94) contrast(1.02)}
   .p1{width:360px;height:270px;right:20px;top:0;transform:rotate(4deg);background-image:url("/randall-fryer-decisions.png")}
   .p2{width:290px;height:220px;left:0;top:210px;transform:rotate(-6deg);background-image:url("/randall-fryer-problem-solver.png")}
   .p3{width:320px;height:240px;right:0;top:410px;transform:rotate(5deg);background-image:url("/randall-fryer-ballot.jpg")}
   .p4{width:250px;height:200px;left:30px;top:560px;transform:rotate(-3deg);background-image:url("/randall-fryer-listening.png")}
 
-  .block{position:absolute;left:96px;top:300px;width:430px;z-index:34;text-shadow:0 2px 18px rgba(6,11,24,.5)}
+  .block{position:absolute;left:96px;top:300px;width:370px;z-index:34;text-shadow:0 2px 18px rgba(6,11,24,.5)}
   .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px;margin-bottom:26px}
   .eyebrow::before{content:"";display:block;width:44px;height:1px;background:var(--gold)}
-  h1{font-family:var(--display);font-weight:600;font-size:72px;line-height:.98;letter-spacing:-.03em;color:var(--bone);margin-bottom:28px}
+  h1{font-family:var(--display);font-weight:600;font-size:62px;line-height:1;letter-spacing:-.03em;color:var(--bone);margin-bottom:28px}
   h1 .it{font-style:italic;font-weight:500;color:var(--gold)}
   .body{max-width:380px;font-size:17px;line-height:1.6;color:rgba(243,237,224,.84)}
   .body b{color:var(--bone);font-weight:600}
@@ -52,9 +54,7 @@
     <div class="block">
       <div class="eyebrow">On The Trail</div>
       <h1>Today wasn't about speeches. It was about <span class="it">listening.</span></h1>
-      <div class="body"><b>Every conversation felt different, but one thing is the same:</b> people want practical leadership that listens before it acts.</div>
     </div>
-    <div class="cta">Thank you for every conversation · #District28</div>
   </div>
 </body>
 </html>

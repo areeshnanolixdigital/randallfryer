@@ -68,6 +68,23 @@
     border:1px solid rgba(243,237,224,.18);
   }
 
+  /* Formal portrait — right column, masked into the ink field */
+  .photo{
+    position:absolute;right:0;top:0;width:470px;height:100%;z-index:7;
+    background:url("/randall-fryer-portrait-formal.png") no-repeat;
+    background-size:auto 138%;background-position:57% 0%;
+    filter:saturate(.85) contrast(1.04);
+    -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.5) 16%, #000 38%);
+    mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.5) 16%, #000 38%);
+  }
+  .photo::after{
+    content:"";position:absolute;inset:0;
+    background:
+      linear-gradient(180deg, rgba(6,12,28,.72) 0%, rgba(6,12,28,.18) 26%, transparent 44%),
+      linear-gradient(0deg, rgba(6,12,28,.6) 0%, transparent 40%),
+      linear-gradient(90deg, rgba(6,12,28,.5) 0%, transparent 36%);
+  }
+
   /* Hairline frame */
   .frame{position:absolute;inset:56px;border:1px solid rgba(243,237,224,.14);z-index:8;pointer-events:none}
 
@@ -122,6 +139,7 @@
   <div class="stage">
     <span class="numeral" aria-hidden>01</span>
     <div class="disc" aria-hidden></div>
+    <div class="photo" aria-hidden></div>
 
     <div class="frame"></div>
 
@@ -138,10 +156,6 @@
     <div class="content">
       <div class="label">Introducing №01 — Oregon HD28</div>
       <h1>Meet Randall<br><span class="it">Fryer.</span></h1>
-      <p class="body">
-        Randall Fryer is running for Oregon House District 28. He has served Oregon families
-        as a physician. Now he's ready to continue serving our community in the Oregon House.
-      </p>
     </div>
 
     <ul class="bullets">
