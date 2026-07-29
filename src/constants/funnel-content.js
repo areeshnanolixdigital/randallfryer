@@ -24,46 +24,46 @@ export const FUNNEL_ROUTES = {
 export const LEAD_MAGNET = {
   // Internal name — travels in the webhook payload so the CRM knows which
   // lead magnet was requested.
-  name: "[DUMMY] Free Guide",
+  name: "Looking Ahead: House District 28",
 
   meta: {
-    title: "[DUMMY] Free Guide",
+    title: "Free Guide — Looking Ahead: House District 28",
     description:
-      "[DUMMY] Get the free guide — a short, practical resource delivered straight to your inbox.",
+      "Get the complimentary guide to the issues shaping House District 28 and Randall Fryer's priorities for moving our community forward — delivered straight to your inbox.",
   },
 
   hero: {
-    eyebrow: "[DUMMY] Free download",
-    headline: "[DUMMY] The headline that promises one clear outcome.",
+    eyebrow: "Looking Ahead: House District 28",
+    headline: "A Guide to a New Candidate and the Future of Our Community",
     subheadline:
-      "[DUMMY] A one-to-two sentence subheadline that expands on the promise, names the audience, and tells them exactly what they get when they sign up.",
+      "If you're concerned about rising taxes, educational outcomes, Oregon's business climate, and the future of our community, this complimentary guide will help you understand the issues shaping our community, explore the facts behind today's challenges, and learn about Randall Fryer's priorities for moving House District 28 forward.",
     // Replace with the real cover / mockup image path (e.g. "/lead-magnet-cover.jpg").
     // Leave "" to render the built-in placeholder frame.
-    coverImage: "",
-    coverImageAlt: "[DUMMY] Mockup of the free guide cover",
-    ctaLabel: "Get the free guide",
+    coverImage: "/randall-fryer-portrait.jpg",
+    coverImageAlt: "Randall Fryer, candidate for Oregon House District 28",
+    ctaLabel: "Get the Free Guide",
   },
 
   benefits: {
     label: "02 — What's inside",
     number: "Benefits / II",
-    heading: "[DUMMY] What you'll get out of it.",
+    heading: "What You'll Learn Inside the Guide",
     items: [
       {
-        title: "[DUMMY] Benefit one",
-        body: "[DUMMY] One sentence on the concrete result the reader walks away with after the first section.",
+        title: "Understand the Issues Shaping District 28",
+        body: "Learn why affordability, educational outcomes, business growth, and government accountability have become top concerns for many Southwest Portland families.",
       },
       {
-        title: "[DUMMY] Benefit two",
-        body: "[DUMMY] One sentence naming a specific pain point and how the guide removes it.",
+        title: "See the Facts Behind Today's Challenges",
+        body: "Explore research, public information, and easy-to-understand visuals that explain how current policies affect schools, taxpayers, businesses, and local communities.",
       },
       {
-        title: "[DUMMY] Benefit three",
-        body: "[DUMMY] One sentence with a number or timeframe that makes the value feel tangible.",
+        title: "Learn Randall Fryer's Priorities",
+        body: "Discover Randall's approach to strengthening educational excellence, lowering unnecessary tax burdens, reducing barriers to business growth, and improving government accountability.",
       },
       {
-        title: "[DUMMY] Benefit four",
-        body: "[DUMMY] One sentence on the bonus, checklist, or template included at the end.",
+        title: "Make a More Informed Decision",
+        body: "Before you vote, gain a clearer understanding of the issues, the choices facing District 28, and the direction Randall believes will help Oregon move forward.",
       },
     ],
   },
@@ -71,9 +71,9 @@ export const LEAD_MAGNET = {
   form: {
     label: "03 — Get the guide",
     number: "Opt-in / III",
-    heading: "[DUMMY] Tell us where to send it.",
-    body: "[DUMMY] Short reassurance line — no spam, unsubscribe anytime, the guide arrives in your inbox within a few minutes.",
-    submitLabel: "Send me the guide",
+    heading: "Tell Us Where to Send Your Complimentary Guide",
+    body: "Enter your information below and we'll email your complimentary copy of Looking Ahead: House District 28. Your guide will arrive in just a few minutes. We respect your privacy, never sell your information, and you may unsubscribe from emails or text messages at any time.",
+    submitLabel: "Send Me the Free Guide",
     submittingLabel: "Sending…",
     errorMessage:
       "Something went wrong sending your request. Please try again in a moment.",
@@ -81,44 +81,18 @@ export const LEAD_MAGNET = {
     consent: {
       helper: "Enter a phone number above to opt in to SMS messages.",
       smsLabel:
-        "[DUMMY] I agree to receive SMS updates about this guide and related resources. Message frequency varies. Message & data rates may apply. Reply STOP to unsubscribe.",
+        "I agree to receive informational SMS updates related to my guide request, campaign events, and important election information. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for assistance.",
       promoLabel:
-        "[DUMMY] I agree to receive promotional SMS messages, including offers and announcements. Message frequency varies. Message & data rates may apply. Reply STOP to unsubscribe.",
+        "I agree to receive promotional SMS messages, including campaign announcements, volunteer opportunities, and donation requests. Message frequency varies. Message and data rates may apply. Reply STOP to unsubscribe or HELP for assistance.",
     },
   },
 
-  socialProof: {
-    label: "04 — What readers say",
-    number: "Proof / IV",
-    heading: "[DUMMY] Trusted by people like you.",
-    testimonials: [
-      {
-        quote:
-          "[DUMMY] “A short testimonial quote that speaks to the specific result the lead magnet delivers.”",
-        name: "[DUMMY] Jordan A.",
-        detail: "[DUMMY] Small-business owner",
-      },
-      {
-        quote:
-          "[DUMMY] “A second quote focused on how easy or fast the resource was to put into practice.”",
-        name: "[DUMMY] Casey B.",
-        detail: "[DUMMY] Parent of two",
-      },
-      {
-        quote:
-          "[DUMMY] “A third quote that handles a common objection — skeptical at first, glad they signed up.”",
-        name: "[DUMMY] Riley C.",
-        detail: "[DUMMY] Longtime resident",
-      },
-    ],
-  },
-
   finalCta: {
-    label: "05 — Last call",
-    number: "CTA / V",
-    heading: "[DUMMY] Ready when you are.",
-    body: "[DUMMY] One last nudge repeating the promise in a single sentence.",
-    buttonLabel: "Get the free guide",
+    label: "04 — Last call",
+    number: "CTA / IV",
+    heading: "Make an Informed Decision Before You Vote",
+    body: "The future of House District 28 depends on informed voters. Download your complimentary copy of Looking Ahead: House District 28 and learn about the issues, the challenges facing our community, and Randall Fryer's priorities for moving Oregon forward.",
+    buttonLabel: "Get the Free Guide",
   },
 };
 
@@ -128,30 +102,47 @@ export const LEAD_MAGNET = {
 
 export const THANK_YOU = {
   meta: {
-    title: "[DUMMY] You're in — check your email",
-    description: "[DUMMY] Your free guide is on its way to your inbox.",
+    title: "Thank You — Your Guide Is On Its Way",
+    description:
+      "Your complimentary copy of Looking Ahead: House District 28 is on its way to your inbox.",
   },
 
-  eyebrow: "[DUMMY] Request received",
-  headline: "[DUMMY] You're in — check your email.",
-  body: "[DUMMY] Your guide is on its way and should land in your inbox within a few minutes. If you don't see it, check your spam or promotions folder and mark us as a safe sender.",
+  eyebrow: "Thank You!",
+  headline: "Your Guide Is On Its Way",
+  // Rendered as sequential paragraphs.
+  body: [
+    "Your complimentary copy of Looking Ahead: House District 28 has been sent to the email address you provided.",
+    "Inside, you'll find a clear overview of the issues shaping House District 28, the challenges facing Southwest Portland, and Randall Fryer's priorities for strengthening our community.",
+    "The guide brings together publicly available research, community concerns, and Randall Fryer's priorities to help you make a more informed decision before Election Day.",
+    "If you don't see the email within a few minutes, please check your spam or promotions folder.",
+  ],
 
   download: {
-    heading: "[DUMMY] Prefer to grab it now?",
-    body: "[DUMMY] One line offering the instant-access alternative to waiting for the email.",
-    buttonLabel: "Download the guide",
-    // Replace with the real hosted asset URL (PDF, drive link, etc.).
-    url: "#dummy-download-link",
+    heading: "Prefer to grab it now?",
+    body: "Your complimentary guide is also ready to download right here — no need to wait for the email.",
+    buttonLabel: "Download the Guide",
+    // Hosted in /public — served from the site root once deployed.
+    url: "/looking-ahead-house-district-28.pdf",
   },
 
-  upsell: {
-    label: "02 — One more thing",
-    number: "Next step / II",
-    eyebrow: "[DUMMY] While you're here",
-    heading: "[DUMMY] A short teaser headline for the next-step offer.",
-    body: "[DUMMY] Two sentences that bridge from the freebie to the offer — the guide gets you started, the offer gets it done. Curiosity, not a hard sell.",
-    buttonLabel: "See the offer",
-    // Replace with the real offer / checkout URL when the offer page exists.
-    url: "#dummy-offer-link",
+  nextSteps: {
+    heading: "While You're Here…",
+    body: "Learn more about Randall's campaign and how you can get involved.",
+    links: [
+      { label: "Volunteer", href: "/volunteer" },
+      { label: "Meet Randall", href: "/about" },
+      { label: "View Priorities", href: "/platform" },
+    ],
+  },
+
+  social: {
+    label: "02 — Stay connected",
+    number: "Connect / II",
+    heading: "Stay Connected",
+    // Rendered as sequential paragraphs above the social icons.
+    body: [
+      "This campaign is built on conversations with the people of Southwest Portland.",
+      "Follow along for campaign updates, upcoming events, and opportunities to get involved.",
+    ],
   },
 };

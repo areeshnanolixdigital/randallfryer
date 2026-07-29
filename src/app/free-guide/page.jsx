@@ -14,7 +14,7 @@ export const metadata = {
   description: LEAD_MAGNET.meta.description,
 };
 
-const { hero, benefits, socialProof, finalCta, form } = LEAD_MAGNET;
+const { hero, benefits, finalCta, form } = LEAD_MAGNET;
 
 export default function Page() {
   return (
@@ -130,43 +130,6 @@ export default function Page() {
           <div className="col-span-12 lg:col-span-8">
             <LmOptinForm />
           </div>
-        </div>
-      </SectionFrame>
-
-      {/* SOCIAL PROOF */}
-      <SectionFrame label={socialProof.label} number={socialProof.number}>
-        <SplitReveal
-          as="h2"
-          className="display-serif block max-w-2xl text-balance text-[clamp(1.7rem,3.5vw,2.85rem)] font-medium leading-[1.05] tracking-[-0.02em]"
-        >
-          {socialProof.heading}
-        </SplitReveal>
-        <div className="mt-12 grid gap-5 lg:grid-cols-3">
-          {socialProof.testimonials.map((t) => (
-            <figure
-              key={t.name}
-              className="flex flex-col justify-between gap-6 rounded-card border border-ink/15 bg-bone-soft/60 p-6"
-            >
-              <blockquote className="text-[15px] leading-relaxed text-ink/80">
-                {t.quote}
-              </blockquote>
-              <figcaption className="flex items-center gap-3">
-                {/* [DUMMY] initials avatar — replace with a real photo if desired */}
-                <span
-                  aria-hidden
-                  className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full border border-ink/15 bg-ink font-mono text-[11px] uppercase tracking-[0.1em] text-bone"
-                >
-                  {t.name.replace("[DUMMY] ", "").slice(0, 1)}
-                </span>
-                <span className="flex flex-col">
-                  <span className="text-sm font-medium text-ink">{t.name}</span>
-                  <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-ink-mute">
-                    {t.detail}
-                  </span>
-                </span>
-              </figcaption>
-            </figure>
-          ))}
         </div>
       </SectionFrame>
 
