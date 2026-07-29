@@ -78,15 +78,15 @@ export default function LmOptinForm() {
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-7">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <FormField id="lm-first" name="firstName" label="First name" required />
-        <FormField id="lm-last" name="lastName" label="Last name" optional />
+        <FormField id="lm-first" name="firstName" label="First Name" required />
+        <FormField id="lm-last" name="lastName" label="Last Name" optional />
       </div>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-        <FormField id="lm-email" name="email" label="Email" type="email" required />
+        <FormField id="lm-email" name="email" label="Email Address" type="email" required />
         <FormField
           id="lm-phone"
           name="phone"
-          label="Phone"
+          label="Phone Number"
           type="tel"
           optional
           value={phone}
@@ -96,7 +96,7 @@ export default function LmOptinForm() {
       </div>
 
       {/* Phone-gated consent — disabled without a phone, required with one */}
-      <FormFieldset legend="Text message consent">
+      <FormFieldset legend="Text Message Consent">
         {!hasPhone && (
           <p className="text-xs italic text-ink/50">{form.consent.helper}</p>
         )}
