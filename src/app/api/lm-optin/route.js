@@ -1,5 +1,6 @@
 import { normalizePhoneForSubmit } from "@/lib/phone";
 import { LEAD_MAGNET } from "@/constants/funnel-content";
+import { getLeadMagnetWebhookUrl, getComplianceWebhookUrl } from "@/lib/ghl";
 
 // POST /api/lm-optin — lead-magnet opt-in form (funnel step 1).
 // Fans out the SAME payload to two webhooks in parallel
@@ -7,12 +8,13 @@ import { LEAD_MAGNET } from "@/constants/funnel-content";
 // + the shared compliance webhook. Returns 502 ONLY when every webhook fails;
 // a partial failure still returns 200.
 //
-// ⚠️ [DUMMY] placeholder URLs — paste the real GHL webhook-trigger URLs here.
+// Resolved through lib/ghl.js like every other form route, so the URLs stay in
+// one place and can be overridden per environment.
 const WEBHOOK_URLS = [
   // 1. Primary lead-magnet workflow webhook (delivers the guide + nurture)
-  "https://services.leadconnectorhq.com/hooks/REPLACE_LOCATION_ID/webhook-trigger/REPLACE_PRIMARY_LM_WORKFLOW_ID",
+  getLeadMagnetWebhookUrl(),
   // 2. Shared compliance / consent webhook (same URL as the other forms)
-  "https://services.leadconnectorhq.com/hooks/REPLACE_LOCATION_ID/webhook-trigger/REPLACE_COMPLIANCE_WORKFLOW_ID",
+  getComplianceWebhookUrl(),
 ];
 
 export async function POST(request) {
