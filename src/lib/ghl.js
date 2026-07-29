@@ -72,6 +72,16 @@ export function getComplianceWebhookUrl() {
 }
 
 /**
+ * Lead-magnet opt-in workflow webhook — Randall Fryer's own GHL location.
+ * Drives the /free-guide funnel (delivers the guide + nurture sequence).
+ * Override with GHL_HOOK_LEAD_MAGNET (full URL).
+ */
+export function getLeadMagnetWebhookUrl() {
+  if (process.env.GHL_HOOK_LEAD_MAGNET) return process.env.GHL_HOOK_LEAD_MAGNET;
+  return "https://services.leadconnectorhq.com/hooks/YUHTArRDeS9UlcCEkopg/webhook-trigger/e71b3821-a9a4-4d99-8ecf-e90ff833fdf2";
+}
+
+/**
  * Newsletter / email-signup workflow webhook — Randall Fryer's own GHL location.
  * Drives the newsletter subscribe form in the site footer.
  * Override with GHL_HOOK_NEWSLETTER (full URL).
