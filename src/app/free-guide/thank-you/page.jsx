@@ -48,15 +48,19 @@ export default function Page() {
               ))}
             </div>
 
-            {/* Instant-access download — no need to wait for the email */}
-            <div className="mt-12 flex flex-col gap-4 rounded-card border border-ink/15 bg-bone-soft/60 p-8">
-              <h2 className="display-serif text-2xl font-medium leading-tight">
-                {download.heading}
-              </h2>
-              <p className="max-w-lg text-[15px] leading-relaxed text-ink/75">
-                {download.body}
-              </p>
-              <div>
+            {/* Instant-access download — no need to wait for the email.
+                Copy left, button right on wider screens so the box hugs its
+                content instead of leaving a large empty right-hand area. */}
+            <div className="mt-12 flex flex-col gap-5 rounded-card border border-ink/15 bg-bone-soft/60 p-6 sm:flex-row sm:items-center sm:justify-between sm:gap-8 sm:p-7">
+              <div className="flex flex-col gap-2">
+                <h2 className="display-serif text-2xl font-medium leading-tight">
+                  {download.heading}
+                </h2>
+                <p className="max-w-md text-[15px] leading-relaxed text-ink/75">
+                  {download.body}
+                </p>
+              </div>
+              <div className="flex-none">
                 <Button
                   as="a"
                   href={download.url}

@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Looking Ahead: House District 28</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* Randall Fryer brand palette — Brand Guidelines V2.1 §3.0 */
+  :root{
+    --navy:#0A2744;      /* Primary   — Prussian Blue */
+    --red:#B62126;       /* Secondary — Brick Red     */
+    --yale:#314860;      /* Tertiary  — Yale Blue     */
+    --gold:#D3A52A;      /* Goldenrod */
+    --paper:#F6F5F4;     /* White Smoke */
+    --graphite:#303030;
+    --display:'Fraunces','Times New Roman',serif;
+    --sans:'Inter',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+
+  /* US Letter, full bleed. Chromium exports one .page per sheet. */
+  @page{ size:8.5in 11in; margin:0 }
+  html,body{background:#5b5b5b}
+  body{font-family:var(--sans);color:var(--navy);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+  .page{
+    width:8.5in;height:11in;position:relative;overflow:hidden;
+    background:var(--paper);margin:0 auto 22px;page-break-after:always;break-after:page;
+  }
+  .page:last-child{page-break-after:auto;break-after:auto;margin-bottom:0}
+  .pad{position:absolute;left:0.82in;right:0.82in;top:0.78in}
+
+  /* ── shared type ─────────────────────────────────────────── */
+  .eyebrow{font-size:8.6pt;font-weight:600;letter-spacing:.20em;text-transform:uppercase;
+    color:var(--red);display:flex;align-items:center;gap:8px}
+  .eyebrow::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red);flex:none}
+  .folio{position:absolute;right:0;top:2px;font-size:8.2pt;font-weight:600;letter-spacing:.20em;
+    text-transform:uppercase;color:var(--yale)}
+  h1.title{font-family:var(--display);font-weight:600;font-size:30pt;line-height:1.08;
+    letter-spacing:-.015em;margin-top:9px}
+  .rule{height:1px;background:rgba(10,39,68,.22);margin:16px 0 20px}
+  .lede{font-size:11.2pt;line-height:1.62;color:var(--yale)}
+  p.body{font-size:10pt;line-height:1.62;color:var(--yale);margin-top:11px}
+
+  .foot{position:absolute;left:0.82in;right:0.82in;bottom:0.62in;
+    border-top:1px solid rgba(10,39,68,.18);padding-top:9px;display:flex;justify-content:space-between;
+    font-size:7.8pt;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--yale)}
+
+  /* ── 1 · cover ───────────────────────────────────────────── */
+  .cover{background:var(--navy);color:var(--paper)}
+  .cover .art{position:absolute;right:0;top:0;bottom:0.62in;width:3.15in;overflow:hidden}
+  .cover .art img{width:100%;height:100%;object-fit:cover;object-position:52% 18%;display:block}
+  .cover .kick{position:absolute;left:0.82in;top:0.95in;width:3.9in;font-size:8.6pt;font-weight:600;
+    letter-spacing:.20em;text-transform:uppercase;color:var(--gold);line-height:1.7}
+  .cover h1{position:absolute;left:0.82in;top:1.5in;width:4.1in;font-family:var(--display);
+    font-weight:600;font-size:39pt;line-height:1.06;letter-spacing:-.02em;color:var(--paper)}
+  .cover .dash{position:absolute;left:0.82in;top:3.42in;width:0.62in;height:3px;background:var(--red)}
+  .cover .sub{position:absolute;left:0.82in;top:3.72in;width:3.7in;font-size:11pt;line-height:1.55;
+    color:rgba(246,245,244,.86)}
+  .cover .who{position:absolute;left:0.82in;bottom:1.42in}
+  .cover .who .n{font-family:var(--display);font-weight:600;font-size:17pt;color:var(--paper)}
+  .cover .who .r{margin-top:7px;font-size:8.4pt;font-weight:600;letter-spacing:.18em;
+    text-transform:uppercase;color:rgba(246,245,244,.72);line-height:1.7}
+  .cover .band{position:absolute;left:0;right:0;bottom:0;height:0.62in;background:#7A1B2B;
+    display:flex;align-items:center;justify-content:space-between;padding:0 0.82in;
+    font-size:8.2pt;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--paper)}
+
+  /* ── 3 · issues grid ─────────────────────────────────────── */
+  .issues{display:grid;grid-template-columns:1fr 1fr;column-gap:0.42in;row-gap:0}
+  .issue{border-top:1.6px solid var(--navy);padding:11px 0 15px}
+  .issue .n{font-size:8pt;font-weight:700;letter-spacing:.18em;color:var(--red)}
+  .issue h3{font-family:var(--display);font-weight:600;font-size:12.4pt;margin-top:5px}
+  .issue p{font-size:9pt;line-height:1.55;color:var(--yale);margin-top:5px}
+
+  /* ── 4–6 · priority pages ────────────────────────────────── */
+  .pnum{position:absolute;left:0;top:26px;width:0.44in;height:0.44in;border-radius:50%;
+    background:var(--navy);color:var(--paper);display:grid;place-items:center;
+    font-size:9pt;font-weight:700;letter-spacing:.06em}
+  .phead{margin-left:0.62in}
+  .falabel{font-size:8.2pt;font-weight:600;letter-spacing:.20em;text-transform:uppercase;
+    color:var(--yale);margin:22px 0 12px}
+  .fa{border-bottom:1px solid rgba(10,39,68,.14);padding:9px 0 10px}
+  .fa:last-child{border-bottom:0}
+  .fa h4{font-family:var(--display);font-weight:600;font-size:11.6pt;display:flex;gap:9px;align-items:baseline}
+  .fa h4::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--red);flex:none;
+    transform:translateY(-2px)}
+  .fa p{font-size:9pt;line-height:1.56;color:var(--yale);margin-top:3px;padding-left:14px}
+
+  /* ── 7 · principles + bio ────────────────────────────────── */
+  .pr{border-top:1.6px solid var(--navy);padding:10px 0 13px}
+  .pr .k{font-size:8.2pt;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--red)}
+  .pr p{font-size:10pt;line-height:1.6;color:var(--yale);margin-top:7px}
+  .bio h2{font-family:var(--display);font-weight:600;font-size:19pt;margin-top:8px}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0.34in;margin-top:20px}
+  .stat{border-top:1.6px solid var(--navy);padding-top:11px}
+  .stat .v{font-family:var(--display);font-weight:600;font-size:19pt}
+  .stat .l{margin-top:5px;font-size:8pt;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--yale);line-height:1.6}
+
+  /* ── 8 · closing (navy) ──────────────────────────────────── */
+  .close{background:var(--navy);color:var(--paper)}
+  .close .eyebrow{color:var(--gold)}
+  .close .eyebrow::before{background:var(--gold)}
+  .close h1.title{color:var(--paper)}
+  .close .rule{background:rgba(246,245,244,.26)}
+  .close .lede{color:rgba(246,245,244,.84)}
+
+  /* CLIENT FIX 1 — these were checkbox squares, which read as clickable in a
+     PDF. Replaced with the document's own numbering language (gold numerals),
+     matching the issues grid and priority pages. Nothing looks interactive. */
+  .steps{margin-top:22px}
+  .step{display:flex;gap:14px;align-items:baseline;padding:11px 0;
+    border-bottom:1px solid rgba(246,245,244,.16)}
+  .step:last-child{border-bottom:0}
+  .step .n{font-size:8.6pt;font-weight:700;letter-spacing:.16em;color:var(--gold);flex:none;width:0.26in}
+  .step p{font-size:10pt;line-height:1.55;color:rgba(246,245,244,.92)}
+
+  .connect{position:absolute;left:0.82in;right:0.82in;bottom:1.28in}
+  .connect .lbl{font-size:8.6pt;font-weight:600;letter-spacing:.20em;text-transform:uppercase;
+    color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:14px}
+  .connect .lbl::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--gold)}
+  .cgrid{display:grid;grid-template-columns:1fr 1fr;column-gap:0.42in;row-gap:0}
+  .cell{border-top:1.6px solid var(--gold);padding:10px 0 13px}
+  .cell h3{font-family:var(--display);font-weight:600;font-size:12.4pt;color:var(--paper)}
+  /* CLIENT FIX 2 — real anchors. Chromium turns these into PDF link
+     annotations on export, so the URLs are clickable in the finished guide. */
+  .cell a{display:inline-block;margin-top:5px;font-size:9pt;color:var(--gold);
+    text-decoration:none;word-break:break-word}
+  .cell .sep{color:rgba(211,165,42,.6);margin:0 5px}
+
+  .legal{position:absolute;left:0.82in;right:0.82in;bottom:0.6in;
+    font-size:7.4pt;line-height:1.55;color:rgba(246,245,244,.52)}
+</style>
+</head>
+<body>
+
+<!-- ══ 1 · COVER ══════════════════════════════════════════════ -->
+<section class="page cover">
+  <div class="art"><img src="../public/randall-fryer-portrait-plaid.png" alt="Randall Fryer" /></div>
+  <div class="kick">Legislative Perspectives · Southwest Portland</div>
+  <h1>Looking Ahead: House District 28</h1>
+  <div class="dash"></div>
+  <div class="sub">A Guide to a New Candidate and the Future of Our Community.</div>
+  <div class="who">
+    <div class="n">Randall Fryer</div>
+    <div class="r">Candidate for State Representative<br>Oregon House District 28</div>
+  </div>
+  <div class="band"><span>A Complimentary Guide</span><span>General Election · November 3, 2026</span></div>
+</section>
+
+<!-- ══ 2 · WHY THIS GUIDE EXISTS ══════════════════════════════ -->
+<section class="page">
+  <div class="pad">
+    <div class="folio">Introduction</div>
+    <div class="eyebrow">A Note to the Reader</div>
+    <h1 class="title">Why This Guide Exists</h1>
+    <div class="rule"></div>
+    <p class="lede">Thank you for taking the time to become a more informed voter. This guide is a straightforward look at the issues shaping House District 28 — and at the priorities I believe will help our community move forward.</p>
+    <p class="body">Like many people across Southwest Portland, I have watched our community change over the years. Families are facing higher costs. Employers are navigating growing uncertainty. And many parents are asking a fair question: is our education system truly preparing students for success?</p>
+    <p class="body">Those concerns are why I decided to run for State Representative. I do not believe the best answers begin in a conference room in Salem. They begin by listening to the people who live with the consequences of the decisions made there. This campaign is built around direct conversations, careful listening, and a commitment to represent the priorities of District 28 — not the demands of political insiders.</p>
+    <p class="body">My background is not in politics. It is in preparation, service, and responsibility: more than two decades in medicine, earlier work in software, and service in the Army Medical Corps. Each taught me to understand complex systems, find where they break down, and focus on solutions that actually work in the real world. I intend to bring that same disciplined, evidence-led approach to the Oregon House.</p>
+    <p class="body">The pages that follow explain the challenges facing our community, the priorities guiding this campaign, and why these issues matter for the future of District 28. I hope you will read it, share it, and reach out with your own thoughts.</p>
+    <div style="margin-top:22px">
+      <div style="font-family:var(--display);font-weight:600;font-size:14pt">Randall Fryer</div>
+      <div style="margin-top:6px;font-size:8pt;font-weight:600;letter-spacing:.17em;text-transform:uppercase;color:var(--yale)">Candidate for State Representative · Oregon House District 28</div>
+    </div>
+  </div>
+  <div class="foot"><span>Looking Ahead: House District 28</span><span>02</span></div>
+</section>
+
+<!-- ══ 3 · THE ISSUES ═════════════════════════════════════════ -->
+<section class="page">
+  <div class="pad">
+    <div class="folio">Part I</div>
+    <div class="eyebrow">The Landscape</div>
+    <h1 class="title">The Issues Shaping House District 28</h1>
+    <div class="rule"></div>
+    <p class="lede">Across District 28, residents are raising a consistent set of concerns. These are not abstract, partisan debates — they are practical questions about affordability, opportunity, and whether state government is delivering results for the money it spends.</p>
+    <div class="issues" style="margin-top:22px">
+      <div class="issue"><div class="n">01</div><h3>Education &amp; Schools</h3><p>Parents are asking whether classrooms are focused on the fundamentals and whether students are graduating truly prepared for what comes next.</p></div>
+      <div class="issue"><div class="n">02</div><h3>Taxes &amp; the Cost of Living</h3><p>Families and employers work hard for every dollar they earn — and are feeling the weight of rising taxes, fees, and everyday costs.</p></div>
+      <div class="issue"><div class="n">03</div><h3>Business &amp; the Economy</h3><p>Local employers face growing uncertainty. A healthy economy depends on businesses that can invest, hire, and grow with confidence.</p></div>
+      <div class="issue"><div class="n">04</div><h3>Public Safety</h3><p>Communities want to be safe, with strong partnerships between residents and the law enforcement professionals who serve them.</p></div>
+      <div class="issue"><div class="n">05</div><h3>Government Accountability</h3><p>Oregonians deserve transparency and restraint — clear evidence that public programs deliver real value for the taxes they collect.</p></div>
+      <div class="issue"><div class="n">06</div><h3>Opportunity for the Future</h3><p>Every one of these issues shares a common thread: creating more opportunity for the families and generations who call District 28 home.</p></div>
+    </div>
+    <div class="rule" style="margin-top:6px"></div>
+    <p class="body" style="margin-top:4px">The chapters that follow lay out how Randall Fryer proposes to address these challenges — organized around three clear priorities and a set of guiding principles.</p>
+  </div>
+  <div class="foot"><span>Looking Ahead: House District 28</span><span>03</span></div>
+</section>
+
+<!-- ══ 4 · PRIORITY ONE ═══════════════════════════════════════ -->
+<section class="page">
+  <div class="pad">
+    <div class="folio">Priority 01</div>
+    <div class="eyebrow">Priority One</div>
+    <div style="position:relative">
+      <div class="pnum">01</div>
+      <h1 class="title phead">Strengthen Educational Excellence</h1>
+    </div>
+    <div class="rule"></div>
+    <p class="lede">Education is the foundation of opportunity. Oregon's students deserve schools where learning comes first, teachers are supported, parents have a meaningful voice, and classrooms prepare students for success in college, careers, military service, and civic life.</p>
+    <div class="falabel">Focus Areas</div>
+    <div class="fa"><h4>Strong Academic Standards</h4><p>Support high expectations that prepare students to read, write, reason, solve problems, and graduate ready for life after high school.</p></div>
+    <div class="fa"><h4>Focus on Core Subjects</h4><p>Prioritize reading, writing, mathematics, history, and civics so students develop the knowledge and critical-thinking skills they need to succeed.</p></div>
+    <div class="fa"><h4>Support Teachers</h4><p>Ensure professional teachers have the authority, resources, and classroom environments needed to teach effectively.</p></div>
+    <div class="fa"><h4>Parent &amp; Local Involvement</h4><p>Encourage meaningful parental involvement and strengthen the role of locally elected school boards in education decisions.</p></div>
+    <div class="fa"><h4>Measure Success by Student Learning</h4><p>Education policy should be evaluated by student achievement and long-term outcomes, not simply by the amount of money spent.</p></div>
+  </div>
+  <div class="foot"><span>Looking Ahead: House District 28</span><span>04</span></div>
+</section>
+
+<!-- ══ 5 · PRIORITY TWO ═══════════════════════════════════════ -->
+<section class="page">
+  <div class="pad">
+    <div class="folio">Priority 02</div>
+    <div class="eyebrow">Priority Two</div>
+    <div style="position:relative">
+      <div class="pnum">02</div>
+      <h1 class="title phead">Lower Taxes for Families &amp; Employers</h1>
+    </div>
+    <div class="rule"></div>
+    <p class="lede">Families and employers work hard for every dollar they earn. Government has a responsibility to spend taxpayer dollars wisely, avoid unnecessary costs, and remain accountable to the people it serves.</p>
+    <div class="falabel">Focus Areas</div>
+    <div class="fa"><h4>Oppose Unnecessary Taxes &amp; Fees</h4><p>Advocate for policies that avoid placing additional financial burdens on Oregon families and businesses.</p></div>
+    <div class="fa"><h4>Responsible Budgeting</h4><p>Carefully review state spending and prioritize programs that deliver meaningful value to taxpayers.</p></div>
+    <div class="fa"><h4>Transparency &amp; Accountability</h4><p>Support clear reporting so Oregonians understand how public funds are used and whether government programs are achieving their intended purpose.</p></div>
+    <div class="fa"><h4>Protect Essential Services</h4><p>Support responsible budgeting that maintains essential public services while improving efficiency and reducing waste where possible.</p></div>
+  </div>
+  <div class="foot"><span>Looking Ahead: House District 28</span><span>05</span></div>
+</section>
+
+<!-- ══ 6 · PRIORITY THREE ═════════════════════════════════════ -->
+<section class="page">
+  <div class="pad">
+    <div class="folio">Priority 03</div>
+    <div class="eyebrow">Priority Three</div>
+    <div style="position:relative">
+      <div class="pnum">03</div>
+      <h1 class="title phead">Reduce Barriers to Business Growth</h1>
+    </div>
+    <div class="rule"></div>
+    <p class="lede">A healthy economy depends on businesses that can invest, hire, innovate, and grow. Oregon should encourage entrepreneurship while maintaining reasonable protections for workers, consumers, and the environment.</p>
+    <div class="falabel">Focus Areas</div>
+    <div class="fa"><h4>Reduce Unnecessary Regulation</h4><p>Support efforts to reduce unnecessary government micromanagement while preserving appropriate public safeguards.</p></div>
+    <div class="fa"><h4>Simpler Tax Compliance</h4><p>Encourage policies that make Oregon's tax system easier for employers to understand and comply with.</p></div>
+    <div class="fa"><h4>Improve Permitting</h4><p>Support more timely and predictable permitting so businesses can invest with greater certainty.</p></div>
+    <div class="fa"><h4>Encourage Investment</h4><p>Promote policies that encourage entrepreneurship, attract investment, and help employers create better jobs throughout Oregon.</p></div>
+    <div class="fa"><h4>Support Local Employers</h4><p>Recognize that small businesses and local employers are essential to thriving communities and economic opportunity.</p></div>
+  </div>
+  <div class="foot"><span>Looking Ahead: House District 28</span><span>06</span></div>
+</section>
+
+<!-- ══ 7 · GUIDING PRINCIPLES + BIO ═══════════════════════════ -->
+<section class="page">
+  <div class="pad">
+    <div class="folio">Part II</div>
+    <div class="eyebrow">What Guides the Work</div>
+    <h1 class="title">Guiding Principles</h1>
+    <div class="rule"></div>
+    <p class="lede">Beyond the three priorities, every decision should reflect the values that guide responsible public service.</p>
+    <div style="margin-top:20px">
+      <div class="pr"><div class="k">01 · Public Safety</div><p>Support policies that help keep Oregon communities safe while respecting individual rights and strengthening partnerships between local communities and law enforcement.</p></div>
+      <div class="pr"><div class="k">02 · Local Decision-Making</div><p>Communities understand their own needs. Parents, educators, local officials, and residents should have meaningful input into decisions that affect their schools and neighborhoods.</p></div>
+      <div class="pr"><div class="k">03 · Accountable Government</div><p>Government should be transparent, fiscally responsible, and accountable to taxpayers. Public service is a responsibility that requires careful stewardship of public resources.</p></div>
+    </div>
+    <div class="rule" style="margin-top:22px"></div>
+    <div class="bio">
+      <div class="eyebrow">About the Candidate</div>
+      <h2>A Record of Service &amp; Responsibility</h2>
+      <p class="body">Randall Fryer is a retired physician, former software professional, and former enlisted member of the Army Medical Corps. He practiced medicine from 2000 through 2024 — including years in rural and remote emergency departments, where careful listening, clear priorities, and decisive action were not optional. That experience shapes how he approaches public service: examine the evidence, ask difficult questions, weigh the consequences, and stay focused on solutions that improve people's lives.</p>
+      <div class="stats">
+        <div class="stat"><div class="v">24 yrs</div><div class="l">Practicing<br>Medicine</div></div>
+        <div class="stat"><div class="v">Army</div><div class="l">Medical Corps<br>Service</div></div>
+        <div class="stat"><div class="v">Nov 3</div><div class="l">General Election<br>2026</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span>Looking Ahead: House District 28</span><span>07</span></div>
+</section>
+
+<!-- ══ 8 · BEFORE YOU VOTE ════════════════════════════════════ -->
+<section class="page close">
+  <div class="pad">
+    <div class="eyebrow">Before You Vote</div>
+    <h1 class="title">Make an Informed Decision</h1>
+    <div class="rule"></div>
+    <p class="lede">The future of House District 28 depends on informed voters. Before Election Day, here are a few simple ways to be ready.</p>
+
+    <div class="steps">
+      <div class="step"><span class="n">01</span><p>Review this guide, and revisit the priorities that matter most to you.</p></div>
+      <div class="step"><span class="n">02</span><p>Share it with friends or family who may find it helpful.</p></div>
+      <div class="step"><span class="n">03</span><p>Learn more about the campaign and how you can get involved.</p></div>
+      <div class="step"><span class="n">04</span><p>Make a plan to vote in the November 3, 2026 general election.</p></div>
+    </div>
+  </div>
+
+  <div class="connect">
+    <div class="lbl">Stay Connected</div>
+    <div class="cgrid">
+      <div class="cell">
+        <h3>Volunteer</h3>
+        <a href="https://randallfororegon.com/volunteer">randallfororegon.com/volunteer</a>
+      </div>
+      <div class="cell">
+        <h3>Learn More</h3>
+        <a href="https://randallfororegon.com">randallfororegon.com</a>
+      </div>
+      <div class="cell">
+        <h3>Contact</h3>
+        <a href="mailto:Randall@randallfororegon.com">Randall@randallfororegon.com</a><span class="sep">·</span><a href="tel:+19714046743">(971) 404-6743</a>
+      </div>
+      <div class="cell">
+        <h3>Support the Campaign</h3>
+        <a href="https://secure.winred.com/randall-fryer-for-representative/donate-today">secure.winred.com/randall-fryer-for-representative</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal">Part of the Legislative Perspectives: Southwest Portland series. This guide brings together publicly available research, community concerns, and Randall Fryer's stated priorities to help voters make a more informed decision. The priorities described are stated commitments, not quantified pledges. Paid for by Randall Fryer For Representative.</div>
+</section>
+
+</body>
+</html>
