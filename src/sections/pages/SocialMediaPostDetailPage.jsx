@@ -15,12 +15,14 @@ export default function SocialMediaPostDetailPage({ post }) {
   const related = getRelatedSocialPosts(post.slug, 4);
   const [copied, setCopied] = useState(false);
 
+  // Copies this detail page, not the artboard file — "Open standalone" above
+  // already exposes the raw HTML, and a shared link should land on the page.
   const onCopy = async () => {
     try {
       const url =
         typeof window !== "undefined"
-          ? `${window.location.origin}${post.file}`
-          : post.file;
+          ? window.location.href
+          : `/social-media-posts/${post.slug}`;
       await navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
@@ -69,10 +71,11 @@ export default function SocialMediaPostDetailPage({ post }) {
 
           <div className="mt-10 grid grid-cols-12 gap-y-6 lg:gap-x-12">
             <div className="col-span-12 lg:col-span-8">
-              <span className="eyebrow">{post.concept}</span>
+              {/* The concept line headlines the Concept section below; printing
+                  it here too repeated the same sentence twice on one page. */}
               <SplitReveal
                 as="h1"
-                className="display-serif mt-4 block text-balance text-[clamp(1.85rem,4.4vw,3.65rem)] font-medium leading-[1.02] tracking-[-0.025em] text-ink"
+                className="display-serif block text-balance text-[clamp(1.85rem,4.4vw,3.65rem)] font-medium leading-[1.02] tracking-[-0.025em] text-ink"
               >
                 {post.title}
               </SplitReveal>
@@ -140,9 +143,12 @@ export default function SocialMediaPostDetailPage({ post }) {
               transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
               className={cn(
                 "relative w-full overflow-hidden rounded-card border border-bone/15 bg-ink shadow-[0_60px_120px_-30px_rgba(0,0,0,0.7)]",
-                // Constrain the artboard so the story format never towers
+                // Constrain the artboard so the story format never towers.
+                // Widths only grow with the viewport — the old sm value was
+                // narrower than the base one, so the artboard visibly shrank
+                // as the window got wider.
                 fmt.key === "story"
-                  ? "max-w-[480px] sm:max-w-[420px] lg:max-w-[460px]"
+                  ? "max-w-[440px] lg:max-w-[460px]"
                   : "max-w-[920px]"
               )}
             >
@@ -181,7 +187,7 @@ export default function SocialMediaPostDetailPage({ post }) {
               <span className="italic text-signal-deep">.</span>
             </h2>
             <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/75">
-              Rendered live from a standalone HTML file no images, no
+              Rendered live from a standalone HTML file — no images, no
               screenshots, no build step. Every layer (paper grain, lighting,
               3D depth) is pure CSS so the creative scales cleanly at any
               resolution.
@@ -191,7 +197,7 @@ export default function SocialMediaPostDetailPage({ post }) {
             {[
               {
                 t: "Native size",
-                d: `${fmt.width} × ${fmt.height} px matches Instagram's ${fmt.label.toLowerCase()} spec.`,
+                d: `${fmt.width} × ${fmt.height} px — matches Instagram's ${fmt.label.toLowerCase()} spec.`,
               },
               {
                 t: "Typography",

@@ -164,7 +164,7 @@ export default function CarouselDetailPage({ carousel }) {
                   width={fmt.width}
                   height={fmt.height}
                   interactive
-                  title={`${carousel.title} slide ${index + 1}`}
+                  title={`${carousel.title} — slide ${index + 1}`}
                 />
               </m.div>
 
@@ -262,7 +262,7 @@ export default function CarouselDetailPage({ carousel }) {
               <span className="italic text-signal-deep">.</span>
             </h2>
             <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/75">
-              A {total}-slide sequence built to swipe a cover, a run of point
+              A {total}-slide sequence built to swipe — a cover, a run of point
               slides, and a closing call to action. Every slide is a standalone
               HTML file, rendered live, with no images or build step.
             </p>
@@ -271,7 +271,7 @@ export default function CarouselDetailPage({ carousel }) {
             {[
               {
                 t: "Swipeable set",
-                d: `${total} artboards at ${fmt.width} × ${fmt.height} px Instagram's 4:5 carousel spec.`,
+                d: `${total} artboards at ${fmt.width} × ${fmt.height} px — Instagram's 4:5 carousel spec.`,
               },
               {
                 t: "One system",
