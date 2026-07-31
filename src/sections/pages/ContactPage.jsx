@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/Form";
 import {
   LEGAL_BUSINESS_NAME,
+  CONTACT_ADDRESS,
   CONTACT_PHONE,
   CONTACT_PHONE_HREF,
   CONTACT_EMAIL,
@@ -72,6 +73,18 @@ export default function ContactPage() {
               {LEGAL_BUSINESS_NAME}
             </dd>
           </div>
+          {/* Mailing address — A2P/TCR expects it published alongside the
+              legal name. Conditional so a blank constant renders nothing. */}
+          {CONTACT_ADDRESS && (
+            <div className="flex flex-col gap-1">
+              <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
+                Mailing address
+              </dt>
+              <dd className="text-[15px] leading-relaxed text-ink/80">
+                {CONTACT_ADDRESS}
+              </dd>
+            </div>
+          )}
           <div className="flex flex-col gap-1">
             <dt className="font-mono text-[10px] uppercase tracking-[0.28em] text-ink-mute">
               Phone
