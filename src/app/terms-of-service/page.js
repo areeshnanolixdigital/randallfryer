@@ -48,6 +48,15 @@ const SECTIONS = [
     ],
   },
   {
+    id: "eligibility",
+    title: "Eligibility",
+    body: [
+      "To use this website, subscribe to campaign communications, submit forms, volunteer, or make a contribution, you must be at least 18 years of age, or otherwise have the permission and supervision of a parent or legal guardian where permitted by applicable law.",
+      "By using this website, you represent that the information you provide is accurate and that you meet these eligibility requirements.",
+      "Certain activities, including political contributions, may be subject to additional legal eligibility requirements under federal and state law.",
+    ],
+  },
+  {
     id: "acceptable-use",
     title: "Acceptable use",
     body: [
@@ -198,7 +207,7 @@ export default function Page() {
     <LegalPage
       eyebrow="Terms"
       title="Terms of use."
-      updated="July 23, 2026"
+      updated="August 1, 2026"
       intro="These Terms of Service govern your access to and use of randallfororegon.com and all related campaign services operated by Randall Fryer for Representative. They explain your rights and responsibilities when using our website, submitting forms, making contributions, registering for events, volunteering, or subscribing to campaign communications, including SMS text messages."
       sections={SECTIONS}
     />
