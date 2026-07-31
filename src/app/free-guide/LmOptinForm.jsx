@@ -9,7 +9,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { formatPhoneInput } from "@/lib/phone";
+import { formatPhoneInput, validatePhone } from "@/lib/phone";
 import { FormField, FormCheckbox, FormFieldset, FormDisclaimer } from "@/components/ui/Form";
 import Button from "@/components/ui/Button";
 import { LEAD_MAGNET, FUNNEL_ROUTES } from "@/constants/funnel-content";
@@ -21,6 +21,7 @@ export default function LmOptinForm() {
   const [status, setStatus] = useState("idle"); // idle | submitting | error
   const [errorMsg, setErrorMsg] = useState("");
   const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const [smsConsent, setSmsConsent] = useState(false);
   const [promoConsent, setPromoConsent] = useState(false);
 
@@ -53,6 +54,14 @@ export default function LmOptinForm() {
     if (!payload.firstName || !emailOk) {
       setStatus("error");
       setErrorMsg(form.validationMessage);
+      return;
+    }
+    // Phone stays optional — but a half-typed number blocks submit.
+    const phoneErr = validatePhone(phone);
+    if (phoneErr) {
+      setPhoneError(phoneErr);
+      setStatus("error");
+      setErrorMsg(phoneErr);
       return;
     }
 
@@ -90,7 +99,12 @@ export default function LmOptinForm() {
           type="tel"
           optional
           value={phone}
-          onChange={(e) => setPhone(formatPhoneInput(e.target.value))}
+          onChange={(e) => {
+            setPhone(formatPhoneInput(e.target.value));
+            setPhoneError("");
+          }}
+          onBlur={() => setPhoneError(validatePhone(phone))}
+          error={phoneError}
           placeholder="+1 (503) 555-0123"
         />
       </div>

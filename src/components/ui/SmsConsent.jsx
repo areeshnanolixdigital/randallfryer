@@ -5,7 +5,7 @@
 // formatting + consent enable/require/reset mechanics stay identical.
 
 import { useEffect, useState } from "react";
-import { formatPhoneInput } from "@/lib/phone";
+import { formatPhoneInput, validatePhone } from "@/lib/phone";
 import { FormCheckbox, FormFieldset } from "@/components/ui/Form";
 import { SMS_UPDATES_CONSENT, SMS_PROMO_CONSENT } from "@/constants/consent";
 
@@ -16,6 +16,7 @@ import { SMS_UPDATES_CONSENT, SMS_PROMO_CONSENT } from "@/constants/consent";
  */
 export function usePhoneConsent() {
   const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const [smsConsent, setSmsConsent] = useState(false);
   const [promoConsent, setPromoConsent] = useState(false);
 
@@ -28,7 +29,21 @@ export function usePhoneConsent() {
     }
   }, [hasPhone]);
 
-  const onPhoneChange = (e) => setPhone(formatPhoneInput(e.target.value));
+  // Clear the error while typing — a number is incomplete on the way to being
+  // complete, so flagging every keystroke would nag. Judge it on blur/submit.
+  const onPhoneChange = (e) => {
+    setPhone(formatPhoneInput(e.target.value));
+    setPhoneError("");
+  };
+
+  const onPhoneBlur = () => setPhoneError(validatePhone(phone));
+
+  /** Submit guard: stores and returns the error ("" when the field is fine). */
+  const checkPhone = () => {
+    const err = validatePhone(phone);
+    setPhoneError(err);
+    return err;
+  };
 
   // SMS consent is opt-in and OPTIONAL — each box is an independent choice, so a
   // user may submit a phone number without opting in, or opt into updates but
@@ -39,6 +54,9 @@ export function usePhoneConsent() {
   return {
     phone,
     onPhoneChange,
+    onPhoneBlur,
+    phoneError,
+    checkPhone,
     hasPhone,
     smsConsent,
     setSmsConsent,
