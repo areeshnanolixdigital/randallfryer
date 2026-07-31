@@ -107,6 +107,17 @@ const SECTIONS = [
     ],
   },
   {
+    id: "data-security",
+    title: "Data security",
+    body: [
+      "We take reasonable administrative, technical, and physical safeguards to help protect the personal information you provide through our website.",
+      "These safeguards include encrypted connections (HTTPS), secure hosting environments, access controls for authorized campaign personnel, and reasonable measures designed to prevent unauthorized access, disclosure, alteration, or misuse of personal information.",
+      "While no method of transmitting or storing information over the internet can be guaranteed to be completely secure, we continually work to maintain appropriate safeguards and encourage users to protect their own devices and account information.",
+      "If we become aware of a security incident affecting your personal information, we will respond in accordance with applicable laws and take appropriate steps to notify affected individuals when required.",
+      "Phone numbers, SMS consent records, and communication preferences are stored securely and accessed only by authorized campaign personnel or trusted service providers assisting with campaign communications.",
+    ],
+  },
+  {
     id: "your-rights",
     title: "Your rights",
     body: [
@@ -131,7 +142,7 @@ export default function Page() {
     <LegalPage
       eyebrow="Privacy"
       title="Privacy notice."
-      updated="July 23, 2026"
+      updated="August 1, 2026"
       intro="Randall Fryer For Representative collects the minimum information necessary to run the campaign, communicate with supporters, coordinate volunteers, organize events, and process contributions. We do not sell personal information, and we follow applicable Oregon campaign-finance disclosure rules only where required by law."
       sections={SECTIONS}
     />

@@ -176,8 +176,8 @@ export default function Footer() {
         </div>
 
         {/* CONTACT INFO — required on every page footer for A2P/TCR compliance.
-            The address is omitted while CONTACT_ADDRESS is blank (the intake
-            address is residential; a PO box will replace it). */}
+            The address stays conditional so a future blank never renders a
+            stray separator. */}
         <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-1 border-t border-ink/15 pt-6 font-mono text-[10px] uppercase tracking-[0.24em] text-ink-mute">
           {CONTACT_ADDRESS && (
             <>
