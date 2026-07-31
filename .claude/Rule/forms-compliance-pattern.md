@@ -1,12 +1,9 @@
 # Forms Compliance Pattern
 
-Applies to all forms that collect a phone number. On this project that is
-the four core forms:
-
-- **Contact** (`/contact`)
-- **Volunteer** (`/volunteer`)
-- **RSVP** (`/events/[id]`)
-- **Ask [websitename]** (e.g. `/ask-jenny`)
+Applies to **every form on the site that collects a phone number** — the
+core site forms and any funnel / lead-magnet opt-in forms alike. Do not
+maintain a list of which pages qualify: if a form has a phone field, this
+rule governs it.
 
 This rule covers three coupled behaviors that always ship together for
 these forms:
@@ -23,17 +20,17 @@ three — no exceptions.
 
 ## 1. Additional Compliance Webhook
 
-Each of the four forms fans out its payload to **two** webhooks in
+Every form in scope fans out its payload to **at least two** webhooks in
 parallel from its API route:
 
 1. The form's **primary workflow webhook** — drives the usual CRM
-   workflow for that form (contact, volunteer, RSVP, or Ask intake).
-2. The **compliance webhook** — a single URL shared across all four
-   forms that drives the consent / subscription workflow.
+   workflow for that particular form.
+2. The **compliance webhook** — a single URL shared by every form on the
+   site, driving the consent / subscription workflow.
 
 ### CRITICAL
 
-- The compliance webhook URL is **identical across all four forms** on a
+- The compliance webhook URL is **identical across every form** on a
   single site. Store it alongside the primary URL in a `WEBHOOK_URLS`
   array at the top of each API route.
 - Both webhooks receive **the same payload**. Do not strip fields for
@@ -70,9 +67,9 @@ if (!results.some((r) => r.ok)) {
 }
 ```
 
-The Volunteer form fans out to more than two webhooks (its primary
-workflow uses three parallel URLs). The compliance webhook is simply
-appended to the array — the pattern is the same.
+Some forms fan out to more than two webhooks (a primary workflow may use
+several parallel URLs). The compliance webhook is simply appended to the
+array — the pattern is the same.
 
 ---
 
@@ -97,13 +94,20 @@ Every form in scope exposes an **optional** phone field.
    the API route must re-normalize rather than trust the inbound
    string.
 
-4. **The field stays optional.** `required` must not be set on the
-   phone input, and API routes must not reject submissions that omit
-   it.
+4. **API routes never reject a submission for omitting a phone.**
+   Whether a given *form* requires one is a per-form product decision;
+   a form that does require it enforces that in its own `handleSubmit`.
+   The server side stays permissive either way.
+
+5. **Empty submits; incomplete does not.** A blank phone field never
+   blocks submit. A *partially typed* number (1–9 digits) blocks it
+   with an inline error — the user either finishes the number or
+   clears the field. Never silently drop a half-entered number on the
+   client: the user typed it and expects it to be sent.
 
 ### Implementation
 
-Two helpers live in `src/lib/phone.js`:
+Three helpers live in `src/lib/phone.js`:
 
 ```js
 // Live client-side formatter — bind to the phone input's onChange
@@ -115,6 +119,11 @@ formatPhoneInput('555')               → '+1 (555'          // partial
 formatPhoneInput('+1')                → ''                 // strips
 formatPhoneInput('')                  → ''
 
+// Inline validator — '' means valid. Empty passes; partial blocks submit
+validatePhone('')                     → ''    // optional, so empty is fine
+validatePhone('+1 (555) 555-0100')    → ''
+validatePhone('+1 (555) 555')         → 'Enter a complete 10-digit phone…'
+
 // Server-side canonical producer — use in API route payloads
 normalizePhoneForSubmit('5555550100')        → '+1 (555) 555-0100'
 normalizePhoneForSubmit('+1 (555) 555-0100') → '+1 (555) 555-0100'
@@ -122,20 +131,29 @@ normalizePhoneForSubmit('555555')            → ''   // partial → empty
 normalizePhoneForSubmit('')                  → ''
 ```
 
-**Wiring in the form:**
+**Wiring in the form** — where a shared phone/consent hook exists, a form
+gets all of this from it (`phoneError`, `onPhoneBlur`, `checkPhone`).
+Wire it by hand only in a form that does not use the hook:
 
 ```jsx
-import { formatPhoneInput } from '@/lib/phone'
+import { formatPhoneInput, validatePhone } from '@/lib/phone'
 
-<input
+<FormField
   type="tel"
-  value={formData.phone}
-  onChange={(e) => {
-    setFormData((prev) => ({ ...prev, phone: formatPhoneInput(e.target.value) }))
-    setError('')
-  }}
+  value={phone}
+  // Clear while typing — a number is incomplete on its way to complete,
+  // so flagging every keystroke nags. Judge it on blur and on submit.
+  onChange={(e) => { setPhone(formatPhoneInput(e.target.value)); setPhoneError('') }}
+  onBlur={() => setPhoneError(validatePhone(phone))}
+  error={phoneError}
   placeholder="+1 (503) 555-0123"
 />
+```
+
+```js
+// in handleSubmit, before the fetch
+const phoneErr = pc.checkPhone()   // or validatePhone(phone)
+if (phoneErr) { setStatus('error'); setErrorMsg(phoneErr); return }
 ```
 
 **Wiring in the API route:**
@@ -159,8 +177,10 @@ const payload = {
   (`phone: phone?.trim() || ''`). Always route through
   `normalizePhoneForSubmit`.
 - The placeholder must show the full format: `+1 (xxx) xxx-xxxx`.
-- Partial entries (fewer than 10 digits after the country code)
-  normalize to empty string on the server side.
+- Partial entries (fewer than 10 digits after the country code) block
+  submit on the client via `validatePhone`. Server-side they still
+  normalize to an empty string — that stays as a defensive backstop for
+  non-browser callers, not as the primary mechanism.
 
 ---
 
@@ -176,10 +196,18 @@ governs only the enable / required / reset mechanics.
 1. **Checkboxes are disabled when the phone field is empty.**
    Use `disabled={!hasPhone}` on every consent checkbox.
 
-2. **Checkboxes are required when the phone field has a value.**
-   Use `required={hasPhone}`. The browser's built-in form validation
-   will block submit until the user either ticks the boxes or clears
-   the phone field.
+2. **Consent is never forced.** Each box is an independent opt-in: a
+   user may submit a phone number without ticking either one, or tick
+   updates but not promotional (A2P SOP items 9–11 + the TCPA
+   separate-consent rule). Do not set `required` on a consent
+   checkbox, and never pre-check one.
+
+   > Supersedes the earlier `required={hasPhone}` guidance. Any form
+   > still carrying `required` on a consent box — typically one that
+   > predates the shared consent component and lacks `noValidate` — will
+   > block submit until every box is ticked once a phone is entered.
+   > That is the old behavior, not the rule. Do not change it on a live
+   > form without an explicit decision.
 
 3. **Checkboxes auto-clear when the user empties the phone.**
    A user who checks the boxes with a phone entered and then deletes
@@ -230,7 +258,7 @@ useEffect(() => {
     checked={formData.smsConsent}
     onChange={handleChange('smsConsent')}
     disabled={!hasPhone}
-    required={hasPhone}
+    // no `required` — consent is an independent opt-in, never forced
     className="accent-patriot-red disabled:opacity-40 disabled:cursor-not-allowed"
   />
   <span className={hasPhone ? 'text-warm-400' : 'text-warm-400/50'}>
@@ -266,14 +294,16 @@ to an existing form — verify all of the following:
 
 1. [ ] Phone input uses `formatPhoneInput` in its `onChange` and has
        the `+1 (xxx) xxx-xxxx` placeholder.
+   - [ ] It also has `onBlur` + `error` wired to `validatePhone`, and
+         `handleSubmit` blocks on it. Empty passes; partial does not.
 2. [ ] Form state includes a `phone` string and one boolean per consent
        checkbox.
 3. [ ] `hasPhone` derived from `formData.phone.trim().length > 0`.
 4. [ ] `useEffect` resets every consent flag to `false` whenever
        `hasPhone` is false.
-5. [ ] Each consent checkbox has `disabled={!hasPhone}` and
-       `required={hasPhone}`; label styles react to `hasPhone`; the
-       helper line appears while `!hasPhone`.
+5. [ ] Each consent checkbox has `disabled={!hasPhone}` and **no**
+       `required`; label styles react to `hasPhone`; the helper line
+       appears while `!hasPhone`.
 6. [ ] API route's `WEBHOOK_URLS` array includes both the form's
        primary webhook and the shared compliance webhook.
 7. [ ] API route uses `Promise.all` fan-out with per-URL `.catch`;

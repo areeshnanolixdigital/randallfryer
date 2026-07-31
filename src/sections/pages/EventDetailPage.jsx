@@ -341,6 +341,13 @@ function RSVPForm({ event }) {
       setErrorMsg("Please add your first name and a valid email.");
       return;
     }
+    // Phone stays optional — but a half-typed number blocks submit.
+    const phoneErr = pc.checkPhone();
+    if (phoneErr) {
+      setStatus("error");
+      setErrorMsg(phoneErr);
+      return;
+    }
     if (pc.consentError) {
       setStatus("error");
       setErrorMsg(pc.consentError);
@@ -435,6 +442,8 @@ function RSVPForm({ event }) {
           optional
           value={pc.phone}
           onChange={pc.onPhoneChange}
+          onBlur={pc.onPhoneBlur}
+          error={pc.phoneError}
           placeholder="+1 (503) 555-0123"
         />
       </div>

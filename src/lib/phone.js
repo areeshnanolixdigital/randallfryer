@@ -26,6 +26,19 @@ export function formatPhoneInput(raw) {
 }
 
 /**
+ * Inline validator — same contract as `validateZip`: returns "" when valid.
+ * An empty field passes (phone is optional), but a half-typed number blocks
+ * submit rather than being silently dropped. Forms that require a phone check
+ * for emptiness themselves; this only judges completeness.
+ */
+export function validatePhone(raw) {
+  const digits = nationalDigits(raw);
+  if (digits.length === 0) return "";
+  if (digits.length === 10) return "";
+  return "Enter a complete 10-digit phone number, or clear the field.";
+}
+
+/**
  * Server-side canonical producer — use in API route payloads.
  * A complete 10-digit number becomes "+1 (xxx) xxx-xxxx"; anything shorter
  * (partial entry) becomes "" so we never ship a half phone number.

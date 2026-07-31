@@ -319,6 +319,13 @@ function VolunteerForm() {
       );
       return;
     }
+    // Phone is required here, and the number must also be complete.
+    const phoneErr = pc.checkPhone();
+    if (phoneErr) {
+      setStatus("error");
+      setErrorMsg(phoneErr);
+      return;
+    }
     // ZIP stays optional — only its format is checked when one is entered.
     const zipErr = validateZip(zip, { required: false });
     if (zipErr) {
@@ -408,6 +415,8 @@ function VolunteerForm() {
           required
           value={pc.phone}
           onChange={pc.onPhoneChange}
+          onBlur={pc.onPhoneBlur}
+          error={pc.phoneError}
           placeholder="+1 (503) 555-0123"
         />
       </div>
