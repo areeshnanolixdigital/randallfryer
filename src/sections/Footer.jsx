@@ -34,6 +34,7 @@ const NAV_GROUPS = [
       { label: "Donate", href: DONATE_URL },
       { label: "Events", href: "/events" },
       { label: "Ask Randall", href: "/ask" },
+      { label: "Free Guide", href: "https://www.randallfororegon.com/free-guide" },
     ],
   },
   {
