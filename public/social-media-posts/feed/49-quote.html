@@ -2,53 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Feed 49 — What Should Randall Address Next?</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Feed What Should Randall Address Next?</title>
 <style>
-  :root{
-    --bone:#f3ede0; --ink:#0a1326; --signal:#9b2d2c; --signal-deep:#7a2422; --gold:#e3bd6c;
-    --display:'Fraunces','Times New Roman',serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
-  }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
-  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;background:#0a1326;color:var(--bone);font-family:var(--sans);box-shadow:0 60px 120px -40px rgba(0,0,0,.6)}
-  /* Source is portrait, so `cover` leaves no horizontal overflow and
-     background-position-x would be inert. Slight zoom restores pan control and
-     keeps Randall clear of the speech bubble on the left. */
-  .photo{position:absolute;inset:0;z-index:1;background:url("/randall-fryer-decisions.png") no-repeat;background-size:120% auto;background-position:0% 26%;filter:saturate(.92) contrast(1.04)}
-  .scrim{position:absolute;inset:0;z-index:2;background:
-    linear-gradient(90deg, rgba(8,13,28,.94) 0%, rgba(8,13,28,.82) 28%, rgba(8,13,28,.4) 52%, transparent 74%),
-    linear-gradient(0deg, rgba(8,13,28,.82) 0%, rgba(8,13,28,.1) 30%, transparent 48%),
-    linear-gradient(180deg, rgba(8,13,28,.5) 0%, transparent 18%)}
-  .stage::after{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .84 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.45}
-  .frame{position:absolute;inset:56px;border:1px solid rgba(243,237,224,.14);z-index:30;pointer-events:none}
-  .meta{position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.66);z-index:34;text-shadow:0 1px 8px rgba(8,13,28,.7)}
-  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);vertical-align:1px;margin-right:10px}
-  /* empty speech bubble */
-  .bubble{position:absolute;left:96px;top:290px;width:480px;z-index:34;background:var(--bone);color:var(--ink);border-radius:22px 22px 22px 6px;padding:40px 44px;box-shadow:0 34px 60px -18px rgba(0,0,0,.5)}
-  .bubble .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:var(--signal-deep);margin-bottom:18px}
-  .bubble h1{font-family:var(--display);font-weight:600;font-size:62px;line-height:.98;letter-spacing:-.03em;color:var(--ink)}
-  .bubble h1 .it{font-style:italic;font-weight:500;color:var(--signal-deep)}
-  .body{position:absolute;left:96px;top:640px;width:480px;z-index:34;font-size:18px;line-height:1.6;color:rgba(243,237,224,.86);text-shadow:0 2px 14px rgba(8,13,28,.6)}
-  .body b{color:var(--bone);font-weight:600}
-  .cta{position:absolute;left:96px;bottom:96px;z-index:34;font-family:var(--mono);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);text-shadow:0 1px 10px rgba(8,13,28,.7)}
-  .signoff{position:absolute;right:96px;bottom:96px;z-index:34;text-align:right;font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:rgba(243,237,224,.72);text-shadow:0 1px 8px rgba(8,13,28,.8)}
+  /* padding:0 so a 1080x1080 render contains only artwork, no body gutter */
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;
+    box-shadow:0 60px 120px -40px rgba(0,0,0,.6);background:#F6F5F4}
+  .stage img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
-  <div class="stage">
-    <div class="photo" aria-hidden></div>
-    <div class="scrim" aria-hidden></div>
-    <div class="frame"></div>
-    <div class="meta"><span><span class="dot"></span>Ask Randall · District 28</span><span>File №49</span></div>
-    <div class="bubble">
-      <div class="eyebrow">Ask Randall</div>
-      <h1>What should Randall address <span class="it">next?</span></h1>
-    </div>
-    <div class="signoff">Randall Fryer<br>Oregon House · HD 28</div>
-  </div>
+  <div class="stage"><img src="/social-media-posts/feed/49-quote.png" alt="What Should Randall Address Next?" /></div>
 </body>
 </html>

@@ -2,51 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Feed 17 — One Thing In Oregon</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Feed One Thing In Oregon</title>
 <style>
-  :root{
-    --bone:#f3ede0; --ink:#0a1326; --signal:#9b2d2c; --signal-deep:#7a2422; --gold:#e3bd6c; --ochre-soft:#d4ac6e;
-    --display:'Fraunces','Times New Roman',serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
-  }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
-  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;font-family:var(--sans);color:var(--ink);box-shadow:0 60px 120px -40px rgba(0,0,0,.45);
-    background:radial-gradient(120% 100% at 50% 0%, #f8f1df 0%, #f0e6cd 60%, #e6d9bc 100%)}
-  .stage::before{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .05 0 0 0 0 .1 0 0 0 0 .18 0 0 0 .04 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:multiply;opacity:.4}
-  /* faint Oregon outline top-right */
-  .oregon{position:absolute;right:60px;top:120px;width:300px;z-index:2;opacity:.09}
-  .oregon svg{width:100%;fill:var(--signal-deep)}
-  .frame{position:absolute;inset:56px;border:1px solid rgba(10,19,38,.16);z-index:30;pointer-events:none}
-  .meta{position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#4b5364;z-index:34}
-  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--signal);vertical-align:1px;margin-right:10px}
-
-  .wrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;z-index:34;padding:0 130px}
-  .eyebrow{font-family:var(--mono);font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--signal-deep);margin-bottom:40px;display:flex;align-items:center;gap:16px}
-  .eyebrow::before,.eyebrow::after{content:"";width:40px;height:1px;background:var(--signal-deep);opacity:.6}
-  h1{font-family:var(--display);font-weight:600;font-size:96px;line-height:.98;letter-spacing:-.035em;color:var(--ink)}
-  h1 .it{font-style:italic;font-weight:500;color:var(--signal-deep)}
-  .bubble{margin-top:54px;display:inline-flex;align-items:center;gap:16px;background:#0a1326;color:var(--bone);
-    padding:20px 34px;border-radius:40px 40px 40px 8px;font-family:var(--mono);font-size:15px;letter-spacing:.12em;text-transform:uppercase;
-    box-shadow:0 24px 40px rgba(10,19,38,.28)}
-  .bubble .g{width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold)}
-  .foot{position:absolute;left:0;right:0;bottom:96px;text-align:center;z-index:34;font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:#4b5364}
+  /* padding:0 so a 1080x1080 render contains only artwork, no body gutter */
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;
+    box-shadow:0 60px 120px -40px rgba(0,0,0,.6);background:#F6F5F4}
+  .stage img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
-  <div class="stage">
-    <div class="oregon" aria-hidden><svg viewBox="0 0 100 76"><path d="M2,15 L22,11 L31,15 L47,12 L59,16 L73,11 L98,19 L92,31 L86,45 L82,53 L85,61 L80,73 L2,67 Z"/></svg></div>
-    <div class="frame"></div>
-    <div class="meta"><span><span class="dot"></span>Community Conversation · District 28</span><span>Ask Randall</span></div>
-
-    <div class="wrap">
-      <div class="eyebrow">If you could change one thing</div>
-      <h1>What would <span class="it">it be?</span></h1>
-      <div class="bubble"><span class="g"></span>Drop your thoughts in the comments</div>
-    </div>
-  </div>
+  <div class="stage"><img src="/social-media-posts/feed/17-medallion.png" alt="One Thing In Oregon" /></div>
 </body>
 </html>

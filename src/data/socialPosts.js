@@ -11,7 +11,7 @@ export const SOCIAL_POSTS = [
     no: "01",
     format: "feed",
     title: "A Stronger Oregon",
-    concept: "Editorial manifesto cover — Randall Fryer for Oregon HD28",
+    concept: "Park portrait — a stronger Oregon, a better tomorrow",
     file: "/social-media-posts/feed/01-manifesto-cover.html",
   },
   {
@@ -19,7 +19,7 @@ export const SOCIAL_POSTS = [
     no: "02",
     format: "feed",
     title: "Meet Randall Fryer",
-    concept: "Midnight intro card, glowing crimson disc — the candidate",
+    concept: "Split plate — portrait beside a plain introduction",
     file: "/social-media-posts/feed/02-pillar-numbered.html",
   },
   {
@@ -27,7 +27,7 @@ export const SOCIAL_POSTS = [
     no: "03",
     format: "feed",
     title: "Republican Nominee",
-    concept: "Cinematic formal portrait, restrained gold nominee label",
+    concept: "Portrait over an ink band — nominee for Oregon House District 28",
     file: "/social-media-posts/feed/03-portrait-cinematic.html",
   },
   {
@@ -35,7 +35,7 @@ export const SOCIAL_POSTS = [
     no: "04",
     format: "feed",
     title: "On The Ballot",
-    concept: "GOTV calendar card — Nov 3 circled, ballot envelope",
+    concept: "November 2026 calendar with the 3rd circled",
     file: "/social-media-posts/feed/04-italic-quote.html",
   },
   {
@@ -43,7 +43,7 @@ export const SOCIAL_POSTS = [
     no: "05",
     format: "feed",
     title: "Oregon Asks For More",
-    concept: "Documentary listening photo, left-aligned accountability block",
+    concept: "Tree-lined neighborhood street under a plain headline",
     file: "/social-media-posts/feed/05-statistic-counter.html",
   },
   {
@@ -51,7 +51,7 @@ export const SOCIAL_POSTS = [
     no: "06",
     format: "feed",
     title: "A Physician's Discipline",
-    concept: "Clinical chart-paper grid, ECG line, authentic portrait",
+    concept: "Candid seated portrait, crimson wash — a physician's discipline for Salem",
     file: "/social-media-posts/feed/06-data-ledger.html",
   },
   {
@@ -59,7 +59,7 @@ export const SOCIAL_POSTS = [
     no: "07",
     format: "feed",
     title: "Calm Leadership",
-    concept: "Rural Oregon community scene, left scrim, portrait",
+    concept: "Two-photo pair — doorstep conversation and rural homes",
     file: "/social-media-posts/feed/07-asymmetric-split.html",
   },
   {
@@ -67,7 +67,7 @@ export const SOCIAL_POSTS = [
     no: "08",
     format: "feed",
     title: "Understand The System",
-    concept: "Split-screen systems blueprint with portrait",
+    concept: "Paperwork flat-lay — understand the system, fix what is broken",
     file: "/social-media-posts/feed/08-seal-medallion.html",
   },
   {
@@ -75,7 +75,7 @@ export const SOCIAL_POSTS = [
     no: "09",
     format: "feed",
     title: "A Responsibility, Not A Reward",
-    concept: "Candid handshake, bottom-anchored copy",
+    concept: "Empty chamber seats with a crimson block",
     file: "/social-media-posts/feed/09-newspaper-clipping.html",
   },
   {
@@ -83,7 +83,7 @@ export const SOCIAL_POSTS = [
     no: "10",
     format: "feed",
     title: "Steady Judgment",
-    concept: "Minimal navy portrait with thin gold border",
+    concept: "Numbered list beside an archive box — judgment, decisions, answers",
     file: "/social-media-posts/feed/10-signal-crimson.html",
   },
   {
@@ -91,7 +91,7 @@ export const SOCIAL_POSTS = [
     no: "11",
     format: "feed",
     title: "Restore Educational Excellence",
-    concept: "Navy panel + bright classroom illustration",
+    concept: "Ink headline band over an empty classroom",
     file: "/social-media-posts/feed/11-big-word.html",
   },
   {
@@ -99,7 +99,7 @@ export const SOCIAL_POSTS = [
     no: "12",
     format: "feed",
     title: "Teach The Past",
-    concept: "Modern desk flat-lay: Oregon map, history book",
+    concept: "Whiteboard lesson above an ink copy block",
     file: "/social-media-posts/feed/12-pillar.html",
   },
   {
@@ -107,7 +107,7 @@ export const SOCIAL_POSTS = [
     no: "13",
     format: "feed",
     title: "Clear Laws, Fair Enforcement",
-    concept: "Courthouse motif with three structured columns",
+    concept: "Courthouse colonnade under three ruled labels",
     file: "/social-media-posts/feed/13-quote.html",
   },
   {
@@ -115,7 +115,7 @@ export const SOCIAL_POSTS = [
     no: "14",
     format: "feed",
     title: "Keep Oregon Jobs In Oregon",
-    concept: "Oregon outline + storefront illustration, local jobs",
+    concept: "Construction crew at lunch beside the headline",
     file: "/social-media-posts/feed/14-statistic.html",
   },
   {
@@ -123,7 +123,7 @@ export const SOCIAL_POSTS = [
     no: "15",
     format: "feed",
     title: "Did You Know",
-    concept: "Navy fact card, ECG accent, rural-medicine portrait",
+    concept: "Ink question card — years spent in rural emergency medicine",
     file: "/social-media-posts/feed/15-ledger.html",
   },
   {
@@ -131,7 +131,7 @@ export const SOCIAL_POSTS = [
     no: "16",
     format: "feed",
     title: "Behind Every Campaign",
-    concept: "Cluster of campaign yard signs, volunteer thank-you",
+    concept: "Volunteers painting signs above the copy block",
     file: "/social-media-posts/feed/16-split.html",
   },
   {
@@ -139,7 +139,7 @@ export const SOCIAL_POSTS = [
     no: "17",
     format: "feed",
     title: "One Thing In Oregon",
-    concept: "Bold question, whitespace, comment prompt bubble",
+    concept: "Plain prompt card — add your answer in the comments",
     file: "/social-media-posts/feed/17-medallion.html",
   },
   {
@@ -147,7 +147,7 @@ export const SOCIAL_POSTS = [
     no: "18",
     format: "feed",
     title: "When A Program Fails, Fix It",
-    concept: "Problem → Review → Fix → Result flow, Fix in gold",
+    concept: "Problem, review, fix, result — a four-step flow diagram",
     file: "/social-media-posts/feed/18-grid.html",
   },
   {
@@ -155,7 +155,7 @@ export const SOCIAL_POSTS = [
     no: "19",
     format: "feed",
     title: "Safe Neighborhoods",
-    concept: "Dusk neighborhood silhouette, public-safety message",
+    concept: "Evening park path — safe neighborhoods are a basic responsibility",
     file: "/social-media-posts/feed/19-signal.html",
   },
   {
@@ -163,7 +163,7 @@ export const SOCIAL_POSTS = [
     no: "20",
     format: "feed",
     title: "Support Those Who Keep Us Safe",
-    concept: "Respectful shield emblem, community-trust message",
+    concept: "Ink panel beside neighbors on a park bench",
     file: "/social-media-posts/feed/20-timeline.html",
   },
   {
@@ -171,7 +171,7 @@ export const SOCIAL_POSTS = [
     no: "21",
     format: "feed",
     title: "Small Businesses Keep Us Moving",
-    concept: "Main-street row of local shopfronts",
+    concept: "Seamstress at work in a second-hand shop",
     file: "/social-media-posts/feed/21-checklist.html",
   },
   {
@@ -187,7 +187,7 @@ export const SOCIAL_POSTS = [
     no: "23",
     format: "feed",
     title: "Let Oregon Build, Hire And Grow",
-    concept: "Four-tile business montage with iconography",
+    concept: "Four-photo grid — shopfront, factory, office, warehouse",
     file: "/social-media-posts/feed/23-big-word.html",
   },
   {
@@ -195,7 +195,7 @@ export const SOCIAL_POSTS = [
     no: "24",
     format: "feed",
     title: "Lower The Burden, Protect Services",
-    concept: "Two-column reform joined by a gold connector",
+    concept: "Two ruled boxes — lower costs and protect services",
     file: "/social-media-posts/feed/24-pillar.html",
   },
   {
@@ -203,7 +203,7 @@ export const SOCIAL_POSTS = [
     no: "25",
     format: "feed",
     title: "Oregon Students Can Thrive Again",
-    concept: "Warm optimistic growth chart, educational excellence",
+    concept: "Children studying outdoors above an ink band",
     file: "/social-media-posts/feed/25-quote.html",
   },
   {
@@ -211,7 +211,7 @@ export const SOCIAL_POSTS = [
     no: "26",
     format: "feed",
     title: "Hear From The People",
-    concept: "Documentary listening photo, better-conversations",
+    concept: "Crimson quote plate — hear from the people who live with the decisions",
     file: "/social-media-posts/feed/26-statistic.html",
   },
   {
@@ -219,7 +219,7 @@ export const SOCIAL_POSTS = [
     no: "27",
     format: "feed",
     title: "Today Was About Listening",
-    concept: "Candid photo collage from the campaign trail",
+    concept: "Four-photo day montage — speeches versus listening",
     file: "/social-media-posts/feed/27-ledger.html",
   },
   {
@@ -227,7 +227,7 @@ export const SOCIAL_POSTS = [
     no: "28",
     format: "feed",
     title: "Local Schools Need Local Leadership",
-    concept: "Illustrated schoolhouse, District 28 marker",
+    concept: "Ink panel beside children on the school steps",
     file: "/social-media-posts/feed/28-split.html",
   },
   {
@@ -235,7 +235,7 @@ export const SOCIAL_POSTS = [
     no: "29",
     format: "feed",
     title: "The Next Generation",
-    concept: "Sunrise silhouette, parent and child, future of Oregon",
+    concept: "Family on a neighborhood street — what are we leaving the next generation",
     file: "/social-media-posts/feed/29-medallion.html",
   },
   {
@@ -243,7 +243,7 @@ export const SOCIAL_POSTS = [
     no: "30",
     format: "feed",
     title: "Make Life Easier, Not Harder",
-    concept: "Downtown main-street skyline illustration",
+    concept: "Busy street corner under a dark scrim",
     file: "/social-media-posts/feed/30-grid.html",
   },
   {
@@ -251,7 +251,7 @@ export const SOCIAL_POSTS = [
     no: "31",
     format: "feed",
     title: "Your Voice Belongs Here",
-    concept: "Framed candid photo, ask-Randall engagement",
+    concept: "Raised hand at a community meeting",
     file: "/social-media-posts/feed/31-signal.html",
   },
   {
@@ -259,7 +259,7 @@ export const SOCIAL_POSTS = [
     no: "32",
     format: "feed",
     title: "A Vision For A Stronger Oregon",
-    concept: "Sunrise-graded park portrait, vision message",
+    concept: "Park portrait with the headline set into the sky",
     file: "/social-media-posts/feed/32-timeline.html",
   },
   {
@@ -267,7 +267,7 @@ export const SOCIAL_POSTS = [
     no: "33",
     format: "feed",
     title: "Let's Build A Better Oregon",
-    concept: "Community-event invite card with reserved details",
+    concept: "Stacked invitation pills beside a cafe photo",
     file: "/social-media-posts/feed/33-checklist.html",
   },
   {
@@ -275,7 +275,7 @@ export const SOCIAL_POSTS = [
     no: "34",
     format: "feed",
     title: "When People Show Up",
-    concept: "Bold statement type with community watermark",
+    concept: "Split type plate — politics works better when people show up",
     file: "/social-media-posts/feed/34-portrait.html",
   },
   {
@@ -283,7 +283,7 @@ export const SOCIAL_POSTS = [
     no: "35",
     format: "feed",
     title: "Salem Works For You",
-    concept: "Capitol backdrop, resident silhouettes, accountability",
+    concept: "Oregon Capitol reflecting pool — does Salem work for working families",
     file: "/social-media-posts/feed/35-big-word.html",
   },
   {
@@ -291,7 +291,7 @@ export const SOCIAL_POSTS = [
     no: "36",
     format: "feed",
     title: "Better Decisions",
-    concept: "Documentary conversation photo, leadership message",
+    concept: "Candid portrait beside a two-part statement",
     file: "/social-media-posts/feed/36-pillar.html",
   },
   {
@@ -299,7 +299,7 @@ export const SOCIAL_POSTS = [
     no: "37",
     format: "feed",
     title: "Every Law Changes A Life",
-    concept: "Framed candid strip, 'Who will this help?' question",
+    concept: "Seated candid portrait — every law changes someone's life",
     file: "/social-media-posts/feed/37-quote.html",
   },
   {
@@ -307,7 +307,7 @@ export const SOCIAL_POSTS = [
     no: "38",
     format: "feed",
     title: "Not From Political Insiders",
-    concept: "Community-coffee illustration, listening message",
+    concept: "Site worker in a hard hat beside the headline",
     file: "/social-media-posts/feed/38-statistic.html",
   },
   {
@@ -315,7 +315,7 @@ export const SOCIAL_POSTS = [
     no: "39",
     format: "feed",
     title: "The People Pay The Bills",
-    concept: "Budget-paper still life, transparency message",
+    concept: "Notepad and calculator paired with a portrait",
     file: "/social-media-posts/feed/39-ledger.html",
   },
   {
@@ -323,7 +323,7 @@ export const SOCIAL_POSTS = [
     no: "40",
     format: "feed",
     title: "Lead Responsibly",
-    concept: "Centered statement type over a scales-of-justice mark",
+    concept: "Bone type plate with a crimson rule — lead responsibly",
     file: "/social-media-posts/feed/40-split.html",
   },
   {
@@ -331,7 +331,7 @@ export const SOCIAL_POSTS = [
     no: "41",
     format: "feed",
     title: "Not Built In A Boardroom",
-    concept: "Dialogue speech-bubble motif, grassroots message",
+    concept: "Ink card ruled top and bottom — not built in a boardroom",
     file: "/social-media-posts/feed/41-medallion.html",
   },
   {
@@ -339,7 +339,7 @@ export const SOCIAL_POSTS = [
     no: "42",
     format: "feed",
     title: "Decisions That Couldn't Wait",
-    concept: "Microphone mark, ER-to-Salem leadership quote",
+    concept: "Garden portrait with an ink caption band",
     file: "/social-media-posts/feed/42-grid.html",
   },
   {
@@ -347,7 +347,7 @@ export const SOCIAL_POSTS = [
     no: "43",
     format: "feed",
     title: "Randall Wants To Hear From You",
-    concept: "Megaphone mark, ask-Randall engagement",
+    concept: "Rounded outline card — Randall wants to hear from you",
     file: "/social-media-posts/feed/43-signal.html",
   },
   {
@@ -355,7 +355,7 @@ export const SOCIAL_POSTS = [
     no: "44",
     format: "feed",
     title: "Everything It Needs To Succeed",
-    concept: "Oregon landscape with small-town illustration",
+    concept: "Neighbors toasting outdoors under a dark scrim",
     file: "/social-media-posts/feed/44-timeline.html",
   },
   {
@@ -363,7 +363,7 @@ export const SOCIAL_POSTS = [
     no: "45",
     format: "feed",
     title: "Not About One Person",
-    concept: "Who-this-is-for numbered list, campaign purpose",
+    concept: "Bone type plate with a vertical crimson rule",
     file: "/social-media-posts/feed/45-checklist.html",
   },
   {
@@ -371,7 +371,7 @@ export const SOCIAL_POSTS = [
     no: "46",
     format: "feed",
     title: "Predictable Government",
-    concept: "Roadmap: Clear Rules → Firm Timeline → Decision",
+    concept: "Three numbered steps — clear rules, firm timeline, decision",
     file: "/social-media-posts/feed/46-portrait.html",
   },
   {
@@ -379,7 +379,7 @@ export const SOCIAL_POSTS = [
     no: "47",
     format: "feed",
     title: "Every Dollar, Every Result",
-    concept: "Gold-ruled ledger typography, open government",
+    concept: "Three gold-ruled lines — every dollar, every program, every result",
     file: "/social-media-posts/feed/47-big-word.html",
   },
   {
@@ -387,7 +387,7 @@ export const SOCIAL_POSTS = [
     no: "48",
     format: "feed",
     title: "What Did It Cost?",
-    concept: "Three oversized questions, navy/burgundy bands",
+    concept: "Three stacked bands — what did it cost, did it work, who answers",
     file: "/social-media-posts/feed/48-pillar.html",
   },
   {
@@ -395,7 +395,7 @@ export const SOCIAL_POSTS = [
     no: "49",
     format: "feed",
     title: "What Should Randall Address Next?",
-    concept: "Seated photo with an empty speech-bubble prompt",
+    concept: "Candid portrait beside a rounded ink prompt",
     file: "/social-media-posts/feed/49-quote.html",
   },
   {
@@ -403,7 +403,7 @@ export const SOCIAL_POSTS = [
     no: "50",
     format: "feed",
     title: "Help Shape The Race",
-    concept: "Energetic volunteer group with sign, get-involved",
+    concept: "Ink headline band above a group of young voters",
     file: "/social-media-posts/feed/50-statistic.html",
   },
   {
@@ -411,7 +411,7 @@ export const SOCIAL_POSTS = [
     no: "51",
     format: "feed",
     title: "One Hour, Real Impact",
-    concept: "Volunteer-hands mark with ways-to-help list",
+    concept: "Volunteers in branded tees beneath the headline",
     file: "/social-media-posts/feed/51-ledger.html",
   },
   {
@@ -419,7 +419,7 @@ export const SOCIAL_POSTS = [
     no: "52",
     format: "feed",
     title: "Bring The Conversation Home",
-    concept: "Cozy small-gathering scene, host-an-event ask",
+    concept: "Ink card over a living-room gathering",
     file: "/social-media-posts/feed/52-split.html",
   },
   {
@@ -427,7 +427,7 @@ export const SOCIAL_POSTS = [
     no: "53",
     format: "feed",
     title: "Get Campaign Updates",
-    concept: "Newsletter phone mockup, sign-up call to action",
+    concept: "Subscribe form mock-up beside the headline",
     file: "/social-media-posts/feed/53-medallion.html",
   },
   {
@@ -435,7 +435,7 @@ export const SOCIAL_POSTS = [
     no: "54",
     format: "feed",
     title: "Vote Randall Fryer",
-    concept: "Closing hero — portrait, dominant name, Nov 3 date",
+    concept: "Ink voting panel beside the portrait — November 3, 2026",
     file: "/social-media-posts/feed/54-grid.html",
   },
   {
@@ -443,7 +443,7 @@ export const SOCIAL_POSTS = [
     no: "55",
     format: "feed",
     title: "Oregon's Problem Solvers",
-    concept: "Sunrise landscape blending into small-town street",
+    concept: "Park portrait — Oregon is defined by the people willing to solve",
     file: "/social-media-posts/feed/55-signal.html",
   },
   {
@@ -451,7 +451,7 @@ export const SOCIAL_POSTS = [
     no: "56",
     format: "feed",
     title: "Before Election Day",
-    concept: "Earn-trust → Election → keep-it timeline",
+    concept: "Bone type plate between hairlines — leadership starts long before Election Day",
     file: "/social-media-posts/feed/56-timeline.html",
   },
   {
@@ -459,7 +459,7 @@ export const SOCIAL_POSTS = [
     no: "57",
     format: "feed",
     title: "Thank You For This Journey",
-    concept: "Warm candid photo collage, gratitude message",
+    concept: "Ink thank-you card over a doorstep conversation",
     file: "/social-media-posts/feed/57-checklist.html",
   },
   {
@@ -467,7 +467,7 @@ export const SOCIAL_POSTS = [
     no: "58",
     format: "feed",
     title: "Oregon Deserves Better Leadership",
-    concept: "Cinematic sunrise portrait, why-he's-running quote",
+    concept: "Garden portrait above an ink statement band",
     file: "/social-media-posts/feed/58-portrait.html",
   },
   {
@@ -475,7 +475,7 @@ export const SOCIAL_POSTS = [
     no: "59",
     format: "feed",
     title: "The Conversation Doesn't End",
-    concept: "Documentary table photo, stay-accessible message",
+    concept: "Neighborhood group portrait under the headline",
     file: "/social-media-posts/feed/59-big-word.html",
   },
   {
@@ -483,7 +483,7 @@ export const SOCIAL_POSTS = [
     no: "60",
     format: "feed",
     title: "Powered By People",
-    concept: "Sunset supporter crowd silhouette, closing message",
+    concept: "Volunteers in blue tees — powered by people, not politics",
     file: "/social-media-posts/feed/60-pillar.html",
   },
 
@@ -769,7 +769,7 @@ export const SOCIAL_POSTS = [
     no: "01",
     format: "story",
     title: "Let's Build A Stronger District 28",
-    concept: "Portrait over a gold rule, District 28 call to unity",
+    concept: "Portrait in a District 28 park, crimson rule, call to unity",
     file: "/social-media-posts/story/01-build-district-28-together.html",
   },
   {
@@ -777,7 +777,7 @@ export const SOCIAL_POSTS = [
     no: "02",
     format: "story",
     title: "What Matters Most To You",
-    concept: "Mount Hood skyline with schools, cost of living, safety, jobs",
+    concept: "Ink card with a mountain silhouette — what matters most right now",
     file: "/social-media-posts/story/02-what-matters-most.html",
   },
   {
@@ -785,7 +785,7 @@ export const SOCIAL_POSTS = [
     no: "03",
     format: "story",
     title: "Share Your Ideas",
-    concept: "Community meeting notes — every conversation shapes the campaign",
+    concept: "Cafe table conversation — share your ideas, ask questions",
     file: "/social-media-posts/story/03-share-your-ideas.html",
   },
   {
@@ -793,7 +793,7 @@ export const SOCIAL_POSTS = [
     no: "04",
     format: "story",
     title: "Small Businesses Keep Us Moving",
-    concept: "Main-street shopfront, let Oregon businesses grow",
+    concept: "Baker at the racks — let's make Oregon a place businesses can grow",
     file: "/social-media-posts/story/04-small-businesses-moving.html",
   },
   {
@@ -801,7 +801,7 @@ export const SOCIAL_POSTS = [
     no: "05",
     format: "story",
     title: "Strong Schools, Stronger Communities",
-    concept: "Library reading room, worth investing in",
+    concept: "Library stacks at golden hour — that's worth investing in",
     file: "/social-media-posts/story/05-strong-schools.html",
   },
   {
@@ -809,7 +809,7 @@ export const SOCIAL_POSTS = [
     no: "06",
     format: "story",
     title: "Have A Question For Randall",
-    concept: "Crimson stage, gold medallion, ask away",
+    concept: "Plain ink card — have a question for Randall, ask away",
     file: "/social-media-posts/story/06-question-for-randall.html",
   },
   {
@@ -817,7 +817,7 @@ export const SOCIAL_POSTS = [
     no: "07",
     format: "story",
     title: "Your Support Reaches Further",
-    concept: "Volunteers at a sign table, thank-you to supporters",
+    concept: "Volunteers packing donations — thank you for the support",
     file: "/social-media-posts/story/07-your-support-reaches-further.html",
   },
   {
@@ -825,7 +825,7 @@ export const SOCIAL_POSTS = [
     no: "08",
     format: "story",
     title: "Election Day Is Coming",
-    concept: "Quiet reminder card with a calendar placeholder",
+    concept: "Quiet ink reminder — Election Day is coming, stay informed",
     file: "/social-media-posts/story/08-election-day-reminder.html",
   },
   {
@@ -833,7 +833,7 @@ export const SOCIAL_POSTS = [
     no: "09",
     format: "story",
     title: "Every Vote Matters",
-    concept: "Oregon State Capitol, every voice matters",
+    concept: "Ballot going into the box — every vote, every voice",
     file: "/social-media-posts/story/09-every-vote-matters.html",
   },
   {
@@ -841,7 +841,7 @@ export const SOCIAL_POSTS = [
     no: "10",
     format: "story",
     title: "Meeting More Neighbors",
-    concept: "Handshake in a bright hall, hope to see you soon",
+    concept: "Portrait over ink — meeting more neighbors, hope to see you soon",
     file: "/social-media-posts/story/10-meeting-more-neighbors.html",
   },
   {
@@ -849,7 +849,7 @@ export const SOCIAL_POSTS = [
     no: "11",
     format: "story",
     title: "We're Listening",
-    concept: "Quiet interior, one issue you would like addressed",
+    concept: "Plain ink card — what's one issue you'd like addressed",
     file: "/social-media-posts/story/11-were-listening.html",
   },
   {
@@ -865,7 +865,7 @@ export const SOCIAL_POSTS = [
     no: "13",
     format: "story",
     title: "Parents Deserve A Voice",
-    concept: "School entrance at dusk, do you agree",
+    concept: "Plain ink card — parents deserve a voice, do you agree",
     file: "/social-media-posts/story/13-parents-deserve-a-voice.html",
   },
   {
@@ -873,7 +873,7 @@ export const SOCIAL_POSTS = [
     no: "14",
     format: "story",
     title: "Responsible Spending Matters",
-    concept: "Ledger, calculator, every tax dollar should work hard",
+    concept: "Contract, pen and calculator — every tax dollar should work hard",
     file: "/social-media-posts/story/14-responsible-spending.html",
   },
   {
@@ -889,7 +889,7 @@ export const SOCIAL_POSTS = [
     no: "16",
     format: "story",
     title: "Today's Goal",
-    concept: "Roundtable — meet people, listen, learn something new",
+    concept: "Ink card over a doorstep conversation — meet, listen, learn",
     file: "/social-media-posts/story/16-todays-goal.html",
   },
   {
@@ -897,7 +897,7 @@ export const SOCIAL_POSTS = [
     no: "17",
     format: "story",
     title: "Leadership That Listens",
-    concept: "Community table discussion, that is why we are here",
+    concept: "Community table discussion — that's why we're here",
     file: "/social-media-posts/story/17-leadership-that-listens.html",
   },
   {
@@ -905,7 +905,7 @@ export const SOCIAL_POSTS = [
     no: "18",
     format: "story",
     title: "Where Should We Visit Next",
-    concept: "Forest highway, open response prompt",
+    concept: "Plain ink prompt — tell us where we should visit next",
     file: "/social-media-posts/story/18-where-should-we-visit.html",
   },
   {
@@ -913,7 +913,7 @@ export const SOCIAL_POSTS = [
     no: "19",
     format: "story",
     title: "Community Starts With Conversation",
-    concept: "Picnic-table conversation, let's keep talking",
+    concept: "Backyard toast among neighbors — let's keep talking",
     file: "/social-media-posts/story/19-community-starts-with-conversation.html",
   },
   {
@@ -921,7 +921,7 @@ export const SOCIAL_POSTS = [
     no: "20",
     format: "story",
     title: "Supporting Local Businesses",
-    concept: "Rain-lit shopfront row, local families",
+    concept: "Market produce aisle — local businesses, local families",
     file: "/social-media-posts/story/20-supporting-local-businesses.html",
   },
   {
@@ -929,7 +929,7 @@ export const SOCIAL_POSTS = [
     no: "21",
     format: "story",
     title: "Have You Registered To Vote",
-    concept: "Ballot drop box and envelope",
+    concept: "Plain ink card — have you registered to vote",
     file: "/social-media-posts/story/21-registered-to-vote.html",
   },
   {
@@ -937,7 +937,7 @@ export const SOCIAL_POSTS = [
     no: "22",
     format: "story",
     title: "Campaign Updates Here",
-    concept: "Gold Oregon outline on ink, stay connected",
+    concept: "District outline on ink — stay connected",
     file: "/social-media-posts/story/22-campaign-updates-here.html",
   },
   {
@@ -945,7 +945,7 @@ export const SOCIAL_POSTS = [
     no: "23",
     format: "story",
     title: "Education. Opportunity. Accountability.",
-    concept: "Three-panel civic montage of Randall Fryer's focus",
+    concept: "Graduation caps and diplomas — Randall Fryer's focus",
     file: "/social-media-posts/story/23-education-opportunity-accountability.html",
   },
   {
@@ -953,7 +953,7 @@ export const SOCIAL_POSTS = [
     no: "24",
     format: "story",
     title: "Grateful For Every Volunteer",
-    concept: "Volunteer table, interested in helping",
+    concept: "Volunteer donation drive — interested in helping",
     file: "/social-media-posts/story/24-grateful-for-every-volunteer.html",
   },
   {
@@ -961,7 +961,7 @@ export const SOCIAL_POSTS = [
     no: "25",
     format: "story",
     title: "A Better Oregon, One Conversation At A Time",
-    concept: "Sunrise trail above the valley",
+    concept: "Tree-lined path at sunset — one conversation at a time",
     file: "/social-media-posts/story/25-one-conversation-at-a-time.html",
   },
   {
@@ -969,7 +969,7 @@ export const SOCIAL_POSTS = [
     no: "26",
     format: "story",
     title: "Listening Today, Planning Tomorrow",
-    concept: "Notebook and calendar, working every day",
+    concept: "Ink block over an annotated planner — working every day",
     file: "/social-media-posts/story/26-listening-today.html",
   },
   {
@@ -977,7 +977,7 @@ export const SOCIAL_POSTS = [
     no: "27",
     format: "story",
     title: "Have You Met Randall Yet",
-    concept: "Handshake in a bright room — we'd love to meet you",
+    concept: "Food-drive handoff — we'd love to meet you",
     file: "/social-media-posts/story/27-met-randall-yet.html",
   },
   {
@@ -985,7 +985,7 @@ export const SOCIAL_POSTS = [
     no: "28",
     format: "story",
     title: "Community Event",
-    concept: "Hall set for a community event, details coming soon",
+    concept: "Neighbors browsing a community market — details coming soon",
     file: "/social-media-posts/story/28-community-event.html",
   },
   {
@@ -993,7 +993,7 @@ export const SOCIAL_POSTS = [
     no: "29",
     format: "story",
     title: "Town Hall Coming Soon",
-    concept: "Timber-beamed hall, bring your questions",
+    concept: "Plain ink card — town hall coming soon, bring your questions",
     file: "/social-media-posts/story/29-town-hall-coming-soon.html",
   },
   {
@@ -1001,7 +1001,7 @@ export const SOCIAL_POSTS = [
     no: "30",
     format: "story",
     title: "Let's Move District 28 Forward",
-    concept: "Sunset over the gorge, thanks for following along",
+    concept: "Sunset over the hills — thanks for following along",
     file: "/social-media-posts/story/30-move-district-28-forward.html",
   },
 ];
@@ -1205,10 +1205,10 @@ export const FORMATS = {
   carousel: {
     key: "carousel",
     label: "Carousel",
-    sub: "1080 × 1350",
-    ratio: "4 / 5",
+    sub: "1080 × 1080",
+    ratio: "1 / 1",
     width: 1080,
-    height: 1350,
+    height: 1080,
   },
 };
 

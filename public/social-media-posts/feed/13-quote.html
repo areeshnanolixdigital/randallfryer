@@ -2,58 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Feed 13 — Clear Laws, Fair Enforcement</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Feed Clear Laws, Fair Enforcement</title>
 <style>
-  :root{
-    --bone:#f3ede0; --ink:#0a1326; --signal:#9b2d2c; --signal-deep:#7a2422; --gold:#e3bd6c; --ochre-soft:#d4ac6e;
-    --display:'Fraunces','Times New Roman',serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
-  }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
-  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;font-family:var(--sans);color:var(--bone);box-shadow:0 60px 120px -40px rgba(0,0,0,.6);
-    background:radial-gradient(120% 100% at 50% -10%, #16213c 0%, #0b1428 55%, #060b18 100%)}
-  /* Faint courthouse motif */
-  .civic{position:absolute;left:50%;top:270px;transform:translateX(-50%);width:560px;height:560px;z-index:2;opacity:.12;
-    background:var(--gold);-webkit-mask:url("/icons/institution.svg") center/contain no-repeat;mask:url("/icons/institution.svg") center/contain no-repeat}
-  .stage::after{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .84 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.45}
-  .frame{position:absolute;inset:56px;border:1px solid rgba(243,237,224,.14);z-index:30;pointer-events:none}
-  .meta{position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.6);z-index:34}
-  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);vertical-align:1px;margin-right:10px}
-
-  .eyebrow{position:absolute;left:0;right:0;top:200px;text-align:center;font-family:var(--mono);font-size:13px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);z-index:34}
-
-  /* 3 structured columns */
-  .cols{position:absolute;left:96px;right:96px;top:430px;z-index:34;display:grid;grid-template-columns:1fr 1fr 1fr}
-  .col{padding:0 36px;text-align:center;position:relative}
-  .col + .col::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:1px;background:rgba(243,237,224,.2)}
-  .col .rn{font-family:var(--mono);font-size:12px;letter-spacing:.3em;color:rgba(227,189,108,.85);margin-bottom:22px;display:block}
-  .col h2{font-family:var(--display);font-weight:500;font-size:52px;line-height:1.0;letter-spacing:-.02em;color:var(--bone)}
-  .col h2 .it{display:block;font-style:italic;color:var(--gold);font-weight:400}
-
-  .body{position:absolute;left:96px;right:96px;bottom:190px;text-align:center;z-index:34;max-width:720px;margin:0 auto;
-    font-size:18px;line-height:1.6;color:rgba(243,237,224,.82)}
-  .body b{color:var(--bone);font-weight:600}
-  .foot{position:absolute;left:0;right:0;bottom:96px;text-align:center;z-index:34;font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  /* padding:0 so a 1080x1080 render contains only artwork, no body gutter */
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;
+    box-shadow:0 60px 120px -40px rgba(0,0,0,.6);background:#F6F5F4}
+  .stage img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
-  <div class="stage">
-    <div class="civic" aria-hidden></div>
-    <div class="frame"></div>
-    <div class="meta"><span><span class="dot"></span>Rule Of Law · Oregon</span><span>File №13</span></div>
-
-    <div class="eyebrow">The Rule Of Law</div>
-
-    <div class="cols">
-      <div class="col"><span class="rn">I</span><h2>Clear<span class="it">laws.</span></h2></div>
-      <div class="col"><span class="rn">II</span><h2>Fair<span class="it">enforcement.</span></h2></div>
-      <div class="col"><span class="rn">III</span><h2>Real<span class="it">consequences.</span></h2></div>
-    </div>
-
-  </div>
+  <div class="stage"><img src="/social-media-posts/feed/13-quote.png" alt="Clear Laws, Fair Enforcement" /></div>
 </body>
 </html>

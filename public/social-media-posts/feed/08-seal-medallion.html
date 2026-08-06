@@ -2,85 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Feed 08 — Understand The System</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Feed Understand The System</title>
 <style>
-  :root{
-    --bone:#f3ede0; --ink:#0a1326; --ink-mute:#8a93a6;
-    --signal:#9b2d2c; --signal-deep:#7a2422; --gold:#e3bd6c; --ochre-soft:#d4ac6e;
-    --display:'Fraunces','Times New Roman',serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
-  }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
+  /* padding:0 so a 1080x1080 render contains only artwork, no body gutter */
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
   .stage{width:1080px;height:1080px;position:relative;overflow:hidden;
-    background:radial-gradient(120% 100% at 20% 10%, #16213c 0%, #0b1428 55%, #060b18 100%);
-    color:var(--bone);font-family:var(--sans);box-shadow:0 60px 120px -40px rgba(0,0,0,.6)}
-
-  .photo{position:absolute;right:0;top:0;width:460px;height:100%;z-index:3;
-    background:url("/randall-fryer-systems.png") no-repeat;background-size:cover;background-position:52% 30%;
-    filter:saturate(.82) contrast(1.03);
-    -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.5) 16%, #000 38%);
-    mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.5) 16%, #000 38%)}
-  .photo::after{content:"";position:absolute;inset:0;
-    background:linear-gradient(180deg, rgba(8,13,28,.78) 0%, rgba(8,13,28,.25) 18%, transparent 30%),linear-gradient(90deg, rgba(8,13,28,.5) 0%, transparent 36%),linear-gradient(0deg, rgba(8,13,28,.45), transparent 46%);mix-blend-mode:multiply}
-
-  .blueprint{position:absolute;left:0;top:0;width:660px;height:100%;z-index:2;pointer-events:none;opacity:.9}
-  .blueprint svg{width:100%;height:100%}
-  .bp-grid{position:absolute;inset:0;z-index:1;pointer-events:none;
-    background-image:linear-gradient(rgba(227,189,108,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(227,189,108,.05) 1px,transparent 1px);
-    background-size:54px 54px;mask-image:radial-gradient(70% 70% at 35% 45%, #000 40%, transparent 85%)}
-
-  .stage::after{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .84 0 0 0 .06 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.5}
-  .frame{position:absolute;inset:56px;border:1px solid rgba(243,237,224,.14);z-index:30;pointer-events:none}
-
-  .meta{position:absolute;left:96px;right:96px;top:96px;display:flex;justify-content:space-between;
-    font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.62);z-index:34;text-shadow:0 1px 8px rgba(8,13,28,.7)}
-  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(227,189,108,.16),0 0 12px var(--gold);vertical-align:1px;margin-right:10px}
-
-  .block{position:absolute;left:96px;top:250px;width:540px;z-index:34;text-shadow:0 2px 18px rgba(8,13,28,.55)}
-  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:14px;margin-bottom:28px}
-  .eyebrow::before{content:"";display:block;width:44px;height:1px;background:var(--gold);opacity:.85}
-  h1{font-family:var(--display);font-weight:600;font-size:82px;line-height:.95;letter-spacing:-.035em;color:var(--bone);margin-bottom:32px}
-  h1 .it{font-style:italic;font-weight:500;color:var(--gold)}
-  .body{max-width:470px;font-size:18px;line-height:1.6;color:rgba(243,237,224,.84)}
-  .body b{color:var(--bone);font-weight:600}
-
-  .tags{position:absolute;left:96px;bottom:96px;z-index:34;font-family:var(--mono);font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:rgba(243,237,224,.6)}
-  .tags .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--signal);margin-right:10px;vertical-align:1px}
+    box-shadow:0 60px 120px -40px rgba(0,0,0,.6);background:#F6F5F4}
+  .stage img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
-  <div class="stage">
-    <div class="bp-grid" aria-hidden></div>
-    <div class="blueprint" aria-hidden>
-      <svg viewBox="0 0 660 1080" fill="none">
-        <g stroke="rgba(227,189,108,.32)" stroke-width="1.5">
-          <path d="M150 300 L330 380 L300 560 L150 620 L60 470 Z"/>
-          <path d="M330 380 L520 340 L560 520 L300 560"/>
-          <path d="M150 620 L250 780 L470 760 L560 520"/>
-          <path d="M250 780 L300 560"/>
-        </g>
-        <g fill="#0b1428" stroke="rgba(227,189,108,.55)" stroke-width="2">
-          <circle cx="150" cy="300" r="9"/><circle cx="330" cy="380" r="9"/><circle cx="520" cy="340" r="9"/>
-          <circle cx="300" cy="560" r="12" fill="rgba(155,45,44,.6)" stroke="rgba(243,237,224,.7)"/>
-          <circle cx="150" cy="620" r="9"/><circle cx="560" cy="520" r="9"/><circle cx="250" cy="780" r="9"/><circle cx="470" cy="760" r="9"/>
-        </g>
-      </svg>
-    </div>
-    <div class="photo" aria-hidden></div>
-    <div class="frame"></div>
-
-    <div class="meta"><span><span class="dot"></span>Problem Solver · Oregon HD28</span><span>File №08 · Better Government</span></div>
-
-    <div class="block">
-      <div class="eyebrow">Medicine + Software</div>
-      <h1>Understand the system.<br>Fix what is <span class="it">broken.</span></h1>
-    </div>
-
-    <div class="tags"><span class="dot"></span>Randall Fryer · Oregon House · HD 28</div>
-  </div>
+  <div class="stage"><img src="/social-media-posts/feed/08-seal-medallion.png" alt="Understand The System" /></div>
 </body>
 </html>
