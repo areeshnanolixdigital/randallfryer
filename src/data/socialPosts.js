@@ -175,14 +175,6 @@ export const SOCIAL_POSTS = [
     file: "/social-media-posts/feed/21-checklist.html",
   },
   {
-    slug: "feed-22-portrait",
-    no: "22",
-    format: "feed",
-    title: "Portrait Plate",
-    concept: "Rim-lit silhouette plate with lapel medallion",
-    file: "/social-media-posts/feed/22-portrait.html",
-  },
-  {
     slug: "feed-23-big-word",
     no: "23",
     format: "feed",
@@ -282,8 +274,8 @@ export const SOCIAL_POSTS = [
     slug: "feed-35-big-word",
     no: "35",
     format: "feed",
-    title: "Salem Works For You",
-    concept: "Oregon Capitol reflecting pool — does Salem work for working families",
+    title: "Does Salem Work For Working Families",
+    concept: "Oregon Capitol mirrored in the reflecting pool, headline set above",
     file: "/social-media-posts/feed/35-big-word.html",
   },
   {
@@ -771,7 +763,7 @@ export const SOCIAL_POSTS = [
     title: "Let's Build A Stronger District 28",
     concept: "Portrait in a District 28 park, crimson rule, call to unity",
     file: "/social-media-posts/story/01-build-district-28-together.html",
-  },
+  },
   {
     slug: "story-02-what-matters-most",
     no: "02",
@@ -779,7 +771,7 @@ export const SOCIAL_POSTS = [
     title: "What Matters Most To You",
     concept: "Ink card with a mountain silhouette — what matters most right now",
     file: "/social-media-posts/story/02-what-matters-most.html",
-  },
+  },
   {
     slug: "story-03-share-your-ideas",
     no: "03",
@@ -787,7 +779,7 @@ export const SOCIAL_POSTS = [
     title: "Share Your Ideas",
     concept: "Cafe table conversation — share your ideas, ask questions",
     file: "/social-media-posts/story/03-share-your-ideas.html",
-  },
+  },
   {
     slug: "story-04-small-businesses-moving",
     no: "04",
@@ -795,7 +787,7 @@ export const SOCIAL_POSTS = [
     title: "Small Businesses Keep Us Moving",
     concept: "Baker at the racks — let's make Oregon a place businesses can grow",
     file: "/social-media-posts/story/04-small-businesses-moving.html",
-  },
+  },
   {
     slug: "story-05-strong-schools",
     no: "05",
@@ -803,7 +795,7 @@ export const SOCIAL_POSTS = [
     title: "Strong Schools, Stronger Communities",
     concept: "Library stacks at golden hour — that's worth investing in",
     file: "/social-media-posts/story/05-strong-schools.html",
-  },
+  },
   {
     slug: "story-06-question-for-randall",
     no: "06",
@@ -811,7 +803,7 @@ export const SOCIAL_POSTS = [
     title: "Have A Question For Randall",
     concept: "Plain ink card — have a question for Randall, ask away",
     file: "/social-media-posts/story/06-question-for-randall.html",
-  },
+  },
   {
     slug: "story-07-your-support-reaches-further",
     no: "07",
@@ -819,7 +811,7 @@ export const SOCIAL_POSTS = [
     title: "Your Support Reaches Further",
     concept: "Volunteers packing donations — thank you for the support",
     file: "/social-media-posts/story/07-your-support-reaches-further.html",
-  },
+  },
   {
     slug: "story-08-election-day-reminder",
     no: "08",
@@ -827,7 +819,7 @@ export const SOCIAL_POSTS = [
     title: "Election Day Is Coming",
     concept: "Quiet ink reminder — Election Day is coming, stay informed",
     file: "/social-media-posts/story/08-election-day-reminder.html",
-  },
+  },
   {
     slug: "story-09-every-vote-matters",
     no: "09",
@@ -835,7 +827,7 @@ export const SOCIAL_POSTS = [
     title: "Every Vote Matters",
     concept: "Ballot going into the box — every vote, every voice",
     file: "/social-media-posts/story/09-every-vote-matters.html",
-  },
+  },
   {
     slug: "story-10-meeting-more-neighbors",
     no: "10",
@@ -843,7 +835,7 @@ export const SOCIAL_POSTS = [
     title: "Meeting More Neighbors",
     concept: "Portrait over ink — meeting more neighbors, hope to see you soon",
     file: "/social-media-posts/story/10-meeting-more-neighbors.html",
-  },
+  },
   {
     slug: "story-11-were-listening",
     no: "11",
@@ -851,7 +843,7 @@ export const SOCIAL_POSTS = [
     title: "We're Listening",
     concept: "Plain ink card — what's one issue you'd like addressed",
     file: "/social-media-posts/story/11-were-listening.html",
-  },
+  },
   {
     slug: "story-12-coffee-conversation-community",
     no: "12",
@@ -859,7 +851,7 @@ export const SOCIAL_POSTS = [
     title: "Coffee. Conversation. Community.",
     concept: "Ink invite card — join us, where good ideas begin",
     file: "/social-media-posts/story/12-coffee-conversation-community.html",
-  },
+  },
   {
     slug: "story-13-parents-deserve-a-voice",
     no: "13",
@@ -867,7 +859,7 @@ export const SOCIAL_POSTS = [
     title: "Parents Deserve A Voice",
     concept: "Plain ink card — parents deserve a voice, do you agree",
     file: "/social-media-posts/story/13-parents-deserve-a-voice.html",
-  },
+  },
   {
     slug: "story-14-responsible-spending",
     no: "14",
@@ -875,7 +867,7 @@ export const SOCIAL_POSTS = [
     title: "Responsible Spending Matters",
     concept: "Contract, pen and calculator — every tax dollar should work hard",
     file: "/social-media-posts/story/14-responsible-spending.html",
-  },
+  },
   {
     slug: "story-15-thank-you-volunteers",
     no: "15",
@@ -883,7 +875,7 @@ export const SOCIAL_POSTS = [
     title: "Thank You, Volunteers",
     concept: "Portrait on ink — we couldn't do this without you",
     file: "/social-media-posts/story/15-thank-you-volunteers.html",
-  },
+  },
   {
     slug: "story-16-todays-goal",
     no: "16",
@@ -891,7 +883,7 @@ export const SOCIAL_POSTS = [
     title: "Today's Goal",
     concept: "Ink card over a doorstep conversation — meet, listen, learn",
     file: "/social-media-posts/story/16-todays-goal.html",
-  },
+  },
   {
     slug: "story-17-leadership-that-listens",
     no: "17",
@@ -899,7 +891,7 @@ export const SOCIAL_POSTS = [
     title: "Leadership That Listens",
     concept: "Community table discussion — that's why we're here",
     file: "/social-media-posts/story/17-leadership-that-listens.html",
-  },
+  },
   {
     slug: "story-18-where-should-we-visit",
     no: "18",
@@ -907,7 +899,7 @@ export const SOCIAL_POSTS = [
     title: "Where Should We Visit Next",
     concept: "Plain ink prompt — tell us where we should visit next",
     file: "/social-media-posts/story/18-where-should-we-visit.html",
-  },
+  },
   {
     slug: "story-19-community-starts-with-conversation",
     no: "19",
@@ -915,7 +907,7 @@ export const SOCIAL_POSTS = [
     title: "Community Starts With Conversation",
     concept: "Backyard toast among neighbors — let's keep talking",
     file: "/social-media-posts/story/19-community-starts-with-conversation.html",
-  },
+  },
   {
     slug: "story-20-supporting-local-businesses",
     no: "20",
@@ -923,7 +915,7 @@ export const SOCIAL_POSTS = [
     title: "Supporting Local Businesses",
     concept: "Market produce aisle — local businesses, local families",
     file: "/social-media-posts/story/20-supporting-local-businesses.html",
-  },
+  },
   {
     slug: "story-21-registered-to-vote",
     no: "21",
@@ -931,7 +923,7 @@ export const SOCIAL_POSTS = [
     title: "Have You Registered To Vote",
     concept: "Plain ink card — have you registered to vote",
     file: "/social-media-posts/story/21-registered-to-vote.html",
-  },
+  },
   {
     slug: "story-22-campaign-updates-here",
     no: "22",
@@ -939,7 +931,7 @@ export const SOCIAL_POSTS = [
     title: "Campaign Updates Here",
     concept: "District outline on ink — stay connected",
     file: "/social-media-posts/story/22-campaign-updates-here.html",
-  },
+  },
   {
     slug: "story-23-education-opportunity-accountability",
     no: "23",
@@ -947,7 +939,7 @@ export const SOCIAL_POSTS = [
     title: "Education. Opportunity. Accountability.",
     concept: "Graduation caps and diplomas — Randall Fryer's focus",
     file: "/social-media-posts/story/23-education-opportunity-accountability.html",
-  },
+  },
   {
     slug: "story-24-grateful-for-every-volunteer",
     no: "24",
@@ -955,7 +947,7 @@ export const SOCIAL_POSTS = [
     title: "Grateful For Every Volunteer",
     concept: "Volunteer donation drive — interested in helping",
     file: "/social-media-posts/story/24-grateful-for-every-volunteer.html",
-  },
+  },
   {
     slug: "story-25-one-conversation-at-a-time",
     no: "25",
@@ -963,7 +955,7 @@ export const SOCIAL_POSTS = [
     title: "A Better Oregon, One Conversation At A Time",
     concept: "Tree-lined path at sunset — one conversation at a time",
     file: "/social-media-posts/story/25-one-conversation-at-a-time.html",
-  },
+  },
   {
     slug: "story-26-listening-today",
     no: "26",
@@ -971,7 +963,7 @@ export const SOCIAL_POSTS = [
     title: "Listening Today, Planning Tomorrow",
     concept: "Ink block over an annotated planner — working every day",
     file: "/social-media-posts/story/26-listening-today.html",
-  },
+  },
   {
     slug: "story-27-met-randall-yet",
     no: "27",
@@ -979,7 +971,7 @@ export const SOCIAL_POSTS = [
     title: "Have You Met Randall Yet",
     concept: "Food-drive handoff — we'd love to meet you",
     file: "/social-media-posts/story/27-met-randall-yet.html",
-  },
+  },
   {
     slug: "story-28-community-event",
     no: "28",
@@ -987,7 +979,7 @@ export const SOCIAL_POSTS = [
     title: "Community Event",
     concept: "Neighbors browsing a community market — details coming soon",
     file: "/social-media-posts/story/28-community-event.html",
-  },
+  },
   {
     slug: "story-29-town-hall-coming-soon",
     no: "29",
@@ -995,7 +987,7 @@ export const SOCIAL_POSTS = [
     title: "Town Hall Coming Soon",
     concept: "Plain ink card — town hall coming soon, bring your questions",
     file: "/social-media-posts/story/29-town-hall-coming-soon.html",
-  },
+  },
   {
     slug: "story-30-move-district-28-forward",
     no: "30",
