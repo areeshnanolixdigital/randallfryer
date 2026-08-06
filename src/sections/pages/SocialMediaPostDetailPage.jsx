@@ -187,10 +187,9 @@ export default function SocialMediaPostDetailPage({ post }) {
               <span className="italic text-signal-deep">.</span>
             </h2>
             <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/75">
-              Rendered live from a standalone HTML file — no images, no
-              screenshots, no build step. Every layer (paper grain, lighting,
-              3D depth) is pure CSS so the creative scales cleanly at any
-              resolution.
+              Served from a standalone artboard at full export resolution — what
+              you see on this page is exactly what publishes, with no
+              re-rendering or re-cropping between here and the feed.
             </p>
           </div>
           <ul className="col-span-12 grid gap-6 lg:col-span-5">
@@ -200,8 +199,8 @@ export default function SocialMediaPostDetailPage({ post }) {
                 d: `${fmt.width} × ${fmt.height} px — matches Instagram's ${fmt.label.toLowerCase()} spec.`,
               },
               {
-                t: "Typography",
-                d: "Inter headings + Roboto body + Inter captions.",
+                t: "Branding",
+                d: "Campaign wordmark locked to every artboard.",
               },
               {
                 t: "Palette",
