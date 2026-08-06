@@ -51,7 +51,7 @@ export default function SocialMediaPostsPage() {
     <main className="relative flex flex-1 flex-col">
       <PageHero
         title="Social media posts."
-        intro="The full visual campaign — editorial creatives across Instagram feed posts, stories, and multi-slide carousels. Every artboard renders live, exactly as designed."
+        intro="The full visual campaign — finished creatives across Instagram feed posts, stories, and multi-slide carousels. Every artboard is shown at its native export size, ready to publish."
       >
         <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-4 font-mono text-[11px] uppercase tracking-[0.28em] text-ink-mute">
           <span className="flex items-baseline gap-2">
