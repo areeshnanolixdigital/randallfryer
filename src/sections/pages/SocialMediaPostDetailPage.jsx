@@ -191,6 +191,23 @@ export default function SocialMediaPostDetailPage({ post }) {
               you see on this page is exactly what publishes, with no
               re-rendering or re-cropping between here and the feed.
             </p>
+
+            {/* Post copy, when the creative ships with a written caption. */}
+            {post.caption && (
+              <div className="mt-10 border-t border-ink/15 pt-6">
+                <span className="eyebrow">Caption</span>
+                <div className="mt-4 max-w-xl space-y-4 text-[1.02rem] leading-relaxed text-ink/75">
+                  {post.caption.split("\n\n").map((para) => (
+                    <p key={para}>{para}</p>
+                  ))}
+                </div>
+                {post.hashtags?.length > 0 && (
+                  <p className="mt-5 text-[0.95rem] text-signal-deep">
+                    {post.hashtags.join(" ")}
+                  </p>
+                )}
+              </div>
+            )}
           </div>
           <ul className="col-span-12 grid gap-6 lg:col-span-5">
             {[

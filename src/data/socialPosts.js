@@ -175,6 +175,23 @@ export const SOCIAL_POSTS = [
     file: "/social-media-posts/feed/21-checklist.html",
   },
   {
+    slug: "feed-22-statement",
+    no: "22",
+    format: "feed",
+    title: "Good Government On The Way Home",
+    concept:
+      "Ink statement plate — safe roads, reliable infrastructure, communities that work",
+    file: "/social-media-posts/feed/22-statement.html",
+    caption: `Government doesn't only exist in budgets, bills, and hearings. You experience it when you drive home.
+
+When you cross a street. When your neighborhood infrastructure is maintained. When getting to work, school, or a local business doesn't become harder than it needs to be.
+
+These are not noticeable issues to many. But they're the basic responsibilities that affect people's lives every single day.
+
+Randall strongly believes that good government should get the fundamentals right.`,
+    hashtags: ["#District28", "#Infrastructure", "#Oregon", "#RandallFryer"],
+  },
+  {
     slug: "feed-23-big-word",
     no: "23",
     format: "feed",
