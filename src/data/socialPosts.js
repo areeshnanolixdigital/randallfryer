@@ -274,8 +274,8 @@ export const SOCIAL_POSTS = [
     slug: "feed-35-big-word",
     no: "35",
     format: "feed",
-    title: "Salem Works For You",
-    concept: "Oregon Capitol reflecting pool — does Salem work for working families",
+    title: "Does Salem Work For Working Families",
+    concept: "Oregon Capitol mirrored in the reflecting pool, headline set above",
     file: "/social-media-posts/feed/35-big-word.html",
   },
   {
