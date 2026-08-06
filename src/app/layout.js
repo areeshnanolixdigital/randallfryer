@@ -1,40 +1,23 @@
-import { Plus_Jakarta_Sans, Figtree } from "next/font/google";
-import localFont from "next/font/local";
+import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import MotionProvider from "@/animations/MotionProvider";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/sections/Footer";
 import CookieConsent from "@/components/ui/CookieConsent";
 
-// Heading typeface — Randall Fryer brand (Op1776 CI-0216)
-const plusJakarta = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta",
+// Heading typeface — Inter. Only Inter and Roboto are used site-wide.
+// `opsz` is pulled in so `font-optical-sizing: auto` works on display sizes.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  axes: ["opsz"],
   display: "swap",
 });
 
-// Body typeface — Randall Fryer brand (Op1776 CI-0216)
-const figtree = Figtree({
-  variable: "--font-figtree",
+// Body typeface — Roboto
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
-  display: "swap",
-});
-
-// Micro-label / eyebrow typeface — Switzer (Fontshare, self-hosted variable font)
-const switzer = localFont({
-  src: [
-    {
-      path: "../assets/fonts/Switzer-Variable.woff2",
-      weight: "100 900",
-      style: "normal",
-    },
-    {
-      path: "../assets/fonts/Switzer-VariableItalic.woff2",
-      weight: "100 900",
-      style: "italic",
-    },
-  ],
-  variable: "--font-switzer",
   display: "swap",
 });
 
@@ -67,7 +50,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${plusJakarta.variable} ${figtree.variable} ${switzer.variable} h-full antialiased`}
+      className={`${inter.variable} ${roboto.variable} h-full antialiased`}
     >
       <body className="relative min-h-full flex flex-col">
         <MotionProvider>

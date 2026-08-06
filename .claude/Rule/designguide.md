@@ -116,19 +116,21 @@ Reserved for the _Capabilities_ and _Sub-brand_ sections. Rules:
 
 ## 03 · Typography Rules
 
-Three families. Three jobs. No exceptions.
+Two families. Three jobs. No exceptions — **Inter and Roboto only.** No serif face, no
+monospace face, no third family anywhere in the site or the campaign creative.
 
-| Role                            | Family         | Tailwind class | Weights allowed |
-| ------------------------------- | -------------- | -------------- | --------------- |
-| **Display + headings**          | Space Grotesk  | `font-display` | 500, 600, 700   |
-| **Body + UI text**              | Inter          | `font-sans`    | 400, 500, 600   |
-| **Mono / labels / code / data** | JetBrains Mono | `font-mono`    | 500, 600, 700   |
+| Role                       | Family | Tailwind class | Weights allowed |
+| -------------------------- | ------ | -------------- | --------------- |
+| **Display + headings**     | Inter  | `font-display` | 500, 600, 700   |
+| **Body + UI text**         | Roboto | `font-sans`    | 400, 500, 600   |
+| **Eyebrows / micro-labels**| Inter  | `font-mono`    | 500, 600, 700   |
 
 ### Heading font usage
 
-- Every H1, H2, H3 uses `font-display`.
-- Never set headings in Inter. Inter is for paragraphs, UI labels, and small print only.
-- Never set headings in mono. Mono is for eyebrows, code, version strings, technical labels — not headings.
+- Every H1, H2, H3 uses `font-display` (Inter).
+- Never set headings in `font-sans`. Roboto is for paragraphs, UI labels, and small print only.
+- `font-mono` is the eyebrow/label style, not an actual monospace — it maps to Inter. Use it
+  for eyebrows and technical labels, never for headings.
 
 ### Heading weights
 

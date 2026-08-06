@@ -26,7 +26,7 @@ families, a stronger business climate, safer communities, and government account
 | Framework  | Next.js 16.2.6 (App Router, JavaScript, `src/` layout)              |
 | Styling    | Tailwind CSS v4 (`@theme` tokens in `src/app/globals.css`)          |
 | Motion     | GSAP 3.15 (+ SplitText, ScrollTrigger) and `motion/react` (Framer)  |
-| Fonts      | `next/font` — Google + self-hosted (see Typography)                 |
+| Fonts      | `next/font/google` — Inter (headings) + Roboto (body), nothing else |
 | CRM/Forms  | GoHighLevel via API routes (`src/app/api/*`), SMS consent handling  |
 
 > ⚠️ This Next.js version has breaking changes vs. older conventions — read
@@ -58,14 +58,17 @@ families, a stronger business climate, safer communities, and government account
 
 ### Typography
 
-| Role     | Face                 | Loaded via                                  |
-| -------- | -------------------- | ------------------------------------------- |
-| Headings | **Plus Jakarta Sans**| `next/font/google` → `--font-display`       |
-| Body     | **Figtree**          | `next/font/google` → `--font-sans`          |
-| Labels   | **Switzer**          | self-hosted variable woff2 in `src/assets/fonts/` → `--font-mono` |
+| Role     | Face        | Loaded via                                          |
+| -------- | ----------- | --------------------------------------------------- |
+| Headings | **Inter**   | `next/font/google` → `--font-display` (`opsz` axis)  |
+| Body     | **Roboto**  | `next/font/google` → `--font-sans`                   |
+| Labels   | **Inter**   | `next/font/google` → `--font-mono`                   |
+
+**Only Inter and Roboto may be used.** No third typeface — no serif display face, no
+monospace, no self-hosted face.
 
 - The `font-mono` Tailwind class is the **eyebrow/micro-label style** (11px, uppercase,
-  `tracking-[0.28em]`) — it maps to Switzer, not an actual monospace.
+  `tracking-[0.28em]`) — it maps to Inter, not an actual monospace.
 - `.display-serif` is the heading utility (name is legacy; it maps to `--font-display`
   with tight tracking).
 
@@ -112,9 +115,9 @@ Shared shells: `SectionFrame` (tones: `light` / `dark` / `signal`), `PageHero`
 ## Campaign creative
 
 `campaign/feed/` (10 × 1080×1080) and `campaign/story/` (10 × 1080×1920) are standalone
-HTML artboards rendered live in the browser. **Note:** they still use the older
-template palette/typography (Fraunces + parchment tones) and have not been rebranded
-to match the current site system.
+HTML artboards rendered live in the browser. They now use the site typefaces (Inter
+headings / Roboto body); **note:** their palette is still the older template one
+(parchment tones) and has not been rebranded to match the current site system.
 
 ## Working conventions
 

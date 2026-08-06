@@ -201,7 +201,7 @@ export default function SocialMediaPostDetailPage({ post }) {
               },
               {
                 t: "Typography",
-                d: "Plus Jakarta Sans headings + Figtree body + Switzer captions.",
+                d: "Inter headings + Roboto body + Inter captions.",
               },
               {
                 t: "Palette",

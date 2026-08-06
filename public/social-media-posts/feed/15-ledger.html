@@ -2,49 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Feed 15 — Did You Know</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Feed Did You Know</title>
 <style>
-  :root{
-    --bone:#f3ede0; --ink:#0a1326; --signal:#9b2d2c; --signal-deep:#7a2422; --gold:#e3bd6c;
-    --display:'Fraunces','Times New Roman',serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
-  }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
-  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;font-family:var(--sans);color:var(--bone);box-shadow:0 60px 120px -40px rgba(0,0,0,.6);
-    background:radial-gradient(120% 100% at 25% 12%, #16213c 0%, #0b1428 55%, #060b18 100%)}
-  .photo{position:absolute;right:0;top:0;width:430px;height:100%;z-index:2;
-    background:url("/randall-fryer-portrait.jpg") no-repeat;background-size:cover;background-position:44% 10%;filter:saturate(.7) contrast(1.04) brightness(.92);
-    -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.4) 18%, #000 44%);mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.4) 18%, #000 44%)}
-  .photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,20,40,.6),transparent 42%),linear-gradient(0deg,rgba(11,20,40,.7),transparent 44%);mix-blend-mode:multiply}
-  .ecg{position:absolute;left:0;right:0;top:560px;z-index:3;opacity:.4}
-  .ecg svg{width:100%;height:90px;display:block}
-  .stage::after{content:"";position:absolute;inset:0;z-index:40;pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .84 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.45}
-  .frame{position:absolute;inset:56px;border:1px solid rgba(243,237,224,.14);z-index:30;pointer-events:none}
-  .meta{position:absolute;left:96px;top:96px;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.6);z-index:34}
-  .meta .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);vertical-align:1px;margin-right:10px}
-  .block{position:absolute;left:96px;top:250px;width:560px;z-index:34;text-shadow:0 2px 18px rgba(6,11,24,.5)}
-  .kicker{font-family:var(--display);font-style:italic;font-weight:500;font-size:40px;color:var(--gold);margin-bottom:20px}
-  h1{font-family:var(--display);font-weight:600;font-size:66px;line-height:1.02;letter-spacing:-.03em;color:var(--bone);margin-bottom:34px}
-  h1 .it{font-style:italic;font-weight:500;color:var(--gold)}
-  .body{max-width:470px;font-size:18px;line-height:1.6;color:rgba(243,237,224,.84)}
-  .body p{margin-bottom:12px}
-  .cta{position:absolute;left:96px;bottom:96px;z-index:34;font-family:var(--mono);font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+  /* padding:0 so a 1080x1080 render contains only artwork, no body gutter */
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;
+    box-shadow:0 60px 120px -40px rgba(0,0,0,.6);background:#F6F5F4}
+  .stage img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
-  <div class="stage">
-    <div class="photo" aria-hidden></div>
-    <div class="ecg" aria-hidden><svg viewBox="0 0 1080 90" preserveAspectRatio="none" fill="none"><path d="M0 45 H150 l10 0 l8 -26 l12 50 l10 -24 H360 l24 0 l8 -34 l14 64 l10 -30 H720 l16 0 l10 -24 l12 46 l10 -22 H1080" stroke="#e3bd6c" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
-    <div class="frame"></div>
-    <div class="meta"><span class="dot"></span>Meet Randall · District 28</div>
-    <div class="block">
-      <div class="kicker">Did you know…</div>
-      <h1>Randall spent years in <span class="it">rural emergency medicine.</span></h1>
-    </div>
-  </div>
+  <div class="stage"><img src="/social-media-posts/feed/15-ledger.png" alt="Did You Know" /></div>
 </body>
 </html>

@@ -2,63 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>Why I'm Running — Slide 5/5</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<title>Why I'm Running — slide 5/5</title>
 <style>
-  :root{
-    --bone:#f3ede0; --bone-soft:#ebe2cd; --ink:#0a1326; --ink-mute:#4b5364;
-    --signal:#9b2d2c; --signal-deep:#7a2422; --ochre:#b58a4a; --gold:#e3bd6c;
-    --display:'Fraunces','Times New Roman',serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
-  }
   *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:24px}
-  .stage{width:1080px;height:1350px;position:relative;overflow:hidden;color:var(--bone);font-family:var(--sans);box-shadow:0 60px 120px -40px rgba(0,0,0,.6);
-    background:radial-gradient(120% 80% at 50% 8%,#1c2b4e 0%,#0b1428 55%,#060b18 100%)}
-  .glow{position:absolute;left:50%;top:44%;transform:translate(-50%,-50%);width:900px;height:700px;border-radius:50%;z-index:1;background:radial-gradient(closest-side,rgba(227,189,108,.16),transparent 70%)}
-  .grain{position:absolute;inset:0;z-index:60;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .95 0 0 0 0 .84 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");mix-blend-mode:overlay;opacity:.4}
-  .frame{position:absolute;inset:60px;border:1px solid rgba(243,237,224,.14);z-index:20;pointer-events:none}
-  .metac{position:absolute;left:100px;right:100px;top:100px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:13px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.62);z-index:34}
-  .metac .dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gold);box-shadow:0 0 12px var(--gold);margin-right:10px;vertical-align:1px}
-  .prog{position:absolute;left:100px;right:100px;bottom:100px;display:flex;align-items:center;justify-content:space-between;z-index:34;font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:rgba(243,237,224,.6)}
-  .dots{display:flex;gap:9px}.dots i{width:9px;height:9px;border-radius:50%;background:rgba(243,237,224,.25)}.dots i.on{background:var(--gold)}
-
-  .wrap{position:absolute;left:100px;right:100px;top:250px;z-index:24}
-  .eye{font-family:var(--mono);font-size:14px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:16px;margin-bottom:40px}
-  .eye::before{content:"";width:50px;height:1px;background:var(--gold)}
-  h1{font-family:var(--display);font-weight:600;font-size:92px;line-height:.94;letter-spacing:-.035em;color:var(--bone);margin-bottom:34px}
-  h1 .it{font-style:italic;font-weight:500;color:var(--gold)}
-  .body{max-width:820px;font-size:26px;line-height:1.55;color:rgba(243,237,224,.86)}
-  .body b{color:var(--bone);font-weight:600}
-  /* CTA buttons */
-  .actions{position:absolute;left:100px;right:100px;bottom:250px;z-index:24;display:flex;gap:20px}
-  .btn{flex:1;border-radius:16px;padding:30px 28px;border:1px solid rgba(227,189,108,.4);background:rgba(227,189,108,.06);text-align:center}
-  .btn.solid{background:linear-gradient(180deg,var(--gold),#c69a52);border-color:transparent}
-  .btn .k{font-family:var(--display);font-style:italic;font-weight:500;font-size:38px;color:var(--bone)}
-  .btn.solid .k{color:var(--ink)}
-  .btn .s{font-family:var(--mono);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:rgba(243,237,224,.6);margin-top:6px}
-  .btn.solid .s{color:rgba(10,19,38,.7)}
-  .tags{position:absolute;left:100px;bottom:170px;z-index:24;font-family:var(--mono);font-size:13px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  /* padding:0 so a 1080x1080 render contains only artwork, no body gutter */
+  body{background:#222;display:grid;place-items:center;min-height:100vh;padding:0}
+  .stage{width:1080px;height:1080px;position:relative;overflow:hidden;
+    box-shadow:0 60px 120px -40px rgba(0,0,0,.5);background:#F6F5F4}
+  .stage img{width:100%;height:100%;object-fit:cover;display:block}
 </style>
 </head>
 <body>
-  <div class="stage">
-    <div class="glow" aria-hidden></div>
-    <div class="grain"></div>
-    <div class="frame"></div>
-    <div class="metac"><span><span class="dot"></span>Join The Campaign · Team Fryer</span><span>05 / 05</span></div>
-    <div class="wrap">
-      <div class="eye">This Isn't About Politics</div>
-      <h1>An Oregon where families <span class="it">thrive.</span></h1>
-      <div class="body"><b>It's about building an Oregon where families can thrive, businesses can succeed, and every child has the opportunity for a quality education.</b> I'm running to listen, to work hard, and to represent District 28 with integrity.</div>
-    </div>
-    <div class="actions">
-      <div class="btn"><div class="k">Volunteer</div><div class="s">Give an hour</div></div>
-      <div class="btn solid"><div class="k">Join the conversation</div></div>
-    </div>
-    <div class="tags">I'd be honored to earn your support</div>
-    <div class="prog"><span class="dots"><i></i><i></i><i></i><i></i><i class="on"></i></span><span></span></div>
-  </div>
+  <div class="stage"><img src="/social-media-posts/carousel/01-manifesto/05.png" alt="Why I'm Running — slide 5 of 5" /></div>
 </body>
 </html>
