@@ -475,20 +475,20 @@ Randall strongly believes that good government should get the fundamentals right
     slug: "feed-58-statement",
     no: "58",
     format: "feed",
-    title: "Oregon Deserves Better Leadership",
+    title: "Oregon Deserves A Different Direction",
     concept:
       "Ink statement plate — the accent rule turns the setup into the payoff",
     file: "/social-media-posts/feed/58-statement.html",
-    caption: `After years of serving his community, Randall knows that the hardest decisions are rarely the loudest ones — they're the ones that take careful listening, thoughtful action, and personal responsibility.
+    caption: `After years of serving patients, Randall knows that the hardest decisions are rarely the loudest. They are the ones that require careful listening, thoughtful action, and personal responsibility.
 
-He's running because he believes Oregon deserves leaders who focus less on political headlines and more on real solutions that improve people's lives.
+He's running because he believes Oregon needs a different direction, one focused less on political headlines and more on real solutions that improve people's lives.
 
-That's the standard he'll bring to Salem.`,
+That's the approach he'll bring to Salem.`,
     hashtags: [
       "#RandallFryer",
       "#LeadershipThatServes",
       "#OregonHD28",
-      "#TeamFryer",
+      "#StrongerOregon",
     ],
   },
   {
