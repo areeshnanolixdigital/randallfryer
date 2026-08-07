@@ -1,5 +1,4 @@
 "use client";
-
 import { LazyMotion, domAnimation, MotionConfig } from "motion/react";
 
 export default function MotionProvider({ children }) {
