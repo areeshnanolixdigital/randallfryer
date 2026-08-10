@@ -12,9 +12,8 @@ import { useReveal } from "@/animations/useReveal";
 import Button from "@/components/ui/Button";
 import { FormField, FormDisclaimer } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
-import { getRelated } from "@/data/events";
 
-export default function EventDetailPage({ event }) {
+export default function EventDetailPage({ event, related = [] }) {
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -22,8 +21,6 @@ export default function EventDetailPage({ event }) {
   });
   const yCover = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const opacityHero = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
-
-  const related = getRelated(event.slug, 3);
 
   return (
     <main className="relative flex flex-1 flex-col">

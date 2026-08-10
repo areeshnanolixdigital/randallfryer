@@ -7,13 +7,8 @@ import SplitReveal from "@/animations/SplitReveal";
 import Reveal from "@/animations/Reveal";
 import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
-import { EVENTS } from "@/data/events";
 
-export default function EventsPage() {
-  const now = Date.now();
-  const upcoming = EVENTS.filter((e) => new Date(e.date).getTime() >= now);
-  const past = EVENTS.filter((e) => new Date(e.date).getTime() < now);
-
+export default function EventsPage({ upcoming = [], past = [] }) {
   return (
     <main className="relative flex flex-1 flex-col">
       <PageHero
