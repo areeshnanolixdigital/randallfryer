@@ -1,4 +1,7 @@
+"use client";
+
 import { cn } from "@/lib/cn";
+import { trackMeta } from "@/lib/analytics/meta";
 
 // Shared social links — single source of truth for the campaign's live social
 // handles and their icons. Used by the site Footer and the funnel thank-you
@@ -50,6 +53,16 @@ export function SocialIcon({ href, ariaLabel, children }) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={ariaLabel}
+      onClick={() => {
+        let destination_domain;
+        try {
+          destination_domain = new URL(href).hostname;
+        } catch {}
+        trackMeta("SocialLinkClick", {
+          platform: ariaLabel,
+          destination_domain,
+        });
+      }}
       className="group/soc relative grid h-11 w-11 place-items-center overflow-hidden rounded-full border border-ink/15 text-ink transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-0.5 hover:border-ink"
     >
       {/* fill that grows from center on hover */}

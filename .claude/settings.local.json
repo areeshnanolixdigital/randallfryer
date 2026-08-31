@@ -256,7 +256,9 @@
       "Bash(grep -oiE \"\\(error|cannot|not found|failed\\)[^<]{0,180}\")",
       "Bash(grep -oE \"better leadership[^<]{0,40}|Oregon Deserves Better Leadership|58-statement\\\\.\\(png|jpg\\)|LeadershipThatServes\" .next/server/app/social-media-posts/feed-58-statement.html)",
       "Bash(TUNE='{\"headSize\":76,\"blockTop\":230}' node design-58.js)",
-      "Bash(TUNE='{\"headSize\":76,\"blockTop\":222}' node design-58.js)"
+      "Bash(TUNE='{\"headSize\":76,\"blockTop\":222}' node design-58.js)",
+      "Bash(xargs grep *)",
+      "Bash(NEXT_PUBLIC_META_PIXEL_ID=2217312695500017 NEXT_PUBLIC_META_PIXEL_ENABLED=true npx next build)"
     ]
   }
 }

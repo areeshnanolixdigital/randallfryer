@@ -20,6 +20,22 @@ You can start editing the page by modifying `app/page.js`. The page auto-updates
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Environment variables
+
+Meta Pixel (see `src/components/analytics/MetaPixel.jsx` and Nanolix Meta
+Tracking SOP §3). Set in Vercel Project Settings → Environment Variables, or
+in `.env.local` for local development:
+
+```
+NEXT_PUBLIC_META_PIXEL_ID=2217312695500017
+NEXT_PUBLIC_META_PIXEL_ENABLED=true
+```
+
+Keep `NEXT_PUBLIC_META_PIXEL_ENABLED` unset (or `false`) in Preview
+environments so preview traffic never lands in the production dataset. If
+Conversions API is enabled later, `META_DATASET_ID` and `META_ACCESS_TOKEN`
+belong in the server-only scope — never `NEXT_PUBLIC_*`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

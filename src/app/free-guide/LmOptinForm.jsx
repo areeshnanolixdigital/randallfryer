@@ -13,6 +13,7 @@ import { formatPhoneInput, validatePhone } from "@/lib/phone";
 import { FormField, FormCheckbox, FormFieldset, FormDisclaimer } from "@/components/ui/Form";
 import Button from "@/components/ui/Button";
 import { LEAD_MAGNET, FUNNEL_ROUTES } from "@/constants/funnel-content";
+import { trackMeta, trackStandard } from "@/lib/analytics/meta";
 
 const { form } = LEAD_MAGNET;
 
@@ -24,8 +25,15 @@ export default function LmOptinForm() {
   const [phoneError, setPhoneError] = useState("");
   const [smsConsent, setSmsConsent] = useState(false);
   const [promoConsent, setPromoConsent] = useState(false);
+  const [startedTracked, setStartedTracked] = useState(false);
 
   const hasPhone = phone.trim().length > 0;
+
+  function onFirstInteraction() {
+    if (startedTracked) return;
+    setStartedTracked(true);
+    trackMeta("FormStart", { form_name: "lead_magnet" });
+  }
 
   // Never ship stale consent: clear both flags whenever the phone is emptied.
   useEffect(() => {
@@ -73,6 +81,10 @@ export default function LmOptinForm() {
         body: JSON.stringify(payload),
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
+      // Backend confirmed the lead-magnet opt-in — SOP §8 Lead. Fired
+      // before router.push so the pixel call is queued while the browser
+      // is still on this page.
+      trackStandard("Lead", { form_name: "lead_magnet" });
       // Redirect only after the API confirms delivery (funnel step 2).
       router.push(FUNNEL_ROUTES.thankYou);
     } catch (error) {
@@ -85,7 +97,12 @@ export default function LmOptinForm() {
   const submitting = status === "submitting";
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-7">
+    <form
+      onSubmit={handleSubmit}
+      onFocus={onFirstInteraction}
+      onInput={onFirstInteraction}
+      className="flex flex-col gap-7"
+    >
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <FormField id="lm-first" name="firstName" label="First Name" required />
         <FormField id="lm-last" name="lastName" label="Last Name" optional />
