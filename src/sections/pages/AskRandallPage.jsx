@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import { ISSUE_CATEGORIES } from "@/constants/issues";
+import { trackMeta, trackStandard } from "@/lib/analytics/meta";
 
 export default function AskRandallPage() {
   return (
@@ -33,7 +34,14 @@ export default function AskRandallPage() {
 function AskForm() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState("");
+  const [startedTracked, setStartedTracked] = useState(false);
   const pc = usePhoneConsent();
+
+  function onFirstInteraction() {
+    if (startedTracked) return;
+    setStartedTracked(true);
+    trackMeta("FormStart", { form_name: "ask" });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -84,6 +92,8 @@ function AskForm() {
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setStatus("success");
+      // Backend confirmed — SOP §8 Lead.
+      trackStandard("Lead", { form_name: "ask" });
     } catch (err) {
       setStatus("error");
       setErrorMsg(
@@ -112,7 +122,13 @@ function AskForm() {
   const submitting = status === "submitting";
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-7" noValidate>
+    <form
+      onSubmit={handleSubmit}
+      onFocus={onFirstInteraction}
+      onInput={onFirstInteraction}
+      className="flex flex-col gap-7"
+      noValidate
+    >
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <FormField id="a-name" name="name" label="Full name" required />
         <FormField

@@ -4,6 +4,7 @@ import MotionProvider from "@/animations/MotionProvider";
 import Navbar from "@/components/ui/Navbar";
 import Footer from "@/sections/Footer";
 import CookieConsent from "@/components/ui/CookieConsent";
+import MetaPixel from "@/components/analytics/MetaPixel";
 
 // Heading typeface — Inter. Only Inter and Roboto are used site-wide.
 // `opsz` is pulled in so `font-optical-sizing: auto` works on display sizes.
@@ -53,6 +54,7 @@ export default function RootLayout({ children }) {
       className={`${inter.variable} ${roboto.variable} h-full antialiased`}
     >
       <body className="relative min-h-full flex flex-col">
+        <MetaPixel />
         <MotionProvider>
           <Navbar />
           {children}

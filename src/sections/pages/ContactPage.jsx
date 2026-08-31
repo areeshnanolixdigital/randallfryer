@@ -21,6 +21,7 @@ import {
   CONTACT_EMAIL,
 } from "@/constants/site";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
+import { trackMeta, trackStandard } from "@/lib/analytics/meta";
 
 const TOPICS = [
   {
@@ -165,7 +166,14 @@ function TopicCard({ t, index }) {
 function ContactForm() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState("");
+  const [startedTracked, setStartedTracked] = useState(false);
   const pc = usePhoneConsent();
+
+  function onFirstInteraction() {
+    if (startedTracked) return;
+    setStartedTracked(true);
+    trackMeta("FormStart", { form_name: "contact" });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -217,6 +225,8 @@ function ContactForm() {
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setStatus("success");
+      // Backend confirmed the contact message — SOP §8 Lead.
+      trackStandard("Lead", { form_name: "contact" });
     } catch (err) {
       setStatus("error");
       setErrorMsg(
@@ -245,7 +255,13 @@ function ContactForm() {
   const submitting = status === "submitting";
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-7" noValidate>
+    <form
+      onSubmit={handleSubmit}
+      onFocus={onFirstInteraction}
+      onInput={onFirstInteraction}
+      className="flex flex-col gap-7"
+      noValidate
+    >
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <FormField id="c-first" name="firstName" label="First name" required />
         <FormField id="c-last" name="lastName" label="Last name" required />

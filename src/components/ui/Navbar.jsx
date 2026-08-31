@@ -8,6 +8,26 @@ import { AnimatePresence, m, useScroll, useTransform, useSpring } from "motion/r
 import { cn } from "@/lib/cn";
 import Button from "@/components/ui/Button";
 import { DONATE_URL } from "@/constants/site";
+import { trackMeta } from "@/lib/analytics/meta";
+
+// Fires DonateClick + CTA_Click every time a donation CTA leaves the site.
+// Both events are intent-only per SOP §10 — the Donate standard event is
+// reserved for confirmed contributions, which happen off-site.
+const handleDonateClick = (location) => () => {
+  const page_path =
+    typeof window !== "undefined" ? window.location.pathname : undefined;
+  trackMeta("DonateClick", {
+    cta_location: location,
+    destination_url: DONATE_URL,
+    page_path,
+  });
+  trackMeta("CTA_Click", {
+    cta_name: "Donate",
+    cta_location: location,
+    destination_url: DONATE_URL,
+    page_path,
+  });
+};
 
 const NAV_LINKS = [
   { label: "About", href: "/about" },
@@ -115,6 +135,7 @@ export default function Navbar() {
                   rel="noopener noreferrer"
                   variant="signal"
                   size="sm"
+                  onClick={handleDonateClick("header")}
                 >
                   Donate
                   <span
@@ -228,7 +249,10 @@ function MobileMenu({ close }) {
             href={DONATE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={close}
+            onClick={(e) => {
+              handleDonateClick("mobile_menu")(e);
+              close();
+            }}
             variant="signal"
             size="sm"
             className="flex-1"

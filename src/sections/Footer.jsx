@@ -17,6 +17,7 @@ import {
   CONTACT_EMAIL,
   CONTACT_ADDRESS,
 } from "@/constants/site";
+import { trackMeta, trackStandard } from "@/lib/analytics/meta";
 
 const NAV_GROUPS = [
   {
@@ -94,7 +95,19 @@ export default function Footer() {
             className="col-span-12 lg:col-span-5"
           >
             <div className="flex flex-wrap items-center gap-3 lg:justify-end">
-              <Button as={Link} href="/volunteer" variant="primary" withArrow>
+              <Button
+                as={Link}
+                href="/volunteer"
+                variant="primary"
+                withArrow
+                onClick={() =>
+                  trackMeta("CTA_Click", {
+                    cta_name: "Volunteer",
+                    cta_location: "footer",
+                    destination_url: "/volunteer",
+                  })
+                }
+              >
                 Volunteer
               </Button>
               <Button
@@ -103,6 +116,17 @@ export default function Footer() {
                 rel="noopener noreferrer"
                 variant="signal"
                 withArrow
+                onClick={() => {
+                  trackMeta("DonateClick", {
+                    cta_location: "footer",
+                    destination_url: DONATE_URL,
+                  });
+                  trackMeta("CTA_Click", {
+                    cta_name: "Donate",
+                    cta_location: "footer",
+                    destination_url: DONATE_URL,
+                  });
+                }}
               >
                 Donate
               </Button>
@@ -187,14 +211,26 @@ export default function Footer() {
             </>
           )}
           {CONTACT_PHONE_HREF ? (
-            <a href={CONTACT_PHONE_HREF} className="link-underline hover:text-ink">
+            <a
+              href={CONTACT_PHONE_HREF}
+              onClick={() =>
+                trackMeta("PhoneClick", { cta_location: "footer" })
+              }
+              className="link-underline hover:text-ink"
+            >
               {CONTACT_PHONE}
             </a>
           ) : (
             <span>{CONTACT_PHONE}</span>
           )}
           <span aria-hidden className="text-ink-mute/40">·</span>
-          <a href={`mailto:${CONTACT_EMAIL}`} className="link-underline hover:text-ink">
+          <a
+            href={`mailto:${CONTACT_EMAIL}`}
+            onClick={() =>
+              trackMeta("EmailClick", { cta_location: "footer" })
+            }
+            className="link-underline hover:text-ink"
+          >
             {CONTACT_EMAIL}
           </a>
         </div>
@@ -261,9 +297,32 @@ function FooterLink({ href, children }) {
   const isHttp = /^https?:/.test(href);
   const isExternal = /^(mailto:|tel:|https?:)/.test(href);
   const Comp = isExternal ? "a" : Link;
+
+  const onClick = () => {
+    if (href === DONATE_URL) {
+      trackMeta("DonateClick", { cta_location: "footer", destination_url: href });
+      trackMeta("CTA_Click", {
+        cta_name: "Donate",
+        cta_location: "footer",
+        destination_url: href,
+      });
+    } else if (isHttp) {
+      let destination_domain;
+      try {
+        destination_domain = new URL(href).hostname;
+      } catch {}
+      trackMeta("OutboundLinkClick", { destination_domain, cta_location: "footer" });
+    } else if (href?.startsWith("mailto:")) {
+      trackMeta("EmailClick", { cta_location: "footer" });
+    } else if (href?.startsWith("tel:")) {
+      trackMeta("PhoneClick", { cta_location: "footer" });
+    }
+  };
+
   return (
     <Comp
       href={href}
+      onClick={onClick}
       {...(isHttp ? { target: "_blank", rel: "noopener noreferrer" } : {})}
       className="group/link relative inline-block text-[15px] leading-snug text-ink/80 transition-colors duration-300 hover:text-ink"
     >
@@ -300,6 +359,10 @@ function SignupForm() {
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setStatus("success");
+      // Confirmed newsletter opt-in — SOP §2 (NewsletterSignup) + Lead
+      // standard event so Meta counts it as a lead conversion.
+      trackMeta("NewsletterSignup", { form_name: "newsletter", cta_location: "footer" });
+      trackStandard("Lead", { form_name: "newsletter", cta_location: "footer" });
     } catch (err) {
       setStatus("error");
     }

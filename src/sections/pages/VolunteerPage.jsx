@@ -22,6 +22,7 @@ import {
 } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import BrandIcon from "@/components/ui/BrandIcon";
+import { trackMeta, trackStandard } from "@/lib/analytics/meta";
 import {
   CONTACT_PHONE,
   CONTACT_PHONE_HREF,
@@ -269,7 +270,16 @@ function VolunteerForm() {
   const [errorMsg, setErrorMsg] = useState("");
   const [zip, setZip] = useState("");
   const [zipError, setZipError] = useState("");
+  const [startedTracked, setStartedTracked] = useState(false);
   const pc = usePhoneConsent();
+
+  // FormStart — fires once per form view on the first meaningful interaction
+  // (SOP §8). Attached to the form via onFocus/onInput capture below.
+  function onFirstInteraction() {
+    if (startedTracked) return;
+    setStartedTracked(true);
+    trackMeta("FormStart", { form_name: "volunteer" });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -366,6 +376,11 @@ function VolunteerForm() {
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setStatus("success");
+      // Backend confirmed the volunteer signup — SOP §8. Fire both the
+      // custom VolunteerComplete and the Lead standard event so Meta's ad
+      // optimization can use it.
+      trackMeta("VolunteerComplete", { form_name: "volunteer" });
+      trackStandard("Lead", { form_name: "volunteer" });
     } catch (err) {
       setStatus("error");
       setErrorMsg(
@@ -400,7 +415,13 @@ function VolunteerForm() {
   const submitting = status === "submitting";
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-7" noValidate>
+    <form
+      onSubmit={handleSubmit}
+      onFocus={onFirstInteraction}
+      onInput={onFirstInteraction}
+      className="flex flex-col gap-7"
+      noValidate
+    >
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <FormField id="v-first" name="firstName" label="First name" required />
         <FormField id="v-last" name="lastName" label="Last name" required />
