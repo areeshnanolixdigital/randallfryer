@@ -1,24 +1,24 @@
-"use client";
-
-// Meta Pixel loader + SPA PageView tracker.
+// Meta Pixel loader — server component so the base script is server-rendered
+// and Next.js can promote a `beforeInteractive` <Script> into the document
+// <head> (per next/script docs, beforeInteractive scripts are always injected
+// into <head> regardless of where they're placed in the tree).
+//
 // Mounted once from src/app/layout.js. Follows Nanolix Meta Tracking SOP §5.
 //
 // Behaviour:
-//   • Loads the Meta base script once (via next/script, afterInteractive).
+//   - Loads the Meta base script once, before hydration, injected into <head>.
 //     `fbq('init', PIXEL_ID)` runs inside the injected snippet — no PageView
-//     is fired there, so the useEffect below owns every PageView (initial +
-//     each App Router client navigation) and Meta receives exactly one per
-//     view.
-//   • On every pathname/search change, fires `fbq('track', 'PageView')`.
-//   • Kill switch: NEXT_PUBLIC_META_PIXEL_ENABLED=true is required. This lets
+//     is fired there, so MetaPixelRoute owns every PageView (initial + each
+//     App Router client navigation) and Meta receives exactly one per view.
+//   - Kill switch: NEXT_PUBLIC_META_PIXEL_ENABLED=true is required. This lets
 //     Preview deployments run without polluting the production dataset.
 //
-// useSearchParams() requires a Suspense boundary in the App Router, hence the
-// two-layer split (MetaPixel wraps <PixelRoute /> in Suspense).
+// MetaPixelRoute uses useSearchParams(), which requires a Suspense boundary
+// in the App Router.
 
 import Script from "next/script";
-import { Suspense, useEffect } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+import MetaPixelRoute from "./MetaPixelRoute";
 
 const PIXEL_ID = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 const ENABLED = process.env.NEXT_PUBLIC_META_PIXEL_ENABLED === "true";
@@ -30,7 +30,7 @@ export default function MetaPixel() {
     <>
       <Script
         id="meta-pixel"
-        strategy="afterInteractive"
+        strategy="beforeInteractive"
         dangerouslySetInnerHTML={{
           __html: `
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -56,22 +56,8 @@ fbq('init','${PIXEL_ID}');
         />
       </noscript>
       <Suspense fallback={null}>
-        <PixelRoute />
+        <MetaPixelRoute />
       </Suspense>
     </>
   );
-}
-
-function PixelRoute() {
-  const pathname = usePathname();
-  const search = useSearchParams();
-
-  useEffect(() => {
-    if (typeof window === "undefined" || !window.fbq) return;
-    window.fbq("track", "PageView");
-    // pathname + search are the only inputs that matter — a route change is
-    // the only signal we want a fresh PageView for.
-  }, [pathname, search]);
-
-  return null;
 }
