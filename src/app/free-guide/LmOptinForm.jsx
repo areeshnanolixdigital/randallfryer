@@ -17,7 +17,7 @@ import {
   newEventId,
   trackFormStart,
   trackLead,
-  trackLeadMagnetComplete,
+  trackNewsletterSignup,
 } from "@/lib/analytics/meta";
 
 const { form } = LEAD_MAGNET;
@@ -97,7 +97,7 @@ export default function LmOptinForm() {
       // future CAPI event for this opt-in.
       const eventId = newEventId();
       trackLead({ form_name: "lead_magnet" }, eventId);
-      trackLeadMagnetComplete({ form_name: "lead_magnet" }, eventId);
+      trackNewsletterSignup({ form_name: "lead_magnet" }, eventId);
       formStarted.current = false;
       // Redirect only after the API confirms delivery (funnel step 2).
       router.push(FUNNEL_ROUTES.thankYou);

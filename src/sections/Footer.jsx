@@ -21,11 +21,8 @@ import {
   newEventId,
   trackCTA,
   trackDonateClick,
-  trackEmail,
   trackLead,
   trackNewsletterSignup,
-  trackOutbound,
-  trackPhone,
 } from "@/lib/analytics/meta";
 
 const NAV_GROUPS = [
@@ -222,9 +219,6 @@ export default function Footer() {
           {CONTACT_PHONE_HREF ? (
             <a
               href={CONTACT_PHONE_HREF}
-              onClick={() =>
-                trackPhone({ cta_location: "footer" })
-              }
               className="link-underline hover:text-ink"
             >
               {CONTACT_PHONE}
@@ -235,9 +229,6 @@ export default function Footer() {
           <span aria-hidden className="text-ink-mute/40">·</span>
           <a
             href={`mailto:${CONTACT_EMAIL}`}
-            onClick={() =>
-              trackEmail({ cta_location: "footer" })
-            }
             className="link-underline hover:text-ink"
           >
             {CONTACT_EMAIL}
@@ -307,6 +298,9 @@ function FooterLink({ href, children }) {
   const isExternal = /^(mailto:|tel:|https?:)/.test(href);
   const Comp = isExternal ? "a" : Link;
 
+  // Only the donate CTA is tracked here. EmailClick / PhoneClick /
+  // OutboundLinkClick are handled site-wide by SiteAnalytics' delegated
+  // listener — firing them here as well would double-count every click.
   const onClick = () => {
     if (href === DONATE_URL) {
       trackDonateClick({ cta_location: "footer", destination_url: href });
@@ -315,16 +309,6 @@ function FooterLink({ href, children }) {
         cta_location: "footer",
         destination_url: href,
       });
-    } else if (isHttp) {
-      let destination_domain;
-      try {
-        destination_domain = new URL(href).hostname;
-      } catch {}
-      trackOutbound({ destination_domain, cta_location: "footer" });
-    } else if (href?.startsWith("mailto:")) {
-      trackEmail({ cta_location: "footer" });
-    } else if (href?.startsWith("tel:")) {
-      trackPhone({ cta_location: "footer" });
     }
   };
 

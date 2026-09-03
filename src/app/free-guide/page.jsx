@@ -3,6 +3,7 @@ import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import Button from "@/components/ui/Button";
 import LmOptinForm from "./LmOptinForm";
+import TrackOnMount from "@/components/analytics/TrackOnMount";
 import { LEAD_MAGNET } from "@/constants/funnel-content";
 
 // Funnel step 1 — lead-magnet squeeze page. ALL copy comes from
@@ -28,6 +29,10 @@ const { hero, benefits, finalCta, form } = LEAD_MAGNET;
 export default function Page() {
   return (
     <main className="relative flex flex-1 flex-col">
+      <TrackOnMount
+        event="VoterInfoView"
+        params={{ content_category: "voter_info", content_name: "free_guide" }}
+      />
       {/* HERO — headline, subheadline, cover mockup, single CTA to the form */}
       <section className="relative isolate overflow-hidden">
         <div className="container-padded relative pb-20 pt-14 sm:pb-28 sm:pt-20">
