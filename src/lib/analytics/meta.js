@@ -44,8 +44,8 @@ export function metaEnabled() {
 export function standardParams(extra = {}) {
   return {
     site_name: SITE_NAME,
-    page_path: window.location.pathname,
-    page_title: document.title,
+    page_path: typeof window !== "undefined" ? window.location.pathname : "",
+    page_title: typeof document !== "undefined" ? document.title : "",
     ...extra,
   };
 }
@@ -87,6 +87,9 @@ export const trackViewContent = (params = {}, eventId) =>
 export const trackLead = (params = {}, eventId) =>
   trackStandard("Lead", params, eventId);
 
+export const trackCompleteRegistration = (params = {}, eventId) =>
+  trackStandard("CompleteRegistration", params, eventId);
+
 /* ── Custom events ───────────────────────────────────────────────────────── */
 
 export const trackCTA = (params = {}) => trackMeta("CTA_Click", params);
@@ -107,6 +110,22 @@ export const trackEmail = (params = {}) => trackMeta("EmailClick", params);
 
 export const trackPhone = (params = {}) => trackMeta("PhoneClick", params);
 
+export const trackDownload = (params = {}) => trackMeta("Download", params);
+
+export const trackScrollDepth = (percent) =>
+  trackMeta("ScrollDepth", { percent });
+
+export const trackEngagedVisit = (seconds) =>
+  trackMeta("EngagedVisit", { seconds });
+
+export const trackIssuesView = (params = {}) => trackMeta("IssuesView", params);
+
+export const trackVoterInfoView = (params = {}) =>
+  trackMeta("VoterInfoView", params);
+
+export const trackVolunteerStart = (params = {}) =>
+  trackMeta("VolunteerStart", params);
+
 export const trackVolunteerComplete = (params = {}, eventId) =>
   trackMeta("VolunteerComplete", params, eventId);
 
@@ -115,6 +134,3 @@ export const trackEventRSVPComplete = (params = {}, eventId) =>
 
 export const trackNewsletterSignup = (params = {}, eventId) =>
   trackMeta("NewsletterSignup", params, eventId);
-
-export const trackLeadMagnetComplete = (params = {}, eventId) =>
-  trackMeta("LeadMagnetComplete", params, eventId);

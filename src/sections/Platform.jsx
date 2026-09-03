@@ -6,6 +6,7 @@ import { gsap, useGSAP, ScrollTrigger } from "@/animations/gsap";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import Reveal from "@/animations/Reveal";
+import TrackOnMount from "@/components/analytics/TrackOnMount";
 
 const PILLARS = [
   {
@@ -73,6 +74,10 @@ export default function Platform() {
 
   return (
     <div ref={wrap}>
+      <TrackOnMount
+        event="IssuesView"
+        params={{ content_category: "issues", content_name: "home_platform_grid" }}
+      />
       <SectionFrame
         id="platform"
         label="02 Three Priorities"
