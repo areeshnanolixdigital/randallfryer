@@ -12,6 +12,12 @@ import { useReveal } from "@/animations/useReveal";
 import Button from "@/components/ui/Button";
 import { FormField, FormDisclaimer } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
+import {
+  newEventId,
+  trackFormStart,
+  trackLead,
+  trackEventRSVPComplete,
+} from "@/lib/analytics/meta";
 
 export default function EventDetailPage({ event, related = [] }) {
   const heroRef = useRef(null);
@@ -310,7 +316,18 @@ function RecapRow({ label, children }) {
 function RSVPForm({ event }) {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState("");
+  const formStarted = useRef(false);
   const pc = usePhoneConsent();
+
+  // FormStart fires once per form fill. The latch MUST be a ref, not state:
+  // onFocus and onInput both feed this handler and fire in the same tick on the
+  // first keystroke, so a state flag is still false in both closures and the
+  // event goes out twice.
+  function onFirstInteraction() {
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackFormStart({ form_name: "event_rsvp", event_name: event.title });
+  }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -360,6 +377,16 @@ function RSVPForm({ event }) {
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setStatus("success");
+      // Backend confirmed the RSVP — SOP §8. Both events carry the SAME
+      // eventID on purpose, so Meta can dedupe them against a future CAPI
+      // event for this RSVP.
+      const eventId = newEventId();
+      trackLead({ form_name: "event_rsvp", event_name: event.title }, eventId);
+      trackEventRSVPComplete(
+        { form_name: "event_rsvp", event_name: event.title },
+        eventId
+      );
+      formStarted.current = false;
     } catch (err) {
       setStatus("error");
       setErrorMsg(
@@ -413,6 +440,8 @@ function RSVPForm({ event }) {
     <Reveal
       as="form"
       onSubmit={handleSubmit}
+      onFocus={onFirstInteraction}
+      onInput={onFirstInteraction}
       noValidate
       y={30}
       duration={0.9}

@@ -22,7 +22,12 @@ import {
 } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import BrandIcon from "@/components/ui/BrandIcon";
-import { trackMeta, trackStandard } from "@/lib/analytics/meta";
+import {
+  newEventId,
+  trackFormStart,
+  trackLead,
+  trackVolunteerComplete,
+} from "@/lib/analytics/meta";
 import {
   CONTACT_PHONE,
   CONTACT_PHONE_HREF,
@@ -270,15 +275,19 @@ function VolunteerForm() {
   const [errorMsg, setErrorMsg] = useState("");
   const [zip, setZip] = useState("");
   const [zipError, setZipError] = useState("");
-  const [startedTracked, setStartedTracked] = useState(false);
+  const formStarted = useRef(false);
   const pc = usePhoneConsent();
 
   // FormStart — fires once per form view on the first meaningful interaction
   // (SOP §8). Attached to the form via onFocus/onInput capture below.
+  // FormStart fires once per form fill. The latch MUST be a ref, not state:
+  // onFocus and onInput both feed this handler and fire in the same tick on the
+  // first keystroke, so a state flag is still false in both closures and the
+  // event goes out twice.
   function onFirstInteraction() {
-    if (startedTracked) return;
-    setStartedTracked(true);
-    trackMeta("FormStart", { form_name: "volunteer" });
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackFormStart({ form_name: "volunteer" });
   }
 
   async function handleSubmit(e) {
@@ -379,8 +388,12 @@ function VolunteerForm() {
       // Backend confirmed the volunteer signup — SOP §8. Fire both the
       // custom VolunteerComplete and the Lead standard event so Meta's ad
       // optimization can use it.
-      trackMeta("VolunteerComplete", { form_name: "volunteer" });
-      trackStandard("Lead", { form_name: "volunteer" });
+      // Both carry the SAME eventID on purpose — that is how Meta dedupes
+      // them against a future CAPI event for this signup.
+      const eventId = newEventId();
+      trackLead({ form_name: "volunteer" }, eventId);
+      trackVolunteerComplete({ form_name: "volunteer" }, eventId);
+      formStarted.current = false;
     } catch (err) {
       setStatus("error");
       setErrorMsg(

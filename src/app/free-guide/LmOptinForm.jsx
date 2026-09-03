@@ -7,13 +7,18 @@
 // (forms-compliance-pattern.md §2–§3). On success, redirects to the thank-you
 // page only after the API responds OK.
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { formatPhoneInput, validatePhone } from "@/lib/phone";
 import { FormField, FormCheckbox, FormFieldset, FormDisclaimer } from "@/components/ui/Form";
 import Button from "@/components/ui/Button";
 import { LEAD_MAGNET, FUNNEL_ROUTES } from "@/constants/funnel-content";
-import { trackMeta, trackStandard } from "@/lib/analytics/meta";
+import {
+  newEventId,
+  trackFormStart,
+  trackLead,
+  trackLeadMagnetComplete,
+} from "@/lib/analytics/meta";
 
 const { form } = LEAD_MAGNET;
 
@@ -25,14 +30,18 @@ export default function LmOptinForm() {
   const [phoneError, setPhoneError] = useState("");
   const [smsConsent, setSmsConsent] = useState(false);
   const [promoConsent, setPromoConsent] = useState(false);
-  const [startedTracked, setStartedTracked] = useState(false);
+  const formStarted = useRef(false);
 
   const hasPhone = phone.trim().length > 0;
 
+  // FormStart fires once per form fill. The latch MUST be a ref, not state:
+  // onFocus and onInput both feed this handler and fire in the same tick on the
+  // first keystroke, so a state flag is still false in both closures and the
+  // event goes out twice.
   function onFirstInteraction() {
-    if (startedTracked) return;
-    setStartedTracked(true);
-    trackMeta("FormStart", { form_name: "lead_magnet" });
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackFormStart({ form_name: "lead_magnet" });
   }
 
   // Never ship stale consent: clear both flags whenever the phone is emptied.
@@ -84,7 +93,12 @@ export default function LmOptinForm() {
       // Backend confirmed the lead-magnet opt-in — SOP §8 Lead. Fired
       // before router.push so the pixel call is queued while the browser
       // is still on this page.
-      trackStandard("Lead", { form_name: "lead_magnet" });
+      // Both events share one eventID so Meta can dedupe them against a
+      // future CAPI event for this opt-in.
+      const eventId = newEventId();
+      trackLead({ form_name: "lead_magnet" }, eventId);
+      trackLeadMagnetComplete({ form_name: "lead_magnet" }, eventId);
+      formStarted.current = false;
       // Redirect only after the API confirms delivery (funnel step 2).
       router.push(FUNNEL_ROUTES.thankYou);
     } catch (error) {

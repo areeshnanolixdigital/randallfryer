@@ -8,7 +8,7 @@ import Button from "@/components/ui/Button";
 import Counter from "@/components/ui/Counter";
 import Image from "next/image";
 import { DONATE_URL } from "@/constants/site";
-import { trackMeta } from "@/lib/analytics/meta";
+import { trackCTA, trackDonateClick } from "@/lib/analytics/meta";
 
 const HEADLINE_LINES = ["A Stronger Oregon.", "A Better Tomorrow."];
 
@@ -194,7 +194,7 @@ export default function Hero() {
                   variant="signal"
                   withArrow
                   onClick={() =>
-                    trackMeta("CTA_Click", {
+                    trackCTA({
                       cta_name: "Join Team Fryer",
                       cta_location: "hero",
                       destination_url: "/volunteer",
@@ -212,11 +212,11 @@ export default function Hero() {
                   variant="outline"
                   withArrow
                   onClick={() => {
-                    trackMeta("DonateClick", {
+                    trackDonateClick({
                       cta_location: "hero",
                       destination_url: DONATE_URL,
                     });
-                    trackMeta("CTA_Click", {
+                    trackCTA({
                       cta_name: "Donate",
                       cta_location: "hero",
                       destination_url: DONATE_URL,

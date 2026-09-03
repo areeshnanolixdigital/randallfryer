@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 import PageHero from "@/components/ui/PageHero";
 import Button from "@/components/ui/Button";
 import {
@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/Form";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
 import { ISSUE_CATEGORIES } from "@/constants/issues";
-import { trackMeta, trackStandard } from "@/lib/analytics/meta";
+import { newEventId, trackFormStart, trackLead } from "@/lib/analytics/meta";
 
 export default function AskRandallPage() {
   return (
@@ -34,13 +34,17 @@ export default function AskRandallPage() {
 function AskForm() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState("");
-  const [startedTracked, setStartedTracked] = useState(false);
+  const formStarted = useRef(false);
   const pc = usePhoneConsent();
 
+  // FormStart fires once per form fill. The latch MUST be a ref, not state:
+  // onFocus and onInput both feed this handler and fire in the same tick on the
+  // first keystroke, so a state flag is still false in both closures and the
+  // event goes out twice.
   function onFirstInteraction() {
-    if (startedTracked) return;
-    setStartedTracked(true);
-    trackMeta("FormStart", { form_name: "ask" });
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackFormStart({ form_name: "ask" });
   }
 
   async function handleSubmit(e) {
@@ -92,8 +96,10 @@ function AskForm() {
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setStatus("success");
-      // Backend confirmed — SOP §8 Lead.
-      trackStandard("Lead", { form_name: "ask" });
+      // Backend confirmed — SOP §8 Lead. The eventID lets Meta dedupe this
+      // against the same submission arriving via CAPI later.
+      trackLead({ form_name: "ask" }, newEventId());
+      formStarted.current = false;
     } catch (err) {
       setStatus("error");
       setErrorMsg(
