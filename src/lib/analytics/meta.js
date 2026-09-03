@@ -16,14 +16,13 @@
 // eventId is only needed when the same event is also sent server-side via CAPI
 // so Meta can deduplicate — see newEventId().
 //
-// Consent: this site's Privacy Policy ("Cookies and analytics") promises that
-// optional analytics and advertising technologies stay disabled until the
-// visitor opts in through the cookie banner. metaEnabled() therefore requires
-// getCookieConsent() === "analytics" on top of the two env vars. Declining, or
-// never answering the banner, leaves every helper a no-op and the Meta script
-// unloaded.
-
-import { getCookieConsent } from "@/lib/cookieConsent";
+// Consent: the pixel currently loads and tracks for every visitor. Gating it
+// on the cookie banner (lib/cookieConsent.js — getCookieConsent() ===
+// "analytics") is a planned follow-up, NOT an oversight. Note that the Privacy
+// Policy's "Cookies and analytics" section still states optional analytics and
+// advertising technologies stay disabled until the visitor consents, so either
+// that copy or this behaviour needs to change before launch. When the gate is
+// added, metaEnabled() is the single place it belongs.
 
 // site_name is fixed per-project; every event carries it so cross-property
 // reports remain readable.
@@ -33,8 +32,7 @@ export function metaEnabled() {
   return (
     typeof window !== "undefined" &&
     process.env.NEXT_PUBLIC_META_PIXEL_ENABLED === "true" &&
-    Boolean(process.env.NEXT_PUBLIC_META_PIXEL_ID) &&
-    getCookieConsent() === "analytics"
+    Boolean(process.env.NEXT_PUBLIC_META_PIXEL_ID)
   );
 }
 

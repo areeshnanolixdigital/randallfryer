@@ -41,18 +41,18 @@ or changing them, **restart the dev server** (a hot reload is not enough) and
 **redeploy** on Vercel. With either missing, `MetaPixel` renders `null` and
 every helper is a silent no-op — the correct disabled state, not a bug.
 
-### Cookie consent gates the pixel
+### Cookie consent
 
-The Privacy Policy ("Cookies and analytics") promises optional analytics and
-advertising technologies stay disabled until the visitor consents, so the pixel
-does not load and no request reaches Meta until the visitor chooses **Accept
-analytics** in the cookie banner. Declining, or dismissing the banner without
-choosing, leaves every event a no-op.
+The pixel currently loads on page load and tracks every visitor, regardless of
+the cookie banner. Gating it on consent is a planned follow-up.
 
-When verifying with the Meta Pixel Helper extension, accept the banner first —
-otherwise the correct behaviour looks like a broken pixel. Consent is stored in
-`localStorage` under `rf-cookie-consent`; clear it (or use a fresh private
-window) to re-test the banner.
+Note that the Privacy Policy's "Cookies and analytics" section states optional
+analytics and advertising technologies "are disabled until the visitor provides
+the applicable consent through our cookie banner" — so either that copy or this
+behaviour needs to change before launch. When the gate is added,
+`metaEnabled()` in `src/lib/analytics/meta.js` is the single place it belongs;
+the banner already records the choice and broadcasts `CONSENT_CHANGE_EVENT`
+(see `src/lib/cookieConsent.js`).
 
 ## Learn More
 
