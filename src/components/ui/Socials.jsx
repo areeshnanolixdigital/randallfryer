@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/cn";
-import { trackMeta } from "@/lib/analytics/meta";
+import { trackSocial } from "@/lib/analytics/meta";
 
 // Shared social links — single source of truth for the campaign's live social
 // handles and their icons. Used by the site Footer and the funnel thank-you
@@ -58,8 +58,9 @@ export function SocialIcon({ href, ariaLabel, children }) {
         try {
           destination_domain = new URL(href).hostname;
         } catch {}
-        trackMeta("SocialLinkClick", {
+        trackSocial({
           platform: ariaLabel,
+          destination_url: href,
           destination_domain,
         });
       }}

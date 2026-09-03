@@ -21,7 +21,7 @@ import {
   CONTACT_EMAIL,
 } from "@/constants/site";
 import { usePhoneConsent, SmsConsentFieldset } from "@/components/ui/SmsConsent";
-import { trackMeta, trackStandard } from "@/lib/analytics/meta";
+import { newEventId, trackFormStart, trackLead } from "@/lib/analytics/meta";
 
 const TOPICS = [
   {
@@ -166,13 +166,17 @@ function TopicCard({ t, index }) {
 function ContactForm() {
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState("");
-  const [startedTracked, setStartedTracked] = useState(false);
+  const formStarted = useRef(false);
   const pc = usePhoneConsent();
 
+  // FormStart fires once per form fill. The latch MUST be a ref, not state:
+  // onFocus and onInput both feed this handler and fire in the same tick on the
+  // first keystroke, so a state flag is still false in both closures and the
+  // event goes out twice.
   function onFirstInteraction() {
-    if (startedTracked) return;
-    setStartedTracked(true);
-    trackMeta("FormStart", { form_name: "contact" });
+    if (formStarted.current) return;
+    formStarted.current = true;
+    trackFormStart({ form_name: "contact" });
   }
 
   async function handleSubmit(e) {
@@ -225,8 +229,11 @@ function ContactForm() {
       });
       if (!res.ok) throw new Error(`Request failed (${res.status})`);
       setStatus("success");
-      // Backend confirmed the contact message — SOP §8 Lead.
-      trackStandard("Lead", { form_name: "contact" });
+      // Backend confirmed the contact message — SOP §8 Lead. The eventID lets
+      // Meta dedupe this against the same submission arriving via CAPI later.
+      trackLead({ form_name: "contact" }, newEventId());
+      // Fresh funnel if this mounted form is submitted again.
+      formStarted.current = false;
     } catch (err) {
       setStatus("error");
       setErrorMsg(

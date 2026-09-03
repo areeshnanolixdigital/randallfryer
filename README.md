@@ -36,6 +36,24 @@ environments so preview traffic never lands in the production dataset. If
 Conversions API is enabled later, `META_DATASET_ID` and `META_ACCESS_TOKEN`
 belong in the server-only scope — never `NEXT_PUBLIC_*`.
 
+Both vars are `NEXT_PUBLIC_*`, so they are inlined at build time: after adding
+or changing them, **restart the dev server** (a hot reload is not enough) and
+**redeploy** on Vercel. With either missing, `MetaPixel` renders `null` and
+every helper is a silent no-op — the correct disabled state, not a bug.
+
+### Cookie consent gates the pixel
+
+The Privacy Policy ("Cookies and analytics") promises optional analytics and
+advertising technologies stay disabled until the visitor consents, so the pixel
+does not load and no request reaches Meta until the visitor chooses **Accept
+analytics** in the cookie banner. Declining, or dismissing the banner without
+choosing, leaves every event a no-op.
+
+When verifying with the Meta Pixel Helper extension, accept the banner first —
+otherwise the correct behaviour looks like a broken pixel. Consent is stored in
+`localStorage` under `rf-cookie-consent`; clear it (or use a fresh private
+window) to re-test the banner.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

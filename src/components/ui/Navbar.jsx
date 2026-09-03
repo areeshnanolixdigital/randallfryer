@@ -8,24 +8,21 @@ import { AnimatePresence, m, useScroll, useTransform, useSpring } from "motion/r
 import { cn } from "@/lib/cn";
 import Button from "@/components/ui/Button";
 import { DONATE_URL } from "@/constants/site";
-import { trackMeta } from "@/lib/analytics/meta";
+import { trackCTA, trackDonateClick } from "@/lib/analytics/meta";
 
 // Fires DonateClick + CTA_Click every time a donation CTA leaves the site.
 // Both events are intent-only per SOP §10 — the Donate standard event is
 // reserved for confirmed contributions, which happen off-site.
 const handleDonateClick = (location) => () => {
-  const page_path =
-    typeof window !== "undefined" ? window.location.pathname : undefined;
-  trackMeta("DonateClick", {
+  // page_path/page_title are added by standardParams() in the helper layer.
+  trackDonateClick({
     cta_location: location,
     destination_url: DONATE_URL,
-    page_path,
   });
-  trackMeta("CTA_Click", {
+  trackCTA({
     cta_name: "Donate",
     cta_location: location,
     destination_url: DONATE_URL,
-    page_path,
   });
 };
 

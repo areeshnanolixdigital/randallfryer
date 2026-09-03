@@ -17,7 +17,16 @@ import {
   CONTACT_EMAIL,
   CONTACT_ADDRESS,
 } from "@/constants/site";
-import { trackMeta, trackStandard } from "@/lib/analytics/meta";
+import {
+  newEventId,
+  trackCTA,
+  trackDonateClick,
+  trackEmail,
+  trackLead,
+  trackNewsletterSignup,
+  trackOutbound,
+  trackPhone,
+} from "@/lib/analytics/meta";
 
 const NAV_GROUPS = [
   {
@@ -101,7 +110,7 @@ export default function Footer() {
                 variant="primary"
                 withArrow
                 onClick={() =>
-                  trackMeta("CTA_Click", {
+                  trackCTA({
                     cta_name: "Volunteer",
                     cta_location: "footer",
                     destination_url: "/volunteer",
@@ -117,11 +126,11 @@ export default function Footer() {
                 variant="signal"
                 withArrow
                 onClick={() => {
-                  trackMeta("DonateClick", {
+                  trackDonateClick({
                     cta_location: "footer",
                     destination_url: DONATE_URL,
                   });
-                  trackMeta("CTA_Click", {
+                  trackCTA({
                     cta_name: "Donate",
                     cta_location: "footer",
                     destination_url: DONATE_URL,
@@ -214,7 +223,7 @@ export default function Footer() {
             <a
               href={CONTACT_PHONE_HREF}
               onClick={() =>
-                trackMeta("PhoneClick", { cta_location: "footer" })
+                trackPhone({ cta_location: "footer" })
               }
               className="link-underline hover:text-ink"
             >
@@ -227,7 +236,7 @@ export default function Footer() {
           <a
             href={`mailto:${CONTACT_EMAIL}`}
             onClick={() =>
-              trackMeta("EmailClick", { cta_location: "footer" })
+              trackEmail({ cta_location: "footer" })
             }
             className="link-underline hover:text-ink"
           >
@@ -300,8 +309,8 @@ function FooterLink({ href, children }) {
 
   const onClick = () => {
     if (href === DONATE_URL) {
-      trackMeta("DonateClick", { cta_location: "footer", destination_url: href });
-      trackMeta("CTA_Click", {
+      trackDonateClick({ cta_location: "footer", destination_url: href });
+      trackCTA({
         cta_name: "Donate",
         cta_location: "footer",
         destination_url: href,
@@ -311,11 +320,11 @@ function FooterLink({ href, children }) {
       try {
         destination_domain = new URL(href).hostname;
       } catch {}
-      trackMeta("OutboundLinkClick", { destination_domain, cta_location: "footer" });
+      trackOutbound({ destination_domain, cta_location: "footer" });
     } else if (href?.startsWith("mailto:")) {
-      trackMeta("EmailClick", { cta_location: "footer" });
+      trackEmail({ cta_location: "footer" });
     } else if (href?.startsWith("tel:")) {
-      trackMeta("PhoneClick", { cta_location: "footer" });
+      trackPhone({ cta_location: "footer" });
     }
   };
 
@@ -361,8 +370,14 @@ function SignupForm() {
       setStatus("success");
       // Confirmed newsletter opt-in — SOP §2 (NewsletterSignup) + Lead
       // standard event so Meta counts it as a lead conversion.
-      trackMeta("NewsletterSignup", { form_name: "newsletter", cta_location: "footer" });
-      trackStandard("Lead", { form_name: "newsletter", cta_location: "footer" });
+      // Both carry the SAME eventID so Meta can dedupe them against a
+      // future CAPI event for this opt-in.
+      const eventId = newEventId();
+      trackLead({ form_name: "newsletter", cta_location: "footer" }, eventId);
+      trackNewsletterSignup(
+        { form_name: "newsletter", cta_location: "footer" },
+        eventId
+      );
     } catch (err) {
       setStatus("error");
     }
