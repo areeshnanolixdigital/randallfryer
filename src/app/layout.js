@@ -5,6 +5,7 @@ import Navbar from "@/components/ui/Navbar";
 import Footer from "@/sections/Footer";
 import CookieConsent from "@/components/ui/CookieConsent";
 import MetaPixel from "@/components/analytics/MetaPixel";
+import MetaPixelHead from "@/components/analytics/MetaPixelHead";
 
 // Heading typeface — Inter. Only Inter and Roboto are used site-wide.
 // `opsz` is pulled in so `font-optical-sizing: auto` works on display sizes.
@@ -53,6 +54,13 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${inter.variable} ${roboto.variable} h-full antialiased`}
     >
+      {/* Meta Pixel base code must be in <head>: it is where Meta's install
+          instructions put it and where the Pixel Helper / Pixel Validator
+          extensions look for it. Everything else about metadata still goes
+          through the Metadata API above, not here. */}
+      <head>
+        <MetaPixelHead />
+      </head>
       <body className="relative min-h-full flex flex-col">
         <MetaPixel />
         <MotionProvider>
