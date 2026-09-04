@@ -29,7 +29,12 @@ const SITE_DESCRIPTION =
   "Randall Fryer is running for the Oregon House to restore educational excellence, reduce the burden on working families, strengthen Oregon's business climate, support safer communities, and bring greater accountability to Salem.";
 
 export const metadata = {
-  metadataBase: new URL("https://randallfryer.vercel.app"),
+  // Canonical origin. MUST be the live public domain: Meta (and every other
+  // crawler) reads og:url from here, and a mismatch breaks the domain-to-pixel
+  // association in Events Manager — the Event Setup Tool reports "a pixel
+  // wasn't detected on this website" even though the pixel is present.
+  // www, not apex: the apex has no valid TLS certificate yet.
+  metadataBase: new URL("https://www.randallfororegon.com"),
   title: {
     default: SITE_TITLE,
     template: "%s · Randall Fryer",
