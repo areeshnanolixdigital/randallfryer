@@ -7,7 +7,7 @@ import LivePreview from "@/components/ui/LivePreview";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import Reveal from "@/animations/Reveal";
-import { FORMATS, CAROUSELS, posterFor } from "@/data/socialPosts";
+import { FORMATS, CAROUSELS, posterFor, imageFor } from "@/data/socialPosts";
 import { cn } from "@/lib/cn";
 
 export default function CarouselDetailPage({ carousel }) {
@@ -36,10 +36,11 @@ export default function CarouselDetailPage({ carousel }) {
 
   const onCopy = async () => {
     try {
+      const slideImage = imageFor(current);
       const url =
         typeof window !== "undefined"
-          ? `${window.location.origin}${current}`
-          : current;
+          ? `${window.location.origin}${slideImage}`
+          : slideImage;
       await navigator.clipboard.writeText(url);
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
@@ -97,7 +98,7 @@ export default function CarouselDetailPage({ carousel }) {
             <div className="col-span-12 flex flex-col gap-3 lg:col-span-4 lg:items-end lg:text-right">
               <div className="flex flex-wrap items-center gap-2 lg:justify-end">
                 <a
-                  href={current}
+                  href={imageFor(current)}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-pill border border-ink/25 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.24em] text-ink hover:border-ink hover:bg-ink hover:text-bone"
@@ -160,10 +161,9 @@ export default function CarouselDetailPage({ carousel }) {
                 className="relative w-full overflow-hidden rounded-card border border-bone/15 bg-ink shadow-[0_60px_120px_-30px_rgba(0,0,0,0.7)]"
               >
                 <LivePreview
-                  file={current}
+                  poster={imageFor(current)}
                   width={fmt.width}
                   height={fmt.height}
-                  interactive
                   title={`${carousel.title} — slide ${index + 1}`}
                 />
               </m.div>
@@ -248,7 +248,7 @@ export default function CarouselDetailPage({ carousel }) {
             <Spec label="Format" value={fmt.label} />
             <Spec label="Aspect" value={fmt.sub} />
             <Spec label="Slides" value={String(total)} />
-            <Spec label="Type" value="HTML / CSS" />
+            <Spec label="Type" value="Image · PNG" />
           </Reveal>
         </div>
       </section>
@@ -263,8 +263,8 @@ export default function CarouselDetailPage({ carousel }) {
             </h2>
             <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/75">
               A {total}-slide sequence built to swipe — a cover, a run of point
-              slides, and a closing call to action. Every slide is a standalone
-              HTML file, rendered live, with no images or build step.
+              slides, and a closing call to action. Every slide is a finished
+              image at full export resolution, ready to publish.
             </p>
           </div>
           <ul className="col-span-12 grid gap-6 lg:col-span-5">

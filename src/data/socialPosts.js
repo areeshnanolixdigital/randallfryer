@@ -1210,10 +1210,10 @@ export const FORMATS = {
   feed: {
     key: "feed",
     label: "Feed",
-    sub: "1080 × 1080",
-    ratio: "1 / 1",
+    sub: "1080 × 1350",
+    ratio: "4 / 5",
     width: 1080,
-    height: 1080,
+    height: 1350,
   },
   story: {
     key: "story",
@@ -1226,10 +1226,10 @@ export const FORMATS = {
   carousel: {
     key: "carousel",
     label: "Carousel",
-    sub: "1080 × 1080",
-    ratio: "1 / 1",
+    sub: "1080 × 1350",
+    ratio: "4 / 5",
     width: 1080,
-    height: 1080,
+    height: 1350,
   },
 };
 
@@ -1242,13 +1242,20 @@ export function getCarousel(slug) {
 }
 
 // Static JPEG poster for an artboard, used for grid/thumbnail rendering.
-// (Live iframes are reserved for the single full-size preview on detail pages —
-// mounting a hundred live iframes at once overwhelms the browser compositor.)
+// Lightweight (mozjpeg, q82) so a full grid paints instantly.
 export function posterFor(file) {
   if (!file) return file;
   return file
     .replace("/social-media-posts/", "/social-media-posts/posters/")
     .replace(/\.html$/, ".jpg");
+}
+
+// Full-resolution PNG export of an artboard, shipped alongside its HTML source.
+// The creatives are now delivered as finished images, so detail pages render
+// this PNG directly rather than iframing the live HTML.
+export function imageFor(file) {
+  if (!file) return file;
+  return file.replace(/\.html$/, ".png");
 }
 
 // A creative is listed in the gallery unless it opts out with `listed: false`.

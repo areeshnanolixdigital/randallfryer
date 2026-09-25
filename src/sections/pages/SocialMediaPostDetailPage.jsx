@@ -7,7 +7,7 @@ import LivePreview from "@/components/ui/LivePreview";
 import SectionFrame from "@/animations/SectionFrame";
 import SplitReveal from "@/animations/SplitReveal";
 import Reveal from "@/animations/Reveal";
-import { FORMATS, getRelatedSocialPosts, posterFor } from "@/data/socialPosts";
+import { FORMATS, getRelatedSocialPosts, posterFor, imageFor } from "@/data/socialPosts";
 import { cn } from "@/lib/cn";
 
 export default function SocialMediaPostDetailPage({ post }) {
@@ -15,8 +15,8 @@ export default function SocialMediaPostDetailPage({ post }) {
   const related = getRelatedSocialPosts(post.slug, 4);
   const [copied, setCopied] = useState(false);
 
-  // Copies this detail page, not the artboard file — "Open standalone" above
-  // already exposes the raw HTML, and a shared link should land on the page.
+  // Copies this detail page, not the image file — "Open image" above already
+  // exposes the raw export, and a shared link should land on the page.
   const onCopy = async () => {
     try {
       const url =
@@ -83,12 +83,12 @@ export default function SocialMediaPostDetailPage({ post }) {
             <div className="col-span-12 flex flex-col gap-3 lg:col-span-4 lg:items-end lg:text-right">
               <div className="flex flex-wrap items-center gap-2 lg:justify-end">
                 <a
-                  href={post.file}
+                  href={imageFor(post.file)}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-2 rounded-pill border border-ink/25 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.24em] text-ink hover:border-ink hover:bg-ink hover:text-bone"
                 >
-                  Open standalone
+                  Open image
                   <svg width="10" height="10" viewBox="0 0 14 14" fill="none">
                     <path
                       d="M1.5 12.5L12.5 1.5M12.5 1.5H4.5M12.5 1.5V9.5"
@@ -153,10 +153,9 @@ export default function SocialMediaPostDetailPage({ post }) {
               )}
             >
               <LivePreview
-                file={post.file}
+                poster={imageFor(post.file)}
                 width={fmt.width}
                 height={fmt.height}
-                interactive
                 title={post.title}
               />
             </m.div>
@@ -173,7 +172,7 @@ export default function SocialMediaPostDetailPage({ post }) {
             <Spec label="Format" value={fmt.label} />
             <Spec label="Aspect" value={fmt.sub} />
             <Spec label="File" value={`№${post.no}`} />
-            <Spec label="Type" value="HTML / CSS" />
+            <Spec label="Type" value="Image · PNG" />
           </Reveal>
         </div>
       </section>
@@ -187,9 +186,9 @@ export default function SocialMediaPostDetailPage({ post }) {
               <span className="italic text-signal-deep">.</span>
             </h2>
             <p className="mt-6 max-w-xl text-[1.05rem] leading-relaxed text-ink/75">
-              Served from a standalone artboard at full export resolution — what
-              you see on this page is exactly what publishes, with no
-              re-rendering or re-cropping between here and the feed.
+              The finished creative at full export resolution — what you see on
+              this page is exactly what publishes, with no re-rendering or
+              re-cropping between here and the feed.
             </p>
 
             {/* Post copy, when the creative ships with a written caption. */}
