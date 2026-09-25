@@ -15,9 +15,9 @@ const CAROUSEL_COUNT = CAROUSELS.length;
 
 const FILTERS = [
   { key: "all", label: "All", sub: `${GALLERY_ITEMS.length} designs` },
-  { key: "feed", label: "Feed", sub: "1080 × 1080" },
+  { key: "feed", label: "Feed", sub: "1080 × 1350" },
   { key: "story", label: "Story", sub: "1080 × 1920" },
-  { key: "carousel", label: "Carousel", sub: "1080 × 1080" },
+  { key: "carousel", label: "Carousel", sub: "1080 × 1350" },
 ];
 
 // Poster thumbnails are lazy-loaded, but ~100 full-bleed JPEGs is still a lot
